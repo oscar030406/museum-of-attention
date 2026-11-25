@@ -76,7 +76,7 @@ python -m http.server 8780 -d site
 python export_repo.py
 ```
 
-它把 git 里的文件复制到 `dist/repo/`，去掉派工的工单、原型和只供馆长参考的调研，并查导出的文件里有没有本机路径。退出码为 0 才能公开。它只在本机生成文件，不推送。
+它把 git 里的文件复制到 `dist/repo/`，去掉派工的工单、原型和只供馆长参考的调研，并查导出的文件里有没有本机路径。退出码为 0 才能公开。它只在本机生成文件，不推送。公开仓库是 <https://github.com/oscar030406/museum-of-attention>，`dist/repo/` 就是它的工作区：导出后在里面 `git add -A`、提交、推送。
 
 没有图的展品在页面上画占位图，见上一节。
 

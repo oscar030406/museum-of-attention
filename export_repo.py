@@ -34,8 +34,10 @@ def main() -> int:
     cc_only = "--cc-only" in sys.argv
     tracked = subprocess.run(["git", "-c", "core.quotepath=false", "ls-files"], cwd=HERE, capture_output=True, text=True, encoding="utf-8", check=True).stdout.split("\n")
     files = [f for f in tracked if f and not any(re.search(p, f) for p in SKIP)]
-    if OUT.exists():
-        shutil.rmtree(OUT)
+    if OUT.exists():          # 留着 .git 和 .gitignore：dist/repo 就是公开仓库的工作区，导出后在里面提交、推送
+        for p in OUT.iterdir():
+            if p.name not in {".git", ".gitignore"}:
+                shutil.rmtree(p) if p.is_dir() else p.unlink()
     for f in files:
         dst = OUT / f
         dst.parent.mkdir(parents=True, exist_ok=True)
@@ -67,12 +69,12 @@ def main() -> int:
     shipped = {p.relative_to(OUT / "site").as_posix() for p in (OUT / "site" / "figures").glob("*")}
     leaks = []
     for p in OUT.rglob("*"):
-        if p.is_file() and "vendor" not in p.parts and p.name != "site.json" and p.suffix in {".py", ".js", ".css", ".html", ".md", ".txt", ".json", ".mjs", ".example"} and p.stat().st_size < 3_000_000:
+        if p.is_file() and "vendor" not in p.parts and ".git" not in p.parts and p.name != "site.json" and p.suffix in {".py", ".js", ".css", ".html", ".md", ".txt", ".json", ".mjs", ".example"} and p.stat().st_size < 3_000_000:
             m = LEAKS.search(p.read_text(encoding="utf-8", errors="ignore"))
             if m:
                 leaks.append(f"{p.relative_to(OUT).as_posix()}: {m.group(0)}")
     size = sum(p.stat().st_size for p in OUT.rglob("*") if p.is_file())
-    print(f"导出到 {OUT.relative_to(HERE).as_posix()}：{sum(1 for p in OUT.rglob('*') if p.is_file())} 个文件，{size / 1048576:.1f} MB")
+    print(f"导出到 {OUT.relative_to(HERE).as_posix()}：{sum(1 for p in OUT.rglob('*') if p.is_file() and '.git' not in p.parts)} 个文件，{size / 1048576:.1f} MB")
     print(f"论文图：全馆 {len(figures)} 张，仓库带 {len(shipped)} 张，没带的 {len(figures) - len(shipped)} 张")
     problems = []
     if missing:
