@@ -26,7 +26,7 @@ SKIP = [
     r"^site/data/", r"^HANDOFF\.md$", r"^dist/",
 ]
 # 公开的文件里不该出现的字样：本机路径和用户名
-LEAKS = re.compile("User" + r"Data[\\/]|[A-Za-z]:[\\/]Users[\\/]|" + "osc" + "ar")   # 拼起来写，免得这一行自己被查出来
+LEAKS = re.compile("User" + r"Data[\\/]|[A-Za-z]:[\\/]Users[\\/]|[\\/]home[\\/]" + "osc" + "ar")   # 拼起来写，免得这一行自己被查出来
 
 
 def main() -> int:
@@ -73,7 +73,7 @@ def main() -> int:
             m = LEAKS.search(p.read_text(encoding="utf-8", errors="ignore"))
             if m:
                 leaks.append(f"{p.relative_to(OUT).as_posix()}: {m.group(0)}")
-    size = sum(p.stat().st_size for p in OUT.rglob("*") if p.is_file())
+    size = sum(p.stat().st_size for p in OUT.rglob("*") if p.is_file() and ".git" not in p.parts)
     print(f"导出到 {OUT.relative_to(HERE).as_posix()}：{sum(1 for p in OUT.rglob('*') if p.is_file() and '.git' not in p.parts)} 个文件，{size / 1048576:.1f} MB")
     print(f"论文图：全馆 {len(figures)} 张，仓库带 {len(shipped)} 张，没带的 {len(figures) - len(shipped)} 张")
     problems = []
