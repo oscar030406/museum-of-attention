@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="l" data-to="p" d="M 292 526 L 473 469" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="h" data-to="p" d="M 671 526 L 499 469" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="g" d="M 473 427 L 290 369" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="v" d="M 499 427 L 680 376" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="g" data-to="a" d="M 303 327 L 472 277" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="v" data-to="a" d="M 667 320 L 498 277" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="g" data-to="b" d="M 277 327 L 149 302 L 149 183 L 459 177" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="v" data-to="b" d="M 693 320 L 859 304 L 859 184 L 511 177" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="b" d="M 485 221 L 485 177" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="b" data-to="y" d="M 485 121 L 485 71" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<g class="node" id="l"><rect x="190" y="526" width="204" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="292" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Low-level features L</text>
+</g>
+<g class="node" id="h"><rect x="569" y="526" width="204" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="671" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">High-level features H</text>
+</g>
+<g class="node" id="p"><rect x="362" y="427" width="248" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="486" y="453.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Two Conv 1×1 projections</text>
+</g>
+<g class="node" id="g"><rect x="166" y="327" width="248" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="290" y="353.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Two Sigmoid gates gL and gH</text>
+</g>
+<g class="node" id="v"><rect x="551.5" y="320" width="257" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="680" y="344.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Two projected value maps</text>
+<text x="680" y="362.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×1 + BN + ReLU per map</text>
+</g>
+<g class="node" id="a"><rect x="302" y="221" width="366" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="485" y="245.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Update low-level features first</text>
+<text x="485" y="263.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">L′ = (1 + gL)L + (1 − gL) resize(gH × H)</text>
+</g>
+<g class="node" id="b"><rect x="298" y="121" width="374" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="485" y="145.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Update high-level features from L′</text>
+<text x="485" y="163.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">H′ = (1 + gH)H + (1 − gH) resize(gL × L′)</text>
+</g>
+<g class="node" id="y"><rect x="283" y="29" width="404" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="485" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Resize H′ + concat L′ + output convolutions</text>
+</g>
+<text x="402" y="505" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge l--p">B×C×HL×WL</text>
+<text x="602" y="500" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge h--p">B×C×HH×WH</text>
+<text x="404" y="316" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge g--a">Gates at both scales</text>
+<text x="592" y="298" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--a">L and H</text>
+<text x="219" y="313" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge g--b">gL and gH</text>
+<text x="785" y="301" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--b">H</text>
+<text x="491" y="204" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--b">B×(C/2)×HL×WL</text>
+<text x="491" y="101" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge b--y">H′ and L′</text>
+</svg>

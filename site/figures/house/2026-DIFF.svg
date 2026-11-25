@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 480 531 L 480 491" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="a" d="M 469 439 L 285 400" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="p" data-to="b" d="M 491 439 L 655 409" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="a" data-to="m" d="M 285 366 L 469 317" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="b" data-to="m" d="M 655 357 L 491 317" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="m" data-to="d" d="M 480 283 L 480 243" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="d" data-to="r" d="M 480 191 L 480 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="r" data-to="y" d="M 480 118 L 480 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="417" y="531" width="126" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="364.5" y="439" width="231" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="461.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → PixelShuffle ×2</text>
+<text x="480" y="479.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split channels in half</text>
+</g>
+<g class="node" id="a"><rect x="196.5" y="366" width="177" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="285" y="388.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Depthwise Conv 5×5</text>
+</g>
+<g class="node" id="b"><rect x="566.5" y="357" width="177" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="655" y="379.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Depthwise Conv 3×3</text>
+<text x="655" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dilation 2 → Mish</text>
+</g>
+<g class="node" id="m"><rect x="393.5" y="283" width="173" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="305.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Multiply branches ⊗</text>
+</g>
+<g class="node" id="d"><rect x="377" y="191" width="206" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="213.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Feature decomposition</text>
+<text x="480" y="231.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">X + σ ⊗ (X − GELU(Conv(X)))</text>
+</g>
+<g class="node" id="r"><rect x="354.5" y="118" width="251" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">PixelUnshuffle ×2 → Conv 1×1</text>
+</g>
+<g class="node" id="y"><rect x="410" y="35" width="140" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="486" y="516" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="395" y="418" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--a">B×R/4×2H×2W</text>
+<text x="603" y="434" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--b">B×R/4×2H×2W</text>
+<text x="486" y="268" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--d">B×R/4×2H×2W</text>
+<text x="486" y="177" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge d--r">B×R/4×2H×2W</text>
+<text x="486" y="99" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--y">B×C×H×W</text>
+</svg>

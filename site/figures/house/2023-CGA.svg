@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="c" d="M 459 526 L 459 485" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="q" d="M 446 443 L 309 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="a" d="M 472 443 L 738 413 L 738 177 L 568 169.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="s" d="M 296 353 L 277 326" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="q" data-to="w" d="M 322 353 L 481 337 L 378 237" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="s" data-to="w" d="M 277 270 L 352 237" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="w" data-to="a" d="M 378 195 L 542 169.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="w" data-to="y" d="M 352 195 L 344 168 L 344 84 L 446 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="y" d="M 555 96.5 L 472 71" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="374" y="526" width="170" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="459" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="c"><rect x="353" y="443" width="212" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="459" y="469.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Split channels into heads</text>
+</g>
+<g class="node" id="q"><rect x="176.5" y="353" width="265" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="309" y="377.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">First head: Conv 1×1 + BN</text>
+<text x="309" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split Q, K, V and apply DW Conv to Q</text>
+</g>
+<g class="node" id="s"><rect x="165" y="270" width="224" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="277" y="294.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QᵀK + offset bias</text>
+<text x="277" y="312.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax over key positions</text>
+</g>
+<g class="node" id="w"><rect x="270" y="195" width="190" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="365" y="221.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Mix V for head 1</text>
+</g>
+<g class="node" id="a"><rect x="417" y="96.5" width="276" height="73" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="555" y="120.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Next heads in order</text>
+<text x="555" y="138.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Add previous head output to next slice</text>
+<text x="555" y="156.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Repeat projections, scoring and mixing</text>
+</g>
+<g class="node" id="y"><rect x="317" y="29" width="284" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="459" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Concat heads + ReLU + Conv + BN</text>
+</g>
+<text x="465" y="511" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--c">B×C×H×W</text>
+<text x="387" y="424" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--q">B×(C/h)×H×W</text>
+<text x="623" y="438" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--a">Later channel slices</text>
+<text x="294" y="339" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--s">Q and K: B×dₖ×HW</text>
+<text x="449" y="358" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--w">V: B×dᵥ×HW</text>
+<text x="315" y="266" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--w">B×HW×HW</text>
+<text x="474" y="194" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge w--a">B×dᵥ×H×W</text>
+<text x="352" y="183" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge w--y">Head 1 output</text>
+<text x="525" y="85" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--y">Remaining heads</text>
+</svg>

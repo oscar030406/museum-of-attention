@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 458 531 L 245 466" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="fft" d="M 480 531 L 665 475" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="qk" d="M 234 432 L 222 376" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="av" d="M 256 432 L 410 420 L 410 178 L 326 168" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="qk" data-to="sc" d="M 222 324 L 220 267" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="sc" data-to="av" d="M 220 233 L 304 168" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="fft" data-to="spec" d="M 665 423 L 665 376" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="spec" data-to="inv" d="M 665 324 L 665 276" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="inv" data-to="b" d="M 665 224 L 654 177" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="b" d="M 502 531 L 913 506 L 913 182 L 676 177" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="av" data-to="out" d="M 315 134 L 476 69" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="b" data-to="out" d="M 665 125 L 498 69" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<g class="node" id="x"><rect x="402.5" y="531" width="155" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="107" y="432" width="276" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="245" y="454.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → GELU → split Q, K, V</text>
+</g>
+<g class="node" id="fft"><rect x="553.5" y="423" width="223" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="665" y="445.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Real FFT → shift spectrum</text>
+<text x="665" y="463.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Take magnitude and phase</text>
+</g>
+<g class="node" id="qk"><rect x="104.5" y="324" width="235" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="222" y="346.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Average-pool Q, max-pool K</text>
+<text x="222" y="364.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Flatten spatial positions</text>
+</g>
+<g class="node" id="spec"><rect x="548" y="324" width="234" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="665" y="346.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Resize two Gaussian masks</text>
+<text x="665" y="364.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Filter magnitude, keep phase</text>
+</g>
+<g class="node" id="sc"><rect x="116.5" y="233" width="207" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="220" y="255.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Channel QKᵀ → Softmax</text>
+</g>
+<g class="node" id="inv"><rect x="541.5" y="224" width="247" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="665" y="246.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Undo shift → inverse real FFT</text>
+<text x="665" y="264.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Two filtered maps y₁, y₂</text>
+</g>
+<g class="node" id="av"><rect x="193" y="134" width="244" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="315" y="156.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Weight V → reshape → GELU</text>
+</g>
+<g class="node" id="b"><rect x="506" y="125" width="318" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="665" y="147.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Channel mean weights band difference</text>
+<text x="665" y="165.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">GELU(y₂ + mean(X) ⊗ (y₂ − y₁))</text>
+</g>
+<g class="node" id="out"><rect x="312" y="35" width="350" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="487" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Concat → Conv 1×1 → GELU → LayerNorm</text>
+</g>
+<text x="359" y="496" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="235" y="410" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--qk">Q and K</text>
+<text x="321" y="415" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--av">V: B×C×(HW)</text>
+<text x="227" y="301" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qk--sc">P pooled positions</text>
+<text x="270" y="207" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sc--av">B×C×C</text>
+<text x="671" y="405" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge fft--spec">B×C×H×(⌊W/2⌋+1)</text>
+<text x="671" y="305" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge spec--inv">Two spectra</text>
+<text x="668" y="207" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge inv--b">B×C×H×W each</text>
+<text x="716" y="530" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--b">Input for channel mean</text>
+<text x="414" y="108" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge av--out">B×C×H×W</text>
+<text x="601" y="99" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge b--out">B×C×H×W</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 480 521 L 480 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="a" d="M 456 440 L 123 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="q" d="M 123 353 L 456 328" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="s" d="M 480 272 L 480 247" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="r" d="M 480 191 L 480 167" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="r" data-to="y" d="M 480 111 L 480 79" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="b" d="M 472 440 L 360 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="b" data-to="q" d="M 360 353 L 472 328" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="c" d="M 488 440 L 600 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="q" d="M 600 353 L 488 328" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="d" d="M 504 440 L 837 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="d" data-to="q" d="M 837 353 L 504 328" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="412" y="521" width="136" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="368" y="440" width="224" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="466.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Split four channel groups</text>
+</g>
+<g class="node" id="a"><rect x="51" y="353" width="144" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="123" y="377.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Depthwise 3×3</text>
+<text x="123" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Residual + ReLU</text>
+</g>
+<g class="node" id="b"><rect x="288" y="353" width="144" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="360" y="377.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Depthwise 5×5</text>
+<text x="360" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Residual + ReLU</text>
+</g>
+<g class="node" id="c"><rect x="528" y="353" width="144" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="600" y="377.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Depthwise 7×7</text>
+<text x="600" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Residual + ReLU</text>
+</g>
+<g class="node" id="d"><rect x="765" y="353" width="144" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="837" y="377.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Depthwise 9×9</text>
+<text x="837" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Residual + ReLU</text>
+</g>
+<g class="node" id="q"><rect x="336" y="272" width="288" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="296.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Per group: flatten and Linear QKV</text>
+<text x="480" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Shared projections across groups</text>
+</g>
+<g class="node" id="s"><rect x="316" y="191" width="328" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="480" y="215.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Softmax Q over tokens, K over channels</text>
+<text x="480" y="233.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Context = KᵀV, then read Q × context</text>
+</g>
+<g class="node" id="r"><rect x="376" y="111" width="208" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="135.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear, restore grids</text>
+<text x="480" y="153.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scale groups and concat</text>
+</g>
+<g class="node" id="y"><rect x="364" y="37" width="232" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → output features</text>
+</g>
+<text x="486" y="507" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="486" y="265" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge q--s">B×J×N×D</text>
+<text x="486" y="184" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--r">B×N×(C/4) per group</text>
+<text x="486" y="100" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge r--y">B×C×H×W</text>
+<text x="432" y="425" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--b">B×(C/4)×H×W</text>
+</svg>

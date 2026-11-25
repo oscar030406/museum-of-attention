@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="prev" data-to="decay" d="M 132 531 L 179 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="g" d="M 457 531 L 252 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="b" d="M 479 531 L 445 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="qkv" d="M 501 531 L 690 491" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="g" data-to="decay" d="M 252 448 L 201 409" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="b" data-to="update" d="M 445 448 L 450 326" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="decay" data-to="update" d="M 190 357 L 428 326" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="qkv" data-to="update" d="M 679 439 L 472 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="qkv" data-to="read" d="M 701 439 L 738 386 L 511 234" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="update" data-to="read" d="M 450 274 L 489 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="read" data-to="proj" d="M 500 200 L 509 161" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="x" data-to="proj" d="M 523 531 L 892 513 L 892 174 L 531 161" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="proj" data-to="out" d="M 520 109 L 520 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="prev"><rect x="67" y="531" width="130" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="132" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Previous state</text>
+</g>
+<g class="node" id="x"><rect x="432" y="531" width="116" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="490" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tokens</text>
+</g>
+<g class="node" id="g"><rect x="175.5" y="448" width="153" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="252" y="470.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project log decay</text>
+</g>
+<g class="node" id="b"><rect x="356.5" y="448" width="177" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="445" y="470.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project β → Sigmoid</text>
+</g>
+<g class="node" id="qkv"><rect x="558.5" y="439" width="263" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="690" y="461.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project Q, K, V → Short Conv1D</text>
+<text x="690" y="479.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Normalize Q and K (L2 by default)</text>
+</g>
+<g class="node" id="decay"><rect x="99.5" y="357" width="181" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="190" y="379.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Decay previous state</text>
+<text x="190" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">D = exp(g) S(prev)</text>
+</g>
+<g class="node" id="update"><rect x="356" y="274" width="188" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="450" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Write value correction</text>
+<text x="450" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">S = D + β k ⊗ (v − kᵀD)</text>
+</g>
+<g class="node" id="read"><rect x="437.5" y="200" width="125" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="500" y="222.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Read qᵀS / √K</text>
+</g>
+<g class="node" id="proj"><rect x="438.5" y="109" width="163" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="520" y="131.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Gated RMSNorm</text>
+<text x="520" y="149.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Merge heads → Linear</text>
+</g>
+<g class="node" id="out"><rect x="455.5" y="35" width="129" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="520" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output tokens</text>
+</g>
+<text x="157" y="495" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge prev--decay">B×h×K×V</text>
+<text x="611" y="522" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--qkv">B×T×C</text>
+<text x="239" y="435" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge g--decay">g: B×h</text>
+<text x="454" y="392" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge b--update">β: B×h</text>
+<text x="326" y="354" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge decay--update">B×h×K×V</text>
+<text x="585" y="385" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge qkv--update">k, v</text>
+<text x="729" y="417" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge qkv--read">q</text>
+<text x="476" y="264" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge update--read">B×h×K×V</text>
+<text x="512" y="186" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge read--proj">B×T×h×V</text>
+<text x="710" y="536" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--proj">Output gate input</text>
+<text x="526" y="94" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge proj--out">B×T×C</text>
+</svg>

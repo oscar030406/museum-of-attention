@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 469 526 L 389 485" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="y" d="M 495 526 L 828 499 L 828 115 L 514 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="l" d="M 376 443 L 255 402" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="p" data-to="r" d="M 402 443 L 519 402" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="l" data-to="s" d="M 255 360 L 376 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="r" data-to="s" d="M 519 360 L 402 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="m" d="M 389 270 L 389 237" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="w" d="M 389 195 L 389 154" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="w" data-to="y" d="M 389 112 L 488 71" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<g class="node" id="x"><rect x="394.5" y="526" width="175" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="482" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="314" y="443" width="150" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="389" y="469.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">GAP</text>
+</g>
+<g class="node" id="l"><rect x="162" y="360" width="186" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="255" y="386.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Local Conv1d</text>
+</g>
+<g class="node" id="r"><rect x="426.5" y="360" width="185" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="519" y="386.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1</text>
+</g>
+<g class="node" id="s"><rect x="246.5" y="270" width="285" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="389" y="294.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Two outer products</text>
+<text x="389" y="312.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Sum rows in each direction + Sigmoid</text>
+</g>
+<g class="node" id="m"><rect x="271.5" y="195" width="235" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="389" y="221.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Blend with a learned scalar</text>
+</g>
+<g class="node" id="w"><rect x="267.5" y="112" width="243" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="389" y="138.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Shared Conv1d + Sigmoid</text>
+</g>
+<g class="node" id="y"><rect x="392.5" y="29" width="217" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="501" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Scale input by channel</text>
+</g>
+<text x="439" y="509" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="665" y="526" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--y">Input bypass</text>
+<text x="328" y="422" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--l">B×C×1×1</text>
+<text x="330" y="352" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge l--s">B×C×1</text>
+<text x="474" y="344" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge r--s">B×1×C</text>
+<text x="395" y="259" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--m">Two B×C×1×1</text>
+<text x="446" y="102" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge w--y">B×C×1×1</text>
+</svg>

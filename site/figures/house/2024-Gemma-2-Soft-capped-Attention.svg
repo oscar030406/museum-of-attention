@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="qk" d="M 469 531 L 336 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="v" d="M 491 531 L 690 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="qk" d="M 118 531 L 314 482" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="qk" data-to="sc" d="M 325 448 L 325 400" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="sc" data-to="cap" d="M 325 366 L 325 326" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="cap" data-to="sm" d="M 325 274 L 325 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="sm" data-to="mix" d="M 336 200 L 494 152" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="sm" data-to="w" d="M 314 200 L 155 170 L 155 69" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="v" data-to="mix" d="M 690 448 L 690 423 L 690 166 L 516 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 505 118 L 505 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="422" y="531" width="116" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tokens</text>
+</g>
+<g class="node" id="p"><rect x="53.5" y="531" width="129" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="118" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Rotary factors</text>
+</g>
+<g class="node" id="qk"><rect x="200" y="448" width="250" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="325" y="470.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project and split Q, K → RoPE</text>
+</g>
+<g class="node" id="v"><rect x="591" y="448" width="198" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="690" y="470.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project V → split heads</text>
+</g>
+<g class="node" id="sc"><rect x="199.5" y="366" width="251" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="325" y="388.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Repeat K heads → scaled QKᵀ</text>
+</g>
+<g class="node" id="cap"><rect x="256.5" y="274" width="137" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="325" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Soft cap logits</text>
+<text x="325" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">a ⊗ tanh(score / a)</text>
+</g>
+<g class="node" id="sm"><rect x="215.5" y="200" width="219" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="325" y="222.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Optional mask → Softmax</text>
+</g>
+<g class="node" id="mix"><rect x="390" y="118" width="230" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="505" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Repeat V heads → weight V</text>
+</g>
+<g class="node" id="out"><rect x="409.5" y="35" width="191" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="505" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Merge heads → Linear</text>
+</g>
+<g class="node" id="w"><rect x="86.5" y="35" width="137" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="155" y="57.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Output weights</text>
+</g>
+<text x="420" y="507" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--qk">B×T×C</text>
+<text x="233" y="516" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--qk">B×T×D</text>
+<text x="331" y="429" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qk--sc">Q: B×h×T×D</text>
+<text x="331" y="351" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sc--cap">B×h×T×S</text>
+<text x="331" y="259" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge cap--sm">B×h×T×S</text>
+<text x="435" y="185" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sm--mix">B×h×T×S</text>
+<text x="696" y="441" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--mix">B×g×S×D</text>
+<text x="511" y="99" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--out">B×T×h×D</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 445 531 L 445 503" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="q" d="M 456 451 L 445 432" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="q" data-to="s" d="M 445 380 L 445 361" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="a" d="M 423 309 L 260 291" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="s" data-to="b" d="M 445 309 L 630 291" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="a" data-to="r" d="M 260 239 L 423 220" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="b" data-to="r" d="M 630 239 L 445 220" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="s" data-to="r" d="M 467 309 L 878 290 L 878 225 L 467 220" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="u" d="M 434 451 L 54 440 L 54 150 L 434 140" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="r" data-to="u" d="M 445 168 L 456 140" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="u" data-to="y" d="M 445 106 L 445 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="382" y="531" width="126" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="445" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="301.5" y="451" width="287" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="445" y="473.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Sort pixels within first-half patches</text>
+<text x="445" y="491.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Project HOG bins → Add → Concat</text>
+</g>
+<g class="node" id="q"><rect x="324" y="380" width="242" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="445" y="402.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → Depthwise Conv</text>
+<text x="445" y="420.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split Q₁, K₁, Q₂, K₂, V</text>
+</g>
+<g class="node" id="s"><rect x="334" y="309" width="222" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="445" y="331.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Sort all five by V gradients</text>
+<text x="445" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Magnitude × normalized angle</text>
+</g>
+<g class="node" id="a"><rect x="86.5" y="239" width="347" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="260" y="261.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Contiguous groups: normalize Q, K</text>
+<text x="260" y="279.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scaled dot product → exp(s) / (1 + Σexp(s)) → Mix V</text>
+</g>
+<g class="node" id="b"><rect x="456.5" y="239" width="347" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="630" y="261.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Interleaved groups: normalize Q, K</text>
+<text x="630" y="279.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scaled dot product → exp(s) / (1 + Σexp(s)) → Mix V</text>
+</g>
+<g class="node" id="r"><rect x="334" y="168" width="222" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="445" y="190.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Undo V sort on both paths</text>
+<text x="445" y="208.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Multiply ⊗ → Conv 1×1</text>
+</g>
+<g class="node" id="u"><rect x="330" y="106" width="230" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="445" y="128.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Undo patch sort in first half</text>
+</g>
+<g class="node" id="y"><rect x="375" y="35" width="140" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="445" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="451" y="522" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="181" y="317" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge s--a">Q₁, K₁, V: each B×C×N</text>
+<text x="556" y="317" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge s--b">Q₂, K₂, V: each B×C×N</text>
+<text x="288" y="222" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge a--r">B×C×N</text>
+<text x="556" y="218" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge b--r">B×C×N</text>
+<text x="711" y="313" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge s--r">V sort indices</text>
+<text x="210" y="439" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--u">Patch sort indices</text>
+<text x="460" y="159" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--u">B×C×H×W</text>
+<text x="451" y="93" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge u--y">B×C×H×W</text>
+</svg>

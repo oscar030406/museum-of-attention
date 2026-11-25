@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="a" d="M 461 526 L 429 485" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="y" d="M 487 526 L 879 496 L 879 112 L 511 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="b" d="M 442 443 L 587 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="l" d="M 416 443 L 291 426 L 283 319" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="b" data-to="r" d="M 587 353 L 615 319" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="l" data-to="s" d="M 296 277 L 436 244" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="r" data-to="s" d="M 602 277 L 462 244" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="l" data-to="w" d="M 270 277 L 226 271 L 226 165 L 423 161" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="r" data-to="w" d="M 628 277 L 713 271 L 713 165 L 475 161" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="w" d="M 449 188 L 449 161" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="w" data-to="y" d="M 449 105 L 485 71" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<g class="node" id="x"><rect x="389" y="526" width="170" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="474" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="a"><rect x="344.5" y="443" width="169" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="429" y="469.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">DW Conv 5×5</text>
+</g>
+<g class="node" id="b"><rect x="479" y="353" width="216" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="587" y="377.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">DW Conv 7×7</text>
+<text x="587" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dilation 3</text>
+</g>
+<g class="node" id="l"><rect x="201" y="277" width="164" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="283" y="303.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 on A</text>
+</g>
+<g class="node" id="r"><rect x="533" y="277" width="164" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="615" y="303.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 on B</text>
+</g>
+<g class="node" id="s"><rect x="331.5" y="188" width="235" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="449" y="212.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Concat + channel mean/max</text>
+<text x="449" y="230.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 7×7 + Sigmoid</text>
+</g>
+<g class="node" id="w"><rect x="350" y="105" width="198" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="449" y="129.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Gate each branch + add</text>
+<text x="449" y="147.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×1</text>
+</g>
+<g class="node" id="y"><rect x="415.5" y="29" width="165" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="498" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Scale input</text>
+</g>
+<text x="454" y="510" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--a">B×C×H×W</text>
+<text x="698" y="524" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--y">Input bypass</text>
+<text x="530" y="438" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a--b">B×C×H×W</text>
+<text x="376" y="273" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge l--s">B×(C/2)×H×W</text>
+<text x="542" y="258" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge r--s">B×(C/2)×H×W</text>
+<text x="257" y="267" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge l--w">A</text>
+<text x="679" y="264" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge r--w">B</text>
+<text x="455" y="180" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--w">B×2×H×W</text>
+<text x="478" y="97" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge w--y">B×C×H×W</text>
+</svg>

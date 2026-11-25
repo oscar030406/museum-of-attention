@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 480 531 L 385 494" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="rep" d="M 374 460 L 385 432" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="sort" d="M 396 460 L 643 453 L 643 357 L 456 352" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="rep" data-to="sort" d="M 385 380 L 434 352" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="sort" data-to="chunk" d="M 434 318 L 365 300" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="sort" data-to="g" d="M 456 318 L 735 282" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="chunk" data-to="sc" d="M 354 230 L 355 220" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="sc" data-to="mix" d="M 355 168 L 483 140" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="chunk" data-to="mix" d="M 376 230 L 557 225 L 557 147 L 505 140" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="g" data-to="mix" d="M 735 248 L 758 243 L 758 148 L 527 140" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 505 106 L 505 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="402.5" y="531" width="155" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="260.5" y="460" width="249" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="385" y="482.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Reflect pad → group windows</text>
+</g>
+<g class="node" id="rep"><rect x="264.5" y="380" width="241" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="385" y="402.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Detached window means</text>
+<text x="385" y="420.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dot each pixel with all group means</text>
+</g>
+<g class="node" id="sort"><rect x="305.5" y="318" width="279" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="445" y="340.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Argmax assignment → sort pixels</text>
+</g>
+<g class="node" id="chunk"><rect x="261.5" y="230" width="207" height="70" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="365" y="252.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Split queries into P slots</text>
+<text x="365" y="270.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Pad and unfold 2P KV slots</text>
+<text x="365" y="288.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Project Q, K, V</text>
+</g>
+<g class="node" id="g"><rect x="593" y="248" width="284" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="735" y="270.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear on sorted pixels → Sigmoid</text>
+</g>
+<g class="node" id="sc"><rect x="235" y="168" width="240" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="355" y="190.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ → same-ID mask</text>
+<text x="355" y="208.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax</text>
+</g>
+<g class="node" id="mix"><rect x="362.5" y="106" width="285" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="505" y="128.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight V → multiply gate → Linear</text>
+</g>
+<g class="node" id="out"><rect x="351.5" y="35" width="307" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="505" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Undo sort → restore windows → crop</text>
+</g>
+<text x="447" y="515" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="389" y="451" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--rep">B×G×A×P×C</text>
+<text x="524" y="473" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--sort">Grouped pixels</text>
+<text x="424" y="377" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge rep--sort">B×G×A×P×A</text>
+<text x="218" y="315" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sort--chunk">Sorted features and IDs</text>
+<text x="603" y="312" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sort--g">Sorted features</text>
+<text x="439" y="165" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sc--mix">(BG)×A×P×2P</text>
+<text x="476" y="246" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge chunk--mix">V</text>
+<text x="764" y="243" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge g--mix">(BG)×A×P×C</text>
+<text x="511" y="93" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--out">B×G×A×P×C</text>
+</svg>

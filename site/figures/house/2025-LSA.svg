@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="r" d="M 458 521 L 298 494" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="r" data-to="u" d="M 306 452 L 298 425" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="u" data-to="g" d="M 298 383 L 298 363" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="g" data-to="p" d="M 298 307 L 298 293" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="m" d="M 298 237 L 423 224" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="m" data-to="a" d="M 415 168 L 508 148" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="a" data-to="y" d="M 516 106 L 516 79" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="x" data-to="c" d="M 474 521 L 736 501" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="a" d="M 736 445 L 771 443 L 771 165 L 524 148" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="r" data-to="m" d="M 290 452 L 91 444 L 91 227 L 407 224" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="398" y="521" width="136" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="466" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="r"><rect x="166" y="452" width="264" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="298" y="478.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Treat each channel as a sample</text>
+</g>
+<g class="node" id="c"><rect x="596" y="445" width="280" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="736" y="469.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Original input → GAP</text>
+<text x="736" y="487.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear → ReLU → Linear → Sigmoid</text>
+</g>
+<g class="node" id="u"><rect x="154" y="383" width="288" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="298" y="409.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Pixel unshuffle at mosaic scale s</text>
+</g>
+<g class="node" id="g"><rect x="199" y="307" width="198" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="298" y="331.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">GAP → Linear → ReLU</text>
+<text x="298" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear → Sigmoid</text>
+</g>
+<g class="node" id="p"><rect x="162" y="237" width="272" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="298" y="261.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Broadcast over tiles</text>
+<text x="298" y="279.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">PixelShuffle restores positions</text>
+</g>
+<g class="node" id="m"><rect x="299" y="168" width="232" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="415" y="192.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Apply periodic gate ⊗</text>
+<text x="415" y="210.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Restore batch and channels</text>
+</g>
+<g class="node" id="a"><rect x="388" y="106" width="256" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="516" y="132.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Apply spectral channel gate ⊗</text>
+</g>
+<g class="node" id="y"><rect x="444" y="37" width="144" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="516" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="392" y="507" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--r">B×C×H×W</text>
+<text x="310" y="444" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge r--u">(B·C)×1×H×W</text>
+<text x="304" y="378" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge u--g">(B·C)×s²×H/s×W/s</text>
+<text x="308.0" y="305.0" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge g--p">(B·C)×s²×1×1</text>
+<text x="435" y="238" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--m">(B·C)×1×H×W</text>
+<text x="522" y="98" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge a--y">B×C×H×W</text>
+<text x="774" y="440" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge c--a">B×C×1×1</text>
+<text x="188" y="440" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge r--m">Per-channel input</text>
+</svg>

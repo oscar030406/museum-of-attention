@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 330 531 L 330 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="pick" d="M 330 448 L 469 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="e" data-to="pick" d="M 760 531 L 760 434 L 491 409" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="pick" data-to="sc" d="M 469 357 L 330 326" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="pick" data-to="mix" d="M 491 357 L 779 337 L 779 174 L 496 161" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="sc" data-to="sm" d="M 330 274 L 330 243" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="sm" data-to="mix" d="M 330 191 L 474 161" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 485 109 L 485 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="266.5" y="531" width="127" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="330" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Node features</text>
+</g>
+<g class="node" id="e"><rect x="660" y="531" width="200" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="760" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Relation-indexed edges</text>
+</g>
+<g class="node" id="p"><rect x="212.5" y="448" width="235" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="330" y="470.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project by relation and head</text>
+</g>
+<g class="node" id="pick"><rect x="366" y="357" width="228" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="480" y="379.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Gather edge Q, K, V</text>
+<text x="480" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Target Q, relation-source K and V</text>
+</g>
+<g class="node" id="sc"><rect x="219" y="274" width="222" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="330" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Add or dot-product scores</text>
+<text x="330" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Optional edge feature term</text>
+</g>
+<g class="node" id="sm"><rect x="233" y="191" width="194" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="330" y="213.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Grouped Softmax</text>
+<text x="330" y="231.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">By target or target × relation</text>
+</g>
+<g class="node" id="mix"><rect x="386.5" y="109" width="197" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="485" y="131.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight edge messages</text>
+<text x="485" y="149.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Sum at target nodes</text>
+</g>
+<g class="node" id="out"><rect x="349.5" y="35" width="271" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="485" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Reduce heads → output features</text>
+</g>
+<text x="336" y="512" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">N×C</text>
+<text x="415" y="440" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--pick">N×R×h×U</text>
+<text x="766" y="488" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge e--pick">E edges</text>
+<text x="413" y="342" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge pick--sc">Q, K</text>
+<text x="644" y="362" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge pick--mix">V: E×h×U</text>
+<text x="336" y="264" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sc--sm">E×h</text>
+<text x="420" y="186" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sm--mix">E×h</text>
+<text x="491" y="94" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--out">N×h×U</text>
+</svg>

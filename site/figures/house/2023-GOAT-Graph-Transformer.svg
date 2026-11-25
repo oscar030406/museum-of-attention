@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 208 526 L 210 469" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="z" data-to="n" d="M 509 526 L 464 476" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="k" d="M 757 526 L 656 469" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="v" d="M 783 526 L 840 469" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="q" d="M 223 427 L 305 369" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="u" d="M 197 427 L 87 384 L 87 185 L 175 177" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="q" data-to="s" d="M 305 327 L 476 277" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="n" data-to="s" d="M 464 420 L 474 325 L 502 277" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="k" data-to="s" d="M 656 427 L 654 324 L 528 277" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="v" data-to="m" d="M 840 427 L 854 297 L 854 177 L 630 170" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="m" d="M 502 221 L 604 170" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="y" d="M 617 128 L 617 71" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="95" y="526" width="226" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="208" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Nodes + positional features</text>
+</g>
+<g class="node" id="z"><rect x="413.5" y="526" width="191" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="509" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Stored assignments</text>
+</g>
+<g class="node" id="c"><rect x="680" y="526" width="180" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="770" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Stored centroids</text>
+</g>
+<g class="node" id="p"><rect x="75" y="427" width="270" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="210" y="453.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project nodes + concat positions</text>
+</g>
+<g class="node" id="n"><rect x="356" y="420" width="216" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="464" y="444.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Count nodes per centroid</text>
+<text x="464" y="462.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Take log of counts</text>
+</g>
+<g class="node" id="k"><rect x="579.5" y="427" width="153" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="656" y="453.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear K + heads</text>
+</g>
+<g class="node" id="v"><rect x="765" y="427" width="150" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="840" y="453.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear V + heads</text>
+</g>
+<g class="node" id="q"><rect x="218.5" y="327" width="173" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="305" y="353.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear Q + heads</text>
+</g>
+<g class="node" id="s"><rect x="382" y="221" width="240" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="502" y="245.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ + log counts</text>
+<text x="502" y="263.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax + dropout</text>
+</g>
+<g class="node" id="m"><rect x="502" y="128" width="230" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="617" y="154.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weighted sum of centroid V</text>
+</g>
+<g class="node" id="y"><rect x="522.5" y="29" width="189" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="617" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Concatenate heads</text>
+</g>
+<g class="node" id="u"><rect x="48" y="121" width="254" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="175" y="145.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Training only: update state</text>
+<text x="175" y="163.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Assign nearest centroids + EMA</text>
+</g>
+<text x="215" y="502" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">N×C and N×G</text>
+<text x="719" y="500" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--k">M×2G</text>
+<text x="823" y="502" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--v">M×G prefix</text>
+<text x="273" y="405" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--q">N×2G</text>
+<text x="131" y="392" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--u">Features + positions</text>
+<text x="404" y="311" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--s">h×N×d</text>
+<text x="476" y="376" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge n--s">M counts</text>
+<text x="661" y="381" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge k--s">h×M×d</text>
+<text x="853" y="367" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--m">h×M×d</text>
+<text x="564" y="204" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--m">h×N×M</text>
+<text x="623" y="105" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--y">h×N×d</text>
+</svg>

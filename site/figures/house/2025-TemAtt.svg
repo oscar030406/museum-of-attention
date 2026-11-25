@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 463 521 L 454 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="a" d="M 438 440 L 293 402" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="f" d="M 293 360 L 443 328" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="f" data-to="g" d="M 451 272 L 451 247" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="g" data-to="m" d="M 451 191 L 506 167" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="m" data-to="y" d="M 514 111 L 514 79" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="p" data-to="b" d="M 454 440 L 625 402" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="b" data-to="f" d="M 625 360 L 459 328" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="m" d="M 470 440 L 837 425 L 837 169 L 522 167" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="375" y="521" width="176" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="463" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input time sequence</text>
+</g>
+<g class="node" id="p"><rect x="358" y="440" width="192" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="454" y="466.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Move time after batch</text>
+</g>
+<g class="node" id="a"><rect x="181" y="360" width="224" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="293" y="386.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Average pool over H and W</text>
+</g>
+<g class="node" id="b"><rect x="529" y="360" width="192" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="625" y="386.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Max pool over H and W</text>
+</g>
+<g class="node" id="f"><rect x="343" y="272" width="216" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="451" y="296.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Learned weighted sum</text>
+<text x="451" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear across time steps</text>
+</g>
+<g class="node" id="g"><rect x="355" y="191" width="192" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="451" y="215.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Average over channels</text>
+<text x="451" y="233.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Sigmoid + broadcast</text>
+</g>
+<g class="node" id="m"><rect x="426" y="111" width="176" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="514" y="135.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scale and add input</text>
+<text x="514" y="153.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">x ⊗ gate ⊕ x</text>
+</g>
+<g class="node" id="y"><rect x="402" y="37" width="224" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="514" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Restore time-first output</text>
+</g>
+<text x="466" y="506" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">T×B×C×H×W</text>
+<text x="378" y="420" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--a">B×T×C×H×W</text>
+<text x="383" y="357" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a--f">B×T×C×1×1</text>
+<text x="457" y="265" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge f--g">B×T×C</text>
+<text x="486" y="188" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge g--m">B×T×1×1×1</text>
+<text x="520" y="100" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge m--y">B×T×C×H×W</text>
+<text x="560" y="341" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge b--f">B×T×C×1×1</text>
+<text x="668" y="447" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--m">Input sequence</text>
+</svg>

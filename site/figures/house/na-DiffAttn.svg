@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 450 526 L 437 492" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="r" d="M 424 436 L 346 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="v" d="M 450 436 L 716 402" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="r" data-to="s" d="M 346 353 L 346 326" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="s" data-to="d" d="M 346 270 L 424 244" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="l" data-to="d" d="M 655 270 L 450 244" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="v" data-to="m" d="M 716 360 L 856 335 L 856 166 L 521 161" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="d" data-to="m" d="M 437 188 L 495 161" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="y" d="M 508 105 L 508 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="366.5" y="526" width="167" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="450" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tokens</text>
+</g>
+<g class="node" id="p"><rect x="316.5" y="436" width="241" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="437" y="460.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear Q, K and V</text>
+<text x="437" y="478.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Pack two Q/K slots per head</text>
+</g>
+<g class="node" id="r"><rect x="245.5" y="353" width="201" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="346" y="377.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">RoPE + scale Q</text>
+<text x="346" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Repeat K for grouped heads</text>
+</g>
+<g class="node" id="v"><rect x="605" y="360" width="222" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="716" y="386.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Repeat V for grouped heads</text>
+</g>
+<g class="node" id="s"><rect x="212" y="270" width="268" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="346" y="294.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Two masked maps per head</text>
+<text x="346" y="312.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scaled QKᵀ + mask + separate Softmax</text>
+</g>
+<g class="node" id="l"><rect x="536.5" y="270" width="237" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="655" y="294.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Learn subtraction factor</text>
+<text x="655" y="312.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Two exponentials + depth constant</text>
+</g>
+<g class="node" id="d"><rect x="324" y="188" width="226" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="437" y="212.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Subtract second map</text>
+<text x="437" y="230.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">A = A₁ − λA₂</text>
+</g>
+<g class="node" id="m"><rect x="376" y="105" width="264" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="508" y="129.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Mix V + headwise RMSNorm</text>
+<text x="508" y="147.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scale by (1 − λinit)</text>
+</g>
+<g class="node" id="y"><rect x="402" y="29" width="212" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="508" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Merge heads + Linear</text>
+</g>
+<text x="452" y="513" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×T×C</text>
+<text x="352" y="345" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--s">Q, K: B×(2h)×T×d</text>
+<text x="401" y="266" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--d">B×h×2×T×T</text>
+<text x="564" y="251" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge l--d">λ</text>
+<text x="809" y="357" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--m">B×h×T×2d</text>
+<text x="477" y="183" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge d--m">B×h×T×T</text>
+<text x="514" y="93" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge m--y">B×h×T×2d</text>
+</svg>

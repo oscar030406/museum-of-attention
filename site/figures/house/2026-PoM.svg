@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="c" data-to="h" d="M 286 531 L 286 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="s" d="M 711 531 L 711 482" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="h" data-to="p" d="M 286 448 L 286 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="a" d="M 286 357 L 286 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="m" d="M 286 274 L 480 243" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="m" d="M 711 448 L 795 419 L 795 251 L 502 243" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="m" data-to="o" d="M 491 191 L 491 152" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="o" data-to="y" d="M 491 118 L 491 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="c"><rect x="218" y="531" width="136" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="286" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Context tokens</text>
+</g>
+<g class="node" id="q"><rect x="649.5" y="531" width="123" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="711" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Query tokens</text>
+</g>
+<g class="node" id="h"><rect x="169" y="448" width="234" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="286" y="470.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear or grouped Conv 1×1</text>
+</g>
+<g class="node" id="s"><rect x="615.5" y="448" width="191" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="711" y="470.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear → Hardsigmoid</text>
+</g>
+<g class="node" id="p"><rect x="173" y="357" width="226" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="286" y="379.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Clipped LeakyReLU</text>
+<text x="286" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Sum learned powers per channel</text>
+</g>
+<g class="node" id="a"><rect x="177.5" y="274" width="217" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="286" y="296.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Mean over context tokens</text>
+<text x="286" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Apply mask when supplied</text>
+</g>
+<g class="node" id="m"><rect x="375" y="191" width="232" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="491" y="213.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Gate context summary ⊗</text>
+<text x="491" y="231.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Broadcast across tokens or heads</text>
+</g>
+<g class="node" id="o"><rect x="388.5" y="118" width="205" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="491" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear output projection</text>
+</g>
+<g class="node" id="y"><rect x="426.5" y="35" width="129" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="491" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output tokens</text>
+</g>
+<text x="292" y="512" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--h">B×N×D</text>
+<text x="717" y="512" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--s">B×T×D</text>
+<text x="292" y="434" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge h--p">B×N×E</text>
+<text x="292" y="347" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--a">B×N×E</text>
+<text x="399" y="271" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a--m">B×G×E</text>
+<text x="769" y="444" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge s--m">B×T×S</text>
+<text x="497" y="177" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--o">B×T×E</text>
+<text x="497" y="99" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge o--y">B×T×D</text>
+</svg>

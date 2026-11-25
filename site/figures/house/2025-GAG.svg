@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="g" data-to="a" d="M 280 521 L 280 466" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="a" data-to="s" d="M 280 424 L 471 369" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="s" data-to="m" d="M 479 327 L 479 273" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="m" data-to="p" d="M 479 231 L 527 176" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="p" data-to="y" d="M 535 134 L 535 79" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="x" data-to="b" d="M 659 521 L 667 466" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="b" data-to="s" d="M 667 424 L 487 369" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="p" d="M 675 521 L 854 499 L 854 185 L 543 176" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="g"><rect x="220" y="521" width="120" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="280" y="547.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Gating map g</text>
+</g>
+<g class="node" id="x"><rect x="595" y="521" width="144" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="667" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Skip features x</text>
+</g>
+<g class="node" id="a"><rect x="172.5" y="424" width="215" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="280" y="450.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Grouped Conv K×K + BN</text>
+</g>
+<g class="node" id="b"><rect x="559.5" y="424" width="215" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="667" y="450.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Grouped Conv K×K + BN</text>
+</g>
+<g class="node" id="s"><rect x="371" y="327" width="216" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="479" y="353.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Add projections ⊕ + ReLU</text>
+</g>
+<g class="node" id="m"><rect x="375" y="231" width="208" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="479" y="257.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Conv 1×1 + BN + Sigmoid</text>
+</g>
+<g class="node" id="p"><rect x="439" y="134" width="192" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="535" y="160.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scale skip features ⊗</text>
+</g>
+<g class="node" id="y"><rect x="463" y="37" width="144" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="535" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="286" y="499" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge g--a">B×Cg×H×W</text>
+<text x="380" y="410" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--s">B×Ci×H×W</text>
+<text x="514" y="208" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge m--p">B×1×H×W</text>
+<text x="541" y="112" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge p--y">B×Cx×H×W</text>
+<text x="670" y="498" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--b">B×Cx×H×W</text>
+<text x="581" y="393" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge b--s">B×Ci×H×W</text>
+<text x="779" y="522" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">Skip x</text>
+</svg>

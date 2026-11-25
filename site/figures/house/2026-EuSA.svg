@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 419 531 L 420 491" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="v" d="M 441 531 L 720 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="q" d="M 420 439 L 425 400" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="v" data-to="l" d="M 731 448 L 762 400" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="s" d="M 425 366 L 416 317" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="d" data-to="s" d="M 132 357 L 394 317" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="v" data-to="m" d="M 709 448 L 620 418 L 620 251 L 526 234" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="m" d="M 405 283 L 504 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="l" data-to="a" d="M 762 366 L 860 330 L 860 166 L 601 161" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="m" data-to="a" d="M 515 200 L 579 161" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="a" data-to="y" d="M 590 109 L 590 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="367" y="531" width="126" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="430" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="328" y="439" width="184" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="420" y="461.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Conv 1×1 for Q and K</text>
+<text x="420" y="479.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Flatten into heads</text>
+</g>
+<g class="node" id="v"><rect x="653.5" y="448" width="133" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="720" y="470.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 for V</text>
+</g>
+<g class="node" id="d"><rect x="38.5" y="357" width="187" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="132" y="379.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Grid distances</text>
+<text x="132" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Euclidean × log γ per head</text>
+</g>
+<g class="node" id="q"><rect x="371" y="366" width="108" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="425" y="388.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ</text>
+</g>
+<g class="node" id="l"><rect x="670" y="366" width="184" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="762" y="388.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Depthwise Conv on V</text>
+</g>
+<g class="node" id="s"><rect x="282" y="283" width="246" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="405" y="305.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Add distance bias → Softmax</text>
+</g>
+<g class="node" id="m"><rect x="411" y="200" width="208" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="515" y="222.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight V → Restore grid</text>
+</g>
+<g class="node" id="a"><rect x="507" y="109" width="166" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="590" y="131.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Add depthwise V ⊕</text>
+<text x="590" y="149.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×1</text>
+</g>
+<g class="node" id="y"><rect x="520" y="35" width="140" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="590" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="426" y="516" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="430" y="425" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--q">Each B×h×N×d</text>
+<text x="756" y="429" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--l">B×C×H×W</text>
+<text x="428" y="348" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge q--s">B×h×N×N</text>
+<text x="271" y="348" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge d--s">h×N×N</text>
+<text x="665" y="424" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--m">V: B×h×N×d</text>
+<text x="462" y="268" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--m">B×h×N×N</text>
+<text x="827" y="356" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge l--a">B×C×H×W</text>
+<text x="560" y="192" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--a">B×C×H×W</text>
+<text x="596" y="94" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--y">B×C×H×W</text>
+</svg>

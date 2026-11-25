@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 408 526 L 173 492" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="q" d="M 434 526 L 444 492" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="v" d="M 460 526 L 737 485" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="r" d="M 186 436 L 395 402" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="q" data-to="r" d="M 444 436 L 421 402" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="s" d="M 160 436 L 117 360 L 373 334.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="r" data-to="s" d="M 408 360 L 399 334.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="v" data-to="w" d="M 724 443 L 640 260 L 529 237" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="v" data-to="l" d="M 750 443 L 866 399 L 866 174 L 747 154" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="w" d="M 399 261.5 L 503 237" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="s" data-to="h" d="M 373 261.5 L 205 258 L 205 173 L 427 154" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="w" data-to="h" d="M 516 195 L 453 154" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="l" data-to="y" d="M 747 112 L 532 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="h" data-to="y" d="M 440 112 L 506 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="337" y="526" width="194" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="434" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input grid + permute</text>
+</g>
+<g class="node" id="p"><rect x="48" y="436" width="250" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="173" y="460.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Grid positions</text>
+<text x="173" y="478.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Rotary angles + per-axis decay biases</text>
+</g>
+<g class="node" id="q"><rect x="340.5" y="436" width="207" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="444" y="460.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear Q and K</text>
+<text x="444" y="478.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split heads, scale K</text>
+</g>
+<g class="node" id="v"><rect x="645.5" y="443" width="183" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="737" y="469.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear V</text>
+</g>
+<g class="node" id="r"><rect x="316.5" y="360" width="183" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="408" y="386.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Rotate Q and K</text>
+</g>
+<g class="node" id="s"><rect x="241" y="261.5" width="290" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="386" y="285.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Width and height weights</text>
+<text x="386" y="303.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scaled dot products + axis decay biases</text>
+<text x="386" y="321.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax separately along each axis</text>
+</g>
+<g class="node" id="w"><rect x="414" y="195" width="204" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="516" y="221.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Mix values across width</text>
+</g>
+<g class="node" id="l"><rect x="652" y="112" width="190" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="747" y="138.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">DW Conv 5×5 on V</text>
+</g>
+<g class="node" id="h"><rect x="331" y="112" width="218" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="440" y="138.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Mix width result by height</text>
+</g>
+<g class="node" id="y"><rect x="367" y="29" width="304" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="519" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Add local features + Linear + permute</text>
+</g>
+<text x="306" y="507" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">Grid H×W</text>
+<text x="447" y="515" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--q">B×H×W×C</text>
+<text x="310" y="428" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--r">Rotary angles</text>
+<text x="443" y="423" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--r">B×h×H×W×d</text>
+<text x="149" y="403" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--s">Width and height biases</text>
+<text x="688" y="357" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--w">B×H×h×W×dᵥ</text>
+<text x="820" y="431" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--l">V</text>
+<text x="475" y="258" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--w">B×H×h×W×W</text>
+<text x="298" y="252" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--h">B×W×h×H×H</text>
+<text x="497" y="174" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge w--h">B×W×h×H×dᵥ</text>
+<text x="647" y="87" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge l--y">B×H×W×Cᵥ</text>
+</svg>

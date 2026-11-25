@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 474 526 L 385 451" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="y" d="M 500 526 L 853 467 L 853 136 L 522 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="r" d="M 385 395 L 385 319" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="r" data-to="w" d="M 385 277 L 385 195" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="w" data-to="y" d="M 385 153 L 496 71" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<g class="node" id="x"><rect x="399.5" y="526" width="175" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="487" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="267" y="395" width="236" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="385" y="419.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Average pool per channel</text>
+<text x="385" y="437.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Kernel 2e − 1, stride e</text>
+</g>
+<g class="node" id="r"><rect x="271" y="277" width="228" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="385" y="303.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Nearest resize to input grid</text>
+</g>
+<g class="node" id="w"><rect x="280" y="153" width="210" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="385" y="179.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Sigmoid context weights</text>
+</g>
+<g class="node" id="y"><rect x="418.5" y="29" width="181" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="509" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Scale input</text>
+</g>
+<text x="438" y="487" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="696" y="510" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--y">Input bypass</text>
+<text x="391" y="362" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--r">B×C×H′×W′</text>
+<text x="391" y="241" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--w">B×C×H×W</text>
+<text x="452" y="123" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge w--y">B×C×H×W</text>
+</svg>

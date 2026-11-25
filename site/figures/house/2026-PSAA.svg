@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 469 531 L 480 494" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="c" d="M 469 460 L 190 441" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="d" d="M 491 460 L 650 441" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="a" d="M 190 371 L 246 352" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="d" data-to="b" d="M 650 371 L 664 361" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="a" d="M 447 460 L 52 448 L 52 357 L 224 352" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="b" d="M 513 460 L 875 439 L 875 366 L 686 361" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="f" d="M 235 318 L 449 291" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="b" data-to="f" d="M 675 309 L 471 291" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="f" data-to="r" d="M 460 239 L 504 211" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="x" data-to="r" d="M 491 531 L 930 486 L 930 244 L 526 211" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="r" data-to="u" d="M 504 177 L 295 140" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="r" data-to="v" d="M 526 177 L 735 140" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="u" data-to="y" d="M 295 106 L 499 69" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="v" data-to="y" d="M 735 106 L 521 69" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="417" y="531" width="126" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="372.5" y="460" width="215" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="482.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → Split X and Y</text>
+</g>
+<g class="node" id="c"><rect x="64.5" y="371" width="251" height="70" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="190" y="393.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Coarse context gate on X</text>
+<text x="190" y="411.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">AvgPool → Depthwise Conv → Conv</text>
+<text x="190" y="429.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">GELU → Upsample + energy term</text>
+</g>
+<g class="node" id="d"><rect x="534.5" y="371" width="231" height="70" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="650" y="393.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Wavelet gate on Y</text>
+<text x="650" y="411.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Depthwise Conv → Haar details</text>
+<text x="650" y="429.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Upsample → Conv layers → Tanh</text>
+</g>
+<g class="node" id="a"><rect x="188" y="318" width="94" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="235" y="340.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Scale X ⊗</text>
+</g>
+<g class="node" id="b"><rect x="583" y="309" width="184" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="675" y="331.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Depthwise Conv on Y</text>
+<text x="675" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scale by wavelet gate ⊗</text>
+</g>
+<g class="node" id="f"><rect x="351.5" y="239" width="217" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="460" y="261.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Add paths → GAP → MLP</text>
+<text x="460" y="279.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Sigmoid → Scale → Conv 1×1</text>
+</g>
+<g class="node" id="r"><rect x="459" y="177" width="112" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="515" y="199.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Add input ⊕</text>
+</g>
+<g class="node" id="u"><rect x="191.5" y="106" width="207" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="295" y="128.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 3×3 → BN → ReLU</text>
+</g>
+<g class="node" id="v"><rect x="631.5" y="106" width="207" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="735" y="128.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → BN → ReLU</text>
+</g>
+<g class="node" id="y"><rect x="413.5" y="35" width="193" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="510" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Add paths ⊕ → Output</text>
+</g>
+<text x="483" y="518" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="344" y="447" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--c">X: B×C×H×W</text>
+<text x="601" y="468" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--d">Y: B×C×H×W</text>
+<text x="235" y="368" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge c--a">B×C×H×W</text>
+<text x="250" y="473" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--a">X</text>
+<text x="694" y="469" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--b">Y</text>
+<text x="351" y="318" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--f">B×C×H×W</text>
+<text x="495" y="236" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge f--r">B×C×H×W</text>
+<text x="715" y="523" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--r">Input bypass</text>
+<text x="400" y="99" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge u--y">B×Co×H×W</text>
+<text x="633" y="86" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--y">B×Co×H×W</text>
+</svg>

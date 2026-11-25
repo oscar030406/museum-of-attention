@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="c" d="M 463 526 L 380 476" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="y" d="M 489 526 L 865 475 L 865 128 L 505 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="r" d="M 380 420 L 380 376" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="r" data-to="p" d="M 380 320 L 380 270" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="p" data-to="s" d="M 380 228 L 380 177" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="s" data-to="y" d="M 380 121 L 479 71" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<g class="node" id="x"><rect x="388.5" y="526" width="175" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="476" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="c"><rect x="252" y="420" width="256" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="380" y="444.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Center spatial samples</text>
+<text x="380" y="462.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Flatten, subtract mean, form covariance</text>
+</g>
+<g class="node" id="r"><rect x="261.5" y="320" width="237" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="380" y="344.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Matrix square root</text>
+<text x="380" y="362.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Trace-scaled Newton–Schulz</text>
+</g>
+<g class="node" id="p"><rect x="269" y="228" width="222" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="380" y="254.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Column mean + rescale</text>
+</g>
+<g class="node" id="s"><rect x="233.5" y="121" width="293" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="380" y="145.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Channel excitation</text>
+<text x="380" y="163.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×1 → ReLU → Conv 1×1 → Sigmoid</text>
+</g>
+<g class="node" id="y"><rect x="387.5" y="29" width="209" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="492" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Scale input channels</text>
+</g>
+<text x="438" y="502" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--c">B×C×H×W</text>
+<text x="699" y="514" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--y">Input bypass</text>
+<text x="386" y="403" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge c--r">B×C×C</text>
+<text x="386" y="300" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--p">B×C×C</text>
+<text x="386" y="208" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--s">B×C×1×1</text>
+<text x="437" y="105" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--y">B×C×1×1</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="d" d="M 337 521 L 620 489" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="d" data-to="p" d="M 620 433 L 480 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="a" d="M 472 353 L 472 328" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="f" d="M 472 272 L 472 247" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="f" data-to="u" d="M 472 191 L 472 167" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="u" data-to="y" d="M 472 111 L 472 79" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="p" d="M 321 521 L 464 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="229" y="521" width="200" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="329" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input spatial features</text>
+</g>
+<g class="node" id="d"><rect x="496" y="433" width="248" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="620" y="457.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Build coarser input maps</text>
+<text x="620" y="475.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Average pool or strided Conv</text>
+</g>
+<g class="node" id="p"><rect x="320" y="353" width="304" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="472" y="377.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">At each scale: unfold local patches</text>
+<text x="472" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">LayerNorm and Linear Q, K, V</text>
+</g>
+<g class="node" id="a"><rect x="320" y="272" width="304" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="472" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ → Softmax + dropout</text>
+<text x="472" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Mix values and project patch tokens</text>
+</g>
+<g class="node" id="f"><rect x="356" y="191" width="232" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="472" y="215.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Fold each scale into a map</text>
+<text x="472" y="233.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Divide by patch coverage</text>
+</g>
+<g class="node" id="u"><rect x="324" y="111" width="296" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="472" y="135.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Fuse from coarse to fine</text>
+<text x="472" y="153.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Fine map + scaled upsampled result</text>
+</g>
+<g class="node" id="y"><rect x="368" y="37" width="208" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="472" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output spatial features</text>
+</g>
+<text x="481" y="518" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--d">B×H×W×C</text>
+<text x="569" y="422" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge d--p">B×Hl×Wl×C</text>
+<text x="478" y="346" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--a">(B·Ml)×J×K²×D</text>
+<text x="478" y="265" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge a--f">(B·Ml)×K²×C</text>
+<text x="478" y="184" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge f--u">One map per scale</text>
+<text x="478" y="100" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge u--y">B×H×W×C</text>
+<text x="407" y="473" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">Native grid</text>
+</svg>

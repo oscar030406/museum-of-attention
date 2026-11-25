@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 479 521 L 438 501" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="c" d="M 430 445 L 339 432" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="s" d="M 339 376 L 339 363" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="s" data-to="t" d="M 339 307 L 339 293" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="t" data-to="m" d="M 339 237 L 434 217" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="r" d="M 442 175 L 537 155" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="r" data-to="y" d="M 545 99 L 545 79" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="p" data-to="m" d="M 446 445 L 653 433 L 653 233 L 450 217" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="r" d="M 495 521 L 894 502 L 894 171 L 553 155" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="419" y="521" width="136" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="487" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="322" y="445" width="232" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="438" y="469.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Optional Conv 1×1</text>
+<text x="438" y="487.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split channels into groups</text>
+</g>
+<g class="node" id="c"><rect x="192.5" y="376" width="293" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="339" y="400.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Per group: GAP → MLP → Sigmoid</text>
+<text x="339" y="418.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Apply channel gate</text>
+</g>
+<g class="node" id="s"><rect x="247" y="307" width="184" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="339" y="331.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → Sigmoid</text>
+<text x="339" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Apply spatial gate</text>
+</g>
+<g class="node" id="t"><rect x="195" y="237" width="288" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="339" y="261.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Sigmoid on gated features</text>
+<text x="339" y="279.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Set entries above group mean to 1</text>
+</g>
+<g class="node" id="m"><rect x="298" y="175" width="288" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="442" y="201.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Concat masks and scale features ⊗</text>
+</g>
+<g class="node" id="r"><rect x="453" y="99" width="184" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="545" y="123.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Optional Conv 1×1</text>
+<text x="545" y="141.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Add original input ⊕</text>
+</g>
+<g class="node" id="y"><rect x="473" y="37" width="144" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="545" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="473" y="515" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="229" y="448" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--c">B×(C/G)×H×W</text>
+<text x="349.0" y="374.5" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge c--s">Channel-gated group</text>
+<text x="349.0" y="305.0" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge s--t">Spatially gated group</text>
+<text x="421" y="234" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge t--m">B×(C/G)×H×W</text>
+<text x="551" y="94" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--y">B×C×H×W</text>
+<text x="555" y="454" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--m">Projected features</text>
+<text x="700" y="529" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--r">Input x</text>
+</svg>

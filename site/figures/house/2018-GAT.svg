@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 444 531 L 375 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="c" d="M 353 448 L 220 400" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="d" d="M 375 448 L 510 400" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="s" d="M 220 366 L 370 326" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="d" data-to="s" d="M 510 366 L 392 326" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="b" data-to="s" d="M 135 531 L 59 443 L 59 347 L 348 326" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="mix" d="M 397 448 L 712 430 L 712 248 L 471 243" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="mix" d="M 370 274 L 449 243" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="mix" data-to="act" d="M 460 191 L 449 152" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="x" data-to="act" d="M 466 531 L 907 501 L 907 188 L 471 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="act" data-to="out" d="M 460 118 L 460 69" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="b"><rect x="54" y="531" width="162" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="135" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Additive edge bias</text>
+</g>
+<g class="node" id="x"><rect x="370.5" y="531" width="169" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="455" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input node features</text>
+</g>
+<g class="node" id="p"><rect x="261.5" y="448" width="227" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="375" y="470.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Dropout → Linear per head</text>
+</g>
+<g class="node" id="c"><rect x="126.5" y="366" width="187" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="220" y="388.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Receiver score Linear</text>
+</g>
+<g class="node" id="d"><rect x="423" y="366" width="174" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="510" y="388.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Sender score Linear</text>
+</g>
+<g class="node" id="s"><rect x="257.5" y="274" width="225" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="370" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Add terms → LeakyReLU</text>
+<text x="370" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Edge bias → Softmax → dropout</text>
+</g>
+<g class="node" id="mix"><rect x="354.5" y="191" width="211" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="460" y="213.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Sum weighted neighbors</text>
+<text x="460" y="231.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Add feature bias</text>
+</g>
+<g class="node" id="act"><rect x="328.5" y="118" width="263" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="460" y="140.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Optional residual and activation</text>
+</g>
+<g class="node" id="out"><rect x="329" y="35" width="262" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="460" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Concat heads or average heads</text>
+</g>
+<text x="421" y="512" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×N×C</text>
+<text x="304" y="425" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--c">B×N×D</text>
+<text x="303" y="357" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge c--s">B×N×1</text>
+<text x="465" y="349" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge d--s">B×1×N</text>
+<text x="111" y="493" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge b--s">B×N×N</text>
+<text x="563" y="456" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--mix">B×N×D</text>
+<text x="424" y="268" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--mix">B×N×N</text>
+<text x="463" y="176" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--act">B×N×D</text>
+<text x="705" y="529" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--act">Optional node residual</text>
+<text x="466" y="99" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge act--out">One result per head</text>
+</svg>

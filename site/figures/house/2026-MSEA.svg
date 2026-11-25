@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="d" d="M 464 531 L 443 503" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="d" data-to="c" d="M 443 451 L 443 432" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="s" d="M 443 380 L 236 361" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="c" data-to="e" d="M 465 380 L 651 361" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="s" data-to="w" d="M 236 309 L 444 282" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="e" data-to="w" d="M 640 309 L 466 282" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="c" data-to="m" d="M 421 380 L 72 366 L 72 216 L 403 211" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="w" data-to="m" d="M 455 248 L 425 211" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="r" d="M 414 177 L 403 149" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="x" data-to="r" d="M 486 531 L 916 484 L 916 166 L 425 149" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="r" data-to="y" d="M 414 97 L 414 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="e" data-to="o" d="M 662 309 L 776 282" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<g class="node" id="x"><rect x="412" y="531" width="126" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="475" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="d"><rect x="310.5" y="451" width="265" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="443" y="473.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Dense dilated Conv 3×3</text>
+<text x="443" y="491.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dilations 3, 5, 7 → Concat → Conv 1×1</text>
+</g>
+<g class="node" id="c"><rect x="298.5" y="380" width="289" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="443" y="402.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Global avg and max → Shared MLP</text>
+<text x="443" y="420.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Add → Sigmoid → Channel scale ⊗</text>
+</g>
+<g class="node" id="s"><rect x="120" y="309" width="232" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="236" y="331.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Avg and max over channels</text>
+<text x="236" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Concat → Conv 7×7 → Sigmoid</text>
+</g>
+<g class="node" id="e"><rect x="569.5" y="309" width="163" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="651" y="331.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Edge logits</text>
+<text x="651" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×1 → Conv 3×3</text>
+</g>
+<g class="node" id="w"><rect x="278.5" y="248" width="353" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="455" y="270.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Add spatial gate and Sigmoid of edge logits</text>
+</g>
+<g class="node" id="o"><rect x="695" y="248" width="162" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="776" y="270.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Output edge logits</text>
+</g>
+<g class="node" id="m"><rect x="327" y="177" width="174" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="414" y="199.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Apply spatial gate ⊗</text>
+</g>
+<g class="node" id="r"><rect x="270" y="97" width="288" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="414" y="119.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Conv → BN → ReLU → Conv → BN</text>
+<text x="414" y="137.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Add input ⊕ → ReLU</text>
+</g>
+<g class="node" id="y"><rect x="344" y="35" width="140" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="414" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="464" y="523" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--d">B×C×H×W</text>
+<text x="449" y="447" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge d--c">B×C×H×W</text>
+<text x="595" y="386" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge c--e">B×C×H×W</text>
+<text x="361" y="312" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--w">B×1×H×W</text>
+<text x="572" y="295" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge e--w">B×1×H×W</text>
+<text x="357" y="370" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge c--m">Channel-gated features</text>
+<text x="449" y="233" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge w--m">B×1×H×W</text>
+<text x="418" y="168" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--r">B×C×H×W</text>
+<text x="704" y="522" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--r">Input bypass</text>
+<text x="420" y="88" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--y">B×C×H×W</text>
+<text x="740" y="306" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge e--o">B×1×H×W</text>
+</svg>

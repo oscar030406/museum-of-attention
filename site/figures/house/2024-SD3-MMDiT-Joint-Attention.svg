@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="tx" data-to="t" d="M 225 531 L 239 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="cond" data-to="t" d="M 469 531 L 261 482" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="cond" data-to="i" d="M 491 531 L 699 482" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="im" data-to="i" d="M 735 531 L 721 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="t" data-to="cat" d="M 261 448 L 469 409" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="i" data-to="cat" d="M 699 448 L 491 409" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="cat" data-to="score" d="M 469 357 L 390 317" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="cat" data-to="mix" d="M 491 357 L 711 351 L 711 240 L 491 234" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="score" data-to="mix" d="M 390 283 L 469 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="mix" data-to="split" d="M 480 200 L 480 152" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="split" data-to="tp" d="M 469 118 L 261 78" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="split" data-to="ip" d="M 491 118 L 699 78" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="t" data-to="tp" d="M 239 448 L 86 434 L 86 105 L 239 78" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="i" data-to="ip" d="M 721 448 L 874 434 L 874 105 L 721 78" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<g class="node" id="tx"><rect x="171" y="531" width="108" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="225" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Text tokens</text>
+</g>
+<g class="node" id="cond"><rect x="406" y="531" width="148" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Condition vector</text>
+</g>
+<g class="node" id="im"><rect x="673.5" y="531" width="123" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="735" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Image tokens</text>
+</g>
+<g class="node" id="t"><rect x="127" y="448" width="246" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="250" y="470.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Modulate text norm → Q, K, V</text>
+</g>
+<g class="node" id="i"><rect x="578.5" y="448" width="263" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="710" y="470.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Modulate image norm → Q, K, V</text>
+</g>
+<g class="node" id="cat"><rect x="384" y="357" width="192" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="379.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Concat each of Q, K, V</text>
+<text x="480" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Along token axis</text>
+</g>
+<g class="node" id="score"><rect x="271.5" y="283" width="237" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="390" y="305.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Joint scaled QKᵀ → Softmax</text>
+</g>
+<g class="node" id="mix"><rect x="416.5" y="200" width="127" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="222.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight joint V</text>
+</g>
+<g class="node" id="split"><rect x="377" y="118" width="206" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Split by text token count</text>
+</g>
+<g class="node" id="tp"><rect x="156" y="26" width="188" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="250" y="48.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Text output projection</text>
+<text x="250" y="66.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Gate and add residual</text>
+</g>
+<g class="node" id="ip"><rect x="608.5" y="26" width="203" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="710" y="48.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Image output projection</text>
+<text x="710" y="66.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Gate and add residual</text>
+</g>
+<text x="241" y="510" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge tx--t">B×Lₜ×C</text>
+<text x="379" y="507" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge cond--t">B×C</text>
+<text x="737" y="513" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge im--i">B×Lᵢ×C</text>
+<text x="369" y="440" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge t--cat">Text Q, K, V</text>
+<text x="598" y="423" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge i--cat">Image Q, K, V</text>
+<text x="439" y="340" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge cat--score">B×(Lₜ+Lᵢ)×C</text>
+<text x="610" y="372" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge cat--mix">Joint V</text>
+<text x="445" y="268" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge score--mix">B×h×(Lₜ+Lᵢ)²</text>
+<text x="486" y="181" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--split">B×(Lₜ+Lᵢ)×C</text>
+<text x="370" y="97" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge split--tp">B×Lₜ×C</text>
+<text x="600" y="109" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge split--ip">B×Lᵢ×C</text>
+<text x="166" y="435" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge t--tp">Text residual and gate</text>
+<text x="785" y="429" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge i--ip">Image bypass</text>
+</svg>

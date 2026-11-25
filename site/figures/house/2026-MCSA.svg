@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 464 531 L 347 503" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="g" d="M 347 451 L 347 423" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="g" data-to="m" d="M 347 389 L 461 352" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="x" data-to="m" d="M 486 531 L 795 485 L 795 398 L 483 352" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="m" data-to="k" d="M 461 318 L 332 291" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="k" data-to="s" d="M 332 239 L 332 211" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="w" d="M 332 177 L 461 140" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="w" d="M 483 318 L 785 302 L 785 168 L 483 140" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="w" data-to="y" d="M 472 106 L 472 78" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="412" y="531" width="126" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="475" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="233.5" y="451" width="227" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="347" y="473.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">AvgPool with strides 1, 2, 4</text>
+<text x="347" y="491.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">GAP each → Concat</text>
+</g>
+<g class="node" id="g"><rect x="207" y="389" width="280" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="347" y="411.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Conv → ReLU → Conv → Sigmoid</text>
+</g>
+<g class="node" id="m"><rect x="380" y="318" width="184" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="472" y="340.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Apply channel gate ⊗</text>
+</g>
+<g class="node" id="k"><rect x="203" y="239" width="258" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="332" y="261.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 3×3, 5×5, 7×7</text>
+<text x="332" y="279.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Strides 1, 2, 4 → Upsample → Concat</text>
+</g>
+<g class="node" id="s"><rect x="242" y="177" width="180" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="332" y="199.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → Sigmoid</text>
+</g>
+<g class="node" id="w"><rect x="385" y="106" width="174" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="472" y="128.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Apply spatial gate ⊗</text>
+</g>
+<g class="node" id="y"><rect x="370.5" y="26" width="203" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="472" y="48.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → BatchNorm</text>
+<text x="472" y="66.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Output features</text>
+</g>
+<text x="427" y="516" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="353" y="442" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--g">B×3C×1×1</text>
+<text x="415" y="382" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge g--m">B×C×1×1</text>
+<text x="656" y="522" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--m">Input bypass</text>
+<text x="414" y="306" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--k">B×C×H×W</text>
+<text x="338" y="230" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge k--s">B×3C×H×W</text>
+<text x="409" y="170" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--w">B×1×H×W</text>
+<text x="638" y="323" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--w">Channel-gated features</text>
+<text x="478" y="97" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge w--y">B×C×H×W</text>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 480 531 L 480 503" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="q" d="M 480 451 L 480 432" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="s" d="M 480 380 L 480 361" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="s" data-to="f" d="M 480 309 L 480 291" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="f" data-to="g" d="M 469 239 L 293 220" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="f" data-to="v" d="M 491 239 L 675 211" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="g" data-to="m" d="M 293 168 L 469 149" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="v" data-to="m" d="M 675 177 L 491 149" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="m" data-to="y" d="M 480 97 L 480 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="357.5" y="531" width="245" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features → Split groups</text>
+</g>
+<g class="node" id="p"><rect x="370.5" y="451" width="219" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="473.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 per group</text>
+<text x="480" y="491.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Use neighborhood size 3, 5 or 7</text>
+</g>
+<g class="node" id="q"><rect x="359.5" y="380" width="241" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="480" y="402.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">LayerNorm → Project Q, K, V</text>
+<text x="480" y="420.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Unfold K and V per pixel</text>
+</g>
+<g class="node" id="s"><rect x="351.5" y="309" width="257" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="480" y="331.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled local dot product + bias</text>
+<text x="480" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax → Mix V → Conv 1×1</text>
+</g>
+<g class="node" id="f"><rect x="305.5" y="239" width="349" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="261.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Scaled residuals around attention and MLP</text>
+<text x="480" y="279.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Repeat neighborhood layers per group</text>
+</g>
+<g class="node" id="g"><rect x="186.5" y="168" width="213" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="293" y="190.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Concat → Pointwise MLP</text>
+<text x="293" y="208.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Temperature → Softmax</text>
+</g>
+<g class="node" id="v"><rect x="587" y="177" width="176" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="675" y="199.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Stack group outputs</text>
+</g>
+<g class="node" id="m"><rect x="366.5" y="97" width="227" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="119.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weighted sum over groups</text>
+<text x="480" y="137.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×1</text>
+</g>
+<g class="node" id="y"><rect x="410" y="35" width="140" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="486" y="522" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C/G×H×W</text>
+<text x="486" y="447" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--q">B×C/G×H×W</text>
+<text x="486" y="376" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--s">K, V: B×h×d×k²×N</text>
+<text x="486" y="305" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--f">B×C/G×H×W</text>
+<text x="407" y="228" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge f--g">G group maps</text>
+<text x="594" y="236" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge f--v">G group maps</text>
+<text x="402" y="174" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge g--m">B×G×H×W</text>
+<text x="599" y="160" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--m">B×G×C/G×H×W</text>
+<text x="486" y="88" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--y">B×C×H×W</text>
+</svg>

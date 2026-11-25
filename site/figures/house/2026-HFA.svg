@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="a" data-to="s" d="M 261 531 L 449 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="b" data-to="s" d="M 684 531 L 471 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="e" d="M 460 448 L 460 409" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="e" data-to="d1" d="M 449 357 L 290 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="e" data-to="d2" d="M 471 357 L 620 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="d1" data-to="w" d="M 290 274 L 449 234" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="d2" data-to="w" d="M 620 274 L 471 234" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="w" data-to="m" d="M 460 200 L 460 152" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="a" data-to="m" d="M 239 531 L 90 485 L 90 172 L 438 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="b" data-to="m" d="M 706 531 L 867 485 L 867 172 L 482 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="m" data-to="y" d="M 460 118 L 460 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="a"><rect x="194.5" y="531" width="111" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="250" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Features Fb</text>
+</g>
+<g class="node" id="b"><rect x="637" y="531" width="116" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="695" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Features Fm</text>
+</g>
+<g class="node" id="s"><rect x="374" y="448" width="172" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="460" y="470.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Add feature maps ⊕</text>
+</g>
+<g class="node" id="e"><rect x="347" y="357" width="226" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="460" y="379.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Three stride-2 Conv blocks</text>
+<text x="460" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">BatchNorm → GELU per block</text>
+</g>
+<g class="node" id="d1"><rect x="205" y="274" width="170" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="290" y="296.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Decoder 1</text>
+<text x="290" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Upsample and convolve</text>
+</g>
+<g class="node" id="d2"><rect x="535" y="274" width="170" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="620" y="296.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Decoder 2</text>
+<text x="620" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Upsample and convolve</text>
+</g>
+<g class="node" id="w"><rect x="330" y="200" width="260" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="460" y="222.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Stack → Softmax across inputs</text>
+</g>
+<g class="node" id="m"><rect x="342.5" y="118" width="235" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="460" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weighted sum of Fb and Fm</text>
+</g>
+<g class="node" id="y"><rect x="390" y="35" width="140" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="460" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="360" y="521" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a--s">B×C×H×W</text>
+<text x="585" y="502" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge b--s">B×C×H×W</text>
+<text x="466" y="434" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge s--e">B×C×H×W</text>
+<text x="387" y="339" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge e--d1">B×R×H′×W′</text>
+<text x="388" y="265" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge d1--w">B×C×H×W</text>
+<text x="562" y="253" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge d2--w">B×C×H×W</text>
+<text x="466" y="181" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge w--m">B×2×C×H×W</text>
+<text x="178" y="508" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a--m">Fb</text>
+<text x="798" y="518" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge b--m">Fm</text>
+<text x="466" y="99" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--y">B×C×H×W</text>
+</svg>

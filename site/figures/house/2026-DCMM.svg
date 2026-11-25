@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 480 531 L 480 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="z" d="M 447 448 L 165 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="t" d="M 469 448 L 394 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="s" d="M 491 448 L 640 400" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="z" data-to="b" d="M 165 357 L 289 326" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="t" data-to="b" d="M 394 357 L 311 326" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="b" data-to="n" d="M 300 274 L 519 243" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="s" data-to="n" d="M 640 366 L 541 243" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="p" data-to="m" d="M 513 448 L 871 416 L 871 185 L 676 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="n" data-to="m" d="M 530 191 L 654 152" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="o" d="M 665 118 L 665 78" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="422" y="531" width="116" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tokens</text>
+</g>
+<g class="node" id="p"><rect x="362" y="448" width="236" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="470.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear → Split Q, K, V heads</text>
+</g>
+<g class="node" id="z"><rect x="68" y="357" width="194" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="165" y="379.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Q → Linear → Softmax</text>
+<text x="165" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Group membership Z</text>
+</g>
+<g class="node" id="t"><rect x="307.5" y="357" width="173" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="394" y="379.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Q → Linear → ReLU</text>
+<text x="394" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Degree product θᵢθⱼ</text>
+</g>
+<g class="node" id="s"><rect x="586" y="366" width="108" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="640" y="388.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ</text>
+</g>
+<g class="node" id="b"><rect x="217" y="274" width="166" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="300" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Degree-scaled bias</text>
+<text x="300" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">α θᵢθⱼ tanh(Z A Zᵀ)</text>
+</g>
+<g class="node" id="n"><rect x="442" y="191" width="176" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="530" y="213.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Add bias → Softmax</text>
+<text x="530" y="231.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dropout</text>
+</g>
+<g class="node" id="m"><rect x="559.5" y="118" width="211" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="665" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight V → Merge heads</text>
+</g>
+<g class="node" id="o"><rect x="587" y="26" width="156" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="665" y="48.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear → Dropout</text>
+<text x="665" y="66.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Output tokens</text>
+</g>
+<text x="486" y="512" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×N×C</text>
+<text x="323" y="427" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--z">Q: B×h×N×d</text>
+<text x="591" y="429" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--s">Q, K: B×h×N×d</text>
+<text x="239" y="354" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge z--b">B×h×N×G</text>
+<text x="365" y="342" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge t--b">B×h×N×N</text>
+<text x="422" y="271" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge b--n">B×h×N×N</text>
+<text x="597" y="310" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--n">B×h×N×N</text>
+<text x="702" y="445" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--m">V: B×h×N×d</text>
+<text x="604" y="183" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge n--m">B×h×N×N</text>
+<text x="671" y="103" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--o">B×N×C</text>
+</svg>

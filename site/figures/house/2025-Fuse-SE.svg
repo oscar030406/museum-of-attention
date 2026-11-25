@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="s" d="M 456 521 L 278 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="z" d="M 286 440 L 494 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="z" data-to="l" d="M 502 353 L 500 321" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="l" data-to="g" d="M 500 279 L 418 247" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="g" data-to="m" d="M 410 191 L 500 160" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="y" d="M 508 118 L 508 79" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="x" data-to="f" d="M 472 521 L 618 489" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="f" data-to="z" d="M 618 433 L 510 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="t" d="M 270 440 L 185 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="t" data-to="g" d="M 185 353 L 186 305 L 186 249 L 402 247" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="x" data-to="m" d="M 488 521 L 835 505 L 835 162 L 516 160" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="404" y="521" width="136" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="472" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="s"><rect x="126" y="440" width="304" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="278" y="466.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Spatial mean and standard deviation</text>
+</g>
+<g class="node" id="f"><rect x="490" y="433" width="256" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="618" y="457.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Real FFT 2D + magnitude</text>
+<text x="618" y="475.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Low-band mean and clipped gap</text>
+</g>
+<g class="node" id="t"><rect x="85" y="353" width="200" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="185" y="377.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Mean channel deviation</text>
+<text x="185" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear + Softplus + ε</text>
+</g>
+<g class="node" id="z"><rect x="394" y="353" width="216" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="502" y="377.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Per-channel weighted sum</text>
+<text x="502" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Fuse the four statistics</text>
+</g>
+<g class="node" id="l"><rect x="400" y="279" width="200" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="500" y="305.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear → ReLU → Linear</text>
+</g>
+<g class="node" id="g"><rect x="286" y="191" width="248" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="410" y="215.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Divide logits by temperature</text>
+<text x="410" y="233.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Sigmoid</text>
+</g>
+<g class="node" id="m"><rect x="428" y="118" width="160" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="508" y="144.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Channel scaling ⊗</text>
+</g>
+<g class="node" id="y"><rect x="436" y="37" width="144" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="508" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="369" y="500" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--s">B×C×H×W</text>
+<text x="401" y="437" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge s--z">B×C each</text>
+<text x="470" y="264" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge l--g">B×C</text>
+<text x="470" y="185" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge g--m">B×C×1×1</text>
+<text x="514" y="104" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge m--y">B×C×H×W</text>
+<text x="595" y="422" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge f--z">B×C each</text>
+<text x="192" y="334" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge t--g">B×1</text>
+<text x="675" y="530" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--m">Input x</text>
+</svg>

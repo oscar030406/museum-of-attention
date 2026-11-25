@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="q" data-to="score" d="M 240 531 L 344 475" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="k" data-to="score" d="M 480 531 L 366 475" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="v" data-to="val" d="M 720 531 L 720 466" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="score" data-to="exp" d="M 355 423 L 355 385" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="exp" data-to="norm" d="M 355 315 L 355 276" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="norm" data-to="mix" d="M 366 224 L 494 168" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="norm" data-to="weights" d="M 344 224 L 172 193 L 172 109 L 230 69" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="val" data-to="mix" d="M 720 432 L 720 411 L 720 179 L 516 168" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 505 134 L 505 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="q"><rect x="200" y="531" width="80" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="240" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Queries</text>
+</g>
+<g class="node" id="k"><rect x="444" y="531" width="72" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Keys</text>
+</g>
+<g class="node" id="v"><rect x="684" y="531" width="72" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="720" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Values</text>
+</g>
+<g class="node" id="score"><rect x="247.5" y="423" width="215" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="355" y="445.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Repeat K heads if needed</text>
+<text x="355" y="463.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scaled QKᵀ → causal mask</text>
+</g>
+<g class="node" id="val"><rect x="613" y="432" width="214" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="720" y="454.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Repeat V heads if needed</text>
+</g>
+<g class="node" id="exp"><rect x="266" y="315" width="178" height="70" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="355" y="337.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Shifted exponential</text>
+<text x="355" y="355.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">z = exp(s − m) − exp(−m)</text>
+<text x="355" y="373.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">m = row maximum</text>
+</g>
+<g class="node" id="norm"><rect x="247.5" y="224" width="215" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="355" y="246.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Rectify and normalize</text>
+<text x="355" y="264.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">ReLU(z) / (Σ eligible abs(z) + ε)</text>
+</g>
+<g class="node" id="mix"><rect x="460.5" y="134" width="89" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="505" y="156.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight V</text>
+</g>
+<g class="node" id="out"><rect x="438" y="35" width="134" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="505" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output context</text>
+</g>
+<g class="node" id="weights"><rect x="161.5" y="35" width="137" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="230" y="57.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Output weights</text>
+</g>
+<text x="300" y="511" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--score">B×h×Q×D</text>
+<text x="434" y="505" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge k--score">B×g×K×D</text>
+<text x="726" y="504" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--val">B×g×K×D</text>
+<text x="361" y="409" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge score--exp">B×h×Q×K</text>
+<text x="361" y="301" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge exp--norm">B×h×Q×K</text>
+<text x="443" y="204" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge norm--mix">B×h×Q×K</text>
+<text x="726" y="427" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge val--mix">B×h×K×D</text>
+<text x="511" y="107" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--out">B×h×Q×D</text>
+</svg>

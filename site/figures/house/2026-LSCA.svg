@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 445 531 L 408 503" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="s" d="M 408 451 L 370 432" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="a" d="M 370 380 L 409 361" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="x" data-to="a" d="M 467 531 L 861 489 L 861 367 L 431 361" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="q" d="M 431 309 L 430 282" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="q" data-to="c" d="M 419 248 L 299 220" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="d" d="M 441 248 L 669 220" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="f" d="M 299 168 L 460 149" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="d" data-to="f" d="M 669 168 L 482 149" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="f" d="M 409 309 L 97 295 L 97 163 L 438 149" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="f" data-to="y" d="M 460 97 L 460 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="393" y="531" width="126" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="456" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="306.5" y="451" width="203" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="408" y="473.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Flatten → Linear Q, K, V</text>
+<text x="408" y="491.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split spatial heads</text>
+</g>
+<g class="node" id="s"><rect x="288.5" y="380" width="163" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="370" y="402.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled spatial QKᵀ</text>
+<text x="370" y="420.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax → Mix V</text>
+</g>
+<g class="node" id="a"><rect x="308.5" y="309" width="223" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="420" y="331.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear → Add spatial input</text>
+<text x="420" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Restore grid</text>
+</g>
+<g class="node" id="q"><rect x="328.5" y="248" width="203" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="430" y="270.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Flatten → Linear Q, K, V</text>
+</g>
+<g class="node" id="c"><rect x="213" y="168" width="172" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="299" y="190.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled channel QᵀK</text>
+<text x="299" y="208.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax → Mix V</text>
+</g>
+<g class="node" id="d"><rect x="577" y="168" width="184" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="669" y="190.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Depthwise Conv on V</text>
+<text x="669" y="208.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">BatchNorm → GELU</text>
+</g>
+<g class="node" id="f"><rect x="344.5" y="97" width="231" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="460" y="119.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Add branches → Linear</text>
+<text x="460" y="137.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Add channel input → Restore grid</text>
+</g>
+<g class="node" id="y"><rect x="390" y="35" width="140" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="460" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="441" y="519" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="403" y="446" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--s">Q, K, V: B×h×N×d</text>
+<text x="403" y="377" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--a">B×N×C</text>
+<text x="680" y="521" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--a">Spatial input</text>
+<text x="437" y="301" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--q">B×C×H×W</text>
+<text x="375" y="233" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge q--c">Q, K, V: B×N×C</text>
+<text x="569" y="247" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge q--d">V: B×N×C</text>
+<text x="391" y="172" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge c--f">B×N×C</text>
+<text x="586" y="155" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge d--f">B×N×C</text>
+<text x="259" y="297" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--f">Channel input</text>
+<text x="466" y="88" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge f--y">B×C×H×W</text>
+</svg>

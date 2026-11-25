@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="n" d="M 465 531 L 405 503" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="n" data-to="k" d="M 394 469 L 248 450" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="k" data-to="c" d="M 248 398 L 397 388" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="n" data-to="c" d="M 416 469 L 690 453 L 690 393 L 419 388" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="c" data-to="l" d="M 397 336 L 408 317" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="l" data-to="w" d="M 397 283 L 226 273" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="w" data-to="m" d="M 226 203 L 454 202" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="l" data-to="m" d="M 419 283 L 578 278 L 578 207 L 476 202" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="m" data-to="r" d="M 465 150 L 544 140" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="c" data-to="r" d="M 419 336 L 894 321 L 894 145 L 566 140" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="r" data-to="y" d="M 555 88 L 555 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="402" y="531" width="126" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="465" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="n"><rect x="314" y="469" width="182" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="405" y="491.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Flatten → LayerNorm</text>
+</g>
+<g class="node" id="k"><rect x="137.5" y="398" width="221" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="248" y="420.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Pool to 3×3 → Conv MLP</text>
+<text x="248" y="438.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Normalize and add base kernels</text>
+</g>
+<g class="node" id="c"><rect x="285" y="336" width="246" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="408" y="358.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Dynamic depthwise Conv 3×3</text>
+<text x="408" y="376.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Flatten and add normalized input</text>
+</g>
+<g class="node" id="l"><rect x="355.5" y="283" width="105" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="408" y="305.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">LayerNorm</text>
+</g>
+<g class="node" id="w"><rect x="116.5" y="203" width="219" height="70" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="226" y="225.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Pool 2×2 → Linear → Split</text>
+<text x="226" y="243.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">SiLU factors → Matrix product</text>
+<text x="226" y="261.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Normalize and add base weight</text>
+</g>
+<g class="node" id="m"><rect x="317" y="150" width="296" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="465" y="172.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Dynamic Linear → GELU → Dropout</text>
+<text x="465" y="190.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear → Dropout → DropPath</text>
+</g>
+<g class="node" id="r"><rect x="457.5" y="88" width="195" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="555" y="110.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Add previous tokens ⊕</text>
+<text x="555" y="128.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Restore grid</text>
+</g>
+<g class="node" id="y"><rect x="485" y="35" width="140" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="555" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="445" y="519" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--n">B×C×H×W</text>
+<text x="365" y="456" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge n--k">B×N×C</text>
+<text x="367" y="409" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge k--c">BC×1×3×3</text>
+<text x="570" y="474" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge n--c">Normalized tokens</text>
+<text x="413" y="332" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge c--l">B×N×C</text>
+<text x="337" y="271" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge l--w">B×N×C</text>
+<text x="348" y="221" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge w--m">B×C×R</text>
+<text x="509" y="298" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge l--m">B×N×C</text>
+<text x="411" y="146" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--r">B×N×C</text>
+<text x="663" y="345" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge c--r">First stage tokens</text>
+<text x="561" y="84" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--y">B×C×H×W</text>
+</svg>

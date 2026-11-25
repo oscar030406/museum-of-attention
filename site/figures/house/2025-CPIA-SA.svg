@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 480 521 L 480 494" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="q" d="M 464 452 L 255 432" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="a" d="M 263 376 L 331 363" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="m" d="M 339 307 L 363 293" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="g" d="M 355 237 L 522 232.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="g" data-to="f" d="M 530 159.5 L 530 155" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="f" data-to="y" d="M 530 99 L 530 79" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="k" d="M 480 452 L 520 432" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="k" data-to="a" d="M 520 376 L 347 363" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="c" d="M 496 452 L 795 440.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="g" d="M 795 367.5 L 805 350 L 805 234.5 L 538 232.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="m" d="M 247 376 L 89 374 L 89 295 L 347 293" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="412" y="521" width="136" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="352" y="452" width="256" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="478.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1, then split channels</text>
+</g>
+<g class="node" id="q"><rect x="159" y="376" width="192" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="255" y="400.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Pointwise + depthwise</text>
+<text x="255" y="418.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Project Q, K and V</text>
+</g>
+<g class="node" id="k"><rect x="399" y="376" width="242" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="520" y="400.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Conv pair + ReLU + Sigmoid</text>
+<text x="520" y="418.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Mean gate sets Top-K count</text>
+</g>
+<g class="node" id="c"><rect x="659" y="367.5" width="272" height="73" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="795" y="391.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Depthwise + Conv 1×1</text>
+<text x="795" y="409.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">GAP → channel Softmax, then scale</text>
+<text x="795" y="427.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">GELU + Conv 1×1</text>
+</g>
+<g class="node" id="a"><rect x="215" y="307" width="248" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="339" y="331.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Temperature × normalized QKᵀ</text>
+<text x="339" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Top-K mask, then Softmax</text>
+</g>
+<g class="node" id="m"><rect x="219" y="237" width="272" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="355" y="261.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Weight V + learned weighted sum</text>
+<text x="355" y="279.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Restore image grid</text>
+</g>
+<g class="node" id="g"><rect x="354" y="159.5" width="352" height="73" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="530" y="183.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Exchange Sigmoid gates</text>
+<text x="530" y="201.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Attention → GAP and channel gate for conv</text>
+<text x="530" y="219.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv → spatial gate for attention</text>
+</g>
+<g class="node" id="f"><rect x="374" y="99" width="312" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="530" y="123.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Concat + Conv 1×1</text>
+<text x="530" y="141.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">FFT → depthwise Conv 1×1 → real IFFT</text>
+</g>
+<g class="node" id="y"><rect x="458" y="37" width="144" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="530" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="486" y="513" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="353" y="379" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge q--a">Q, K</text>
+<text x="361.0" y="305.0" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge a--m">B×J×D×D</text>
+<text x="536" y="94" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge f--y">B×C×H×W</text>
+<text x="464" y="366" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge k--a">K count</text>
+<text x="810" y="362" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--g">B×C/2×H×W</text>
+<text x="178" y="366" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge q--m">V</text>
+</svg>

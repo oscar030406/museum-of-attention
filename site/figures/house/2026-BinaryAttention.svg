@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 480 531 L 480 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="bin" d="M 469 448 L 330 409" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="p" data-to="val" d="M 491 448 L 752 400" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="bin" data-to="sc" d="M 330 357 L 330 326" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="sc" data-to="sm" d="M 330 274 L 330 243" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="sm" data-to="mix" d="M 330 191 L 464 152" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="val" data-to="mix" d="M 752 366 L 756 328 L 756 174 L 486 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 475 118 L 475 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="422" y="531" width="116" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tokens</text>
+</g>
+<g class="node" id="p"><rect x="372" y="448" width="216" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="470.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear QKV → split heads</text>
+</g>
+<g class="node" id="bin"><rect x="218" y="357" width="224" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="330" y="379.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Binarize Q and K</text>
+<text x="330" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Multiply sign by mean magnitude</text>
+</g>
+<g class="node" id="val"><rect x="618" y="366" width="268" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="752" y="388.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Optional 8-bit value quantization</text>
+</g>
+<g class="node" id="sc"><rect x="254.5" y="274" width="151" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="330" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ</text>
+<text x="330" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Optional relative bias</text>
+</g>
+<g class="node" id="sm"><rect x="216.5" y="191" width="227" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="330" y="213.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Softmax → dropout</text>
+<text x="330" y="231.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Optional 8-bit weight quantization</text>
+</g>
+<g class="node" id="mix"><rect x="369" y="118" width="212" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="475" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight V → merge heads</text>
+</g>
+<g class="node" id="out"><rect x="398" y="35" width="154" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="475" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear → dropout</text>
+</g>
+<text x="486" y="512" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×N×C</text>
+<text x="415" y="427" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--bin">B×h×N×D</text>
+<text x="632" y="438" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--val">V: B×h×N×D</text>
+<text x="336" y="347" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge bin--sc">B×h×N×D</text>
+<text x="336" y="264" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sc--sm">B×h×N×N</text>
+<text x="411" y="183" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sm--mix">B×h×N×N</text>
+<text x="761" y="352" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge val--mix">B×h×N×D</text>
+<text x="481" y="99" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--out">B×N×C</text>
+</svg>

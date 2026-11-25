@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="q" data-to="qf" d="M 160 531 L 175 484" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="k" data-to="kf" d="M 395 531 L 485 466" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="v" data-to="vp" d="M 780 531 L 780 475" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="qf" data-to="sc" d="M 186 414 L 339 376" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="kf" data-to="sc" d="M 485 432 L 361 376" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="qf" data-to="w" d="M 164 414 L 92 409 L 92 281 L 409 276" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="sc" data-to="w" d="M 350 324 L 431 276" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="vp" data-to="mix" d="M 780 423 L 868 415 L 868 176 L 576 168" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="w" data-to="mix" d="M 420 224 L 554 168" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="mix" data-to="o" d="M 565 134 L 565 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="q"><rect x="108" y="531" width="104" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="160" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Query map</text>
+</g>
+<g class="node" id="k"><rect x="351.5" y="531" width="87" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="395" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Key map</text>
+</g>
+<g class="node" id="v"><rect x="730" y="531" width="100" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="780" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Value map</text>
+</g>
+<g class="node" id="qf"><rect x="47.5" y="414" width="255" height="70" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="175" y="436.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Flatten queries and build mask</text>
+<text x="175" y="454.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Keep only earlier raster positions</text>
+<text x="175" y="472.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Min pool mask for pooled keys</text>
+</g>
+<g class="node" id="kf"><rect x="368.5" y="432" width="233" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="485" y="454.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Optional max pool → flatten</text>
+</g>
+<g class="node" id="vp"><rect x="664.5" y="423" width="231" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="780" y="445.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Optional max pool</text>
+<text x="780" y="463.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Append row and column channels</text>
+</g>
+<g class="node" id="sc"><rect x="246.5" y="324" width="207" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="350" y="346.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">QKᵀ → apply strict mask</text>
+<text x="350" y="364.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Subtract row max</text>
+</g>
+<g class="node" id="w"><rect x="280.5" y="224" width="279" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="420" y="246.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scale → exp → zero masked slots</text>
+<text x="420" y="264.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Normalize by row sum + ε</text>
+</g>
+<g class="node" id="mix"><rect x="465.5" y="134" width="199" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="565" y="156.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight flattened values</text>
+</g>
+<g class="node" id="o"><rect x="483.5" y="35" width="163" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="565" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Restore query grid</text>
+</g>
+<text x="177" y="511" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--qf">B×D×H×W</text>
+<text x="449" y="511" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge k--kf">B×D×H×W</text>
+<text x="786" y="508" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--vp">B×V×H×W</text>
+<text x="270" y="406" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qf--sc">B×N×D</text>
+<text x="438" y="406" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge kf--sc">B×D×M</text>
+<text x="135" y="403" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qf--w">Mask: 1×N×M</text>
+<text x="405" y="305" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sc--w">B×N×M</text>
+<text x="819" y="407" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge vp--mix">B×M×V′</text>
+<text x="504" y="204" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge w--mix">B×N×M</text>
+<text x="571" y="107" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--o">B×N×V′</text>
+</svg>

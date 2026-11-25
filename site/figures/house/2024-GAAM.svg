@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="c" d="M 492 526 L 462 504" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="y" d="M 518 526 L 866 492 L 866 118 L 539 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="m" d="M 436 448 L 292 433" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="g" d="M 462 448 L 483 423 L 483 381 L 381 362" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="w" d="M 488 448 L 699 440 L 699 234 L 483 213" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="m" data-to="g" d="M 292 377 L 355 362" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="g" data-to="n" d="M 368 306 L 368 284" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="n" data-to="w" d="M 368 242 L 457 213" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="w" data-to="h" d="M 470 171 L 470 142" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="h" data-to="y" d="M 470 100 L 513 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="402" y="526" width="206" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="505" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tensor</text>
+</g>
+<g class="node" id="c"><rect x="340" y="448" width="244" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="462" y="472.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Split along the selected axis</text>
+<text x="462" y="490.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Process each chunk separately</text>
+</g>
+<g class="node" id="m"><rect x="157" y="377" width="270" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="292" y="401.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Mean and variance along axis</text>
+<text x="292" y="419.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Replace padding with zero for statistics</text>
+</g>
+<g class="node" id="g"><rect x="235.5" y="306" width="265" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="368" y="330.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Product of Gaussian densities</text>
+<text x="368" y="348.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Use raw chunk, learned shifts and scales</text>
+</g>
+<g class="node" id="n"><rect x="244" y="242" width="248" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="368" y="268.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Normalize by sum along axis</text>
+</g>
+<g class="node" id="w"><rect x="344.5" y="171" width="251" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="470" y="197.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Scale chunk, keep raw padding</text>
+</g>
+<g class="node" id="h"><rect x="361" y="100" width="218" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="470" y="126.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Concatenate head chunks</text>
+</g>
+<g class="node" id="y"><rect x="391.5" y="29" width="269" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="526" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Add layer input, repeat per layer</text>
+</g>
+<text x="265" y="523" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--c">Shape: B×N×D (example axis N)</text>
+<text x="709" y="525" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--y">Layer residual</text>
+<text x="287" y="457" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--m">B×Nᵢ×D</text>
+<text x="483" y="440" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--g">Raw chunk</text>
+<text x="601" y="461" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--w">Raw chunk + padding mask</text>
+<text x="374" y="300" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge g--n">B×Nᵢ×D</text>
+<text x="439" y="238" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge n--w">Normalized weights</text>
+<text x="476" y="162" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge w--h">B×Nᵢ×D</text>
+<text x="500" y="93" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge h--y">B×N×D</text>
+</svg>

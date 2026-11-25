@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 470 526 L 463 469" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="r" data-to="s" d="M 141 427 L 114 354 L 114 298 L 276 277" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="q" d="M 437 427 L 292 376" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="v" d="M 463 427 L 520 367 L 548 270" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="k" d="M 489 427 L 715 376" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="s" d="M 292 320 L 302 277" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="k" data-to="c" d="M 715 320 L 794 270" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="m" d="M 289 221 L 381 177" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="v" data-to="m" d="M 548 228 L 407 177" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="y" d="M 794 228 L 794 131 L 537 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="m" data-to="y" d="M 394 121 L 511 71" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="380.5" y="526" width="179" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="470" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="343" y="427" width="240" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="463" y="453.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Three Conv 1×1 projections</text>
+</g>
+<g class="node" id="r"><rect x="33" y="427" width="216" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="141" y="453.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project coordinate grid</text>
+</g>
+<g class="node" id="q"><rect x="186.5" y="320" width="211" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="292" y="344.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Split heads and extract K</text>
+<text x="292" y="362.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Stride Q, unfold padded K</text>
+</g>
+<g class="node" id="k"><rect x="594.5" y="320" width="241" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="715" y="344.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Pack Q, K, V along head axis</text>
+<text x="715" y="362.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×1 + reshape</text>
+</g>
+<g class="node" id="s"><rect x="158.5" y="221" width="261" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="289" y="245.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Local scores + Softmax</text>
+<text x="289" y="263.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scaled Q · (K + posQ − posK)</text>
+</g>
+<g class="node" id="v"><rect x="439" y="228" width="218" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="548" y="254.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Unfold padded V</text>
+</g>
+<g class="node" id="c"><rect x="687" y="228" width="214" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="794" y="254.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Grouped spatial Conv</text>
+</g>
+<g class="node" id="m"><rect x="276.5" y="121" width="235" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="394" y="145.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight and sum V windows</text>
+<text x="394" y="163.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Merge heads</text>
+</g>
+<g class="node" id="y"><rect x="406.5" y="29" width="235" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="524" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Learned weighted sum</text>
+</g>
+<text x="473" y="503" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×Cin×H×W</text>
+<text x="136" y="395" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--s">Position features</text>
+<text x="383" y="403" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--q">Q and K</text>
+<text x="503" y="401" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--v">V</text>
+<text x="770" y="304" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge k--c">B×(kc²d)×H×W</text>
+<text x="344" y="214" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--m">(Bh)×ka²×H′×W′</text>
+<text x="492" y="199" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--m">(Bh)×d×ka²×H′×W′</text>
+<text x="800" y="185" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--y">B×Cout×H′×W′</text>
+<text x="464" y="110" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--y">B×Cout×H′×W′</text>
+</svg>

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="qk" d="M 669 531 L 520 491" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="v" d="M 691 531 L 785 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="cfg" data-to="rope" d="M 241 531 L 240 491" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="cfg" data-to="mask" d="M 219 531 L 74 503 L 74 412 L 180 400" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="rope" data-to="rot" d="M 240 439 L 478 400" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="qk" data-to="rot" d="M 520 439 L 500 400" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="rot" data-to="sc" d="M 489 366 L 489 317" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="mask" data-to="sm" d="M 180 366 L 449 243" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="sc" data-to="sm" d="M 489 283 L 471 243" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="v" data-to="mix" d="M 785 448 L 785 443 L 785 177 L 536 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="sm" data-to="mix" d="M 460 191 L 514 152" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 525 118 L 525 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="cfg"><rect x="125.5" y="531" width="209" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="230" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Layer type and positions</text>
+</g>
+<g class="node" id="x"><rect x="622" y="531" width="116" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="680" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tokens</text>
+</g>
+<g class="node" id="rope"><rect x="136.5" y="439" width="207" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="240" y="461.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Build rotary factors</text>
+<text x="240" y="479.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Use layer-specific frequencies</text>
+</g>
+<g class="node" id="qk"><rect x="409.5" y="439" width="221" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="520" y="461.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project Q, K → split heads</text>
+<text x="520" y="479.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">RMSNorm per head</text>
+</g>
+<g class="node" id="v"><rect x="686" y="448" width="198" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="785" y="470.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project V → split heads</text>
+</g>
+<g class="node" id="mask"><rect x="70.5" y="366" width="219" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="180" y="388.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Build local or global mask</text>
+</g>
+<g class="node" id="rot"><rect x="390" y="366" width="198" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="489" y="388.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Apply RoPE to Q and K</text>
+</g>
+<g class="node" id="sc"><rect x="363.5" y="283" width="251" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="489" y="305.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Repeat K heads → scaled QKᵀ</text>
+</g>
+<g class="node" id="sm"><rect x="367.5" y="191" width="185" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="460" y="213.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Add mask → Softmax</text>
+<text x="460" y="231.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dropout in training</text>
+</g>
+<g class="node" id="mix"><rect x="410" y="118" width="230" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="525" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Repeat V heads → weight V</text>
+</g>
+<g class="node" id="out"><rect x="429.5" y="35" width="191" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="525" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Merge heads → Linear</text>
+</g>
+<text x="602" y="510" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--qk">B×T×C</text>
+<text x="247" y="516" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge cfg--rope">Positions</text>
+<text x="157" y="516" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge cfg--mask">Layer type</text>
+<text x="368" y="431" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge rope--rot">cos, sin</text>
+<text x="520" y="424" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qk--rot">Q, K</text>
+<text x="495" y="347" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge rot--sc">B×h×T×D (Q)</text>
+<text x="303" y="324" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mask--sm">1×1×T×T</text>
+<text x="490" y="268" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sc--sm">B×h×T×T</text>
+<text x="791" y="445" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--mix">B×g×T×D</text>
+<text x="498" y="183" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sm--mix">B×h×T×T</text>
+<text x="531" y="99" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--out">B×T×h×D</text>
+</svg>

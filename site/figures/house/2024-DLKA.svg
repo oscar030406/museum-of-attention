@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 459 526 L 465 485" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="y" d="M 485 526 L 849 497 L 849 115 L 536 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="d" d="M 452 443 L 345 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="m" d="M 478 443 L 673 423 L 673 182 L 478 154" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="d" data-to="e" d="M 345 353 L 345 326" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="e" data-to="w" d="M 345 270 L 345 237" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="w" data-to="m" d="M 345 195 L 452 154" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="y" d="M 465 112 L 510 71" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<g class="node" id="x"><rect x="386.5" y="526" width="171" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="472" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="369" y="443" width="192" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="465" y="469.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 + GELU</text>
+</g>
+<g class="node" id="d"><rect x="217.5" y="353" width="255" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="345" y="377.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Deformable DW Conv 5×5</text>
+<text x="345" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Predict offsets with Conv 5×5</text>
+</g>
+<g class="node" id="e"><rect x="216.5" y="270" width="257" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="345" y="294.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Deformable DW Conv 7×7</text>
+<text x="345" y="312.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Predict offsets, dilation 3</text>
+</g>
+<g class="node" id="w"><rect x="245.5" y="195" width="199" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="345" y="221.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Conv 1×1 weights</text>
+</g>
+<g class="node" id="m"><rect x="370" y="112" width="190" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="465" y="138.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Elementwise product</text>
+</g>
+<g class="node" id="y"><rect x="392" y="29" width="262" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="523" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 + input residual</text>
+</g>
+<text x="469" y="510" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="676" y="528" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--y">Residual</text>
+<text x="406" y="424" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--d">B×C×H×W</text>
+<text x="577" y="446" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--m">Projected features</text>
+<text x="406" y="185" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge w--m">B×C×H×W</text>
+<text x="501" y="98" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--y">B×C×H×W</text>
+</svg>

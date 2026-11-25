@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="a" data-to="ch" d="M 321 531 L 295 491" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="cm" d="M 299 531 L 105 506 L 105 420 L 344 400" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="ch" data-to="cm" d="M 295 439 L 366 400" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="cm" data-to="add" d="M 355 366 L 409 317" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="b" data-to="add" d="M 840 531 L 830 505 L 830 344 L 431 317" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="add" data-to="pool" d="M 409 283 L 340 243" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="pool" data-to="h" d="M 329 191 L 195 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="pool" data-to="w" d="M 351 191 L 510 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="h" data-to="out" d="M 195 118 L 433 69" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="w" data-to="out" d="M 510 118 L 455 69" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="add" data-to="out" d="M 431 283 L 743 264 L 743 108 L 477 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="a"><rect x="235" y="531" width="150" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="310" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">First feature map</text>
+</g>
+<g class="node" id="b"><rect x="753" y="531" width="174" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="840" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Second feature map</text>
+</g>
+<g class="node" id="ch"><rect x="192.5" y="439" width="205" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="295" y="461.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">GAP → channel Conv1D</text>
+<text x="295" y="479.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Sigmoid</text>
+</g>
+<g class="node" id="cm"><rect x="270" y="366" width="170" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="355" y="388.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Channel reweight ⊗</text>
+</g>
+<g class="node" id="add"><rect x="308" y="283" width="224" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="420" y="305.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Add second feature map ⊕</text>
+</g>
+<g class="node" id="pool"><rect x="217" y="191" width="246" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="340" y="213.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Mean over width and height</text>
+<text x="340" y="231.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Concat → Conv 1×1 → BN → ReLU</text>
+</g>
+<g class="node" id="h"><rect x="78" y="118" width="234" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="195" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Height Conv 1×1 → Sigmoid</text>
+</g>
+<g class="node" id="w"><rect x="395.5" y="118" width="229" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="510" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Width Conv 1×1 → Sigmoid</text>
+</g>
+<g class="node" id="out"><rect x="338" y="35" width="234" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="455" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Apply both position gates ⊗</text>
+</g>
+<text x="319" y="516" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a--ch">B×C×H×W</text>
+<text x="340" y="427" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge ch--cm">B×C×1×1</text>
+<text x="393" y="351" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge cm--add">B×C×H×W</text>
+<text x="844" y="523" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge b--add">B×C×H×W</text>
+<text x="388" y="262" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge add--pool">B×C×H×W</text>
+<text x="331" y="103" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge h--out">B×C×H×1</text>
+<text x="494" y="94" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge w--out">B×C×1×W</text>
+<text x="603" y="289" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge add--out">Fused features</text>
+</svg>

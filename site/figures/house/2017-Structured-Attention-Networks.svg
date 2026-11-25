@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="q" data-to="s" d="M 261 531 L 464 503" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="v" data-to="s" d="M 734 531 L 486 503" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="u" d="M 475 451 L 475 432" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="u" data-to="fw" d="M 453 380 L 302 352" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="u" data-to="bw" d="M 497 380 L 704 352" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="u" data-to="edge" d="M 475 380 L 485 291" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="fw" data-to="edge" d="M 302 318 L 463 291" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="bw" data-to="edge" d="M 704 318 L 507 291" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="edge" data-to="w" d="M 485 239 L 485 220" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="w" data-to="mix" d="M 485 168 L 539 140" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="v" data-to="mix" d="M 756 531 L 906 505 L 906 170 L 561 140" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 550 106 L 531 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="q" data-to="out" d="M 239 531 L 57 498 L 57 114 L 509 69" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<g class="node" id="q"><rect x="183.5" y="531" width="133" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="250" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Decoder query</text>
+</g>
+<g class="node" id="v"><rect x="666" y="531" width="158" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="745" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Context sequence</text>
+</g>
+<g class="node" id="s"><rect x="340" y="451" width="270" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="475" y="473.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Project query → dot with context</text>
+<text x="475" y="491.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Append zero score for second state</text>
+</g>
+<g class="node" id="u"><rect x="323.5" y="380" width="303" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="475" y="402.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Unary scores and learned transitions</text>
+<text x="475" y="420.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Initialize endpoint scores</text>
+</g>
+<g class="node" id="fw"><rect x="210.5" y="318" width="183" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="302" y="340.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Forward log-sum-exp</text>
+</g>
+<g class="node" id="bw"><rect x="606" y="318" width="196" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="704" y="340.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Backward log-sum-exp</text>
+</g>
+<g class="node" id="edge"><rect x="365" y="239" width="240" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="485" y="261.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Compute log edge marginals</text>
+<text x="485" y="279.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Subtract log partition</text>
+</g>
+<g class="node" id="w"><rect x="362.5" y="168" width="245" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="485" y="190.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Exp → sum over next state</text>
+<text x="485" y="208.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Keep state 0 → normalize and scale</text>
+</g>
+<g class="node" id="mix"><rect x="453.5" y="106" width="193" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="550" y="128.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight context → sum</text>
+</g>
+<g class="node" id="out"><rect x="360" y="35" width="320" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="520" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Concat original query → Linear → Tanh</text>
+</g>
+<text x="375" y="530" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--s">B×C</text>
+<text x="624" y="514" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--s">B×T×C</text>
+<text x="481" y="447" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--u">B×T×2</text>
+<text x="487" y="340" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge u--edge">Transition scores</text>
+<text x="397" y="315" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge fw--edge">B×T×2</text>
+<text x="622" y="304" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge bw--edge">B×T×2</text>
+<text x="491" y="235" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge edge--w">B×(T+1)×2×2</text>
+<text x="520" y="162" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge w--mix">B×T</text>
+<text x="841" y="529" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--mix">B×T×C</text>
+<text x="550" y="92" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--out">B×C</text>
+<text x="167" y="512" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--out">Original query</text>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="q" data-to="pre" d="M 325 531 L 325 491" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="pre" data-to="small" d="M 314 439 L 200 409" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="pre" data-to="raw" d="M 336 439 L 510 400" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="small" data-to="sel" d="M 200 357 L 200 317" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="sel" data-to="norm" d="M 200 283 L 394 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="raw" data-to="norm" d="M 510 366 L 416 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="norm" data-to="mix" d="M 405 200 L 509 152" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="v" data-to="mix" d="M 745 531 L 745 446 L 745 177 L 531 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 520 118 L 520 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="q"><rect x="248.5" y="531" width="153" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="325" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Queries and keys</text>
+</g>
+<g class="node" id="v"><rect x="685.5" y="531" width="119" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="745" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Prefix values</text>
+</g>
+<g class="node" id="pre"><rect x="204.5" y="439" width="241" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="325" y="461.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Take one query and its prefix</text>
+<text x="325" y="479.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Reshape to heads</text>
+</g>
+<g class="node" id="small"><rect x="60" y="357" width="280" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="200" y="379.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Gather selected Q and K channels</text>
+<text x="200" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dot product on reduced width</text>
+</g>
+<g class="node" id="raw"><rect x="417" y="366" width="186" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="510" y="388.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Full-width scaled QKᵀ</text>
+</g>
+<g class="node" id="sel"><rect x="68.5" y="283" width="263" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="200" y="305.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Rank keys and mark exclusions</text>
+</g>
+<g class="node" id="norm"><rect x="273.5" y="200" width="263" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="405" y="222.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Mask excluded keys → Softmax</text>
+</g>
+<g class="node" id="mix"><rect x="390" y="118" width="260" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="520" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight prefix V → merge heads</text>
+</g>
+<g class="node" id="out"><rect x="416" y="35" width="208" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="520" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Concat all query outputs</text>
+</g>
+<text x="331" y="516" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--pre">B×T×C each</text>
+<text x="277" y="424" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge pre--small">K: B×t×h×D</text>
+<text x="442" y="431" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge pre--raw">Q: B×1×h×D</text>
+<text x="206" y="342" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge small--sel">B×h×1×t</text>
+<text x="318" y="268" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sel--norm">Excluded keys</text>
+<text x="469" y="305" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge raw--norm">B×h×1×t</text>
+<text x="467" y="185" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge norm--mix">B×h×1×t</text>
+<text x="751" y="494" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--mix">B×t×h×D</text>
+<text x="526" y="99" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--out">B×1×C</text>
+</svg>

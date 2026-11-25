@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="cat" d="M 281 531 L 469 367" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="d" data-to="bias" d="M 680 531 L 680 475" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="bias" data-to="cat" d="M 669 423 L 491 367" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="cat" data-to="mlp" d="M 480 333 L 480 276" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="mlp" data-to="add" d="M 480 224 L 480 168" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="x" data-to="add" d="M 259 531 L 102 493 L 102 179 L 458 168" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="bias" data-to="add" d="M 691 423 L 859 404 L 859 181 L 502 168" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="add" data-to="out" d="M 480 134 L 480 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="212" y="531" width="116" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="270" y="553.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Input scores</text>
+</g>
+<g class="node" id="d"><rect x="600" y="531" width="160" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="680" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Relative distances</text>
+</g>
+<g class="node" id="bias"><rect x="591" y="423" width="178" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="680" y="445.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Build a position bias</text>
+<text x="680" y="463.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">ALiBi, FIRE, or log kernel</text>
+</g>
+<g class="node" id="cat"><rect x="347" y="333" width="266" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="355.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Tile and concat scores with bias</text>
+</g>
+<g class="node" id="mlp"><rect x="371" y="224" width="218" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="480" y="246.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Pairwise MLP</text>
+<text x="480" y="264.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Mix heads for each position pair</text>
+</g>
+<g class="node" id="add"><rect x="339.5" y="134" width="281" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="156.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Add scores, bias and correction ⊕</text>
+</g>
+<g class="node" id="out"><rect x="407.5" y="35" width="145" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="480" y="57.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Adjusted scores</text>
+</g>
+<text x="394" y="452" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge x--cat">B×h×Q×K</text>
+<text x="686" y="508" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge d--bias">Relative position</text>
+<text x="593" y="397" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge bias--cat">h×Q×K</text>
+<text x="486" y="310" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge cat--mlp">B×Q×K×2h</text>
+<text x="486" y="201" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge mlp--add">B×h×Q×K</text>
+<text x="193" y="511" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge x--add">Original scores</text>
+<text x="786" y="427" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge bias--add">Position bias</text>
+<text x="486" y="107" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge add--out">B×h×Q×K</text>
+</svg>

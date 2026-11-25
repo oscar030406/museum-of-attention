@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 456 521 L 464 489" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="q" d="M 448 433 L 364 402" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="r" d="M 356 360 L 262 321" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="r" data-to="a" d="M 254 279 L 437 264.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="a" data-to="m" d="M 453 173.5 L 504 167" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="y" d="M 520 111 L 520 79" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="pos" data-to="r" d="M 151 521 L 246 321" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="q" data-to="z" d="M 372 360 L 499 328" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="z" data-to="a" d="M 499 272 L 453 264.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="p" data-to="v" d="M 464 433 L 744 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="v" data-to="a" d="M 736 353 L 664 269 L 469 264.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="v" data-to="m" d="M 752 353 L 788 350 L 788 184 L 520 167" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="m" d="M 480 433 L 899 422 L 899 174 L 536 167" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<g class="node" id="x"><rect x="388" y="521" width="136" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="456" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="pos"><rect x="51" y="521" width="200" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="151" y="547.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Rotary sine and cosine</text>
+</g>
+<g class="node" id="p"><rect x="360" y="433" width="208" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="464" y="457.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → Q, K, V, O</text>
+<text x="464" y="475.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Flatten and split heads</text>
+</g>
+<g class="node" id="q"><rect x="280" y="360" width="168" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="364" y="386.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">ELU + 1 on Q and K</text>
+</g>
+<g class="node" id="v"><rect x="620" y="353" width="248" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="744" y="377.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Projected V + its token mean</text>
+<text x="744" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Depthwise Conv 5×5 on V</text>
+</g>
+<g class="node" id="r"><rect x="186" y="279" width="136" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="254" y="305.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Rotate Q and K</text>
+</g>
+<g class="node" id="z"><rect x="399" y="272" width="200" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="499" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Magnitude term</text>
+<text x="499" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">z = scale · Q mean(K)ᵀ</text>
+</g>
+<g class="node" id="a"><rect x="289" y="173.5" width="328" height="91" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="453" y="197.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Accumulate rotated KᵀV</text>
+<text x="453" y="215.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scale by head scale / HW</text>
+<text x="453" y="233.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Read with rotated Q, correct magnitude</text>
+<text x="453" y="251.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Read · [1 + 1/(z + ε)] − z · mean(V)</text>
+</g>
+<g class="node" id="m"><rect x="396" y="111" width="248" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="520" y="135.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Restore grid and add local V</text>
+<text x="520" y="153.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Multiply by O, Conv 1×1</text>
+</g>
+<g class="node" id="y"><rect x="448" y="37" width="144" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="520" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="467" y="515" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="251" y="356" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--r">B×J×N×D</text>
+<text x="180" y="273" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--a">Rotated Q and K</text>
+<text x="526" y="94" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--y">B×C×H×W</text>
+<text x="599" y="316" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--a">V and mean(V)</text>
+<text x="729" y="343" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--m">Local V</text>
+<text x="690" y="447" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--m">Gate O</text>
+</svg>

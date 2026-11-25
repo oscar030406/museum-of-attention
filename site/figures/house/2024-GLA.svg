@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="g" d="M 498 531 L 295 475" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="p" d="M 520 531 L 615 475" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="prev" data-to="upd" d="M 125 531 L 108 432 L 388 376" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="g" data-to="upd" d="M 295 423 L 410 376" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="upd" d="M 604 423 L 432 376" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="read" d="M 626 423 L 695 413 L 695 272 L 471 267" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="upd" data-to="read" d="M 410 324 L 449 267" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="read" data-to="op" d="M 460 233 L 494 177" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="x" data-to="op" d="M 542 531 L 903 508 L 903 182 L 516 177" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="op" data-to="out" d="M 505 125 L 505 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="prev"><rect x="60" y="531" width="130" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="125" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Previous state</text>
+</g>
+<g class="node" id="x"><rect x="462" y="531" width="116" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="520" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tokens</text>
+</g>
+<g class="node" id="g"><rect x="155.5" y="423" width="279" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="295" y="445.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project log decay per key channel</text>
+<text x="295" y="463.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">LogSigmoid, scale, optional clamp</text>
+</g>
+<g class="node" id="p"><rect x="495" y="423" width="240" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="615" y="445.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project Q, K, V → split heads</text>
+<text x="615" y="463.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Optional short Conv1D</text>
+</g>
+<g class="node" id="upd"><rect x="289" y="324" width="242" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="410" y="346.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Decay and add outer product</text>
+<text x="410" y="364.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">S = exp(g) ⊗ S(prev) + k ⊗ v</text>
+</g>
+<g class="node" id="read"><rect x="397.5" y="233" width="125" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="460" y="255.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Read qᵀS / √K</text>
+</g>
+<g class="node" id="op"><rect x="374.5" y="125" width="261" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="505" y="147.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">RMSNorm, optional output gate</text>
+<text x="505" y="165.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Merge heads → Linear</text>
+</g>
+<g class="node" id="out"><rect x="440.5" y="35" width="129" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="505" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output tokens</text>
+</g>
+<text x="578" y="511" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×T×C</text>
+<text x="124" y="488" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge prev--upd">B×h×K×V</text>
+<text x="364" y="409" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge g--upd">g: B×h×K</text>
+<text x="530" y="400" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--upd">k, v</text>
+<text x="701" y="412" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--read">q: B×h×K</text>
+<text x="439" y="300" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge upd--read">B×h×K×V</text>
+<text x="486" y="209" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge read--op">B×T×h×V</text>
+<text x="740" y="534" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--op">Output gate input</text>
+<text x="511" y="102" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge op--out">B×T×C</text>
+</svg>

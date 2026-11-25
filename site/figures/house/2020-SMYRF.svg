@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="qk" data-to="trans" d="M 311 531 L 280 503" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="trans" data-to="hash" d="M 280 451 L 285 432" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="hash" data-to="sort" d="M 285 380 L 450 361" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="qk" data-to="sort" d="M 289 531 L 69 510 L 69 370 L 428 361" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="v" data-to="sort" d="M 770 531 L 835 491 L 835 372 L 472 361" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="sort" data-to="soft" d="M 439 309 L 390 291" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="sort" data-to="mix" d="M 461 309 L 733 304 L 733 232 L 516 211" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="soft" data-to="mix" d="M 401 239 L 494 211" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="soft" data-to="fold" d="M 379 239 L 189 234 L 189 158 L 449 149" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="mix" data-to="fold" d="M 505 177 L 471 149" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="fold" data-to="out" d="M 460 97 L 460 69" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<g class="node" id="qk"><rect x="223.5" y="531" width="153" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="300" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Queries and keys</text>
+</g>
+<g class="node" id="v"><rect x="734" y="531" width="72" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="770" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Values</text>
+</g>
+<g class="node" id="trans"><rect x="162" y="451" width="236" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="280" y="473.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Asymmetric norm extension</text>
+<text x="280" y="491.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Append two coordinates to Q, K</text>
+</g>
+<g class="node" id="hash"><rect x="155.5" y="380" width="259" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="285" y="402.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project onto random hash axes</text>
+<text x="285" y="420.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Sort and split equal-length clusters</text>
+</g>
+<g class="node" id="sort"><rect x="331" y="309" width="238" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="450" y="331.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Gather original Q, K, V</text>
+<text x="450" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Same cluster index per hash round</text>
+</g>
+<g class="node" id="soft"><rect x="264.5" y="239" width="251" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="390" y="261.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Within-cluster QKᵀ → Softmax</text>
+<text x="390" y="279.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Keep log-sum-exp for each query</text>
+</g>
+<g class="node" id="mix"><rect x="369" y="177" width="272" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="505" y="199.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight V and undo query sorting</text>
+</g>
+<g class="node" id="fold"><rect x="349" y="97" width="222" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="460" y="119.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Softmax over hash rounds</text>
+<text x="460" y="137.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Weight restored contexts</text>
+</g>
+<g class="node" id="out"><rect x="393" y="35" width="134" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="460" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output context</text>
+</g>
+<text x="308" y="519" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qk--trans">B×Q×D, B×K×D</text>
+<text x="291" y="447" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge trans--hash">Width D+2</text>
+<text x="417" y="384" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge hash--sort">Query and key permutations</text>
+<text x="171" y="516" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qk--sort">Original Q and K</text>
+<text x="813" y="518" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--sort">B×K×V</text>
+<text x="430" y="304" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge sort--soft">G×q×k</text>
+<text x="602" y="325" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge sort--mix">V: G×k×V</text>
+<text x="463" y="233" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge soft--mix">G×q×k</text>
+<text x="294" y="230" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge soft--fold">Log-sum-exp</text>
+<text x="502" y="165" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--fold">R×B×Q×V</text>
+<text x="466" y="88" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge fold--out">B×Q×V</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 469 531 L 287 475" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="v" d="M 491 531 L 730 466" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="s" d="M 287 423 L 287 376" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="g" d="M 287 324 L 287 267" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="g" data-to="m" d="M 287 233 L 479 168" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="v" data-to="m" d="M 730 432 L 771 427 L 771 195 L 501 168" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="m" data-to="y" d="M 490 134 L 490 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="396.5" y="531" width="167" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input local features</text>
+</g>
+<g class="node" id="p"><rect x="182.5" y="423" width="209" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="287" y="445.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Reflect pad X and X²</text>
+<text x="287" y="463.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Window means E[X] and E[X²]</text>
+</g>
+<g class="node" id="v"><rect x="684" y="432" width="92" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="730" y="454.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 3×3</text>
+</g>
+<g class="node" id="s"><rect x="172.5" y="324" width="229" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="287" y="346.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Window standard deviation</text>
+<text x="287" y="364.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">√max(E[X²] − E[X]², ε)</text>
+</g>
+<g class="node" id="g"><rect x="197" y="233" width="180" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="287" y="255.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → Sigmoid</text>
+</g>
+<g class="node" id="m"><rect x="375.5" y="134" width="229" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="490" y="156.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Scale convolved features ⊗</text>
+</g>
+<g class="node" id="y"><rect x="399.5" y="35" width="181" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="490" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output local features</text>
+</g>
+<text x="383" y="500" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="621" y="511" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--v">B×C×H×W</text>
+<text x="293" y="405" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--s">Each B×C×H×W</text>
+<text x="293" y="301" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge s--g">B×C×H×W</text>
+<text x="389" y="213" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge g--m">B×C×H×W</text>
+<text x="777" y="417" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--m">B×C×H×W</text>
+<text x="496" y="107" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--y">B×C×H×W</text>
+</svg>

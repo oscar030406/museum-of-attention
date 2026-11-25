@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 480 531 L 475 491" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="b" d="M 453 439 L 225 409" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="s" d="M 475 439 L 512 400" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="b" data-to="w" d="M 225 357 L 409 326" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="s" data-to="w" d="M 512 366 L 431 326" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="p" data-to="m" d="M 497 439 L 851 421 L 851 245 L 555 234" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="w" data-to="m" d="M 420 274 L 533 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="r" d="M 544 200 L 544 161" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="r" data-to="y" d="M 544 109 L 544 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="361" y="531" width="238" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features → Flatten grid</text>
+</g>
+<g class="node" id="p"><rect x="357" y="439" width="236" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="475" y="461.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear Q, K, V → Split heads</text>
+<text x="475" y="479.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scale Q by 1/√d</text>
+</g>
+<g class="node" id="b"><rect x="94.5" y="357" width="261" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="225" y="379.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Bucket relative image positions</text>
+<text x="225" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Read contextual scores from Q</text>
+</g>
+<g class="node" id="s"><rect x="458" y="366" width="108" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="512" y="388.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ</text>
+</g>
+<g class="node" id="w"><rect x="333" y="274" width="174" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="420" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Add position scores</text>
+<text x="420" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax → Dropout</text>
+</g>
+<g class="node" id="m"><rect x="462" y="200" width="164" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="544" y="222.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weighted sum of V</text>
+</g>
+<g class="node" id="r"><rect x="404.5" y="109" width="279" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="544" y="131.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Merge heads → Linear → Dropout</text>
+<text x="544" y="149.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Restore grid</text>
+</g>
+<g class="node" id="y"><rect x="474" y="35" width="140" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="544" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="485" y="516" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×N×C</text>
+<text x="362" y="418" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--b">Q: B×h×N×d</text>
+<text x="503" y="425" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--s">Q, K: B×h×N×d</text>
+<text x="323" y="354" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge b--w">B×h×N×N</text>
+<text x="483" y="349" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--w">B×h×N×N</text>
+<text x="683" y="445" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--m">V: B×h×N×d</text>
+<text x="487" y="265" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge w--m">B×h×N×N</text>
+<text x="550" y="186" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--r">B×h×N×d</text>
+<text x="550" y="94" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--y">B×C×H×W</text>
+</svg>

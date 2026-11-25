@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 463 526 L 463 469" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="q" d="M 437 427 L 205 376" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="k" d="M 463 427 L 498 376" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="v" d="M 489 427 L 771 369" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="m" d="M 205 320 L 205 261 L 420 177" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="k" data-to="c" d="M 498 320 L 574 270" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="v" data-to="c" d="M 758 327 L 600 270" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="v" data-to="y" d="M 784 327 L 866 303 L 866 118 L 554 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="m" d="M 587 228 L 446 177" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="m" data-to="y" d="M 433 121 L 528 71" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="379.5" y="526" width="167" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="463" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="350" y="427" width="226" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="463" y="453.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Flatten + Linear + split QKV</text>
+</g>
+<g class="node" id="q"><rect x="85.5" y="320" width="239" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="205" y="344.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Center and square Q</text>
+<text x="205" y="362.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Divide by row sum, L2 norm over C</text>
+</g>
+<g class="node" id="k"><rect x="374.5" y="320" width="247" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="498" y="344.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Center and square K</text>
+<text x="498" y="362.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Divide by row sum, L2 norm over HW</text>
+</g>
+<g class="node" id="v"><rect x="688.5" y="327" width="165" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="771" y="353.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Preserve V</text>
+</g>
+<g class="node" id="c"><rect x="479.5" y="228" width="215" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="587" y="254.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Compact product K₂ᵀV</text>
+</g>
+<g class="node" id="m"><rect x="330" y="121" width="206" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="433" y="145.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Apply Q₂ and scale</text>
+<text x="433" y="163.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Q₂(K₂ᵀV) / √(HW)</text>
+</g>
+<g class="node" id="y"><rect x="401.5" y="29" width="279" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="541" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Add V + Linear + restore map</text>
+</g>
+<text x="469" y="503" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="338" y="403" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--q">B×HW×C</text>
+<text x="211" y="296" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--m">B×HW×C</text>
+<text x="551" y="304" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge k--c">B×HW×C</text>
+<text x="845" y="324" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--y">Original V</text>
+<text x="536" y="204" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge c--m">B×C×C</text>
+<text x="488" y="105" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--y">B×HW×C</text>
+</svg>

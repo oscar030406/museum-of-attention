@@ -98,5 +98,1045 @@
     "file": "figures/house/2022-FLASH-GAU.svg",
     "caption_en": "Tokens combine within chunk attention with summaries across chunks, then gate and project the result before adding the input.",
     "caption_zh": "令牌合并块内注意力与跨块摘要，再经门控和投影后加回输入。"
+  },
+  "2026-Clipped-RoPE": {
+    "file": "figures/house/2026-Clipped-RoPE.svg",
+    "caption_en": "A cosine taper attenuates the lowest rotary frequencies before their sine and cosine rotate the queries and keys.",
+    "caption_zh": "模块用余弦窗衰减最低的旋转频率，再用所得正弦和余弦旋转查询与键。"
+  },
+  "2026-ConvNeur": {
+    "file": "figures/house/2026-ConvNeur.svg",
+    "caption_en": "A global neural memory reads chunkwise updates to gate local convolution features, then the block adds the original input.",
+    "caption_zh": "全局神经记忆读取按块更新的状态，为局部卷积特征生成门控，再加回输入。"
+  },
+  "2026-Gated-DeltaNet-2": {
+    "file": "figures/house/2026-Gated-DeltaNet-2.svg",
+    "caption_en": "Each token decays the memory, uses separate gates for erasure and writing, and reads the updated state through its query.",
+    "caption_zh": "每个词元先衰减记忆，再用不同的门擦除和写入，最后用查询读取更新后的状态。"
+  },
+  "2026-Softpick": {
+    "file": "figures/house/2026-Softpick.svg",
+    "caption_en": "Causal query–key scores become nonnegative weights through rectification and absolute-sum normalization, then those weights mix the values.",
+    "caption_zh": "模块整流因果打分，并按绝对值和归一化，再用所得非负权重混合值。"
+  },
+  "2025-DAPE-V2": {
+    "file": "figures/house/2025-DAPE-V2.svg",
+    "caption_en": "Two convolutions process masked scores and position bias, then add the learned correction and the position bias to the original scores.",
+    "caption_zh": "模块对掩蔽后的打分和位置偏置做两层卷积，再把学习到的修正量与位置偏置加回原打分。"
+  },
+  "2025-DeltaProduct": {
+    "file": "figures/house/2025-DeltaProduct.svg",
+    "caption_en": "Several key–value updates modify the state for each token, and the query reads only the last updated state.",
+    "caption_zh": "每个词元用多组键和值连续更新状态，查询只读取最后一次更新后的状态。"
+  },
+  "2025-Double-Sparsity": {
+    "file": "figures/house/2025-Double-Sparsity.svg",
+    "caption_en": "Selected channels rank the causal prefix, then full-width scores over the retained keys determine how to mix their values.",
+    "caption_zh": "模块先用选定通道为因果前缀排序，再用保留键的全通道打分决定如何混合对应的值。"
+  },
+  "2025-FlexPrefill": {
+    "file": "figures/house/2025-FlexPrefill.svg",
+    "caption_en": "A probe of the last query block selects a causal block pattern per head, and masked attention mixes values within that pattern.",
+    "caption_zh": "模块用最后一个查询块为每个头选出因果块模式，再在选中的块内混合值。"
+  },
+  "2025-Gated-DeltaNet": {
+    "file": "figures/house/2025-Gated-DeltaNet.svg",
+    "caption_en": "Each token decays the previous state, writes a gated key–value correction, and reads the updated state through its query.",
+    "caption_zh": "每个词元先衰减上一步状态，再写入带门控的键值修正，最后用查询读取更新后的状态。"
+  },
+  "2025-Gemma-3-Local-Global-Attention": {
+    "file": "figures/house/2025-Gemma-3-Local-Global-Attention.svg",
+    "caption_en": "The layer selects local or global rotary settings and masking, then uses normalized queries and keys to mix values.",
+    "caption_zh": "该层按配置选择局部或全局旋转参数和掩码，再用归一化后的查询和键计算权重并混合值。"
+  },
+  "2025-LongRoPE2": {
+    "file": "figures/house/2025-LongRoPE2.svg",
+    "caption_en": "The maximum position selects a short or long frequency scale before the module returns rotary cosine and sine factors.",
+    "caption_zh": "模块按最大位置选用短程或长程频率系数，再返回旋转所需的余弦和正弦。"
+  },
+  "2025-nGPT-Attention": {
+    "file": "figures/house/2025-nGPT-Attention.svg",
+    "caption_en": "Rotary queries and keys receive unit normalization and learned scales, then the attention result moves the residual toward a new unit vector.",
+    "caption_zh": "模块将旋转后的查询和键单位化并学习缩放，再用注意力结果更新残差，最后恢复单位长度。"
+  },
+  "2025-OLMo-2-QK-Norm-Attention": {
+    "file": "figures/house/2025-OLMo-2-QK-Norm-Attention.svg",
+    "caption_en": "RMSNorm spans each projected query and key before head splitting and rotation, then grouped attention mixes values.",
+    "caption_zh": "模块先在拆头前归一化查询与键的投影，再旋转查询与键，并通过分组注意力混合值。"
+  },
+  "2025-SigmoidAttn": {
+    "file": "figures/house/2025-SigmoidAttn.svg",
+    "caption_en": "Image tokens form scaled and biased query–key scores, and sigmoid weights mix the values before the spatial grid is restored.",
+    "caption_zh": "图像词元生成缩放并加偏置的打分，再用 Sigmoid 权重混合值并恢复空间网格。"
+  },
+  "2025-TAPNext-Per-Frame-Point-Attention": {
+    "file": "figures/house/2025-TAPNext-Per-Frame-Point-Attention.svg",
+    "caption_en": "Patch and point tokens attend to one another within each frame, then residual attention and MLP updates preserve the original frame layout.",
+    "caption_zh": "图块词元和点词元在同一帧内互相注意，经过残差注意力和 MLP 更新后恢复原有帧布局。"
+  },
+  "2024-CogVLM-Visual-Expert": {
+    "file": "figures/house/2024-CogVLM-Visual-Expert.svg",
+    "caption_en": "Token types route the input and output projections through visual or language experts while both streams share one attention operation.",
+    "caption_zh": "词元类型决定输入和输出使用视觉专家还是语言专家，两类词元共用一次注意力计算。"
+  },
+  "2024-CPAM": {
+    "file": "figures/house/2024-CPAM.svg",
+    "caption_en": "Channel weights filter the first feature map before fusion, then height and width gates rescale the fused map.",
+    "caption_zh": "模块先用通道权重筛选第一路特征并与第二路相加，再用高度与宽度门控缩放融合特征。"
+  },
+  "2024-DAPE": {
+    "file": "figures/house/2024-DAPE.svg",
+    "caption_en": "A position bias and input scores feed a shared pairwise MLP, whose correction joins both terms in the returned scores.",
+    "caption_zh": "位置偏置和原打分进入逐位置对的 MLP，所得修正量与两项相加，得到调整后的打分。"
+  },
+  "2024-DeltaNet": {
+    "file": "figures/house/2024-DeltaNet.svg",
+    "caption_en": "The key first reads a value from memory, then a gated prediction error updates the state before the query reads it.",
+    "caption_zh": "键先从记忆中读出预测值，再用带门控的预测误差更新状态，最后由查询读取。"
+  },
+  "2024-Falcon-Mamba": {
+    "file": "figures/house/2024-Falcon-Mamba.svg",
+    "caption_en": "A causal convolution supplies selective state updates and normalized readout parameters, then a SiLU gate filters the resulting sequence.",
+    "caption_zh": "因果卷积提供选择性状态更新所需的输入和归一化读出参数，再用 SiLU 门过滤读出序列。"
+  },
+  "2024-Gemma-2-Soft-capped-Attention": {
+    "file": "figures/house/2024-Gemma-2-Soft-capped-Attention.svg",
+    "caption_en": "Grouped attention rotates queries and keys, bounds their logits with tanh, then masks and normalizes the scores before mixing values.",
+    "caption_zh": "分组注意力先旋转查询和键，再用 Tanh 限制打分，随后加掩码、归一化并混合值。"
+  },
+  "2024-GLA": {
+    "file": "figures/house/2024-GLA.svg",
+    "caption_en": "A key-channel gate decays the state before adding the current key–value product, and the query reads the result.",
+    "caption_zh": "键通道门先衰减状态，再加上当前键和值的外积，最后由查询读取新状态。"
+  },
+  "2024-Kosmos-2-Resampler": {
+    "file": "figures/house/2024-Kosmos-2-Resampler.svg",
+    "caption_en": "Learned queries attend to projected image tokens and to themselves, producing a fixed number of output tokens.",
+    "caption_zh": "可学习查询同时读取投影后的图像词元和查询词元，输出固定数量的词元。"
+  },
+  "2024-LlamaGen-Visual-GQA": {
+    "file": "figures/house/2024-LlamaGen-Visual-GQA.svg",
+    "caption_en": "Image token queries and keys receive two-dimensional rotary factors, and query groups share keys and values during causal attention.",
+    "caption_zh": "图像词元的查询与键应用二维旋转因子，多组查询在因果注意力中共享键和值。"
+  },
+  "2024-MinGRU": {
+    "file": "figures/house/2024-MinGRU.svg",
+    "caption_en": "A projected gate blends the previous state with a positive candidate, then a linear layer projects the recurrent sequence back.",
+    "caption_zh": "投影得到的门在前一状态和正值候选之间插值，再由线性层投影递推序列。"
+  },
+  "2024-ReBased": {
+    "file": "figures/house/2024-ReBased.svg",
+    "caption_en": "Normalized queries and keys form squared causal scores, and dividing their value sum by the score sum returns the context.",
+    "caption_zh": "归一化后的查询和键生成平方因果打分，模块用打分加权求和值，再除以打分和。"
+  },
+  "2024-SD3-MMDiT-Joint-Attention": {
+    "file": "figures/house/2024-SD3-MMDiT-Joint-Attention.svg",
+    "caption_en": "Image and text tokens use separate projections, share attention after concatenation, and split back into two gated residual streams.",
+    "caption_zh": "图像和文本词元分别投影，拼接后共享注意力，再拆回两路并做门控残差更新。"
+  },
+  "2024-SparQ-Attention": {
+    "file": "figures/house/2024-SparQ-Attention.svg",
+    "caption_en": "Large query channels rank candidate keys, then full-width attention mixes selected values and can assign leftover weight to their prefix mean.",
+    "caption_zh": "模块用幅值较大的查询通道给候选键排序，再用全通道注意力混合入选的值，并可把剩余权重分给前缀均值。"
+  },
+  "2023-E-Branchformer": {
+    "file": "figures/house/2023-E-Branchformer.svg",
+    "caption_en": "Relative attention and a convolutional gate process the same sequence, then depthwise fusion joins their outputs in a residual update.",
+    "caption_zh": "相对位置注意力和卷积门控处理同一序列，再用深度卷积融合两路输出并更新残差。"
+  },
+  "2023-EMA": {
+    "file": "figures/house/2023-EMA.svg",
+    "caption_en": "Two grouped feature paths score one another, and their combined spatial weights rescale each group before the channels are restored.",
+    "caption_zh": "两条分组特征路径互相打分，合成空间权重后缩放各组特征，再恢复原通道排列。"
+  },
+  "2023-Swin3D-Contextual-Relative-Attention": {
+    "file": "figures/house/2023-Swin3D-Contextual-Relative-Attention.svg",
+    "caption_en": "Within each sparse voxel window, relative lookup vectors modify query–key scores and values before the weighted result returns to voxel order.",
+    "caption_zh": "模块在每个稀疏体素窗口内用相对位置查表向量修正打分和值，再按原体素顺序返回加权结果。"
+  },
+  "2022-GLIP": {
+    "file": "figures/house/2022-GLIP.svg",
+    "caption_en": "One image–text score matrix normalizes along both token axes so each stream can mix values from the other.",
+    "caption_zh": "同一张图文打分矩阵分别沿文本轴和图像轴归一化，让两路词元互相读取对方的值。"
+  },
+  "2022-SAT-Graph-Transformer": {
+    "file": "figures/house/2022-SAT-Graph-Transformer.svg",
+    "caption_en": "Graph neighborhoods shape query and key projections, while values come directly from the nodes and mix across each graph.",
+    "caption_zh": "图邻域产生查询和键所需的结构特征，值直接来自原节点，并在各自的图内混合。"
+  },
+  "2022-StyleSwin-Double-Attention": {
+    "file": "figures/house/2022-StyleSwin-Double-Attention.svg",
+    "caption_en": "Style-normalized channels split between regular and shifted windows, then the two attention paths rejoin before the residual update.",
+    "caption_zh": "风格归一化后的通道分赴普通窗口和移位窗口，两路注意力结果合并后再加回残差。"
+  },
+  "2021-ADM-AttentionBlock": {
+    "file": "figures/house/2021-ADM-AttentionBlock.svg",
+    "caption_en": "Spatial tokens pass through group normalization and self-attention before an output projection and residual restore the feature grid.",
+    "caption_zh": "空间词元经过组归一化与自注意力，再做输出投影、加回残差并恢复特征网格。"
+  },
+  "2021-DeBERTa-Disentangled-Attention": {
+    "file": "figures/house/2021-DeBERTa-Disentangled-Attention.svg",
+    "caption_en": "Content and relative-position terms add to the attention logits, then masked softmax weights mix the value stream.",
+    "caption_zh": "内容打分与相对位置打分相加，再用掩码 Softmax 得到的权重混合值。"
+  },
+  "2020-LinearAttention": {
+    "file": "figures/house/2020-LinearAttention.svg",
+    "caption_en": "Mapped keys summarize values and total key mass, then mapped queries read and normalize those summaries without a pairwise score matrix.",
+    "caption_zh": "映射后的键汇总值与键本身，再由映射后的查询读取并归一化这两项。"
+  },
+  "2020-SMYRF": {
+    "file": "figures/house/2020-SMYRF.svg",
+    "caption_en": "Asymmetric hash sorting creates paired query and key clusters, and each hash round contributes according to its softmax denominator.",
+    "caption_zh": "非对称哈希排序把查询簇与键簇配对，再按各轮 Softmax 的分母汇总多轮结果。"
+  },
+  "2020-T5-Relative-Position-Bias": {
+    "file": "figures/house/2020-T5-Relative-Position-Bias.svg",
+    "caption_en": "Relative offsets use exact nearby buckets and logarithmic distant buckets, then a table supplies a bias for each head.",
+    "caption_zh": "模块对近距离逐一分桶，对远距离用对数分桶，再查表生成每个头的位置偏置。"
+  },
+  "2019-Adaptive-Attention-Span": {
+    "file": "figures/house/2019-Adaptive-Attention-Span.svg",
+    "caption_en": "A learned span gives each head a tapered distance mask, then the module optionally renormalizes the masked attention probabilities.",
+    "caption_zh": "每个头按可学习的跨度生成逐渐衰减的距离掩码，应用掩码后可重新归一化注意力概率。"
+  },
+  "2019-MQA": {
+    "file": "figures/house/2019-MQA.svg",
+    "caption_en": "Many query heads use one shared key and value stream, then a linear projection merges their contexts.",
+    "caption_zh": "多个查询头共用一组键和值，再由线性投影合并各头的上下文。"
+  },
+  "2019-RGAT": {
+    "file": "figures/house/2019-RGAT.svg",
+    "caption_en": "Relation-specific projections form edge scores, and grouped softmax weights mix source messages at each target node.",
+    "caption_zh": "关系专属的投影产生边打分，再用分组 Softmax 权重把源节点消息汇入目标节点。"
+  },
+  "2019-Sparse-Seq2Seq": {
+    "file": "figures/house/2019-Sparse-Seq2Seq.svg",
+    "caption_en": "A threshold sets low alignment scores to zero, while the remaining scores form a sparse probability distribution over keys.",
+    "caption_zh": "阈值把较低的对齐打分置零，保留的打分形成键上的稀疏概率分布。"
+  },
+  "2018-GAT": {
+    "file": "figures/house/2018-GAT.svg",
+    "caption_en": "Each head scores graph edges with two projected node terms, then normalizes over neighbors and aggregates their features.",
+    "caption_zh": "每个头用两个节点投影项给边打分，再在邻居间归一化并汇总邻居特征。"
+  },
+  "2018-PixelSNAIL-Causal-Attention": {
+    "file": "figures/house/2018-PixelSNAIL-Causal-Attention.svg",
+    "caption_en": "A strict raster mask excludes the current and later pixels, then normalized scores mix the eligible values for each query pixel.",
+    "caption_zh": "严格的光栅顺序掩码排除当前及之后的像素，再用归一化打分混合每个查询像素可读取的值。"
+  },
+  "2018-SkipNet": {
+    "file": "figures/house/2018-SkipNet.svg",
+    "caption_en": "A recurrent scalar gate uses pooled block features to decide which samples execute the block and which take its shortcut.",
+    "caption_zh": "循环标量门读取池化后的特征，逐样本决定执行当前块还是走捷径。"
+  },
+  "2017-Structured-Attention-Networks": {
+    "file": "figures/house/2017-Structured-Attention-Networks.svg",
+    "caption_en": "A two-state chain converts query–context scores into edge marginals, whose selected state probabilities weight the context summary.",
+    "caption_zh": "二状态链把查询和上下文打分转为边缘概率，再用选定状态的概率加权汇总上下文。"
+  },
+  "2026-ACE": {
+    "file": "figures/house/2026-ACE.svg",
+    "caption_en": "Row and column attention join the value map to form a spatial gate, which multiplies convolutional detail features.",
+    "caption_zh": "行注意力和列注意力与值特征相加，生成空间门控，再乘到卷积细节特征上。"
+  },
+  "2026-AFEM": {
+    "file": "figures/house/2026-AFEM.svg",
+    "caption_en": "Channel attention mixes projected values, while Gaussian frequency filtering enhances another path before the two feature maps fuse.",
+    "caption_zh": "通道注意力混合投影后的值，另一支用高斯频域滤波增强特征，最后合并两路。"
+  },
+  "2026-ALCA": {
+    "file": "figures/house/2026-ALCA.svg",
+    "caption_en": "Interleaved mean, max, and deviation statistics produce channel weights, then a spatial gate filters the channel-refined features.",
+    "caption_zh": "交错排列的均值、最大值和标准差生成通道权重，随后空间门控筛选通道加权后的特征。"
+  },
+  "2026-BinaryAttention": {
+    "file": "figures/house/2026-BinaryAttention.svg",
+    "caption_en": "Scaled signs replace queries and keys before scoring, then optional eight-bit quantization prepares the probabilities and values for mixing.",
+    "caption_zh": "模块用带缩放的二值符号替换查询与键再打分，混合前可将概率和值量化为八位。"
+  },
+  "2026-BSA": {
+    "file": "figures/house/2026-BSA.svg",
+    "caption_en": "One channel half bypasses two patch attention blocks, whose overlapping outputs average back onto the grid before channel fusion.",
+    "caption_zh": "一半通道走捷径，另一半经过两个块内注意力单元，重叠区取平均后再与捷径融合。"
+  },
+  "2026-CANA": {
+    "file": "figures/house/2026-CANA.svg",
+    "caption_en": "Window affinities assign and sort pixels, then overlapping chunks mix same-assignment neighbors before gating and restoring the grid.",
+    "caption_zh": "窗口亲和分数为像素分组并排序，再在重叠块内混合同组邻居，经门控后恢复网格。"
+  },
+  "2026-CFEM": {
+    "file": "figures/house/2026-CFEM.svg",
+    "caption_en": "Average and max pools feed separate concatenation and sum paths, whose fused descriptor produces a channel gate for the input.",
+    "caption_zh": "两种池化结果都进入拼接与求和路径，融合后生成通道门控并重标定输入。"
+  },
+  "2026-CGILA": {
+    "file": "figures/house/2026-CGILA.svg",
+    "caption_en": "The block sums four global spatial statistics and turns them into per-channel weights that scale the input features.",
+    "caption_zh": "模块对每个通道的四种全局空间统计量求和，生成通道权重并缩放输入特征。"
+  },
+  "2026-CooAtt": {
+    "file": "figures/house/2026-CooAtt.svg",
+    "caption_en": "Pooling along each image axis feeds one shared transform, and two separate gates scale the input across rows and columns.",
+    "caption_zh": "模块沿两个图像轴分别池化，经共享变换生成两组门控，再逐行、逐列缩放输入。"
+  },
+  "2026-CViT": {
+    "file": "figures/house/2026-CViT.svg",
+    "caption_en": "Full-resolution queries read reduced keys and values with relative position bias, then two residual steps return the refined grid.",
+    "caption_zh": "全分辨率查询用相对位置偏置读取压缩后的键和值，随后两次残差相加输出特征网格。"
+  },
+  "2026-CWA": {
+    "file": "figures/house/2026-CWA.svg",
+    "caption_en": "A voxelwise softmax weighs two input volumes, then channel attention and squeeze-and-excitation refine the concatenated result.",
+    "caption_zh": "模块用逐体素 Softmax 对两个输入体加权，再对拼接结果做通道注意力和压缩激励。"
+  },
+  "2026-CWA-2": {
+    "file": "figures/house/2026-CWA-2.svg",
+    "caption_en": "Depthwise convolution gathers spatial context, and a pointwise convolution followed by sigmoid returns one weight per feature-map element.",
+    "caption_zh": "深度卷积汇集空间信息，再经逐点卷积和 Sigmoid，为特征图的每个元素生成一个权重。"
+  },
+  "2026-CWSA": {
+    "file": "figures/house/2026-CWSA.svg",
+    "caption_en": "Queries and keys score channel pairs across the spatial grid, then the weighted values are projected and added to the input.",
+    "caption_zh": "查询与键沿空间轴为通道对打分，再将加权后的值投影并加回输入。"
+  },
+  "2026-DCMM": {
+    "file": "figures/house/2026-DCMM.svg",
+    "caption_en": "Query memberships and pairwise degree factors form a bias for dot-product scores before softmax mixes the values.",
+    "caption_zh": "查询的群组隶属度与成对度因子生成打分偏置，随后用 Softmax 权重混合值。"
+  },
+  "2026-DCSA": {
+    "file": "figures/house/2026-DCSA.svg",
+    "caption_en": "An input-predicted top-k mask sparsifies channel attention, whose output fuses with a local branch gated by Fourier magnitude.",
+    "caption_zh": "模块从输入预测 Top-k 稀疏掩码，再将通道注意力结果与傅里叶幅值引导的局部分支融合。"
+  },
+  "2026-DHOGSA": {
+    "file": "figures/house/2026-DHOGSA.svg",
+    "caption_en": "Patch gradients reorder pixels within patches, then value gradients sort tokens for two attention layouts before both orders are restored.",
+    "caption_zh": "图块梯度引导块内像素排序，值的梯度为两种注意力布局排序，随后恢复两次排序前的位置。"
+  },
+  "2026-DIFF": {
+    "file": "figures/house/2026-DIFF.svg",
+    "caption_en": "Pixel shuffle expands the grid for two depthwise filters, then a Mish gate and feature decomposition precede pixel unshuffle and projection.",
+    "caption_zh": "像素重排放大网格供两路深度卷积使用，随后做 Mish 门控和特征分解，再恢复网格并投影。"
+  },
+  "2026-DMA": {
+    "file": "figures/house/2026-DMA.svg",
+    "caption_en": "A center query gates locations while a second center query mixes channels, and the two paths multiply before projection.",
+    "caption_zh": "两个中心查询分别为位置加权和混合通道，两路结果相乘后投影。"
+  },
+  "2026-DSwin-Attention": {
+    "file": "figures/house/2026-DSwin-Attention.svg",
+    "caption_en": "Query offsets resample the input for neighborhood keys and values, and a depthwise positional branch adds local detail to the result.",
+    "caption_zh": "查询预测偏移并重采样输入，生成邻域的键和值，再加上深度卷积提取的局部位置信息。"
+  },
+  "2026-DWConvAttention": {
+    "file": "figures/house/2026-DWConvAttention.svg",
+    "caption_en": "A linear projection feeds a depthwise convolution on the patch grid, then a second projection returns tokens.",
+    "caption_zh": "模块先线性投影，再在图块网格上做深度卷积，最后投影回词元序列。"
+  },
+  "2026-DWSA": {
+    "file": "figures/house/2026-DWSA.svg",
+    "caption_en": "Overlapping-window and channel attention join a per-pixel rank-two reconstruction, then the fused grid is cropped and added to the input.",
+    "caption_zh": "重叠窗口注意力、通道注意力和逐像素秩二重建的结果融合后，裁回原尺寸并加回输入。"
+  },
+  "2026-EuSA": {
+    "file": "figures/house/2026-EuSA.svg",
+    "caption_en": "Euclidean distance penalizes spatial scores per head, then the value mixture adds depthwise-convolved values before projection.",
+    "caption_zh": "模块用欧氏距离衰减每个头的空间打分，将加权值与深度卷积处理后的值相加，再投影。"
+  },
+  "2026-FilterAttention": {
+    "file": "figures/house/2026-FilterAttention.svg",
+    "caption_en": "Multiscale Hessian responses combine into a voxel gate that scales a volume before adding the original input.",
+    "caption_zh": "多尺度 Hessian 响应融合成体素门控，用于缩放体数据，再加回原输入。"
+  },
+  "2026-HAE": {
+    "file": "figures/house/2026-HAE.svg",
+    "caption_en": "Three channel groups take pooling, sequential channel and spatial gates, or depthwise convolution before rejoining for residual convolution and projection.",
+    "caption_zh": "三组通道分别经池化、串行通道与空间门控、深度卷积，再拼接并做残差卷积和投影。"
+  },
+  "2026-HFA": {
+    "file": "figures/house/2026-HFA.svg",
+    "caption_en": "A shared encoder and two decoders predict elementwise weights that blend two feature maps with a two-way softmax.",
+    "caption_zh": "共享编码器和两个解码器预测逐元素权重，再通过双路 Softmax 加权融合两张特征图。"
+  },
+  "2026-InfSA": {
+    "file": "figures/house/2026-InfSA.svg",
+    "caption_en": "Rectified scores use either Frobenius normalization or an energy-pooled query to mix values, then a linear layer projects the result.",
+    "caption_zh": "整流打分可用矩阵范数归一化，或先按能量汇总查询再打分，两条路径各自混合值并投影。"
+  },
+  "2026-LCA": {
+    "file": "figures/house/2026-LCA.svg",
+    "caption_en": "A pointwise convolution makes a gate at every location and channel, and sigmoid weights scale the original features.",
+    "caption_zh": "逐点卷积为每个位置的各通道生成门控，经 Sigmoid 后缩放原特征。"
+  },
+  "2026-LCGA": {
+    "file": "figures/house/2026-LCGA.svg",
+    "caption_en": "Each window mixes regular and curvature-modulated attention weights, then the joined window output adds depthwise-filtered values.",
+    "caption_zh": "每个窗口混合常规权重与曲率调制权重，合并窗口后加上经深度卷积处理的值。"
+  },
+  "2026-LP": {
+    "file": "figures/house/2026-LP.svg",
+    "caption_en": "A dense convolutional branch builds an importance map, which conditions two refinement stages that both add the initial features.",
+    "caption_zh": "密集连接的卷积分支生成重要性图，两次细化都用这张图，并各自加回初始特征。"
+  },
+  "2026-LSCA": {
+    "file": "figures/house/2026-LSCA.svg",
+    "caption_en": "Spatial self-attention feeds channel self-attention, whose value projection also takes a depthwise convolution path before the final residual.",
+    "caption_zh": "空间自注意力接到通道自注意力，其中值还经深度卷积分支，最后加上该阶段的输入。"
+  },
+  "2026-MCA": {
+    "file": "figures/house/2026-MCA.svg",
+    "caption_en": "Downsampled queries, keys, and a bridge form two channel weight matrices that mix full-resolution values in succession.",
+    "caption_zh": "降采样后的查询、键和中间特征生成两张通道权重矩阵，依次混合全分辨率值。"
+  },
+  "2026-MCSA": {
+    "file": "figures/house/2026-MCSA.svg",
+    "caption_en": "Multiscale pooling generates channel weights, and multiscale convolution on the gated features generates the spatial weights applied next.",
+    "caption_zh": "多尺度池化先生成通道权重，再对加权后的特征做多尺度卷积，生成空间权重并应用。"
+  },
+  "2026-MHLA": {
+    "file": "figures/house/2026-MHLA.svg",
+    "caption_en": "Distance-weighted blocks exchange linear attention statistics, and the normalized query readout adds a local depthwise value projection.",
+    "caption_zh": "各块按距离混合线性注意力统计量，再将归一化的查询读出与局部深度卷积结果相加。"
+  },
+  "2026-MSEA": {
+    "file": "figures/house/2026-MSEA.svg",
+    "caption_en": "Dense dilated context feeds channel and edge-aware spatial gates, then residual refinement returns features alongside the raw edge logits.",
+    "caption_zh": "密集空洞卷积提取上下文，随后施加通道与边缘感知空间门控，返回细化特征及边缘打分。"
+  },
+  "2026-MVP-VLM": {
+    "file": "figures/house/2026-MVP-VLM.svg",
+    "caption_en": "Visual tokens attend to each other and to the question, then per-token probabilities yield the sorted indices to keep.",
+    "caption_zh": "视觉词元先做自注意力，再读取问题词元，随后按逐词元概率选出并排序保留索引。"
+  },
+  "2026-PAB": {
+    "file": "figures/house/2026-PAB.svg",
+    "caption_en": "Channel groups use different neighborhood sizes, then a pixelwise softmax selects their contributions to a projected weighted sum.",
+    "caption_zh": "各通道组使用不同大小的注意力邻域，再按像素为各组分配权重，求和并投影。"
+  },
+  "2026-PartialAttention": {
+    "file": "figures/house/2026-PartialAttention.svg",
+    "caption_en": "One channel slice runs self-attention with a residual, then rejoins the untouched slice in the original channel order.",
+    "caption_zh": "一部分通道做自注意力并加上残差，再按原通道顺序与旁路拼接。"
+  },
+  "2026-PAT-ch": {
+    "file": "figures/house/2026-PAT-ch.svg",
+    "caption_en": "One channel half takes a spatial convolution, while mean and standard deviation gate the other half before concatenation.",
+    "caption_zh": "一半通道做空间卷积，另一半用均值和标准差生成门控，最后拼接两半。"
+  },
+  "2026-PAT-sf": {
+    "file": "figures/house/2026-PAT-sf.svg",
+    "caption_en": "Relative image positions and scaled queries contribute to token scores, whose softmax weights mix values before restoring the image grid.",
+    "caption_zh": "相对图像位置与缩放后的查询一起影响位置打分，Softmax 权重混合值后恢复图像网格。"
+  },
+  "2026-PAT-sp": {
+    "file": "figures/house/2026-PAT-sp.svg",
+    "caption_en": "A spatial gate scales one channel slice, while the other slice is normalized and projected before the two are concatenated.",
+    "caption_zh": "一部分通道由空间门控缩放，另一部分先归一化再投影，最后拼接两路。"
+  },
+  "2026-PoM": {
+    "file": "figures/house/2026-PoM.svg",
+    "caption_en": "Learned polynomials summarize context tokens, then a query-derived hard-sigmoid gate selects summary channels before the final projection.",
+    "caption_zh": "可学习多项式汇总上下文词元，再用查询生成的 Hardsigmoid 门控选择通道并投影。"
+  },
+  "2026-PSAA": {
+    "file": "figures/house/2026-PSAA.svg",
+    "caption_en": "Coarse context and wavelet detail gate two feature paths, then channel reweighting and parallel output convolutions fuse them.",
+    "caption_zh": "粗尺度上下文和小波细节分别生成两路门控，随后做通道重加权，并融合两路输出卷积。"
+  },
+  "2026-RELA": {
+    "file": "figures/house/2026-RELA.svg",
+    "caption_en": "Positive query and key features form normalized linear attention, and depthwise filtering of values supplies a local addition.",
+    "caption_zh": "查询和键先映射为正值，再做归一化线性注意力，最后加上深度卷积处理后的值。"
+  },
+  "2026-SA-CA": {
+    "file": "figures/house/2026-SA-CA.svg",
+    "caption_en": "Spatially filtered queries and keys score channel pairs per head, then the value mixture is projected and added to the input.",
+    "caption_zh": "带空间滤波的查询和键为每个头的通道对打分，再混合值、投影并加回输入。"
+  },
+  "2026-SAA": {
+    "file": "figures/house/2026-SAA.svg",
+    "caption_en": "Density-selected centers merge tokens into compact keys and values, which full-length queries read through softmax attention.",
+    "caption_zh": "模块按密度选择中心并合并词元，生成紧凑的键和值，再由全长查询用 Softmax 注意力读取。"
+  },
+  "2026-SAM": {
+    "file": "figures/house/2026-SAM.svg",
+    "caption_en": "Two convolutional scales predict a spatially varying gate, which multiplies the input before the residual addition.",
+    "caption_zh": "两路卷积尺度生成随位置变化的门控，用于缩放输入，再加回原特征。"
+  },
+  "2026-SAMC": {
+    "file": "figures/house/2026-SAMC.svg",
+    "caption_en": "Sequential channel and spatial gates refine the input, then three convolutional scales are concatenated and projected.",
+    "caption_zh": "通道门控和空间门控依次重标定输入，再拼接三种卷积尺度的结果并投影。"
+  },
+  "2026-SCA-LRDUN": {
+    "file": "figures/house/2026-SCA-LRDUN.svg",
+    "caption_en": "A depthwise spatial filter gates pointwise values, and a convolutional feed-forward stage follows the first residual addition.",
+    "caption_zh": "深度空间滤波生成门控并调制逐点投影后的值，残差相加后再接卷积前馈层。"
+  },
+  "2026-SCA-ParTY": {
+    "file": "figures/house/2026-SCA-ParTY.svg",
+    "caption_en": "Self-attended tokens supply a shared query and two independent key–value projections, whose attention results fuse with residual connections.",
+    "caption_zh": "自注意力处理后的词元生成共享查询和两套独立的键值投影，两路注意力结果经残差连接后融合。"
+  },
+  "2026-SCFM": {
+    "file": "figures/house/2026-SCFM.svg",
+    "caption_en": "Spatial and channel gates independently scale the input, then pointwise projections of the two gated paths are added.",
+    "caption_zh": "空间门控和通道门控分别缩放输入，两路结果各做逐点投影再相加。"
+  },
+  "2026-SDGW": {
+    "file": "figures/house/2026-SDGW.svg",
+    "caption_en": "Local standard deviation yields a sigmoid gate that scales the features from a separate spatial convolution.",
+    "caption_zh": "局部标准差经 Sigmoid 生成门控，用于缩放另一条空间卷积分支的特征。"
+  },
+  "2026-SEA": {
+    "file": "figures/house/2026-SEA.svg",
+    "caption_en": "Channel attention mixes values, then a learned per-location transform of those values modulates the mixture before projection.",
+    "caption_zh": "通道注意力先混合值，再用值的逐位置变换调制结果，最后投影。"
+  },
+  "2026-SFC": {
+    "file": "figures/house/2026-SFC.svg",
+    "caption_en": "Two receptive fields generate channel and spatial weights, which form a gate for projected features before the block adds its input.",
+    "caption_zh": "两种感受野共同生成通道与空间权重，融合成门控并缩放投影特征，最后加回输入。"
+  },
+  "2026-SGILA": {
+    "file": "figures/house/2026-SGILA.svg",
+    "caption_en": "Four channel statistics are summed into one spatial map, then convolution and sigmoid produce a gate for the input.",
+    "caption_zh": "四种通道统计量相加得到一张空间图，再经卷积和 Sigmoid 生成输入门控。"
+  },
+  "2026-SSC": {
+    "file": "figures/house/2026-SSC.svg",
+    "caption_en": "Windowed spatial and spectral correlations mix shared values in parallel, then the restored grids are concatenated, projected, and transposed.",
+    "caption_zh": "窗口内的空间相关与光谱相关并行混合同一组值，随后还原网格、拼接、投影并交换空间轴。"
+  },
+  "2026-STAM": {
+    "file": "figures/house/2026-STAM.svg",
+    "caption_en": "Four channel groups take squeeze-and-excitation at different resolutions, then the fused maps modulate the full-resolution input.",
+    "caption_zh": "四组通道分别在不同分辨率上做压缩激励，融合后的特征图再调制全分辨率输入。"
+  },
+  "2026-TAM": {
+    "file": "figures/house/2026-TAM.svg",
+    "caption_en": "Temporal attention mixes frames at each location, then a per-frame spatial gate and convolution fuse the result with the original frames.",
+    "caption_zh": "时间注意力在每个位置混合各帧，再通过逐帧空间门控和卷积与原始帧融合。"
+  },
+  "2026-VHCA": {
+    "file": "figures/house/2026-VHCA.svg",
+    "caption_en": "Two axis layouts score sequences of height and width, then their value mixtures are restored, summed, projected, and added to the input.",
+    "caption_zh": "模块按高、宽两种布局打分，将各自混合后的值恢复成网格，再求和、投影并加回输入。"
+  },
+  "2026-WeightFormer": {
+    "file": "figures/house/2026-WeightFormer.svg",
+    "caption_en": "The block predicts depthwise kernels and a linear weight update for two residual stages that return the feature grid.",
+    "caption_zh": "模块预测深度卷积核与线性权重更新量，用于两次残差计算，然后还原特征网格。"
+  },
+  "2025-ACA": {
+    "file": "figures/house/2025-ACA.svg",
+    "caption_en": "The module pools rows and columns separately, predicts two coordinate gates, and scales the input by their broadcast sum.",
+    "caption_zh": "模块沿两个坐标轴分别池化，生成两组门控权重。权重广播相加后乘回输入。"
+  },
+  "2025-Area-Attention": {
+    "file": "figures/house/2025-Area-Attention.svg",
+    "caption_en": "Area-wise attention mixes projected values, then adds a depthwise position term from those values and projects the restored image.",
+    "caption_zh": "模块在各区域内用注意力混合值，再还原特征图，加上值分支的深度卷积位置项并投影。"
+  },
+  "2025-Attention-Ghost": {
+    "file": "figures/house/2025-Attention-Ghost.svg",
+    "caption_en": "A Ghost expansion feeds a clamped channel gate, then a second Ghost transform projects the gated features and adds the shortcut.",
+    "caption_zh": "第一次 Ghost 变换扩展通道。截断门控重标定特征，第二次 Ghost 变换投影后与捷径相加。"
+  },
+  "2025-Attention4D": {
+    "file": "figures/house/2025-Attention4D.svg",
+    "caption_en": "Head mixing surrounds softmax on relative-position scores, and attended values are added to a depthwise value branch before projection.",
+    "caption_zh": "模块在 Softmax 前后混合注意力头，并把加权结果与值的深度卷积分支相加后投影。"
+  },
+  "2025-CAM": {
+    "file": "figures/house/2025-CAM.svg",
+    "caption_en": "Within each image window, normalized query and key channels form a channel mixing matrix that weights values before the windows are reassembled.",
+    "caption_zh": "模块在各窗口内用归一化查询与键计算通道权重，加权值，再拼回特征图。"
+  },
+  "2025-CeAtt": {
+    "file": "figures/house/2025-CeAtt.svg",
+    "caption_en": "The module samples the image, computes channel weights for each half, applies them to the opposite values, and upsamples the concatenated result.",
+    "caption_zh": "模块先稀疏采样，再从两组通道分别计算权重并加权对侧的值，最后拼接并上采样。"
+  },
+  "2025-CEB": {
+    "file": "figures/house/2025-CEB.svg",
+    "caption_en": "Average and max pooling generate separate channel gates, then the module concatenates and shuffles the gated halves before adding the convolved input.",
+    "caption_zh": "平均池化和最大池化分别生成通道权重。模块加权两半特征，拼接并随机打乱通道，再加回卷积特征。"
+  },
+  "2025-ConvAttn": {
+    "file": "figures/house/2025-ConvAttn.svg",
+    "caption_en": "The input generates a depthwise kernel for selected channels, whose convolution is added to a supplied large-kernel result and rejoined with untouched channels.",
+    "caption_zh": "输入生成逐通道卷积核。模块将动态卷积与给定大核的结果相加，再拼回其余通道。"
+  },
+  "2025-CPIA-SA": {
+    "file": "figures/house/2025-CPIA-SA.svg",
+    "caption_en": "Sparse channel mixing and gated convolution exchange spatial and channel gates, then a frequency-domain depthwise transform refines their concatenated output.",
+    "caption_zh": "稀疏通道注意力和卷积分支互换空间、通道门控。两路拼接后经频域深度卷积细化。"
+  },
+  "2025-CSA-ConvBlock": {
+    "file": "figures/house/2025-CSA-ConvBlock.svg",
+    "caption_en": "Convolved queries and keys produce channel softmax gates that scale convolved values before residual addition and batch normalization.",
+    "caption_zh": "查询和键经卷积后生成每通道一个 Softmax 权重。模块加权值，再加残差并做归一化。"
+  },
+  "2025-CSAM": {
+    "file": "figures/house/2025-CSAM.svg",
+    "caption_en": "Spatial affinity and inverted channel affinity reweight two parallel streams, and the module adds their independently residualized outputs.",
+    "caption_zh": "空间亲和与反向通道亲和分别加权两路特征。每路加上输入后，模块将两路相加。"
+  },
+  "2025-CSWin": {
+    "file": "figures/house/2025-CSWin.svg",
+    "caption_en": "Each configured stripe applies softmax attention to its values, adds a depthwise positional term, and restores the token grid.",
+    "caption_zh": "模块在选定方向的条带内加权值，加上深度卷积位置项，再还原图像的令牌顺序。"
+  },
+  "2025-DCAFE": {
+    "file": "figures/house/2025-DCAFE.svg",
+    "caption_en": "Mean and max pooling generate separate height and width gates, and the module adds the two doubly gated copies of the input.",
+    "caption_zh": "平均池化和最大池化各生成高、宽两组权重。模块分别乘回输入，再将两路结果相加。"
+  },
+  "2025-Deform-Interac-Att": {
+    "file": "figures/house/2025-Deform-Interac-Att.svg",
+    "caption_en": "Channel mean and max maps can gate each other at half resolution before producing a spatial mask that scales the original features.",
+    "caption_zh": "通道均值图和最大值图可在半分辨率上互相门控，再生成空间掩码并乘回输入。"
+  },
+  "2025-DRPCA-DSA": {
+    "file": "figures/house/2025-DRPCA-DSA.svg",
+    "caption_en": "A kernel predicted per sample filters its channel mean map, and a sigmoid turns the response into a spatial gate for the input.",
+    "caption_zh": "模块为每个样本生成卷积核，用它卷积通道均值图。Sigmoid 把响应变成空间权重，再乘回输入。"
+  },
+  "2025-DSAM": {
+    "file": "figures/house/2025-DSAM.svg",
+    "caption_en": "A resized prediction gates foreground and background streams, which pass through separate atrous pyramids and fuse into enhanced features and a new prediction.",
+    "caption_zh": "模块缩放上一轮预测并生成前景和背景门控。两路各经空洞卷积金字塔，融合后输出特征和新预测。"
+  },
+  "2025-DSPM": {
+    "file": "figures/house/2025-DSPM.svg",
+    "caption_en": "Standard and dilated convolutions fuse into one map, which is reweighted first by a channel gate and then by a spatial gate.",
+    "caption_zh": "普通卷积与空洞卷积的结果先融合，再依次经过通道加权和空间加权。"
+  },
+  "2025-DSSA": {
+    "file": "figures/house/2025-DSSA.svg",
+    "caption_en": "Top-ranked regions restrict the search, then token-level top-k attention mixes selected values and adds a depthwise value term.",
+    "caption_zh": "模块先筛选区域，再在入选区域内筛选令牌并加权，最后加上值的深度卷积项。"
+  },
+  "2025-DSSA-UNet": {
+    "file": "figures/house/2025-DSSA-UNet.svg",
+    "caption_en": "Pooled queries choose key regions, then finer token scores select values inside those regions before the module adds a local depthwise term.",
+    "caption_zh": "模块用池化查询选择键区域，再用区内令牌分数筛选并加权值，最后加上局部深度卷积项。"
+  },
+  "2025-Fuse-SE": {
+    "file": "figures/house/2025-Fuse-SE.svg",
+    "caption_en": "Spatial statistics and Fourier magnitudes produce channel logits, while average spatial deviation sets the temperature of the gate that rescales the input.",
+    "caption_zh": "模块用空间统计量和频谱幅值生成通道分数，用平均空间标准差调节门控温度，再缩放输入。"
+  },
+  "2025-GA-Plenoptic": {
+    "file": "figures/house/2025-GA-Plenoptic.svg",
+    "caption_en": "Downsampled queries attend twice to the same full-resolution keys and values, then the result is upsampled and added to the original features.",
+    "caption_zh": "低分辨率查询两次读取同一套全分辨率键和值。结果上采样后加回输入。"
+  },
+  "2025-GAG": {
+    "file": "figures/house/2025-GAG.svg",
+    "caption_en": "Grouped projections combine a gating map with a skip map, producing a one-channel sigmoid mask that scales the skip features.",
+    "caption_zh": "分组卷积分别投影门控图和跳连特征。模块结合两路投影，生成单通道掩码并乘回跳连特征。"
+  },
+  "2025-GCA-Gauss": {
+    "file": "figures/house/2025-GCA-Gauss.svg",
+    "caption_en": "Average and max pooling locate the strongest channel, which centers a Gaussian density whose batch-normalized values scale every input channel.",
+    "caption_zh": "全局均值和最大值之和选出响应最强的通道。以该通道为中心的高斯密度经批归一化后缩放输入。"
+  },
+  "2025-GLCA": {
+    "file": "figures/house/2025-GLCA.svg",
+    "caption_en": "One channel half uses a global mixing matrix, the other uses a local convolutional gate, and their concatenation is added to the input.",
+    "caption_zh": "全局分支用通道矩阵混合一半特征，局部分支用一维卷积门控另一半。两路拼接后加回输入。"
+  },
+  "2025-HDPA": {
+    "file": "figures/house/2025-HDPA.svg",
+    "caption_en": "Global channel weights guide a channel-max projection that predicts a local gate, and both gates multiply the original features.",
+    "caption_zh": "全局通道权重先引导通道最大池化，再生成局部门控。两组权重相乘后缩放输入。"
+  },
+  "2025-HMHA": {
+    "file": "figures/house/2025-HMHA.svg",
+    "caption_en": "Correlation groups channels for attention, an optional prior cache modifies the weights, and a current cache gates the mixed features before projection.",
+    "caption_zh": "模块按相关性分组通道。可选的上一层缓存调节权重，本层缓存调节混合后的特征，再做投影。"
+  },
+  "2025-HPA": {
+    "file": "figures/house/2025-HPA.svg",
+    "caption_en": "Mean- and max-pooled coordinate paths exchange channel descriptors to produce a spatial gate for each group of input channels.",
+    "caption_zh": "两路分别用均值和最大值生成坐标门控，再交换通道描述量打分，为各通道组生成空间权重。"
+  },
+  "2025-IIA": {
+    "file": "figures/house/2025-IIA.svg",
+    "caption_en": "Shared mean-and-max gating runs along the width and height axes, and both gated maps are restored and added to the input.",
+    "caption_zh": "模块沿宽、高两轴分别用均值和最大值生成权重。两路加权图还原轴顺序后加回输入。"
+  },
+  "2025-InterSliceSA": {
+    "file": "figures/house/2025-InterSliceSA.svg",
+    "caption_en": "Projected voxels attend across slices along one chosen axis, and a learned sigmoid coefficient blends the restored volume with the original.",
+    "caption_zh": "投影后的体素沿选定轴跨切片加权。结果还原为体积后，用可学习的系数与原输入混合。"
+  },
+  "2025-KSFA": {
+    "file": "figures/house/2025-KSFA.svg",
+    "caption_en": "Two successive depthwise kernels supply features that a pooled branch selector combines into a sigmoid gate for the input.",
+    "caption_zh": "两级深度卷积提供不同感受野的特征。模块用池化结果选择并混合两路，再生成门控缩放输入。"
+  },
+  "2025-LP-DETR-RA": {
+    "file": "figures/house/2025-LP-DETR-RA.svg",
+    "caption_en": "Relation heads normalize exponentially weighted scores with supplied relation factors, while ordinary heads use softmax before rejoining for value mixing.",
+    "caption_zh": "关系头用给定关系因子调整指数分数并归一化。普通头用 Softmax，两类权重汇合后加权值。"
+  },
+  "2025-LRSA": {
+    "file": "figures/house/2025-LRSA.svg",
+    "caption_en": "Queries read keys and values pooled at several aspect-ratio-aware resolutions, and optional query pooling is reversed by bilinear resizing.",
+    "caption_zh": "查询读取按长宽比进行多尺度池化的键和值。若查询也经过池化，模块用双线性插值恢复原尺寸。"
+  },
+  "2025-LRSA-2": {
+    "file": "figures/house/2025-LRSA-2.svg",
+    "caption_en": "Overlapping patches attend independently, then overlap-averaged reconstruction feeds a residual depthwise feed-forward block.",
+    "caption_zh": "模块在重叠图块内分别做注意力，按重叠次数还原特征图，再通过带深度卷积的残差前馈层。"
+  },
+  "2025-LSA": {
+    "file": "figures/house/2025-LSA.svg",
+    "caption_en": "Pixel unshuffle exposes mosaic positions for a periodic gate, while a separate global channel gate scales the result across spectral channels.",
+    "caption_zh": "像素反重排把马赛克位置分到不同通道以生成周期门控，另一路全局通道门控再按光谱通道缩放结果。"
+  },
+  "2025-M-CBAM": {
+    "file": "figures/house/2025-M-CBAM.svg",
+    "caption_en": "Each group builds a channel-and-spatial mask, promotes above-mean entries to one, then the combined mask scales the features before residual addition.",
+    "caption_zh": "每组依次做通道和空间加权。掩码中高于组内均值的值置为 1，再拼接掩码、缩放特征并加残差。"
+  },
+  "2025-MALA": {
+    "file": "figures/house/2025-MALA.svg",
+    "caption_en": "Positive queries and keys provide a magnitude correction for rotary linear attention, then a local value term and output gate refine the result.",
+    "caption_zh": "正值查询和键为旋转线性注意力提供幅度修正。模块再加入值的局部项，使用输出门控并投影。"
+  },
+  "2025-MANO": {
+    "file": "figures/house/2025-MANO.svg",
+    "caption_en": "Shared patch attention processes each resolution, then the module upsamples and adds coarse responses back into finer maps.",
+    "caption_zh": "各分辨率共用图块注意力。模块从粗到细上采样，把粗尺度响应逐级加到细尺度特征中。"
+  },
+  "2025-MaskAttn": {
+    "file": "figures/house/2025-MaskAttn.svg",
+    "caption_en": "A cached binary key mask blocks scores before softmax, then the weighted values pass through a token residual and layer normalization.",
+    "caption_zh": "缓存的二值键掩码先屏蔽部分分数。值经 Softmax 加权后，模块加回令牌残差并做层归一化。"
+  },
+  "2025-MKIRA": {
+    "file": "figures/house/2025-MKIRA.svg",
+    "caption_en": "Channel and spatial gates precede multikernel depthwise filtering, whose branches are combined, shuffled, and projected through an optional residual.",
+    "caption_zh": "模块先做通道和空间加权，再用多个深度卷积核提取特征。各路合并并打乱通道，投影后可加残差。"
+  },
+  "2025-MSAM": {
+    "file": "figures/house/2025-MSAM.svg",
+    "caption_en": "Four aligned scale maps feed ten self and cross-scale pairs, whose row-wise channel attention is fused and added to a convolutional merge.",
+    "caption_zh": "四路对齐的尺度图组成十对。模块对每一对逐行做通道注意力，再融合结果并加上卷积融合分支。"
+  },
+  "2025-MSC": {
+    "file": "figures/house/2025-MSC.svg",
+    "caption_en": "Multiscale pooled context provides keys and values, and two sparse score masks produce outputs combined with learned coefficients.",
+    "caption_zh": "上下文经过多尺度池化后提供键和值。两种稀疏掩码分别加权值，结果用可学习系数相加。"
+  },
+  "2025-MSLA": {
+    "file": "figures/house/2025-MSLA.svg",
+    "caption_en": "Four channel groups use different depthwise kernels and one shared linear attention, then learned scale weights combine their outputs through a pointwise projection.",
+    "caption_zh": "四组通道各用不同深度卷积核，共用同一个线性注意力。各路乘以可学习系数后拼接，再做逐点投影。"
+  },
+  "2025-PGSSA": {
+    "file": "figures/house/2025-PGSSA.svg",
+    "caption_en": "Global spectral attention runs beside windowed spatial attention, whose pooled tokens select a spectral prompt that gates the local output before summation.",
+    "caption_zh": "全局光谱注意力与窗口分支并行。窗口令牌经空间注意力后汇总并选择光谱提示，门控结果与全局分支相加。"
+  },
+  "2025-PnP-Nystra": {
+    "file": "figures/house/2025-PnP-Nystra.svg",
+    "caption_en": "Pooled query and key landmarks factor the kernel, and an iterative pseudoinverse helps mix values with a separately propagated normalization column.",
+    "caption_zh": "模块池化查询与键得到地标，用核矩阵的迭代伪逆混合值，再用一同传递的全 1 列归一化。"
+  },
+  "2025-SA-SE": {
+    "file": "figures/house/2025-SA-SE.svg",
+    "caption_en": "The deep path expands receptive fields through serial depthwise filters, while the shallow path uses one filter, with a residual when widths match.",
+    "caption_zh": "深层路径串联多个深度卷积扩大感受野，浅层只用一次。输入和输出通道数相同则加残差。"
+  },
+  "2025-SAM": {
+    "file": "figures/house/2025-SAM.svg",
+    "caption_en": "Window affinity weights mix values, then the block restores the grid, adds a gated convolutional residual, and returns the attention weights.",
+    "caption_zh": "窗口亲和权重混合值。模块还原网格并加上门控卷积残差，同时返回注意力权重。"
+  },
+  "2025-SBSAtt": {
+    "file": "figures/house/2025-SBSAtt.svg",
+    "caption_en": "Fourier coefficients are sorted and packed into subbands, mixed by normalized channel scores, then returned to their original frequencies for inverse transformation.",
+    "caption_zh": "模块排序频率系数并打包成子带，用归一化的通道分数混合值，再恢复系数顺序并做逆变换。"
+  },
+  "2025-SCA-ConvBlock": {
+    "file": "figures/house/2025-SCA-ConvBlock.svg",
+    "caption_en": "Each channel scores its own convolved query and key maps, and the resulting channel softmax scales values before the input is added back.",
+    "caption_zh": "每个通道用自己的卷积查询和键打分。模块在通道轴做 Softmax，加权值后加回输入。"
+  },
+  "2025-SCSA-StyleTransfer": {
+    "file": "figures/house/2025-SCSA-StyleTransfer.svg",
+    "caption_en": "Semantic scores and top-one feature scores mix the same style values, then their weighted projections are added to the content image features.",
+    "caption_zh": "语义分数与特征最高分分别加权同一组风格值。两路投影经系数加权后加回内容特征。"
+  },
+  "2025-SSA-MaIR": {
+    "file": "figures/house/2025-SSA-MaIR.svg",
+    "caption_en": "A channel shuffle lets grouped pointwise convolution compute gates over rearranged channels, then the inverse shuffle aligns those gates with the input.",
+    "caption_zh": "模块先打乱通道，使分组逐点卷积能用重排后的通道计算权重，再逆重排权重并乘回输入。"
+  },
+  "2025-TemAtt": {
+    "file": "figures/house/2025-TemAtt.svg",
+    "caption_en": "Spatial mean and max descriptors feed a temporal linear layer, which produces one sigmoid gate per step for residual scaling.",
+    "caption_zh": "模块融合空间均值和最大值，再用时间线性层为每个时刻生成一个权重。加权结果加回原输入。"
+  },
+  "2025-TSFA": {
+    "file": "figures/house/2025-TSFA.svg",
+    "caption_en": "The module folds channel groups into spatial tokens, retains a fraction of scores per query, and mixes values before restoring the feature map.",
+    "caption_zh": "模块把空间位置和通道组组成令牌，对每个查询只保留一定比例的键，再加权值并还原特征图。"
+  },
+  "2025-VolSA": {
+    "file": "figures/house/2025-VolSA.svg",
+    "caption_en": "Spatial window weights generate a gate for the channel-attended stream, and the module adds both streams and their gated interaction.",
+    "caption_zh": "窗口空间权重生成门控，用来缩放通道注意力分支。模块把两路特征和门控结果相加。"
+  },
+  "2024-ASSA": {
+    "file": "figures/house/2024-ASSA.svg",
+    "caption_en": "Blend softmax and squared ReLU weights from window scores, then use the blend to mix values and project the window tokens.",
+    "caption_zh": "把窗口得分分别送入 Softmax 和平方 ReLU，混合两组权重，再汇聚值向量并投影。"
+  },
+  "2024-CGA-DEANet": {
+    "file": "figures/house/2024-CGA-DEANet.svg",
+    "caption_en": "Sum two feature maps, combine spatial and channel cues into a pixel gate, then project the gated blend and its residual sum.",
+    "caption_zh": "先将两张特征图相加，再合成空间和通道线索，生成逐像素门控，最后把加权结果与原和相加并投影。"
+  },
+  "2024-CGLU": {
+    "file": "figures/house/2024-CGLU.svg",
+    "caption_en": "Split projected tokens in two, use a depthwise convolution and GELU to form local gates, then multiply the other half and project.",
+    "caption_zh": "将投影后的令牌拆成两路，用深度卷积和 GELU 生成局部门控，再与另一路相乘并投影。"
+  },
+  "2024-CLAttention": {
+    "file": "figures/house/2024-CLAttention.svg",
+    "caption_en": "Build local importance weights with soft pooling and convolutions, resize them, and multiply the input by both the weights and a first-channel gate.",
+    "caption_zh": "用软池化和卷积生成局部权重并放大，再结合首通道门控对输入逐点加权。"
+  },
+  "2024-CRAttention": {
+    "file": "figures/house/2024-CRAttention.svg",
+    "caption_en": "Full-resolution queries and pooled keys spend one channel per head on scoring, then the weights mix pooled values for each input token.",
+    "caption_zh": "全分辨率查询与池化后的键每个头只用一维打分，再按权重为各输入位置汇聚池化值。"
+  },
+  "2024-DLKA": {
+    "file": "figures/house/2024-DLKA.svg",
+    "caption_en": "Two deformable depthwise convolutions build spatial weights, then the block reweights projected features, projects again and adds the input.",
+    "caption_zh": "两层可变形深度卷积产生空间权重，对投影特征逐点加权，再投影并加回输入。"
+  },
+  "2024-FACT-CrossAttention": {
+    "file": "figures/house/2024-FACT-CrossAttention.svg",
+    "caption_en": "Action queries gather frame values, then the module concatenates the resulting context with the original action tokens and projects each one.",
+    "caption_zh": "动作令牌生成查询并汇聚帧值，再把所得上下文与原动作令牌拼接并投影。"
+  },
+  "2024-FCA-Dehaze": {
+    "file": "figures/house/2024-FCA-Dehaze.svg",
+    "caption_en": "Two projections of pooled channels yield reciprocal interaction scores, which the module blends and filters into channel weights for the input.",
+    "caption_zh": "将池化通道的两种投影做双向交互，混合并滤波得到通道权重，再用它缩放输入。"
+  },
+  "2024-GAAM": {
+    "file": "figures/house/2024-GAAM.svg",
+    "caption_en": "Split an axis into heads, normalize products of Gaussian densities within each head, then reweight the chunks and add the input back.",
+    "caption_zh": "沿指定轴分头，在每头内将高斯密度的乘积归一化并缩放输入块，再拼回并加上原输入。"
+  },
+  "2024-GRSA": {
+    "file": "figures/house/2024-GRSA.svg",
+    "caption_en": "Residual projections within two channel groups form window queries, keys and values, then position-biased cosine attention mixes the values before groupwise projection.",
+    "caption_zh": "两组通道分别做残差投影来生成窗口查询、键和值，再用带位置偏置的余弦注意力汇聚值，最后逐组投影。"
+  },
+  "2024-LSKNet": {
+    "file": "figures/house/2024-LSKNet.svg",
+    "caption_en": "Pool paired receptive-field features to learn two spatial gates, then blend the gated features into a map that scales the input.",
+    "caption_zh": "从两种感受野的特征中池化得到两个空间门控，再把加权特征合成一张图，用它缩放输入。"
+  },
+  "2024-MaSA": {
+    "file": "figures/house/2024-MaSA.svg",
+    "caption_en": "Rotated queries and keys score width and height axes with distance decay, then two successive mixes and a depthwise convolution residual produce the output.",
+    "caption_zh": "旋转后的查询和键沿宽、高轴分别加入距离衰减打分，依次两次汇聚，再加上深度卷积分支并投影。"
+  },
+  "2024-MASAG": {
+    "file": "figures/house/2024-MASAG.svg",
+    "caption_en": "Local and pooled cues choose two spatial weights, then cross-gated interactions create a mask that reweights and projects the first input.",
+    "caption_zh": "局部卷积与通道池化产生两组空间权重，再用交叉门控生成掩码，对第一路输入加权并投影。"
+  },
+  "2024-MSPA": {
+    "file": "figures/house/2024-MSPA.svg",
+    "caption_en": "Process channel groups with cascading convolutions, pool each group at two scales, and normalize their weights across groups before reweighting and concatenating them.",
+    "caption_zh": "分组通道依次做级联卷积，各组做两种尺度的池化，再按组归一化权重并缩放、拼接各组特征。"
+  },
+  "2024-SCAM": {
+    "file": "figures/house/2024-SCAM.svg",
+    "caption_en": "Pool channels and pixels in parallel, multiply a channel context by a spatial gate, then add the result to the input map.",
+    "caption_zh": "并行汇聚通道和空间信息，用空间门控调制通道上下文，再加回输入特征图。"
+  },
+  "2024-SSA-Strip": {
+    "file": "figures/house/2024-SSA-Strip.svg",
+    "caption_en": "Generate global strip weights for each channel group, filter horizontal and vertical neighborhoods in sequence, then combine the result with a learned input bypass.",
+    "caption_zh": "按通道组生成条带权重，先后滤波横向和纵向邻域，再与带可学习缩放的输入旁路相加。"
+  },
+  "2023-AGCA": {
+    "file": "figures/house/2023-AGCA.svg",
+    "caption_en": "Use pooled channels to build a sample-specific diagonal, add a learned adjacency matrix, and transform the graph output into channel scaling weights.",
+    "caption_zh": "用池化通道生成随输入变化的对角项，加上可学习的邻接矩阵，再把图聚合结果映射为通道缩放权重。"
+  },
+  "2023-CGA": {
+    "file": "figures/house/2023-CGA.svg",
+    "caption_en": "Each head attends to a channel slice plus the previous head’s output, then the module concatenates all head outputs and projects them.",
+    "caption_zh": "每个注意力头处理一组输入通道，后续头还接收前一头的输出，最后拼接并投影各头输出。"
+  },
+  "2023-DRSformer-TKSA": {
+    "file": "figures/house/2023-DRSformer-TKSA.svg",
+    "caption_en": "Keep four different fractions of channel scores, normalize each selection, and blend four weighted value maps with learned scalars before projecting.",
+    "caption_zh": "按四种比例保留通道得分，各自归一化并汇聚值，再用可学习标量混合四路结果并投影。"
+  },
+  "2023-ESSAttn": {
+    "file": "figures/house/2023-ESSAttn.svg",
+    "caption_en": "Center and square projected queries and keys, form a compact key–value product, then apply queries and add the original values before projecting.",
+    "caption_zh": "查询和键先去均值再平方，接着先汇总键和值，再用查询读取并加回原值，最后投影。"
+  },
+  "2023-GOAT-Graph-Transformer": {
+    "file": "figures/house/2023-GOAT-Graph-Transformer.svg",
+    "caption_en": "Node queries attend to stored centroids with a log count bias, then gather centroid values while training updates the stored assignments.",
+    "caption_zh": "节点查询加入簇大小的对数偏置后汇聚质心值，并在训练时更新节点分配和质心。"
+  },
+  "2023-LSGAttention": {
+    "file": "figures/house/2023-LSGAttention.svg",
+    "caption_en": "Learn weighted token summaries, score those tokens with a Gaussian grid bias, then mix token values and project the result.",
+    "caption_zh": "先对输入做可学习的令牌汇聚，再加入高斯网格偏置打分，汇聚值令牌并投影。"
+  },
+  "2023-MCA": {
+    "file": "figures/house/2023-MCA.svg",
+    "caption_en": "Build sigmoid gates for height, width and optionally channels from pooled statistics, then average their separately reweighted feature maps.",
+    "caption_zh": "用池化统计量生成高、宽以及可选的通道门控，再平均各路分别加权后的特征图。"
+  },
+  "2023-MLCA": {
+    "file": "figures/house/2023-MLCA.svg",
+    "caption_en": "Pool into a local grid and a global vector, filter both into channel weights, blend at grid resolution and resize to scale the input.",
+    "caption_zh": "把输入池化为局部网格和全局向量，各自卷积生成通道权重，在网格上混合后放大并缩放输入。"
+  },
+  "2023-QuadrangleAttention": {
+    "file": "figures/house/2023-QuadrangleAttention.svg",
+    "caption_en": "Predict a projective grid per head and window, sample keys and values there, then let regular-window queries mix the sampled values.",
+    "caption_zh": "逐头逐窗预测投影变换后的网格，在新网格采样键和值，再用规则窗口里的查询汇聚采样值。"
+  },
+  "2023-SwiftFormer-EAA": {
+    "file": "figures/house/2023-SwiftFormer-EAA.svg",
+    "caption_en": "Summarize normalized queries with learned token weights, multiply the summary into each key, then add the original queries and project.",
+    "caption_zh": "用可学习的令牌权重汇总归一化查询，再与各位置的键逐点相乘，加回原查询后投影。"
+  },
+  "2022-ACmix": {
+    "file": "figures/house/2022-ACmix.svg",
+    "caption_en": "Shared projections feed local attention and grouped convolution in parallel, then two learned scalars mix the feature maps.",
+    "caption_zh": "共享投影同时供给局部注意力和分组卷积，再用两个可学习标量混合两路特征。"
+  },
+  "2022-DAT": {
+    "file": "figures/house/2022-DAT.svg",
+    "caption_en": "Queries predict group offsets for sampling the input, then attend to keys and values projected from those samples before adding local position features.",
+    "caption_zh": "查询预测各组采样偏移，再对采样特征投影出的键和值做注意力，最后加上局部位置特征。"
+  },
+  "2022-MDTA": {
+    "file": "figures/house/2022-MDTA.svg",
+    "caption_en": "Project features with pointwise and depthwise convolutions, score channel pairs from spatially normalized queries and keys, then mix values and project.",
+    "caption_zh": "用逐点卷积和深度卷积生成查询、键和值，按空间轴归一化查询和键后做通道打分，再汇聚值并投影。"
+  },
+  "2022-PCAA": {
+    "file": "figures/house/2022-PCAA.svg",
+    "caption_en": "Build local and global class centers from patch activations, then let pixels score local centers and read global values before residual fusion.",
+    "caption_zh": "从分块激活图提取局部和全局类别中心，让像素对局部中心打分、读取全局值，再加回原特征。"
+  },
+  "2021-NLSA": {
+    "file": "figures/house/2021-NLSA.svg",
+    "caption_en": "Hash and sort matching features, attend within neighboring chunks, then restore pixel order and blend hash rounds before adding the residual.",
+    "caption_zh": "对匹配特征哈希并排序，在相邻分块内做注意力，再复原像素顺序、混合多轮结果并加回输入。"
+  },
+  "2021-SimAM": {
+    "file": "figures/house/2021-SimAM.svg",
+    "caption_en": "Measure each activation’s squared deviation relative to its channel variance, pass the score through a sigmoid and use it to scale the activation.",
+    "caption_zh": "用通道内方差衡量每个激活值的平方偏差，再经 Sigmoid 生成逐点权重并缩放原特征。"
+  },
+  "2021-TiedSE": {
+    "file": "figures/house/2021-TiedSE.svg",
+    "caption_en": "Pool channel groups, apply the same excitation network to every group, then restore the channel layout and scale the input.",
+    "caption_zh": "对通道做全局均值池化，各组共用同一套激励网络，再恢复通道布局并缩放输入。"
+  },
+  "2020-GCNet": {
+    "file": "figures/house/2020-GCNet.svg",
+    "caption_en": "Learn one set of spatial weights for global pooling, then transform and add the resulting channel context at every input position.",
+    "caption_zh": "用一组空间权重把特征汇聚成全局通道上下文，再变换上下文并加到输入的每个位置。"
+  },
+  "2020-ImageGPT-Causal-Pixel-Attention": {
+    "file": "figures/house/2020-ImageGPT-Causal-Pixel-Attention.svg",
+    "caption_en": "Pixel queries score current and cached keys with a causal mask, mix values, and return projected tokens and the current key–value cache.",
+    "caption_zh": "像素查询在因果掩码下对当前及历史键打分并汇聚值，返回投影后的令牌与本次缓存。"
+  },
+  "2019-ASTGCN": {
+    "file": "figures/house/2019-ASTGCN.svg",
+    "caption_en": "Score pairs of graph nodes and time steps from the same input, then apply temporal weights to the history and return both weight maps.",
+    "caption_zh": "同一输入分别生成节点对和时间步对的权重，再用时间权重重组历史特征，并返回两张权重图。"
+  },
+  "2019-SAN-SOCA": {
+    "file": "figures/house/2019-SAN-SOCA.svg",
+    "caption_en": "Compute channel covariance and its matrix square root, average the columns, then learn a sigmoid weight for each input channel.",
+    "caption_zh": "计算通道协方差及其矩阵平方根，取列均值，再经激励网络生成输入各通道的缩放权重。"
+  },
+  "2018-PSANet": {
+    "file": "figures/house/2018-PSANet.svg",
+    "caption_en": "Collect and distribute features with two densely indexed pointwise masks, then concatenate their outputs and fuse them with the original map.",
+    "caption_zh": "用两张逐点掩码分别收集和分发特征，再拼接两路输出并与原特征图融合。"
+  },
+  "2016-DNC": {
+    "file": "figures/house/2016-DNC.svg",
+    "caption_en": "Controller gates select write slots, update memory and temporal links, then mix content and link-based weights to read words from memory.",
+    "caption_zh": "控制器生成写入门和读出模式，更新记忆与时序链接，再混合内容和链接权重，从记忆读出向量。"
+  },
+  "na-BAM": {
+    "file": "figures/house/na-BAM.svg",
+    "caption_en": "Add channel and spatial logits, pass the sum through a sigmoid, then scale the input by one plus the resulting gate.",
+    "caption_zh": "把通道和空间得分相加，再经 Sigmoid 得到门控，用门控加一后缩放输入。"
+  },
+  "na-DiffAttn": {
+    "file": "figures/house/na-DiffAttn.svg",
+    "caption_en": "Subtract a learned multiple of one causal attention map from the other, then mix shared values and normalize before output projection.",
+    "caption_zh": "将一组因果注意力权重乘上可学习系数，再从另一组减去它，用所得权重汇聚共享值，归一化后投影。"
+  },
+  "na-LSKA": {
+    "file": "figures/house/na-LSKA.svg",
+    "caption_en": "Run horizontal and vertical depthwise filters at two scales, then use a pointwise projection of the result to scale the input.",
+    "caption_zh": "先后做两组横向和纵向深度卷积，再将结果逐点投影，用所得权重缩放输入。"
+  },
+  "na-RGA": {
+    "file": "figures/house/na-RGA.svg",
+    "caption_en": "Pairwise spatial relations generate a spatial gate, then channel relations from the spatially gated map generate a second gate.",
+    "caption_zh": "先用位置对关系生成空间门控，再从加权后的特征计算通道对关系，生成第二道门控。"
+  },
+  "na-SBA": {
+    "file": "figures/house/na-SBA.svg",
+    "caption_en": "Compute a gate for each input, update the low-level map first, then use it to update the high-level map before resizing and fusing.",
+    "caption_zh": "两路输入各自生成门控，先更新浅层特征，再用它更新深层特征，最后对齐尺寸并融合。"
+  },
+  "2024-CamoFormer-MSA": {
+    "file": "figures/house/2024-CamoFormer-MSA.svg",
+    "caption_en": "Use foreground, background and unmasked query–key paths, then concatenate their channel-attention outputs and fuse them with a convolution.",
+    "caption_zh": "三路分别用前景、背景和无掩码的查询与键做通道注意力，再将各路输出拼接并卷积融合。"
+  },
+  "2024-LEGM": {
+    "file": "figures/house/2024-LEGM.svg",
+    "caption_en": "Fuse image, local and depth features in the first stage, then combine position-biased window attention with a depthwise value convolution.",
+    "caption_zh": "首层先融合图像、局部和深度特征，再把带位置偏置的窗口注意力结果与值的深度卷积分支相加。"
+  },
+  "2024-RegionalAttention": {
+    "file": "figures/house/2024-RegionalAttention.svg",
+    "caption_en": "For each pixel, score a dilated neighborhood with relative position bias, mix neighboring values, then project back to the pixel grid.",
+    "caption_zh": "每个位置对扩张邻域内的键打分并加入相对位置偏置，再汇聚邻域值并投影回像素网格。"
+  },
+  "na-GAM": {
+    "file": "figures/house/na-GAM.svg",
+    "caption_en": "Generate channel gains from a per-position MLP, then derive a spatial sigmoid gate from the scaled features and apply it.",
+    "caption_zh": "逐位置用 MLP 生成通道增益，再由缩放后的特征生成空间门控并逐点相乘。"
+  },
+  "na-GENet": {
+    "file": "figures/house/na-GENet.svg",
+    "caption_en": "Gather local context with average pooling, resize it to the feature grid, then apply sigmoid weights to scale the input.",
+    "caption_zh": "在局部范围内做平均池化来汇总上下文，将其放大到原网格，再经 Sigmoid 生成缩放权重。"
   }
 }

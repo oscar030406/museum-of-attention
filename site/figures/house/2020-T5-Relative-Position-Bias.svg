@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="q" data-to="rel" d="M 260 522 L 464 482" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="k" data-to="rel" d="M 700 531 L 486 482" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="rel" data-to="side" d="M 475 448 L 475 409" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="side" data-to="near" d="M 464 357 L 270 317" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="side" data-to="far" d="M 486 357 L 680 326" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="near" data-to="merge" d="M 270 283 L 464 234" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="far" data-to="merge" d="M 680 274 L 486 234" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="merge" data-to="lut" d="M 475 200 L 475 152" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="lut" data-to="out" d="M 475 118 L 475 69" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<g class="node" id="q"><rect x="164.5" y="522" width="191" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="260" y="544.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Query positions</text>
+<text x="260" y="562.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Include cached prefix offset</text>
+</g>
+<g class="node" id="k"><rect x="637.5" y="531" width="125" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="700" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Key positions</text>
+</g>
+<g class="node" id="rel"><rect x="352.5" y="448" width="245" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="475" y="470.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Key position − query position</text>
+</g>
+<g class="node" id="side"><rect x="348.5" y="357" width="253" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="475" y="379.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Decode direction and distance</text>
+<text x="475" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split signs or keep past distances</text>
+</g>
+<g class="node" id="near"><rect x="182" y="283" width="176" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="270" y="305.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Nearby exact bucket</text>
+</g>
+<g class="node" id="far"><rect x="569" y="274" width="222" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="680" y="296.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Distant logarithmic bucket</text>
+<text x="680" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Cap at the last bucket</text>
+</g>
+<g class="node" id="merge"><rect x="343.5" y="200" width="263" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="475" y="222.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Combine bucket and sign offset</text>
+</g>
+<g class="node" id="lut"><rect x="351.5" y="118" width="247" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="475" y="140.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Lookup learned bias per head</text>
+</g>
+<g class="node" id="out"><rect x="358.5" y="35" width="233" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="475" y="57.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Permute and add batch axis</text>
+</g>
+<text x="376" y="513" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--rel">Q×1</text>
+<text x="610" y="507" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge k--rel">1×K</text>
+<text x="481" y="434" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge rel--side">Q×K</text>
+<text x="385" y="336" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge side--near">Below exact limit</text>
+<text x="594" y="354" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge side--far">At or above exact limit</text>
+<text x="481" y="181" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge merge--lut">Q×K bucket IDs</text>
+<text x="481" y="99" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge lut--out">Q×K×h → 1×h×Q×K</text>
+</svg>

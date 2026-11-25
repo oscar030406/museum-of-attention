@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="w" d="M 460 521 L 460 494" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="w" data-to="q" d="M 452 452 L 352 425" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="a" d="M 344 383 L 352 363" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="m" d="M 360 307 L 344 286" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="r" d="M 352 244 L 426 224" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="r" data-to="f" d="M 434 168 L 434 155" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="f" data-to="y" d="M 434 99 L 434 79" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="w" data-to="r" d="M 468 452 L 811 446 L 811 233 L 442 224" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="m" d="M 360 383 L 589 371 L 589 297 L 360 286" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="z" d="M 344 307 L 149 300 L 149 112 L 157 79" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<g class="node" id="x"><rect x="392" y="521" width="136" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="460" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="w"><rect x="344" y="452" width="232" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="460" y="478.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Partition into 8×8 windows</text>
+</g>
+<g class="node" id="q"><rect x="236" y="383" width="232" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="352" y="409.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">LayerNorm + Linear Q, K, V</text>
+</g>
+<g class="node" id="a"><rect x="236" y="307" width="232" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="352" y="331.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ + relative bias</text>
+<text x="352" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax + dropout</text>
+</g>
+<g class="node" id="m"><rect x="232" y="244" width="240" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="352" y="270.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Weight V + Linear + dropout</text>
+</g>
+<g class="node" id="r"><rect x="335" y="168" width="198" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="434" y="192.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Add window tokens ⊕</text>
+<text x="434" y="210.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Restore image grid</text>
+</g>
+<g class="node" id="f"><rect x="270" y="99" width="328" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="434" y="123.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Gated ConvFFN + feature residual</text>
+<text x="434" y="141.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">LayerNorm2D, depthwise Conv, GELU gate</text>
+</g>
+<g class="node" id="y"><rect x="362" y="37" width="144" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="434" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<g class="node" id="z"><rect x="53" y="37" width="208" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="157" y="63.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Returned window weights</text>
+</g>
+<text x="466" y="513" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--w">B×C×H×W</text>
+<text x="409" y="438" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge w--q">B×Mh×Mw×8×8×C</text>
+<text x="355" y="376" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge q--a">(B·M)×J×64×D</text>
+<text x="363" y="303" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge a--m">(B·M)×J×64×64</text>
+<text x="440" y="94" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge f--y">B×C×H×W</text>
+<text x="576" y="469" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge w--r">Unnormalized windows</text>
+<text x="469" y="368" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge q--m">V</text>
+<text x="233" y="300" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge a--z">Window weights</text>
+</svg>

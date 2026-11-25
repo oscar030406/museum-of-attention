@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="q" d="M 378 521 L 378 497.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="s" d="M 394 424.5 L 453 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="m" d="M 453 353 L 457 336.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="a" d="M 457 263.5 L 442 247" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="a" data-to="r" d="M 434 191 L 400 175.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="r" data-to="y" d="M 392 102.5 L 392 79" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="q" data-to="t" d="M 362 424.5 L 156 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="t" data-to="r" d="M 156 353 L 147 351 L 147 177.5 L 384 175.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="q" data-to="a" d="M 378 424.5 L 299 396 L 299 250 L 426 247" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="m" d="M 797 521 L 735 500 L 735 352 L 473 336.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="c" d="M 813 521 L 903 500 L 903 260 L 780 255.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="m" data-to="c" d="M 473 263.5 L 764 255.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="c" data-to="z" d="M 772 182.5 L 772 79" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<g class="node" id="x"><rect x="310" y="521" width="136" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="378" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="701" y="521" width="208" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="805" y="547.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Optional previous cache</text>
+</g>
+<g class="node" id="q"><rect x="234" y="424.5" width="288" height="73" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="378" y="448.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 + depthwise → Q, K, V</text>
+<text x="378" y="466.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Flatten and rank by Q correlation</text>
+<text x="378" y="484.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Reorder into groups 1:2:2:3</text>
+</g>
+<g class="node" id="s"><rect x="333" y="353" width="240" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="453" y="377.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">L2 normalize Q and K</text>
+<text x="453" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Temperature × QKᵀ → Softmax</text>
+</g>
+<g class="node" id="t"><rect x="40" y="353" width="232" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="156" y="377.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Normalize and detach Q, K</text>
+<text x="156" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Add and concatenate groups</text>
+</g>
+<g class="node" id="m"><rect x="329" y="263.5" width="272" height="73" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="465" y="287.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Optional cache modulation</text>
+<text x="465" y="305.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Align → predict scale and shift</text>
+<text x="465" y="323.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">GELU gate, then add to weights</text>
+</g>
+<g class="node" id="a"><rect x="326" y="191" width="216" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="434" y="215.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Apply weights to group V</text>
+<text x="434" y="233.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Concat channel groups</text>
+</g>
+<g class="node" id="c"><rect x="624" y="182.5" width="296" height="73" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="772" y="206.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Update layer cache</text>
+<text x="772" y="224.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Pool groups, resize and accumulate</text>
+<text x="772" y="242.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Blend with previous cache if given</text>
+</g>
+<g class="node" id="r"><rect x="276" y="102.5" width="232" height="73" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="392" y="126.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Add current Q + K cache</text>
+<text x="392" y="144.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">GELU gate and Conv1D pair</text>
+<text x="392" y="162.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Add back weighted features</text>
+</g>
+<g class="node" id="y"><rect x="288" y="37" width="208" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="392" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Restore grid + Conv 1×1</text>
+</g>
+<g class="node" id="z"><rect x="688" y="37" width="168" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="772" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output layer cache</text>
+</g>
+<text x="384" y="514" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--q">B×C×H×W</text>
+<text x="389" y="350" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--m">B×Cg×Cg</text>
+<text x="398" y="96" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--y">B×C×N</text>
+<text x="153" y="347" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge t--r">B×C×N</text>
+<text x="225" y="349" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge q--a">Grouped V</text>
+<text x="772" y="504" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--m">Previous cache</text>
+<text x="778" y="136" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge c--z">1×C×C</text>
+</svg>

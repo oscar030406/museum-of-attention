@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="a" data-to="reshape" d="M 280 531 L 280 441" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="z" data-to="mask" d="M 680 531 L 680 450" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="reshape" data-to="mul" d="M 280 407 L 462 317" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="mask" data-to="mul" d="M 680 398 L 484 317" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="mul" data-to="norm" d="M 473 283 L 473 202" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="norm" data-to="out" d="M 473 150 L 473 69" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<g class="node" id="a"><rect x="164.5" y="531" width="231" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="280" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input attention probabilities</text>
+</g>
+<g class="node" id="z"><rect x="582" y="531" width="196" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="680" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Learned span per head</text>
+</g>
+<g class="node" id="reshape"><rect x="155" y="407" width="250" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="280" y="429.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Separate batch and head axes</text>
+</g>
+<g class="node" id="mask"><rect x="561" y="398" width="238" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="680" y="420.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Build tapered distance mask</text>
+<text x="680" y="438.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Shift ramp, clamp, then trim</text>
+</g>
+<g class="node" id="mul"><rect x="388.5" y="283" width="169" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="473" y="305.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Apply span mask ⊗</text>
+</g>
+<g class="node" id="norm"><rect x="359.5" y="150" width="227" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="473" y="172.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Optional row normalization</text>
+<text x="473" y="190.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Divide by sum + ε</text>
+</g>
+<g class="node" id="out"><rect x="358" y="35" width="230" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="473" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Merge batch and head axes</text>
+</g>
+<text x="286" y="491" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a--reshape">(Bh)×Q×S</text>
+<text x="686" y="496" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge z--mask">h×1×1</text>
+<text x="377" y="372" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge reshape--mul">B×h×Q×S</text>
+<text x="593" y="357" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mask--mul">h×1×S</text>
+<text x="479" y="248" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge mul--norm">B×h×Q×S</text>
+<text x="479" y="115" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge norm--out">(Bh)×Q×S</text>
+</svg>

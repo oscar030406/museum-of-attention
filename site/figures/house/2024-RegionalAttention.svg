@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="n" d="M 448 526 L 448 485" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="n" data-to="p" d="M 448 443 L 405 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="s" d="M 392 353 L 298 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="v" d="M 418 353 L 664 319 L 654 237" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="a" d="M 298 270 L 298 244" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="a" data-to="m" d="M 298 188 L 452 154" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="v" data-to="m" d="M 654 195 L 478 154" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="m" data-to="y" d="M 465 112 L 465 71" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="358" y="526" width="180" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="448" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input image tokens</text>
+</g>
+<g class="node" id="n"><rect x="325" y="443" width="246" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="448" y="469.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">LayerNorm + reshape to grid</text>
+</g>
+<g class="node" id="p"><rect x="286" y="353" width="238" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="405" y="377.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Pad small grids if needed</text>
+<text x="405" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear QKV + split heads</text>
+</g>
+<g class="node" id="s"><rect x="168" y="270" width="260" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="298" y="294.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Dilated neighbor scores</text>
+<text x="298" y="312.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scaled QKᵀ + relative position bias</text>
+</g>
+<g class="node" id="a"><rect x="180" y="188" width="236" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="298" y="212.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Softmax over neighbors</text>
+<text x="298" y="230.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dropout</text>
+</g>
+<g class="node" id="v"><rect x="534" y="195" width="240" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="654" y="221.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Values at the same offsets</text>
+</g>
+<g class="node" id="m"><rect x="357.5" y="112" width="215" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="465" y="138.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weighted neighbor sum</text>
+</g>
+<g class="node" id="y"><rect x="338.5" y="29" width="253" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="465" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Merge heads, crop + project</text>
+</g>
+<text x="454" y="511" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--n">B×HW×C</text>
+<text x="439" y="427" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge n--p">B×H×W×C</text>
+<text x="357" y="341" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--s">Q and K</text>
+<text x="555" y="352" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--v">V</text>
+<text x="304" y="262" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--a">B×h×H′×W′×k²</text>
+<text x="388" y="183" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge a--m">B×h×H′×W′×k²</text>
+<text x="580" y="174" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--m">B×h×H′×W′×k²×d</text>
+<text x="471" y="97" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--y">B×h×H′×W′×d</text>
+</svg>

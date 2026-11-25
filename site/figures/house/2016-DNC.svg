@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="i" d="M 281 526 L 281 500.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="u" d="M 667 526 L 495 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="i" data-to="u" d="M 281 427.5 L 469 409" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="u" data-to="w" d="M 482 353 L 482 334.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="w" data-to="a" d="M 456 261.5 L 268 244" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="w" data-to="l" d="M 508 261.5 L 674 244" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="w" data-to="r" d="M 482 261.5 L 486 161" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="a" data-to="r" d="M 281 188 L 460 161" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="y" d="M 255 188 L 123 178 L 123 93 L 501 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="l" data-to="r" d="M 674 188 L 512 161" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="r" data-to="y" d="M 486 105 L 527 71" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<g class="node" id="x"><rect x="180" y="526" width="202" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="281" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Controller vector</text>
+</g>
+<g class="node" id="s"><rect x="548.5" y="526" width="237" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="667" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Previous access state</text>
+</g>
+<g class="node" id="i"><rect x="138.5" y="427.5" width="285" height="73" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="281" y="451.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear interface</text>
+<text x="281" y="469.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Read and write keys, erase and free gates</text>
+<text x="281" y="487.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Write vectors, write gates, read mode</text>
+</g>
+<g class="node" id="u"><rect x="343" y="353" width="278" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="482" y="377.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Update slot usage</text>
+<text x="482" y="395.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Pass through interface and previous state</text>
+</g>
+<g class="node" id="w"><rect x="337.5" y="261.5" width="289" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="482" y="285.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Compute write weights</text>
+<text x="482" y="303.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Mix content and sequential allocation</text>
+<text x="482" y="321.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Apply allocation and write gates</text>
+</g>
+<g class="node" id="a"><rect x="143" y="188" width="250" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="268" y="212.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Erase and write memory</text>
+<text x="268" y="230.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Address-weighted erase and addition</text>
+</g>
+<g class="node" id="l"><rect x="545.5" y="188" width="257" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="674" y="212.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Update temporal links</text>
+<text x="674" y="230.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Adjust precedence, zero link diagonal</text>
+</g>
+<g class="node" id="r"><rect x="328" y="105" width="316" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="486" y="129.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Mix read weights by mode</text>
+<text x="486" y="147.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">New memory content + forward/backward links</text>
+</g>
+<g class="node" id="y"><rect x="370" y="29" width="288" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="514" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Read memory + return access state</text>
+</g>
+<text x="287" y="518" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--i">B×D</text>
+<text x="598" y="470" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge s--u">Previous state</text>
+<text x="427" y="460" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge i--u">Controller interface</text>
+<text x="488" y="349" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge u--w">B×N usage + carried inputs</text>
+<text x="193" y="267" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge w--a">Weights + old memory</text>
+<text x="631" y="265" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge w--l">Weights + old linkage</text>
+<text x="492" y="184" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge w--r">Read inputs</text>
+<text x="406" y="188" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a--r">B×N×W</text>
+<text x="201" y="178" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a--y">New memory</text>
+<text x="608" y="174" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge l--r">B×hᵥ×N×N</text>
+<text x="514" y="93" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge r--y">B×hᵣ×N</text>
+</svg>

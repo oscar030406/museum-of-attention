@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="q" d="M 230 531 L 260 475" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="coord" data-to="rel" d="M 715 531 L 700 475" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="q" data-to="sc" d="M 271 423 L 434 376" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="rel" data-to="sc" d="M 689 423 L 456 376" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="q" data-to="mix" d="M 249 423 L 128 417 L 128 182 L 468 177" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="rel" data-to="mix" d="M 711 423 L 839 416 L 839 182 L 512 177" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="sc" data-to="sm" d="M 445 324 L 450 267" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="sm" data-to="mix" d="M 450 233 L 490 177" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 490 125 L 490 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="165.5" y="531" width="129" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="230" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Voxel features</text>
+</g>
+<g class="node" id="coord"><rect x="576.5" y="531" width="277" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="715" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Window indices and point signals</text>
+</g>
+<g class="node" id="q"><rect x="152" y="423" width="216" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="260" y="445.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear QKV → split heads</text>
+<text x="260" y="463.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scale Q</text>
+</g>
+<g class="node" id="rel"><rect x="576.5" y="423" width="247" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="700" y="445.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Quantize pairwise differences</text>
+<text x="700" y="463.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Lookup and sum Q, K, V vectors</text>
+</g>
+<g class="node" id="sc"><rect x="359" y="324" width="172" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="445" y="346.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Window pair scores</text>
+<text x="445" y="364.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">q·k + q·rQ + k·rK</text>
+</g>
+<g class="node" id="sm"><rect x="333.5" y="233" width="233" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="450" y="255.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Segment Softmax per query</text>
+</g>
+<g class="node" id="mix"><rect x="373.5" y="125" width="233" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="490" y="147.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight shifted values v + rV</text>
+<text x="490" y="165.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Restore original voxel order</text>
+</g>
+<g class="node" id="out"><rect x="350.5" y="35" width="279" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="490" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Merge heads → Linear → Dropout</text>
+</g>
+<text x="254" y="507" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--q">N×C</text>
+<text x="715" y="509" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge coord--rel">Coordinates and attributes</text>
+<text x="368" y="409" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--sc">N×h×D (Q, K)</text>
+<text x="573" y="395" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge rel--sc">Pair vectors rQ, rK</text>
+<text x="202" y="412" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--mix">V</text>
+<text x="749" y="412" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge rel--mix">Pair vector rV</text>
+<text x="454" y="300" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sc--sm">P×h</text>
+<text x="480" y="209" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sm--mix">P×h</text>
+<text x="496" y="102" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--out">N×h×D</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="n" d="M 469 531 L 415 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="n" data-to="a" d="M 404 448 L 235 400" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="n" data-to="v" d="M 426 448 L 625 400" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="a" data-to="m" d="M 235 366 L 418 326" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="v" data-to="m" d="M 625 366 L 440 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="m" data-to="r" d="M 429 274 L 499 234" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="x" data-to="r" d="M 491 531 L 867 486 L 867 249 L 521 234" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="r" data-to="f" d="M 499 200 L 433 161" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="r" data-to="y" d="M 521 200 L 804 194 L 804 93 L 521 78" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="f" data-to="y" d="M 433 109 L 499 78" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="417" y="531" width="126" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="n"><rect x="315" y="448" width="200" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="415" y="470.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">LayerNorm per location</text>
+</g>
+<g class="node" id="a"><rect x="90.5" y="366" width="289" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="235" y="388.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → Depthwise Conv 11×11</text>
+</g>
+<g class="node" id="v"><rect x="539" y="366" width="172" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="625" y="388.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 for values</text>
+</g>
+<g class="node" id="m"><rect x="318" y="274" width="222" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="429" y="296.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Multiply gate and values ⊗</text>
+<text x="429" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×1</text>
+</g>
+<g class="node" id="r"><rect x="454" y="200" width="112" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="510" y="222.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Add input ⊕</text>
+</g>
+<g class="node" id="f"><rect x="287" y="109" width="292" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="433" y="131.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">GroupNorm → Conv 1×1 → GELU</text>
+<text x="433" y="149.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Depthwise Conv 3×3 → GELU → Conv 1×1</text>
+</g>
+<g class="node" id="y"><rect x="407" y="26" width="206" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="510" y="48.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Add previous features ⊕</text>
+<text x="510" y="66.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Output features</text>
+</g>
+<text x="453" y="507" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--n">B×C×H×W</text>
+<text x="340" y="425" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge n--a">B×C×H×W</text>
+<text x="331" y="361" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--m">B×C×H×W</text>
+<text x="537" y="341" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--m">B×C×H×W</text>
+<text x="478" y="265" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--r">B×C×H×W</text>
+<text x="691" y="519" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--r">Input bypass</text>
+<text x="479" y="179" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--f">B×C×H×W</text>
+<text x="667" y="214" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--y">Previous features</text>
+<text x="479" y="100" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge f--y">B×C×H×W</text>
+</svg>

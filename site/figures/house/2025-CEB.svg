@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 500 521 L 500 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="s" d="M 492 440 L 475 402" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="a" d="M 459 360 L 285 336.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="m" d="M 285 263.5 L 459 247" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="m" data-to="r" d="M 475 191 L 547 160" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="r" data-to="y" d="M 555 118 L 555 79" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="s" data-to="b" d="M 491 360 L 640 336.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="b" data-to="m" d="M 640 263.5 L 491 247" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="r" d="M 508 440 L 830 436 L 830 162 L 563 160" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="m" d="M 475 360 L 475 247" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="432" y="521" width="136" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="500" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="428" y="440" width="144" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="500" y="466.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 3×3 + ReLU</text>
+</g>
+<g class="node" id="s"><rect x="375" y="360" width="200" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="475" y="386.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Split channels in half</text>
+</g>
+<g class="node" id="a"><rect x="169" y="263.5" width="232" height="73" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="285" y="287.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Global average pool</text>
+<text x="285" y="305.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×1 → ReLU → Conv 1×1</text>
+<text x="285" y="323.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Sigmoid</text>
+</g>
+<g class="node" id="b"><rect x="524" y="263.5" width="232" height="73" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="640" y="287.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Global max pool</text>
+<text x="640" y="305.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×1 → ReLU → Conv 1×1</text>
+<text x="640" y="323.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Sigmoid</text>
+</g>
+<g class="node" id="m"><rect x="355" y="191" width="240" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="475" y="215.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Weight each half ⊗</text>
+<text x="475" y="233.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Concat + random permutation</text>
+</g>
+<g class="node" id="r"><rect x="459" y="118" width="192" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="555" y="144.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Add convolved input ⊕</text>
+</g>
+<g class="node" id="y"><rect x="483" y="37" width="144" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="555" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="506" y="507" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="292" y="367" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge s--a">B×C/2×H×W</text>
+<text x="283" y="248" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--m">B×C/2×1×1</text>
+<text x="561" y="104" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--y">B×C×H×W</text>
+<text x="579" y="363" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge s--b">B×C/2×H×W</text>
+<text x="610" y="251" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge b--m">B×C/2×1×1</text>
+<text x="677" y="455" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--r">Convolved features</text>
+<text x="481" y="309" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge s--m">Halves</text>
+</svg>

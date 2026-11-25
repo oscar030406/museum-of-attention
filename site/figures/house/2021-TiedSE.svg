@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 465 526 L 385 469" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="y" d="M 491 526 L 842 476 L 842 119 L 521 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="s" d="M 385 427 L 385 369" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="s" data-to="f" d="M 385 327 L 385 277" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="f" data-to="r" d="M 385 221 L 385 170" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="r" data-to="y" d="M 385 128 L 495 71" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<g class="node" id="x"><rect x="393.5" y="526" width="169" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="478" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="299.5" y="427" width="171" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="385" y="453.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">GAP per channel</text>
+</g>
+<g class="node" id="s"><rect x="256.5" y="327" width="257" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="385" y="353.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Reshape into g channel groups</text>
+</g>
+<g class="node" id="f"><rect x="251.5" y="221" width="267" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="385" y="245.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Shared excitation across groups</text>
+<text x="385" y="263.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear → ReLU → Linear → Sigmoid</text>
+</g>
+<g class="node" id="r"><rect x="273" y="128" width="224" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="385" y="154.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Restore the channel layout</text>
+</g>
+<g class="node" id="y"><rect x="420" y="29" width="176" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="508" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Scale input channels</text>
+</g>
+<text x="441" y="500" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="686" y="515" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--y">Input bypass</text>
+<text x="391" y="403" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--s">B×C×1×1</text>
+<text x="391" y="307" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge s--f">(Bg)×(C/g)</text>
+<text x="391" y="201" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge f--r">(Bg)×(C/g)</text>
+<text x="450" y="107" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--y">B×C×1×1</text>
+</svg>

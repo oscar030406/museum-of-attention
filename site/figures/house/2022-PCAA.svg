@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 399 526 L 228 497" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="c" d="M 425 526 L 630 504" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="y" d="M 451 526 L 889 497 L 889 112 L 555 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="w" d="M 630 448 L 569 433" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="p" data-to="a" d="M 241 455 L 483 362" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="q" d="M 215 455 L 161 431 L 161 292 L 179 284" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="w" data-to="a" d="M 569 377 L 509 362" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="a" data-to="k" d="M 483 306 L 402 284" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="v" d="M 509 306 L 685 291" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="s" d="M 179 242 L 305 213" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="k" data-to="s" d="M 402 242 L 331 213" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="v" data-to="m" d="M 685 235 L 714 156 L 532 142" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="m" d="M 318 171 L 506 142" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="y" d="M 519 100 L 529 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="345" y="526" width="160" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="425" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="114" y="455" width="228" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="228" y="481.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Patch split + flatten pixels</text>
+</g>
+<g class="node" id="c"><rect x="516" y="448" width="228" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="630" y="472.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Dropout + class activations</text>
+<text x="630" y="490.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×1: B×K×H×W</text>
+</g>
+<g class="node" id="w"><rect x="441" y="377" width="256" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="569" y="401.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Patch and pixel confidence</text>
+<text x="569" y="419.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Patch mean + Sigmoid, pixel Softmax</text>
+</g>
+<g class="node" id="a"><rect x="370.5" y="306" width="251" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="496" y="330.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Pool local class centers</text>
+<text x="496" y="348.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Weight pixels, weight patches, GCN</text>
+</g>
+<g class="node" id="q"><rect x="96.5" y="242" width="165" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="179" y="268.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear Q from pixels</text>
+</g>
+<g class="node" id="k"><rect x="306" y="242" width="192" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="402" y="268.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear K from centers</text>
+</g>
+<g class="node" id="v"><rect x="555.5" y="235" width="259" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="685" y="259.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Fuse across patches + ReLU</text>
+<text x="685" y="277.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Broadcast global centers + Linear V</text>
+</g>
+<g class="node" id="s"><rect x="212.5" y="171" width="211" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="318" y="197.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">QKᵀ + class Softmax</text>
+</g>
+<g class="node" id="m"><rect x="403.5" y="100" width="231" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="519" y="126.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Read values + stitch patches</text>
+</g>
+<g class="node" id="y"><rect x="386.5" y="29" width="311" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="542" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 + BN + ReLU + residual</text>
+</g>
+<text x="331" y="511" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H×W</text>
+<text x="678" y="525" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--y">Input bypass</text>
+<text x="374" y="418" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--a">B×P×N×C</text>
+<text x="457" y="297" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a--k">B×P×K×C</text>
+<text x="632" y="315" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a--v">B×P×K×C</text>
+<text x="249" y="238" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--s">B×P×N×d</text>
+<text x="376" y="227" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge k--s">B×P×K×d</text>
+<text x="708" y="201" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--m">Global V</text>
+<text x="431" y="173" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--m">B×P×N×K</text>
+<text x="533" y="90" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge m--y">B×d×H×W</text>
+</svg>

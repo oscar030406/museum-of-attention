@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="v" d="M 270 526 L 152 469" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="k" d="M 296 526 L 410 469" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="y" data-to="q" d="M 670 526 L 656 469" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="y" data-to="c" d="M 696 526 L 858 477 L 858 179 L 528 177" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="v" data-to="r" d="M 152 427 L 152 309 L 362 270" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="k" data-to="s" d="M 410 427 L 512 369" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="s" d="M 656 427 L 538 369" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="s" data-to="r" d="M 525 327 L 388 270" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="r" data-to="c" d="M 375 228 L 502 177" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="c" data-to="o" d="M 515 121 L 515 71" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="201" y="526" width="164" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="283" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Frame tokens</text>
+</g>
+<g class="node" id="y"><rect x="597.5" y="526" width="171" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="683" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Action tokens</text>
+</g>
+<g class="node" id="v"><rect x="68.5" y="427" width="167" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="152" y="453.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear V</text>
+</g>
+<g class="node" id="k"><rect x="319.5" y="427" width="181" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="410" y="453.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Optional position + K</text>
+</g>
+<g class="node" id="q"><rect x="565.5" y="427" width="181" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="656" y="453.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Optional position + Q</text>
+</g>
+<g class="node" id="s"><rect x="416" y="327" width="218" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="525" y="353.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ + Softmax</text>
+</g>
+<g class="node" id="r"><rect x="271" y="228" width="208" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="375" y="254.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Gather frame values</text>
+</g>
+<g class="node" id="c"><rect x="400.5" y="121" width="229" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="515" y="145.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Concat with action tokens</text>
+<text x="515" y="163.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dropout</text>
+</g>
+<g class="node" id="o"><rect x="418" y="29" width="194" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="515" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear output</text>
+</g>
+<text x="224" y="500" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--v">Lf×B×Cf</text>
+<text x="670" y="503" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge y--q">La×B×Ca</text>
+<text x="790" y="511" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge y--c">Original actions</text>
+<text x="158" y="373" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--r">Lf×B×d</text>
+<text x="472" y="405" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge k--s">Lf×B×d</text>
+<text x="611" y="401" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--s">La×B×d</text>
+<text x="473" y="301" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--r">B×La×Lf</text>
+<text x="454" y="211" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--c">La×B×d</text>
+<text x="521" y="101" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge c--o">La×B×(Ca+d)</text>
+</svg>

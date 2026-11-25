@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="h" d="M 469 531 L 405 491" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="h" data-to="e" d="M 405 439 L 405 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="e" data-to="s" d="M 405 357 L 405 326" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="s" data-to="g" d="M 405 274 L 405 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="g" data-to="m" d="M 405 200 L 499 152" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="x" data-to="m" d="M 491 531 L 800 484 L 800 167 L 521 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="m" data-to="y" d="M 510 118 L 510 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="420" y="531" width="120" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input volume</text>
+</g>
+<g class="node" id="h"><rect x="284.5" y="439" width="241" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="405" y="461.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Gaussian derivative Conv 3D</text>
+<text x="405" y="479.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Build Hessian at each scale</text>
+</g>
+<g class="node" id="e"><rect x="295.5" y="357" width="219" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="405" y="379.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Sort absolute eigenvalues</text>
+<text x="405" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Compute vessel response</text>
+</g>
+<g class="node" id="s"><rect x="323.5" y="274" width="163" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="405" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Stack scales</text>
+<text x="405" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax-weighted sum</text>
+</g>
+<g class="node" id="g"><rect x="306" y="200" width="198" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="405" y="222.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Conv 1×1×1 → Sigmoid</text>
+</g>
+<g class="node" id="m"><rect x="424" y="118" width="172" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="510" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Scale and add input</text>
+</g>
+<g class="node" id="y"><rect x="443.5" y="35" width="133" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="510" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output volume</text>
+</g>
+<text x="450" y="510" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--h">B×1×D×H×W</text>
+<text x="411" y="429" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge h--e">B×D×H×W×3×3</text>
+<text x="411" y="347" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge e--s">B×S×D×H×W</text>
+<text x="411" y="259" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--g">B×1×D×H×W</text>
+<text x="461" y="190" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge g--m">B×1×D×H×W</text>
+<text x="661" y="522" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--m">Input bypass</text>
+<text x="516" y="99" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--y">B×1×D×H×W</text>
+</svg>

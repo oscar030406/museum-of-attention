@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 416 531 L 429 491" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="style" data-to="p" d="M 770 531 L 451 491" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="a" d="M 429 439 L 265 400" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="b" d="M 451 439 L 668 400" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="sa" d="M 265 366 L 265 326" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="b" data-to="sb" d="M 668 366 L 668 326" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="sa" data-to="ar" d="M 265 274 L 265 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="sb" data-to="br" d="M 668 274 L 668 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="ar" data-to="cat" d="M 265 200 L 470 161" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="br" data-to="cat" d="M 668 200 L 492 161" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="cat" d="M 394 531 L 56 506 L 56 167 L 448 161" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="cat" data-to="out" d="M 470 109 L 470 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="322" y="531" width="166" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="405" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input image tokens</text>
+</g>
+<g class="node" id="style"><rect x="714.5" y="531" width="111" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="770" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Style vector</text>
+</g>
+<g class="node" id="p"><rect x="342" y="439" width="196" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="440" y="461.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">AdaIN → Linear QKV</text>
+<text x="440" y="479.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split feature channels in half</text>
+</g>
+<g class="node" id="a"><rect x="157" y="366" width="216" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="265" y="388.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Partition regular windows</text>
+</g>
+<g class="node" id="b"><rect x="533.5" y="366" width="269" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="668" y="388.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Roll → partition shifted windows</text>
+</g>
+<g class="node" id="sa"><rect x="156" y="274" width="218" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="265" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ + relative bias</text>
+<text x="265" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax → weight V</text>
+</g>
+<g class="node" id="sb"><rect x="551" y="274" width="234" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="668" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ + relative bias</text>
+<text x="668" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Shift mask → Softmax → weight V</text>
+</g>
+<g class="node" id="ar"><rect x="158" y="200" width="214" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="265" y="222.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Reverse regular windows</text>
+</g>
+<g class="node" id="br"><rect x="537.5" y="200" width="261" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="668" y="222.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Reverse windows and undo roll</text>
+</g>
+<g class="node" id="cat"><rect x="359" y="109" width="222" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="470" y="131.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Concat channels → Linear</text>
+<text x="470" y="149.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Add input residual</text>
+</g>
+<g class="node" id="out"><rect x="380" y="35" width="180" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="470" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output image tokens</text>
+</g>
+<text x="431" y="516" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×(HW)×C</text>
+<text x="621" y="506" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge style--p">B×S</text>
+<text x="357" y="418" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--a">First C/2 channels</text>
+<text x="576" y="431" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--b">Second C/2 channels</text>
+<text x="271" y="351" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--sa">A×N×(C/2)</text>
+<text x="674" y="351" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge b--sb">A×N×(C/2)</text>
+<text x="271" y="259" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sa--ar">A×N×(C/2)</text>
+<text x="674" y="259" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sb--br">A×N×(C/2)</text>
+<text x="370" y="196" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge ar--cat">B×(HW)×(C/2)</text>
+<text x="597" y="179" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge br--cat">B×(HW)×(C/2)</text>
+<text x="238" y="515" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--cat">Residual</text>
+<text x="476" y="94" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge cat--out">B×(HW)×C</text>
+</svg>

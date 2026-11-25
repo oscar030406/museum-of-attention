@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="h" d="M 454 526 L 177 444" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="w" d="M 480 526 L 480 444" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="c" d="M 506 526 L 783 451" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="h" data-to="hp" d="M 190 402 L 177 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="w" data-to="wp" d="M 493 402 L 480 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="cp" d="M 770 395 L 783 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="hp" data-to="hg" d="M 177 270 L 190 202" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="wp" data-to="wg" d="M 480 270 L 493 202" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="cp" data-to="cg" d="M 783 270 L 770 202" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="h" data-to="hg" d="M 164 402 L 37 385 L 37 202 L 164 202" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="w" data-to="wg" d="M 467 402 L 335 385 L 335 202 L 467 202" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="cg" d="M 796 395 L 922 378 L 922 202 L 796 202" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="hg" data-to="y" d="M 177 146 L 454 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="wg" data-to="y" d="M 480 146 L 480 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="cg" data-to="y" d="M 783 146 L 506 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="397" y="526" width="166" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="h"><rect x="67" y="402" width="220" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="177" y="428.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Treat H as channels</text>
+</g>
+<g class="node" id="w"><rect x="369" y="402" width="222" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="428.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Treat W as channels</text>
+</g>
+<g class="node" id="c"><rect x="672" y="395" width="222" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="783" y="419.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Keep C as channels</text>
+<text x="783" y="437.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Optional</text>
+</g>
+<g class="node" id="hp"><rect x="51.5" y="270" width="251" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="177" y="294.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Pool over C and W</text>
+<text x="177" y="312.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Blend mean and standard deviation</text>
+</g>
+<g class="node" id="wp"><rect x="354.5" y="270" width="251" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="480" y="294.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Pool over H and C</text>
+<text x="480" y="312.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Blend mean and standard deviation</text>
+</g>
+<g class="node" id="cp"><rect x="657.5" y="270" width="251" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="783" y="294.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Pool over H and W</text>
+<text x="783" y="312.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Blend mean and standard deviation</text>
+</g>
+<g class="node" id="hg"><rect x="53.5" y="146" width="247" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="177" y="170.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Height gate</text>
+<text x="177" y="188.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×3 + Sigmoid, scale H path</text>
+</g>
+<g class="node" id="wg"><rect x="356.5" y="146" width="247" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="480" y="170.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Width gate</text>
+<text x="480" y="188.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×3 + Sigmoid, scale W path</text>
+</g>
+<g class="node" id="cg"><rect x="659.5" y="146" width="247" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="783" y="170.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Channel gate</text>
+<text x="783" y="188.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×k + Sigmoid, scale C path</text>
+</g>
+<g class="node" id="y"><rect x="348" y="29" width="264" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Restore axes + average maps</text>
+</g>
+<text x="330" y="484" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--h">B×C×H×W</text>
+<text x="191" y="369" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge h--hp">B×H×C×W</text>
+<text x="494" y="369" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge w--wp">B×W×H×C</text>
+<text x="784" y="367" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--cp">B×C×H×W</text>
+<text x="191" y="242" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge hp--hg">B×H×1×1</text>
+<text x="494" y="242" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge wp--wg">B×W×1×1</text>
+<text x="784" y="240" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge cp--cg">B×C×1×1</text>
+<text x="115" y="391" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge h--hg">Height path</text>
+<text x="407" y="390" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge w--wg">Width path</text>
+</svg>

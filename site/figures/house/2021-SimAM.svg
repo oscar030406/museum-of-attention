@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="d" d="M 461 526 L 364 476" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="o" d="M 487 526 L 829 480 L 829 129 L 515 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="d" data-to="v" d="M 351 420 L 255 376" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="d" data-to="y" d="M 377 420 L 559 393 L 559 291 L 396 277" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="v" data-to="y" d="M 255 320 L 370 277" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="y" data-to="s" d="M 383 221 L 383 170" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="s" data-to="o" d="M 383 128 L 489 71" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<g class="node" id="x"><rect x="381.5" y="526" width="185" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="474" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="d"><rect x="245.5" y="420" width="237" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="364" y="444.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Center each channel + square</text>
+<text x="364" y="462.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">D = (X − spatial mean)²</text>
+</g>
+<g class="node" id="v"><rect x="142.5" y="320" width="225" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="255" y="344.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Sum squared deviations</text>
+<text x="255" y="362.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Divide by HW − 1, add λ</text>
+</g>
+<g class="node" id="y"><rect x="273" y="221" width="220" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="383" y="245.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Energy score</text>
+<text x="383" y="263.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">D / (4 × adjusted variance) + 0.5</text>
+</g>
+<g class="node" id="s"><rect x="286" y="128" width="194" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="383" y="154.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Sigmoid weights</text>
+</g>
+<g class="node" id="o"><rect x="396.5" y="29" width="211" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="502" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Scale each input element</text>
+</g>
+<text x="428" y="507" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--d">B×C×H×W</text>
+<text x="676" y="517" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--o">Input bypass</text>
+<text x="486" y="423" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge d--y">Squared deviations</text>
+<text x="324" y="309" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge v--y">B×C×1×1</text>
+<text x="389" y="201" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge y--s">B×C×H×W</text>
+<text x="444" y="107" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--o">B×C×H×W</text>
+</svg>

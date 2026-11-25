@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="p" data-to="q" d="M 345 521 L 215 473" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="a" d="M 215 417 L 215 376" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="a" data-to="m" d="M 215 320 L 385 280" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="b" d="M 393 224 L 491 183" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="b" data-to="y" d="M 499 127 L 499 79" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="v" d="M 361 521 L 529 466" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="v" data-to="m" d="M 529 424 L 401 280" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="b" d="M 759 521 L 799 485 L 799 199 L 507 183" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="p"><rect x="277" y="521" width="152" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="353" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Processed volume</text>
+</g>
+<g class="node" id="x"><rect x="687" y="521" width="144" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="759" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Original volume</text>
+</g>
+<g class="node" id="q"><rect x="95" y="417" width="240" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="215" y="441.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Conv 1×1×1 for Q and K</text>
+<text x="215" y="459.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Add learned axial positions</text>
+</g>
+<g class="node" id="v"><rect x="453" y="424" width="152" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="529" y="450.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1×1 for V</text>
+</g>
+<g class="node" id="a"><rect x="87" y="320" width="256" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="215" y="344.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Batch independent axial lines</text>
+<text x="215" y="362.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scaled QKᵀ → Softmax</text>
+</g>
+<g class="node" id="m"><rect x="269" y="224" width="248" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="393" y="248.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Weight values along the axis</text>
+<text x="393" y="266.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Restore volume order</text>
+</g>
+<g class="node" id="b"><rect x="355" y="127" width="288" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="499" y="151.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Blend via learned Sigmoid</text>
+<text x="499" y="169.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">γ · attended + (1 − γ) · original</text>
+</g>
+<g class="node" id="y"><rect x="435" y="37" width="128" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="499" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output volume</text>
+</g>
+<text x="289" y="498" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--q">B×C×D×H×W</text>
+<text x="221" y="402" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--a">Q, K with axial position</text>
+<text x="312" y="311" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge a--m">M×L×L</text>
+<text x="505" y="108" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge b--y">B×C×D×H×W</text>
+<text x="471" y="357" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--m">M×L×C</text>
+<text x="791" y="511" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--b">B×C×D×H×W</text>
+</svg>

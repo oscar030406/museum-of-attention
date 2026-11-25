@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 417 526 L 418 469" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="k" d="M 444 427 L 592 369" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="k" d="M 685 526 L 618 369" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="s" d="M 418 427 L 306 391 L 306 293 L 353 277" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="r" d="M 392 427 L 113 403 L 113 190 L 157 177" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="k" data-to="s" d="M 592 327 L 379 277" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="k" data-to="m" d="M 618 327 L 747 305 L 747 175 L 477 170" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="m" d="M 366 221 L 451 170" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="y" d="M 464 128 L 464 71" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="330.5" y="526" width="173" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="417" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Pixel embeddings</text>
+</g>
+<g class="node" id="c"><rect x="584.5" y="526" width="201" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="685" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Optional past K and V</text>
+</g>
+<g class="node" id="p"><rect x="300.5" y="427" width="235" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="418" y="453.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Per-head Q, K, V projections</text>
+</g>
+<g class="node" id="k"><rect x="494" y="327" width="222" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="605" y="353.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Prepend past K and V</text>
+</g>
+<g class="node" id="s"><rect x="243" y="221" width="246" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="366" y="245.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scale logits + causal mask</text>
+<text x="366" y="263.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Stable Softmax over keys</text>
+</g>
+<g class="node" id="m"><rect x="360.5" y="128" width="207" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="464" y="154.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weighted sum of values</text>
+</g>
+<g class="node" id="y"><rect x="346.5" y="29" width="235" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="464" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project from heads + output</text>
+</g>
+<g class="node" id="r"><rect x="50.5" y="121" width="213" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="157" y="145.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Current K and V cache</text>
+<text x="157" y="163.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Stack before adding history</text>
+</g>
+<text x="424" y="503" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×L×C</text>
+<text x="532" y="405" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--k">Current K, V</text>
+<text x="658" y="453" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--k">B×2×h×P×d</text>
+<text x="369" y="407" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--s">Q: B×h×L×d</text>
+<text x="487" y="298" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge k--s">K: B×h×(P+L)×d</text>
+<text x="721" y="328" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge k--m">V: B×h×(P+L)×d</text>
+<text x="426" y="204" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--m">B×h×L×(P+L)</text>
+<text x="470" y="105" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge m--y">B×h×L×d</text>
+</svg>

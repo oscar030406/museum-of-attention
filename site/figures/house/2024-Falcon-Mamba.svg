@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 480 531 L 480 494" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="u" d="M 469 460 L 355 432" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="p" data-to="g" d="M 491 460 L 745 423" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="u" data-to="pars" d="M 377 380 L 385 361" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="u" data-to="state" d="M 355 380 L 200 375 L 200 301 L 349 291" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="u" data-to="read" d="M 333 380 L 79 375 L 79 225 L 368 220" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="pars" data-to="state" d="M 374 309 L 371 291" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="pars" data-to="read" d="M 396 309 L 594 301 L 594 225 L 412 220" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="state" data-to="read" d="M 360 239 L 390 220" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="read" data-to="gate" d="M 390 168 L 494 140" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="g" data-to="gate" d="M 745 389 L 792 384 L 792 145 L 516 140" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="gate" data-to="out" d="M 505 106 L 505 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="422" y="531" width="116" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tokens</text>
+</g>
+<g class="node" id="p"><rect x="356.5" y="460" width="247" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="482.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear → split signal and gate</text>
+</g>
+<g class="node" id="u"><rect x="245" y="380" width="220" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="355" y="402.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Depthwise causal Conv1D</text>
+<text x="355" y="420.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Activation and padding mask</text>
+</g>
+<g class="node" id="g"><rect x="686" y="389" width="118" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="745" y="411.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">SiLU on gate</text>
+</g>
+<g class="node" id="pars"><rect x="250" y="309" width="270" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="385" y="331.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project Δ, b, c → RMSNorm each</text>
+<text x="385" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Project Δ → add bias → Softplus</text>
+</g>
+<g class="node" id="state"><rect x="250" y="239" width="220" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="360" y="261.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Selective state update</text>
+<text x="360" y="279.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">S = exp(ΔA) ⊗ S(prev) + Δb ⊗ u</text>
+</g>
+<g class="node" id="read"><rect x="284" y="168" width="212" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="390" y="190.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Read with c and add skip</text>
+<text x="390" y="208.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">y = Sc + D ⊗ u</text>
+</g>
+<g class="node" id="gate"><rect x="425" y="106" width="160" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="505" y="128.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Apply SiLU gate ⊗</text>
+</g>
+<g class="node" id="out"><rect x="391" y="35" width="228" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="505" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Transpose → output Linear</text>
+</g>
+<text x="486" y="518" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×T×C</text>
+<text x="427" y="445" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--u">B×I×T</text>
+<text x="630" y="453" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--g">B×I×T</text>
+<text x="390" y="376" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge u--pars">B×T×I</text>
+<text x="284" y="375" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge u--state">u</text>
+<text x="177" y="397" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge u--read">Signal skip</text>
+<text x="380" y="304" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge pars--state">Δ, b</text>
+<text x="503" y="295" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge pars--read">c: B×T×N</text>
+<text x="387" y="236" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge state--read">B×I×N</text>
+<text x="454" y="165" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge read--gate">B×I×T</text>
+<text x="798" y="373" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge g--gate">B×I×T</text>
+<text x="511" y="93" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge gate--out">B×I×T</text>
+</svg>

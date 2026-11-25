@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 325 531 L 325 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="lat" data-to="l" d="M 655 531 L 655 482" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="cat" d="M 325 448 L 379 400" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="l" data-to="cat" d="M 644 448 L 401 400" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="l" data-to="q" d="M 666 448 L 675 400" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="cat" data-to="kv" d="M 390 366 L 390 317" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="q" data-to="sc" d="M 675 366 L 526 234" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="kv" data-to="sc" d="M 401 283 L 504 234" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="kv" data-to="mix" d="M 379 283 L 252 270 L 252 157 L 524 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="sc" data-to="mix" d="M 504 200 L 546 152" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="sc" data-to="w" d="M 526 200 L 790 164 L 790 69" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 535 118 L 535 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="263.5" y="531" width="123" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="325" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Image tokens</text>
+</g>
+<g class="node" id="lat"><rect x="559.5" y="531" width="191" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="655" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Learned latent queries</text>
+</g>
+<g class="node" id="p"><rect x="238" y="448" width="174" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="325" y="470.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project to text width</text>
+</g>
+<g class="node" id="l"><rect x="573" y="448" width="164" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="655" y="470.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Expand over batch</text>
+</g>
+<g class="node" id="cat"><rect x="259" y="366" width="262" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="390" y="388.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Concat image and latent tokens</text>
+</g>
+<g class="node" id="q"><rect x="581" y="366" width="188" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="675" y="388.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project Q from latents</text>
+</g>
+<g class="node" id="kv"><rect x="266.5" y="283" width="247" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="390" y="305.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project K and V → split heads</text>
+</g>
+<g class="node" id="sc"><rect x="417" y="200" width="196" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="515" y="222.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ → Softmax</text>
+</g>
+<g class="node" id="mix"><rect x="490.5" y="118" width="89" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="535" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight V</text>
+</g>
+<g class="node" id="out"><rect x="439.5" y="35" width="191" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="535" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Merge heads → Linear</text>
+</g>
+<g class="node" id="w"><rect x="721.5" y="35" width="137" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="790" y="57.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Output weights</text>
+</g>
+<text x="331" y="512" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×N×Cᵥ</text>
+<text x="661" y="512" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge lat--l">M×C</text>
+<text x="359" y="429" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--cat">B×N×C</text>
+<text x="537" y="420" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge l--cat">B×M×C</text>
+<text x="678" y="427" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge l--q">B×M×C</text>
+<text x="396" y="347" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge cat--kv">B×(N+M)×C</text>
+<text x="615" y="304" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--sc">B×h×M×D</text>
+<text x="453" y="278" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge kv--sc">K: B×h×(N+M)×D</text>
+<text x="330" y="270" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge kv--mix">V</text>
+<text x="535" y="181" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sc--mix">B×h×M×(N+M)</text>
+<text x="541" y="99" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--out">B×M×C</text>
+</svg>

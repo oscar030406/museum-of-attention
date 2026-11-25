@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 449 531 L 460 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="q" d="M 438 448 L 177 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="c" d="M 460 448 L 490 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="u" d="M 482 448 L 784 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="s" d="M 177 357 L 170 326" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="c" data-to="cs" d="M 479 357 L 458 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="inv" d="M 501 357 L 766 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="u" data-to="inv" d="M 784 357 L 788 326" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="s" data-to="f" d="M 170 274 L 448 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="cs" data-to="f" d="M 458 274 L 470 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="inv" data-to="f" d="M 777 274 L 492 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="f" data-to="r" d="M 470 200 L 459 152" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="x" data-to="r" d="M 471 531 L 918 486 L 918 158 L 481 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="r" data-to="y" d="M 470 118 L 470 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="397" y="531" width="126" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="460" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="p"><rect x="348.5" y="448" width="223" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="460" y="470.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Circular pad → LayerNorm</text>
+</g>
+<g class="node" id="q"><rect x="65" y="357" width="224" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="177" y="379.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project Q, K, V</text>
+<text x="177" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Window Q, unfold larger K and V</text>
+</g>
+<g class="node" id="c"><rect x="369" y="357" width="242" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="490" y="379.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → Depthwise Conv</text>
+<text x="490" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split Qc and Vc → Normalize Qc</text>
+</g>
+<g class="node" id="u"><rect x="661.5" y="357" width="245" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="784" y="379.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → Split two vectors</text>
+<text x="784" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Stack as U per pixel</text>
+</g>
+<g class="node" id="s"><rect x="42.5" y="274" width="255" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="170" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Window scores + position bias</text>
+<text x="170" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax → Mix V → Restore grid</text>
+</g>
+<g class="node" id="cs"><rect x="361" y="274" width="194" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="458" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Channel scores QcQcᵀ</text>
+<text x="458" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax → Mix Vc</text>
+</g>
+<g class="node" id="inv"><rect x="672.5" y="274" width="209" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="777" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Rank-two reconstruction</text>
+<text x="777" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Uᵀ(UUᵀ + I)⁻¹UVc</text>
+</g>
+<g class="node" id="f"><rect x="339" y="200" width="262" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="470" y="222.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Concat three paths → Conv 1×1</text>
+</g>
+<g class="node" id="r"><rect x="378" y="118" width="184" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="470" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Crop and add input ⊕</text>
+</g>
+<g class="node" id="y"><rect x="400" y="35" width="140" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="470" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="463" y="510" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×C×H₀×W₀</text>
+<text x="326" y="427" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--q">B×C×H×W</text>
+<text x="182" y="348" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--s">Q: BhG×T×d</text>
+<text x="479" y="348" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--cs">B×h×d×N</text>
+<text x="642" y="357" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--inv">Vc</text>
+<text x="793" y="345" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge u--inv">B×h×N×2×d</text>
+<text x="323" y="269" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--f">B×C×H×W</text>
+<text x="472" y="259" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge cs--f">B×C×H×W</text>
+<text x="649" y="249" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge inv--f">B×C×H×W</text>
+<text x="473" y="183" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge f--r">B×C×H×W</text>
+<text x="700" y="523" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--r">Input bypass</text>
+<text x="476" y="99" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge r--y">B×C×H₀×W₀</text>
+</svg>

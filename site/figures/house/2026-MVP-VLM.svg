@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="a" d="M 272 531 L 272 503" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="b" d="M 633 531 L 633 503" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="mk" data-to="n" d="M 851 531 L 851 423" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="a" data-to="s" d="M 272 451 L 272 432" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="c" d="M 272 380 L 463 361" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="b" data-to="c" d="M 633 451 L 646 437 L 646 386 L 485 361" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="n" data-to="c" d="M 851 389 L 507 361" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="c" data-to="f" d="M 485 309 L 485 291" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="f" data-to="p" d="M 485 239 L 485 220" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="p" data-to="i" d="M 485 168 L 485 149" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="i" data-to="y" d="M 485 97 L 485 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="210.5" y="531" width="123" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="272" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Visual tokens</text>
+</g>
+<g class="node" id="q"><rect x="560" y="531" width="146" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="633" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Question tokens</text>
+</g>
+<g class="node" id="mk"><rect x="783.5" y="531" width="135" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="851" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Question mask</text>
+</g>
+<g class="node" id="a"><rect x="183" y="451" width="178" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="272" y="473.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">LayerNorm → Linear</text>
+<text x="272" y="491.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">GELU → Dropout</text>
+</g>
+<g class="node" id="b"><rect x="544" y="451" width="178" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="633" y="473.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">LayerNorm → Linear</text>
+<text x="633" y="491.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">GELU → Dropout</text>
+</g>
+<g class="node" id="s"><rect x="143" y="380" width="258" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="272" y="402.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Visual Softmax scores → Mix V</text>
+<text x="272" y="420.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dropout → Add → LayerNorm</text>
+</g>
+<g class="node" id="n"><rect x="796" y="389" width="110" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="851" y="411.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Invert mask</text>
+</g>
+<g class="node" id="c"><rect x="342.5" y="309" width="285" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="485" y="331.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Masked Softmax → Mix question V</text>
+<text x="485" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dropout → Add → LayerNorm</text>
+</g>
+<g class="node" id="f"><rect x="344" y="239" width="282" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="485" y="261.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">SwiGLU FFN → Add → LayerNorm</text>
+<text x="485" y="279.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Repeat attention and FFN layers</text>
+</g>
+<g class="node" id="p"><rect x="398.5" y="168" width="173" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="485" y="190.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">LayerNorm → MLP</text>
+<text x="485" y="208.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Sigmoid per visual token</text>
+</g>
+<g class="node" id="i"><rect x="366" y="97" width="238" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="485" y="119.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Top-k or threshold</text>
+<text x="485" y="137.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Apply count bounds → Sort indices</text>
+</g>
+<g class="node" id="y"><rect x="417" y="35" width="136" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="485" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Indices to keep</text>
+</g>
+<text x="278" y="522" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--a">B×N×Cv</text>
+<text x="639" y="522" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--b">B×M×Ct</text>
+<text x="857" y="482" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mk--n">B×M</text>
+<text x="278" y="447" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a--s">B×N×D</text>
+<text x="406" y="386" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--c">Q: B×N×D</text>
+<text x="651" y="448" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge b--c">K, V: B×M×D</text>
+<text x="690" y="369" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge n--c">B×M</text>
+<text x="491" y="305" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge c--f">B×N×D</text>
+<text x="491" y="235" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge f--p">B×N×D</text>
+<text x="491" y="164" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge p--i">N per image</text>
+<text x="491" y="88" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge i--y">K per image</text>
+</svg>

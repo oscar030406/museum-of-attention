@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="q" data-to="probe" d="M 433 531 L 240 491" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="q" data-to="pool" d="M 455 531 L 540 491" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="q" data-to="full" d="M 477 531 L 713 514 L 713 329 L 630 317" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="probe" data-to="pattern" d="M 229 439 L 150 409" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="probe" data-to="js" d="M 251 439 L 465 409" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="pool" data-to="js" d="M 540 439 L 487 409" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="pattern" data-to="blocks" d="M 150 357 L 304 326" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="js" data-to="blocks" d="M 476 357 L 326 326" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="blocks" data-to="norm" d="M 315 274 L 472 243" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="full" data-to="norm" d="M 630 283 L 494 243" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="norm" data-to="mix" d="M 483 191 L 559 152" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="v" data-to="mix" d="M 833 531 L 881 494 L 881 165 L 581 152" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 570 118 L 570 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="q"><rect x="378.5" y="531" width="153" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="455" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Queries and keys</text>
+</g>
+<g class="node" id="v"><rect x="797" y="531" width="72" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="833" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Values</text>
+</g>
+<g class="node" id="probe"><rect x="144" y="439" width="192" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="240" y="461.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Probe last query block</text>
+<text x="240" y="479.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Causal QKᵀ → Softmax</text>
+</g>
+<g class="node" id="pool"><rect x="435" y="439" width="210" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="540" y="461.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Mean-pool keys by block</text>
+<text x="540" y="479.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Compare to mean last query</text>
+</g>
+<g class="node" id="pattern"><rect x="29" y="357" width="242" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="150" y="379.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Rank columns and diagonals</text>
+<text x="150" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Apply coverage budget</text>
+</g>
+<g class="node" id="js"><rect x="382.5" y="357" width="187" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="476" y="379.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Test pattern similarity</text>
+<text x="476" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Square-root JS divergence</text>
+</g>
+<g class="node" id="blocks"><rect x="191.5" y="274" width="247" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="315" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Select blocks per head</text>
+<text x="315" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Add pooled block pairs when eligible</text>
+</g>
+<g class="node" id="full"><rect x="502.5" y="283" width="255" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="630" y="305.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Expand K heads → scaled QKᵀ</text>
+</g>
+<g class="node" id="norm"><rect x="338" y="191" width="290" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="483" y="213.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Expand block mask → causal mask</text>
+<text x="483" y="231.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Masked Softmax</text>
+</g>
+<g class="node" id="mix"><rect x="452.5" y="118" width="235" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="570" y="140.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Expand V heads → weight V</text>
+</g>
+<g class="node" id="out"><rect x="503" y="35" width="134" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="570" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output context</text>
+</g>
+<text x="339" y="506" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--probe">1×T×h×D (Q)</text>
+<text x="203" y="427" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge probe--pattern">Probe weights</text>
+<text x="403" y="271" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge blocks--norm">Active block pairs</text>
+<text x="578" y="262" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge full--norm">1×h×T×T</text>
+<text x="532" y="179" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge norm--mix">1×h×T×T</text>
+<text x="871" y="520" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--mix">1×T×g×D</text>
+<text x="576" y="99" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--out">1×T×h×D</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="w" d="M 466 521 L 312 501" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="w" data-to="s" d="M 312 445 L 312 432" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="p" d="M 320 376 L 312 363" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="p" data-to="m" d="M 312 307 L 320 293" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="m" data-to="r" d="M 312 237 L 312 217" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="r" data-to="a" d="M 312 175 L 482 148" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="y" d="M 490 106 L 490 79" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="x" data-to="g" d="M 482 521 L 725 501" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="g" data-to="h" d="M 725 445 L 725 432" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="h" data-to="a" d="M 725 376 L 776 366 L 776 172 L 498 148" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="s" data-to="m" d="M 304 376 L 76 371 L 76 295 L 304 293" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="406" y="521" width="136" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="474" y="547.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="w"><rect x="180" y="445" width="264" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="312" y="469.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">View as spatial grid and shift</text>
+<text x="312" y="487.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Partition into windows</text>
+</g>
+<g class="node" id="g"><rect x="601" y="445" width="248" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="725" y="469.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Global Q, K, V</text>
+<text x="725" y="487.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Pointwise and depthwise Conv</text>
+</g>
+<g class="node" id="s"><rect x="160" y="376" width="304" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="312" y="400.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Window QKᵀ + position bias and mask</text>
+<text x="312" y="418.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax → weight V → Linear</text>
+</g>
+<g class="node" id="h"><rect x="577" y="376" width="296" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="725" y="400.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Global channel Softmax</text>
+<text x="725" y="418.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Normalize Q, K → scores → weight V</text>
+</g>
+<g class="node" id="p"><rect x="136" y="307" width="352" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="312" y="331.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Pool window tokens → prompt Softmax</text>
+<text x="312" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Mix learned prompts for Q, reduce K and V</text>
+</g>
+<g class="node" id="m"><rect x="140" y="237" width="344" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="312" y="261.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Prompt-guided spectral weights</text>
+<text x="312" y="279.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax, weight V, project, scale tokens</text>
+</g>
+<g class="node" id="r"><rect x="180" y="175" width="264" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="312" y="201.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Restore windows and undo shift</text>
+</g>
+<g class="node" id="a"><rect x="358" y="106" width="264" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="490" y="132.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Add local and global outputs ⊕</text>
+</g>
+<g class="node" id="y"><rect x="418" y="37" width="144" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="490" y="63.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output features</text>
+</g>
+<text x="451" y="510" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--w">B×C×H×W</text>
+<text x="322.0" y="443.5" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge w--s">(B·M)×P²×C</text>
+<text x="326.0" y="374.5" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--p">Window tokens</text>
+<text x="326.0" y="305.0" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge p--m">(B·M)×1×Cr</text>
+<text x="496" y="98" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--y">B×C×H×W</text>
+<text x="782" y="360" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge h--a">B×C×H×W</text>
+<text x="66" y="392" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge s--m">Local tokens</text>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="beta" d="M 488 531 L 290 482" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="p" d="M 510 531 L 630 491" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="state" data-to="err" d="M 138 531 L 143 414 L 343 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="state" data-to="s" d="M 116 531 L 86 466 L 86 333 L 348 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="beta" data-to="err" d="M 290 448 L 365 409" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="p" data-to="err" d="M 608 439 L 387 409" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="s" d="M 630 439 L 646 402 L 646 331 L 392 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="read" d="M 652 439 L 785 400 L 785 239 L 491 234" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="err" data-to="s" d="M 365 357 L 370 326" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="s" data-to="read" d="M 370 274 L 469 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="read" data-to="proj" d="M 480 200 L 489 161" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="x" data-to="proj" d="M 532 531 L 907 507 L 907 166 L 511 161" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="proj" data-to="out" d="M 500 109 L 500 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="state"><rect x="62" y="531" width="130" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="127" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Previous state</text>
+</g>
+<g class="node" id="x"><rect x="452" y="531" width="116" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="510" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tokens</text>
+</g>
+<g class="node" id="beta"><rect x="201.5" y="448" width="177" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="290" y="470.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project β → Sigmoid</text>
+</g>
+<g class="node" id="p"><rect x="498.5" y="439" width="263" height="52" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="630" y="461.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project Q, K, V → Short Conv1D</text>
+<text x="630" y="479.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split heads, normalize Q and K</text>
+</g>
+<g class="node" id="err"><rect x="247.5" y="357" width="235" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="365" y="379.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Predict value and form error</text>
+<text x="365" y="397.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">β ⊗ (v − kᵀS(prev))</text>
+</g>
+<g class="node" id="s"><rect x="251" y="274" width="238" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="370" y="296.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Add key–error outer product</text>
+<text x="370" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">S = S(prev) + k ⊗ error</text>
+</g>
+<g class="node" id="read"><rect x="417.5" y="200" width="125" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="480" y="222.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Read qᵀS / √K</text>
+</g>
+<g class="node" id="proj"><rect x="369.5" y="109" width="261" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="500" y="131.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">RMSNorm, optional output gate</text>
+<text x="500" y="149.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Merge heads → Linear</text>
+</g>
+<g class="node" id="out"><rect x="435.5" y="35" width="129" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="500" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output tokens</text>
+</g>
+<text x="585" y="522" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--p">B×T×C</text>
+<text x="146" y="496" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge state--err">B×h×K×V</text>
+<text x="342" y="436" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge beta--err">β: B×h</text>
+<text x="508" y="418" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--err">k, v</text>
+<text x="647" y="426" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--s">k</text>
+<text x="728" y="435" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--read">q</text>
+<text x="375" y="345" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge err--s">B×h×V</text>
+<text x="427" y="265" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge s--read">B×h×K×V</text>
+<text x="492" y="186" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge read--proj">B×T×h×V</text>
+<text x="737" y="531" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--proj">Optional gate input</text>
+<text x="506" y="94" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge proj--out">B×T×C</text>
+</svg>

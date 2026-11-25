@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="flat" d="M 480 531 L 480 494" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="flat" data-to="q" d="M 469 460 L 380 423" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="q" data-to="sc" d="M 369 389 L 380 361" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="sc" data-to="mix" d="M 380 309 L 439 282" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="q" data-to="mix" d="M 391 389 L 660 378 L 660 292 L 461 282" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="mix" data-to="add" d="M 450 248 L 469 211" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="flat" data-to="add" d="M 491 460 L 790 450 L 790 222 L 491 211" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="add" data-to="mlp" d="M 480 177 L 480 140" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="mlp" data-to="out" d="M 480 106 L 480 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="381.5" y="531" width="197" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Patch and point tokens</text>
+</g>
+<g class="node" id="flat"><rect x="384" y="460" width="192" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="482.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Fold frames into batch</text>
+</g>
+<g class="node" id="q"><rect x="260" y="389" width="240" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="380" y="411.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">LayerNorm → project Q, K, V</text>
+</g>
+<g class="node" id="sc"><rect x="282" y="309" width="196" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="380" y="331.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ → Softmax</text>
+<text x="380" y="349.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Within each frame</text>
+</g>
+<g class="node" id="mix"><rect x="342" y="248" width="216" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="450" y="270.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight V → output Linear</text>
+</g>
+<g class="node" id="add"><rect x="394" y="177" width="172" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="199.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Add frame tokens ⊕</text>
+</g>
+<g class="node" id="mlp"><rect x="338.5" y="106" width="283" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="128.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">LayerNorm → MLP → residual add</text>
+</g>
+<g class="node" id="out"><rect x="398" y="35" width="164" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Restore frame axis</text>
+</g>
+<text x="486" y="518" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--flat">B×T×N×C</text>
+<text x="438" y="444" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge flat--q">(BT)×N×C</text>
+<text x="384" y="380" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--sc">(BT)×h×N×D</text>
+<text x="417" y="304" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sc--mix">(BT)×h×N×N</text>
+<text x="541" y="401" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--mix">V</text>
+<text x="469" y="235" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mix--add">(BT)×N×C</text>
+<text x="656" y="471" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge flat--add">Frame residual</text>
+<text x="486" y="164" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge add--mlp">(BT)×N×C</text>
+<text x="486" y="93" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mlp--out">(BT)×N×C</text>
+</svg>

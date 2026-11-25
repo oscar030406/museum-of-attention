@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="f" d="M 480 531 L 480 466" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="f" data-to="q" d="M 458 432 L 168 367" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="f" data-to="k" d="M 480 432 L 480 367" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="f" data-to="v" d="M 502 432 L 777 367" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="k" data-to="ks" d="M 469 333 L 360 267" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="k" data-to="kv" d="M 491 333 L 624 267" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="v" data-to="kv" d="M 777 333 L 646 267" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="read" d="M 168 333 L 147 310 L 147 182 L 438 177" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="ks" data-to="read" d="M 360 233 L 460 177" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="kv" data-to="read" d="M 635 233 L 482 177" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="read" data-to="out" d="M 460 125 L 460 69" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<g class="node" id="x"><rect x="404" y="531" width="152" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input feature grid</text>
+</g>
+<g class="node" id="f"><rect x="378" y="432" width="204" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="454.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Flatten spatial positions</text>
+</g>
+<g class="node" id="q"><rect x="80" y="333" width="176" height="34" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="168" y="355.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project Q → ELU + 1</text>
+</g>
+<g class="node" id="k"><rect x="392.5" y="333" width="175" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="355.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project K → ELU + 1</text>
+</g>
+<g class="node" id="v"><rect x="732" y="333" width="90" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="777" y="355.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project V</text>
+</g>
+<g class="node" id="ks"><rect x="279.5" y="233" width="161" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="360" y="255.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Sum mapped keys</text>
+</g>
+<g class="node" id="kv"><rect x="508" y="233" width="254" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="635" y="255.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Sum key–value outer products</text>
+</g>
+<g class="node" id="read"><rect x="339" y="125" width="242" height="52" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="460" y="147.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Query reads both summaries</text>
+<text x="460" y="165.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">(KV)Q / (QᵀΣK + ε)</text>
+</g>
+<g class="node" id="out"><rect x="307.5" y="35" width="305" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="460" y="57.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Merge heads → Linear → restore grid</text>
+</g>
+<text x="486" y="504" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--f">B×C×H×W</text>
+<text x="319" y="397" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge f--q">B×N×C</text>
+<text x="424" y="304" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge k--ks">B×N×h×D</text>
+<text x="725" y="304" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--kv">B×N×h×M</text>
+<text x="168" y="326" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--read">B×N×h×D</text>
+<text x="421" y="213" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge ks--read">B×h×D</text>
+<text x="576" y="207" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge kv--read">B×h×M×D</text>
+<text x="466" y="102" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge read--out">B×N×h×M</text>
+</svg>

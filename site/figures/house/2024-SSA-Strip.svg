@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="a" d="M 399 526 L 237 476" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="b" d="M 425 526 L 583 476" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="y" d="M 451 526 L 886 470 L 886 116 L 489 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="c" d="M 237 420 L 412 369" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="b" data-to="c" d="M 583 420 L 438 369" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="c" data-to="d" d="M 412 327 L 237 277" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="c" data-to="e" d="M 438 327 L 583 277" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="d" data-to="f" d="M 237 221 L 412 170" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="e" data-to="f" d="M 583 221 L 438 170" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="f" data-to="y" d="M 425 128 L 463 71" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="341.5" y="526" width="167" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="425" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="a"><rect x="133" y="420" width="208" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="237" y="444.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Reflect pad + unfold</text>
+<text x="237" y="462.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Horizontal 1×k strips</text>
+</g>
+<g class="node" id="b"><rect x="466.5" y="420" width="233" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="583" y="444.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">GAP + Conv 1×1 + Sigmoid</text>
+<text x="583" y="462.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Horizontal group weights</text>
+</g>
+<g class="node" id="c"><rect x="314" y="327" width="222" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="425" y="353.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Weight and sum each strip</text>
+</g>
+<g class="node" id="d"><rect x="133" y="221" width="208" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="237" y="245.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Reflect pad + unfold</text>
+<text x="237" y="263.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Vertical k×1 strips</text>
+</g>
+<g class="node" id="e"><rect x="466.5" y="221" width="233" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="583" y="245.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">GAP + Conv 1×1 + Sigmoid</text>
+<text x="583" y="263.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Vertical group weights</text>
+</g>
+<g class="node" id="f"><rect x="314" y="128" width="222" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="425" y="154.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Weight and sum each strip</text>
+</g>
+<g class="node" id="y"><rect x="339" y="29" width="274" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="476" y="55.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Scale filtered and raw maps + add</text>
+</g>
+<text x="337" y="502" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--a">B×C×H×W</text>
+<text x="672" y="511" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--y">Input bypass</text>
+<text x="337" y="403" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a--c">B×g×(C/g)×k×HW</text>
+<text x="525" y="396" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge b--c">B×g×1×k×1</text>
+<text x="328" y="298" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge c--d">B×C×H×W</text>
+<text x="337" y="204" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge d--f">B×g×(C/g)×k×HW</text>
+<text x="525" y="197" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge e--f">B×g×1×k×1</text>
+<text x="454" y="104" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge f--y">B×C×H×W</text>
+</svg>

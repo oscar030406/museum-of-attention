@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="cat" d="M 331 531 L 459 475" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="a" data-to="cat" d="M 669 522 L 481 475" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="cat" data-to="c1" d="M 470 423 L 470 367" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="c1" data-to="c2" d="M 470 333 L 470 267" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="c2" data-to="add" d="M 470 233 L 470 168" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="x" data-to="add" d="M 309 531 L 140 482 L 140 181 L 448 168" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="a" data-to="add" d="M 691 522 L 808 484 L 808 181 L 492 168" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="add" data-to="out" d="M 470 134 L 470 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<g class="node" id="x"><rect x="262" y="531" width="116" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="320" y="553.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Input scores</text>
+</g>
+<g class="node" id="a"><rect x="574.5" y="522" width="211" height="52" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="680" y="544.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Build or slice ALiBi bias</text>
+<text x="680" y="562.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Relative distance × head slope</text>
+</g>
+<g class="node" id="cat"><rect x="351" y="423" width="238" height="52" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="470" y="445.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Concat scores and tiled bias</text>
+<text x="470" y="463.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Keep lower triangle</text>
+</g>
+<g class="node" id="c1"><rect x="368" y="333" width="204" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="470" y="355.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Conv 1×k → LeakyReLU</text>
+</g>
+<g class="node" id="c2"><rect x="424" y="233" width="92" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="470" y="255.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Conv 1×k</text>
+</g>
+<g class="node" id="add"><rect x="329.5" y="134" width="281" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="470" y="156.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Add scores, bias and correction ⊕</text>
+</g>
+<g class="node" id="out"><rect x="397.5" y="35" width="145" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="470" y="57.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Adjusted scores</text>
+</g>
+<text x="408" y="511" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge x--cat">B×h×Q×K</text>
+<text x="590" y="499" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--cat">h×Q×K</text>
+<text x="476" y="400" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge cat--c1">B×2h×Q×K</text>
+<text x="476" y="305" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge c1--c2">B×M×Q×K</text>
+<text x="476" y="206" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge c2--add">B×h×Q×K</text>
+<text x="240" y="507" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge x--add">Original scores</text>
+<text x="757" y="514" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--add">Position bias</text>
+<text x="476" y="107" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge add--out">B×h×Q×K</text>
+</svg>
