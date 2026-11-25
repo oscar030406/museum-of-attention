@@ -230,6 +230,7 @@ function figLicense(lic) {
 function figCap(e, withLink = true) {
   const f = e.figure; if (!f) return "";
   const href = f.source_url || paperUrl(e);
+  if (f.house) return `<div class="fig-cap"><span class="fig-no">${EN() ? "Drawn by the museum" : "馆内绘制"}</span>${withLink && href ? out(href, t("figSrc")) : ""}</div>`;
   return `<div class="fig-cap"><span class="fig-no">${esc(t("figNo", f))}</span>${withLink && href ? out(href, t("figSrc")) : ""}</div>`;
 }
 
@@ -710,7 +711,7 @@ async function openObject(id) {
       </header>
       <figure class="obj-fig">
         ${f ? `<a href="${esc(f.file)}" target="_blank" rel="noopener">${figBox(e, "big", true)}</a>` : figBox(e, "big")}
-        ${f ? `<figcaption>${figCap(e)}${f.caption ? `<p class="fig-caption" lang="en">${esc(f.caption)}</p>` : ""}${figLicense(f.license) ? `<p class="fig-lic">${esc(t("figLic"))}: ${esc(figLicense(f.license))}</p>` : ""}<p class="fig-lic">${/publicdomain/.test(f.license || "") ? (EN() ? "Figure from the paper." : "图出自这篇论文。") : (EN() ? "Figure from the paper. Copyright belongs to its authors." : "图出自这篇论文，版权归原作者。")}</p></figcaption>` : ""}
+        ${f && f.house ? `<figcaption>${figCap(e)}${(EN() ? f.caption : f.caption_zh) ? `<p class="fig-caption">${esc(EN() ? f.caption : f.caption_zh)}</p>` : ""}<p class="fig-lic">${EN() ? "The paper has no figure of this module, so the museum drew this one from the paper's equations and the code." : "论文里没有这个模块的结构图。这张图由本馆按论文的公式和代码绘制。"}</p></figcaption>` : f ? `<figcaption>${figCap(e)}${f.caption ?`<p class="fig-caption" lang="en">${esc(f.caption)}</p>` : ""}${figLicense(f.license) ? `<p class="fig-lic">${esc(t("figLic"))}: ${esc(figLicense(f.license))}</p>` : ""}<p class="fig-lic">${/publicdomain/.test(f.license || "") ? (EN() ? "Figure from the paper." : "图出自这篇论文。") : (EN() ? "Figure from the paper. Copyright belongs to its authors." : "图出自这篇论文，版权归原作者。")}</p></figcaption>` : ""}
       </figure>
       ${mech ? `<div class="obj-mech"><p>${mech}</p></div>` : ""}
       <p class="obj-links">${pu ? out(pu, t("tPaper")) : ""}${e.repo ? out(repoUrl(e), t("tRepo")) : ""}</p>

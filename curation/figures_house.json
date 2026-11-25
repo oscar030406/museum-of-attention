@@ -1,0 +1,102 @@
+{
+  "2026-CKDA": {
+    "file": "figures/house/2026-CKDA.svg",
+    "caption_en": "Token projections produce signed decay and write gates for a recurrent state, whose query readout passes through gated normalization.",
+    "caption_zh": "令牌投影生成带符号的衰减和写入门，查询读出递推状态，再经门控归一化与投影。"
+  },
+  "2025-Kimi-Delta-Attention": {
+    "file": "figures/house/2025-Kimi-Delta-Attention.svg",
+    "caption_en": "For each token, decay the stored state by channel, write the gated value residual, and read the updated state with the query.",
+    "caption_zh": "每步按通道衰减记忆，把门控后的值残差写入状态，再用查询读出更新后的状态。"
+  },
+  "2024-Gated-Slot-Attention": {
+    "file": "figures/house/2024-Gated-Slot-Attention.svg",
+    "caption_en": "Tokens update separate key and value states for each slot, then query scores select a weighted mixture of slot values.",
+    "caption_zh": "令牌分别更新各槽的键和值状态，查询给槽打分，再按权重混合槽中的值。"
+  },
+  "2023-Qwen-VL-Resampler": {
+    "file": "figures/house/2023-Qwen-VL-Resampler.svg",
+    "caption_en": "Learned grid queries read visual tokens through cross attention, with bicubic interpolation aligning the key positions to the input grid.",
+    "caption_zh": "可学习的网格查询通过交叉注意力读出视觉令牌，键的位置编码经双三次插值对齐输入网格。"
+  },
+  "2019-Adaptively-Sparse-Transformer": {
+    "file": "figures/house/2019-Adaptively-Sparse-Transformer.svg",
+    "caption_en": "Scores and a supplied alpha set a threshold by bisection, then positive parts become sparse attention weights.",
+    "caption_zh": "分数和给定的 α 经二分法求出阈值，截去负值后生成稀疏注意力权重。"
+  },
+  "2026-BIM": {
+    "file": "figures/house/2026-BIM.svg",
+    "caption_en": "Two depthwise convolutions form features at different scales, whose channel similarities set the weights for a sequence of feature products.",
+    "caption_zh": "两路深度卷积提取不同尺度的特征，通道相似度给两路特征加权，随后逐级相乘并投影。"
+  },
+  "2026-D-AAttn": {
+    "file": "figures/house/2026-D-AAttn.svg",
+    "caption_en": "Learned offsets resample queries, keys and values before local window attention, and a depthwise value projection adds positional information.",
+    "caption_zh": "学习出的偏移重采样查询、键和值，再做局部窗口注意力，最后叠加值的深度卷积位置特征。"
+  },
+  "2026-HA": {
+    "file": "figures/house/2026-HA.svg",
+    "caption_en": "A channel gate weights convolved features and a spatial gate weights the input, then the module adds both maps.",
+    "caption_zh": "通道门给卷积特征加权，空间门给原始特征加权，两路结果相加。"
+  },
+  "2026-MSE": {
+    "file": "figures/house/2026-MSE.svg",
+    "caption_en": "The normalized input feeds a depthwise convolution and a channel gate, then their feature maps multiply before the residual addition.",
+    "caption_zh": "归一化特征进入深度卷积和通道门，两路特征逐点相乘，再加回输入。"
+  },
+  "2026-RSWAttention": {
+    "file": "figures/house/2026-RSWAttention.svg",
+    "caption_en": "Each window mixes channels with dot product weights, then a linear map over its value positions gates the result before reassembly.",
+    "caption_zh": "每个窗口用点积权重混合通道，再用值的位置线性映射门控结果，最后拼回特征图。"
+  },
+  "2026-SGA": {
+    "file": "figures/house/2026-SGA.svg",
+    "caption_en": "Two projected maps supply a shared mean for Gaussian scoring, then their gated residuals are concatenated and refined by convolutions.",
+    "caption_zh": "两路投影特征提供共享均值，高斯打分为每路加权，再拼接带残差的结果并卷积。"
+  },
+  "2025-AttentionGate": {
+    "file": "figures/house/2025-AttentionGate.svg",
+    "caption_en": "The gating and skip maps are projected and added to predict a spatial mask, which scales the original skip features.",
+    "caption_zh": "门控特征和跳接特征投影后相加，生成空间权重，再给原始跳接特征加权。"
+  },
+  "2025-Di-SpAM": {
+    "file": "figures/house/2025-Di-SpAM.svg",
+    "caption_en": "Parallel dilated filters are summed, gated and reweighted by pooled channels, then projected and added back to the input.",
+    "caption_zh": "多路空洞卷积相加，通道分半相乘，再用池化得到的权重重标定，最后投影并加回输入。"
+  },
+  "2025-GSA-Gauss": {
+    "file": "figures/house/2025-GSA-Gauss.svg",
+    "caption_en": "Channel pooling finds a peak that sets a Gaussian center, and the normalized Gaussian map weights the input.",
+    "caption_zh": "通道池化找到峰值位置，据此设置高斯中心，归一化后的高斯图给原输入加权。"
+  },
+  "2025-LWGA": {
+    "file": "figures/house/2025-LWGA.svg",
+    "caption_en": "Four channel groups use point, local, directional and global operations, then their concatenation is projected and added to the input.",
+    "caption_zh": "四组通道分别做逐点门控、局部卷积、方向门控和全局注意力，再拼接、投影并加回输入。"
+  },
+  "2025-RCSSC": {
+    "file": "figures/house/2025-RCSSC.svg",
+    "caption_en": "Spatial and column gates weight shared features, then a pooled context gate modulates their fusion before the residual addition.",
+    "caption_zh": "空间门和列方向门给共享特征加权，池化上下文再调节融合结果，最后加回输入。"
+  },
+  "2024-CAA": {
+    "file": "figures/house/2024-CAA.svg",
+    "caption_en": "Local average pooling and two depthwise strip convolutions build a sigmoid mask that weights the original feature map.",
+    "caption_zh": "局部平均池化和两次深度条形卷积生成权重图，再逐点乘回原始特征。"
+  },
+  "2024-KEP-SVGP": {
+    "file": "figures/house/2024-KEP-SVGP.svg",
+    "caption_en": "Low rank query and key scores parameterize a Gaussian posterior whose samples are projected into output tokens.",
+    "caption_zh": "低秩查询和键分数决定高斯后验，从后验采样后投影成输出令牌。"
+  },
+  "2023-CloMSFM": {
+    "file": "figures/house/2023-CloMSFM.svg",
+    "caption_en": "Local heads gate convolved values, while global heads read pooled tokens, then the module fuses both outputs with a residual.",
+    "caption_zh": "局部头门控卷积后的值，全局头读取池化令牌，两路输出拼接投影后加回输入。"
+  },
+  "2022-FLASH-GAU": {
+    "file": "figures/house/2022-FLASH-GAU.svg",
+    "caption_en": "Tokens combine within chunk attention with summaries across chunks, then gate and project the result before adding the input.",
+    "caption_zh": "令牌合并块内注意力与跨块摘要，再经门控和投影后加回输入。"
+  }
+}

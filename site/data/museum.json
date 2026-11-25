@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25T22:41:50+09:00",
+ "generated": "2026-11-25T23:00:08+09:00",
  "sources": [
   "INDEX.md",
   "工具与模板/模块收集/队列.md",
@@ -3440,8 +3440,8 @@
      "commit": "53d4fcd391d0b5f8286fcb55cba7794a494bfca4",
      "source_file_url": null,
      "license": null,
-     "verification": "测试统计实际读取的候选和窗口项，并用独立枚举核对训练分布。",
-     "verification_source": "README",
+     "verification": "式 (13) 的归一化用了带 1e-12 下限的 F.normalize，范数很小时结果差两个数量级。.eval() 后直接调用仍返回软期望，论文测试用算法 1 的硬解码。变长批次里填充区的 NaN 会污染有效上下文",
+     "verification_source": "验证记录.md",
      "index_source": null,
      "has_pdf": "有",
      "field": "深度学习基础",
@@ -3454,7 +3454,7 @@
      ],
      "en": {
       "name": "MoChA",
-      "verification_source": "the README"
+      "verification_source": "the verification log"
      }
     }
    ],
@@ -3465,7 +3465,7 @@
    "guo": null,
    "repo": null,
    "repo_url": null,
-   "verification": "测试统计实际读取的候选和窗口项，并用独立枚举核对训练分布。",
+   "verification": "式 (13) 的归一化用了带 1e-12 下限的 F.normalize，范数很小时结果差两个数量级。.eval() 后直接调用仍返回软期望，论文测试用算法 1 的硬解码。变长批次里填充区的 NaN 会污染有效上下文",
    "missing": [
     "formula"
    ],
@@ -4879,6 +4879,15 @@
    ],
    "id": "2019-Adaptively-Sparse-Transformer",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2019-Adaptively-Sparse-Transformer.svg",
+    "fig_no": null,
+    "caption": "Scores and a supplied alpha set a threshold by bisection, then positive parts become sparse attention weights.",
+    "caption_zh": "分数和给定的 α 经二分法求出阈值，截去负值后生成稀疏注意力权重。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Adaptively Sparse Transformers",
     "venue": "EMNLP-IJCNLP",
@@ -5123,8 +5132,8 @@
      "commit": "d5d40645fa45471f2b473fc49a29ec3f0a993c6d",
      "source_file_url": null,
      "license": null,
-     "verification": "表 1 衡量整网预测误差。示例用独立的标量收缩和行列和反例核对注意力，并测试时间重标定。",
-     "verification_source": "README",
+     "verification": "式 (1) 到 (4) 的乘法顺序、sigmoid 位置和两个 softmax 的轴正确。论文让图卷积读重标定后的特征，两个作者代码版本送的是原始特征",
+     "verification_source": "验证记录.md",
      "index_source": null,
      "has_pdf": "有",
      "field": "时间序列与时空数据",
@@ -5137,7 +5146,7 @@
      ],
      "en": {
       "name": "ASTGCN",
-      "verification_source": "the README"
+      "verification_source": "the verification log"
      }
     }
    ],
@@ -5148,7 +5157,7 @@
    "guo": null,
    "repo": null,
    "repo_url": null,
-   "verification": "表 1 衡量整网预测误差。示例用独立的标量收缩和行列和反例核对注意力，并测试时间重标定。",
+   "verification": "式 (1) 到 (4) 的乘法顺序、sigmoid 位置和两个 softmax 的轴正确。论文让图卷积读重标定后的特征，两个作者代码版本送的是原始特征",
    "missing": [
     "formula"
    ],
@@ -5645,8 +5654,8 @@
      "commit": "0df0c693467a265a816d33603f44c473f8980506",
      "source_file_url": null,
      "license": null,
-     "verification": "示例独立枚举两因子和三因子的路径组合，并用有向链核对乘积顺序。",
-     "verification_source": "README",
+     "verification": "式 (6) 和第 4 页对末层归一化的写法不同，代码照第 4 页和作者现行版，每次乘法后都行归一。FP16 输入时层间传递会丢弱边",
+     "verification_source": "验证记录.md",
      "index_source": null,
      "has_pdf": "有",
      "field": "图学习",
@@ -5659,7 +5668,7 @@
      ],
      "en": {
       "name": "GTN",
-      "verification_source": "the README"
+      "verification_source": "the verification log"
      }
     }
    ],
@@ -5670,7 +5679,7 @@
    "guo": null,
    "repo": null,
    "repo_url": null,
-   "verification": "示例独立枚举两因子和三因子的路径组合，并用有向链核对乘积顺序。",
+   "verification": "式 (6) 和第 4 页对末层归一化的写法不同，代码照第 4 页和作者现行版，每次乘法后都行归一。FP16 输入时层间传递会丢弱边",
    "missing": [
     "formula"
    ],
@@ -5697,7 +5706,7 @@
    "year": 2019,
    "venue": "WWW",
    "year_source": "队列",
-   "authors": "SimpleAttLayer 对每个节点分别沿元路径维做 softmax。式 (7)–(9) 在归一化前先对全部节点取平均，因此这里每个元路径只产生一个对整图共享的 β",
+   "authors": "SimpleAttLayer 对每个节点分别沿元路径维做 softmax。这里按式 (7)–(9) 先对传入的全部节点取平均，再给每条路径一个整图共享的 β。即使某个节点在该路径上只有自环，它也参加平均。复现 ACM 时只传元路径邻接矩阵对应的论文节点。核对中给两篇论文额外加一个无边的作者节点，第一条路径的 β 从 0.5214 变为 0.6219，原来两个论文节点的输出也随之改变",
    "arxiv": "1903.07293",
    "doi": "10.1145/3308558.3313562",
    "paper_url": null,
@@ -5739,8 +5748,8 @@
      "commit": "71bac29a07fb8fab908d50a806a7bc38aa6c6611",
      "source_file_url": null,
      "license": null,
-     "verification": "示例核对边分数张量的大小，并用显式稠密邻居计算复核稀疏实现。",
-     "verification_source": "README",
+     "verification": "节点级注意力和整图共享的语义权重符合主公式。README 把「每条路径独立投影」写得过于确定",
+     "verification_source": "验证记录.md",
      "index_source": null,
      "has_pdf": "有",
      "field": "图学习",
@@ -5754,7 +5763,7 @@
      "en": {
       "name": "HAN",
       "verification": "The example checks the shape of the edge-score tensor and cross-checks the sparse implementation against an explicit dense neighbor computation.",
-      "verification_source": "the README"
+      "verification_source": "the verification log"
      }
     }
    ],
@@ -5765,7 +5774,7 @@
    "guo": null,
    "repo": null,
    "repo_url": null,
-   "verification": "示例核对边分数张量的大小，并用显式稠密邻居计算复核稀疏实现。",
+   "verification": "节点级注意力和整图共享的语义权重符合主公式。README 把「每条路径独立投影」写得过于确定",
    "missing": [
     "formula"
    ],
@@ -21318,6 +21327,15 @@
    ],
    "id": "2022-FLASH-GAU",
    "mechanism_basis": "readme",
+   "figure": {
+    "file": "figures/house/2022-FLASH-GAU.svg",
+    "fig_no": null,
+    "caption": "Tokens combine within chunk attention with summaries across chunks, then gate and project the result before adding the input.",
+    "caption_zh": "令牌合并块内注意力与跨块摘要，再经门控和投影后加回输入。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Transformer Quality in Linear Time",
     "venue": "ICML",
@@ -27523,6 +27541,15 @@
    ],
    "id": "2023-CloMSFM",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2023-CloMSFM.svg",
+    "fig_no": null,
+    "caption": "Local heads gate convolved values, while global heads read pooled tokens, then the module fuses both outputs with a residual.",
+    "caption_zh": "局部头门控卷积后的值，全局头读取池化令牌，两路输出拼接投影后加回输入。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Rethinking Local Perception in Lightweight Vision Transformer (2023 Arxiv)",
     "venue": "ARXIV",
@@ -29519,17 +29546,17 @@
   },
   {
    "name_en": "Graphormer-GD",
-   "name_zh": null,
+   "name_zh": "广义距离图注意力",
    "title": "Rethinking the Expressive Power of GNNs via Graph Biconnectivity",
    "year": 2023,
    "venue": "ICLR",
    "year_source": "队列",
-   "authors": null,
+   "authors": "Bohang Zhang、Shengjie Luo、Liwei Wang、Di He。论文发表于 ICLR 2023",
    "arxiv": "2301.09505",
    "doi": null,
    "paper_url": "https://arxiv.org/abs/2301.09505",
-   "module_type": null,
-   "domain": null,
+   "module_type": "注意力",
+   "domain": "图学习",
    "halls": [
     {
      "field": "图学习",
@@ -29537,32 +29564,54 @@
     }
    ],
    "direction": null,
-   "status": "pending",
+   "status": "collected",
    "queue": [
     {
      "queue": "main",
      "no": 515,
-     "status": "待收",
+     "status": "已收",
      "segment": "3",
      "note": null
     }
    ],
    "mechanism": "同样长的最短路，沿途可走的路线可能差很多。Graphormer-GD 把节点对的最短路或电阻距离送进注意力打分，让图的连通方式影响取值。",
-   "skip_reason": null,
    "formula": null,
-   "copies": [],
-   "source_type": null,
+   "copies": [
+    {
+     "path": "论文复现/图学习/广义距离图注意力（Graphormer-GD）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "lsj2408/Graphormer-GD",
+     "repo_url": "https://github.com/lsj2408/Graphormer-GD",
+     "commit": "f70b7beffcb4d4176b82dba66677d6818e0e0cd4",
+     "source_file_url": "https://github.com/lsj2408/Graphormer-GD/blob/f70b7beffcb4d4176b82dba66677d6818e0e0cd4/graphormer/modules/multihead_attention.py",
+     "license": "MIT",
+     "verification": null,
+     "verification_source": null,
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "图学习",
+     "task": null,
+     "name_zh": "广义距离图注意力",
+     "name_en": "Graphormer-GD",
+     "in_index": true,
+     "en": {
+      "name": "Graphormer-GD",
+      "license": "MIT"
+     }
+    }
+   ],
+   "mechanism_source": "馆长依据摘要撰写",
+   "source_type": "author",
    "license": "MIT",
    "license_note": "MIT",
+   "guo": null,
    "repo": "lsj2408/Graphormer-GD",
    "repo_url": "https://github.com/lsj2408/Graphormer-GD",
    "verification": null,
-   "guo": null,
-   "planned_source_type": "author",
-   "mechanism_source": "馆长依据摘要撰写",
    "missing": [
-    "name_zh",
-    "formula"
+    "formula",
+    "verification"
    ],
    "id": "2023-Graphormer-GD",
    "mechanism_basis": "abstract",
@@ -29576,8 +29625,11 @@
    "en": {
     "title": "Rethinking the Expressive Power of GNNs via Graph Biconnectivity",
     "venue": "ICLR",
+    "authors": "Bohang Zhang, Shengjie Luo, Liwei Wang, Di He",
     "mechanism": "Graphormer-GD feeds graph distances into node-to-node attention. Shortest-path and resistance distances supply different views of connectivity, including whether a route has alternatives.",
     "license": "MIT",
+    "module_type": "Attention",
+    "domain": "Graph learning",
     "year_source": "the collection queue"
    }
   },
@@ -33063,6 +33115,15 @@
    ],
    "id": "2023-Qwen-VL-Resampler",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2023-Qwen-VL-Resampler.svg",
+    "fig_no": null,
+    "caption": "Learned grid queries read visual tokens through cross attention, with bicubic interpolation aligning the key positions to the input grid.",
+    "caption_zh": "可学习的网格查询通过交叉注意力读出视觉令牌，键的位置编码经双三次插值对齐输入网格。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond",
     "venue": "Technical report",
@@ -33946,17 +34007,17 @@
   },
   {
    "name_en": "Specformer",
-   "name_zh": null,
+   "name_zh": "图谱特征值自注意力",
    "title": "Specformer: Spectral Graph Neural Networks Meet Transformers",
    "year": 2023,
    "venue": "ICLR",
    "year_source": "队列",
-   "authors": null,
+   "authors": "Deyu Bo、Chuan Shi、Lele Wang、Renjie Liao。论文发表于 ICLR 2023",
    "arxiv": "2303.01028",
    "doi": null,
    "paper_url": "https://arxiv.org/abs/2303.01028",
-   "module_type": null,
-   "domain": null,
+   "module_type": "注意力",
+   "domain": "图学习",
    "halls": [
     {
      "field": "图学习",
@@ -33964,32 +34025,54 @@
     }
    ],
    "direction": null,
-   "status": "pending",
+   "status": "collected",
    "queue": [
     {
      "queue": "main",
      "no": 514,
-     "status": "待收",
+     "status": "已收",
      "segment": "3",
      "note": null
     }
    ],
    "mechanism": "Specformer 让特征值互相做注意力，滤波时能看全谱。",
-   "skip_reason": null,
    "formula": null,
-   "copies": [],
-   "source_type": null,
+   "copies": [
+    {
+     "path": "论文复现/图学习/图谱特征值自注意力（Specformer）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "bdy9527/Specformer",
+     "repo_url": "https://github.com/bdy9527/Specformer",
+     "commit": "40a35d0c4db0839c9d5e17f45ea7b4618e8fce71",
+     "source_file_url": "https://github.com/bdy9527/Specformer/blob/40a35d0c4db0839c9d5e17f45ea7b4618e8fce71/Node/model_node.py",
+     "license": "GPL-3.0",
+     "verification": null,
+     "verification_source": null,
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "图学习",
+     "task": null,
+     "name_zh": "图谱特征值自注意力",
+     "name_en": "Specformer",
+     "in_index": true,
+     "en": {
+      "name": "Specformer",
+      "license": "GPL-3.0"
+     }
+    }
+   ],
+   "mechanism_source": "馆长依据摘要撰写",
+   "source_type": "author",
    "license": "GPL-3.0",
    "license_note": "GPL-3.0",
+   "guo": null,
    "repo": "bdy9527/Specformer",
    "repo_url": "https://github.com/bdy9527/Specformer",
    "verification": null,
-   "guo": null,
-   "planned_source_type": "author",
-   "mechanism_source": "馆长依据摘要撰写",
    "missing": [
-    "name_zh",
-    "formula"
+    "formula",
+    "verification"
    ],
    "id": "2023-Specformer",
    "mechanism_basis": "abstract",
@@ -34003,8 +34086,11 @@
    "en": {
     "title": "Specformer: Spectral Graph Neural Networks Meet Transformers",
     "venue": "ICLR",
+    "authors": "Deyu Bo, Chuan Shi, Lele Wang, Renjie Liao",
     "mechanism": "Specformer makes the graph's eigenvalues attend to one another. It builds a spectral filter from the resulting representations, so the treatment of one frequency can depend on the rest of the spectrum.",
     "license": "GPL-3.0",
+    "module_type": "Attention",
+    "domain": "Graph learning",
     "year_source": "the collection queue"
    }
   },
@@ -35897,6 +35983,15 @@
    ],
    "id": "2024-CAA",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2024-CAA.svg",
+    "fig_no": null,
+    "caption": "Local average pooling and two depthwise strip convolutions build a sigmoid mask that weights the original feature map.",
+    "caption_zh": "局部平均池化和两次深度条形卷积生成权重图，再逐点乘回原始特征。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Poly Kernel Inception Network for Remote Sensing Detection",
     "venue": "CVPR",
@@ -36835,18 +36930,18 @@
     }
    ],
    "direction": null,
-   "status": "pending",
+   "status": "skipped",
    "queue": [
     {
      "queue": "main",
      "no": 518,
-     "status": "待收",
+     "status": "跳过",
      "segment": "3",
-     "note": null
+     "note": "分开计算簇内与簇间注意力，并训练两路预测相互校正。 作者固定提交的文件树、readme.md 和 Layer/BGA.py、Layer/BGA_layer.py 均未声明可核对的再分发许可。 已转入论文复现队列第 82 条。"
     }
    ],
    "mechanism": "全图注意力可能让远处节点的分数盖过近邻。CoBFormer 分开计算簇内和簇间注意力，留一条专门读近邻的路径，也让远处的簇交换信息。",
-   "skip_reason": null,
+   "skip_reason": "分开计算簇内与簇间注意力，并训练两路预测相互校正。 作者固定提交的文件树、readme.md 和 Layer/BGA.py、Layer/BGA_layer.py 均未声明可核对的再分发许可。 已转入论文复现队列第 82 条。",
    "formula": null,
    "copies": [],
    "source_type": null,
@@ -39687,6 +39782,15 @@
    ],
    "id": "2024-Gated-Slot-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2024-Gated-Slot-Attention.svg",
+    "fig_no": null,
+    "caption": "Tokens update separate key and value states for each slot, then query scores select a weighted mixture of slot values.",
+    "caption_zh": "令牌分别更新各槽的键和值状态，查询给槽打分，再按权重混合槽中的值。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Gated Slot Attention for Efficient Linear-Time Sequence Modeling",
     "venue": "NeurIPS",
@@ -39971,18 +40075,18 @@
     }
    ],
    "direction": null,
-   "status": "pending",
+   "status": "skipped",
    "queue": [
     {
      "queue": "main",
      "no": 517,
-     "status": "待收",
+     "status": "跳过",
      "segment": "3",
-     "note": null
+     "note": "用随最短路距离指数衰减的掩码调节全局注意力。 作者固定提交的文件树、README 和注意力源码均未声明可核对的再分发许可。 已转入论文复现队列第 81 条。"
     }
    ],
    "mechanism": "普通全局注意力不会主动照顾图上的近邻。Gradformer 加一张随图距离指数衰减的掩码，让各头各自学习多远的节点仍值得关注。",
-   "skip_reason": null,
+   "skip_reason": "用随最短路距离指数衰减的掩码调节全局注意力。 作者固定提交的文件树、README 和注意力源码均未声明可核对的再分发许可。 已转入论文复现队列第 81 条。",
    "formula": null,
    "copies": [],
    "source_type": null,
@@ -41713,6 +41817,15 @@
    ],
    "id": "2024-KEP-SVGP",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2024-KEP-SVGP.svg",
+    "fig_no": null,
+    "caption": "Low rank query and key scores parameterize a Gaussian posterior whose samples are projected into output tokens.",
+    "caption_zh": "低秩查询和键分数决定高斯后验，从后验采样后投影成输出令牌。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Self-Attention through Kernel-Eigen Pair Sparse Variational Gaussian Processes",
     "venue": "ICML",
@@ -44763,17 +44876,17 @@
   },
   {
    "name_en": "Polynormer",
-   "name_zh": null,
+   "name_zh": "局部与全局等变图注意力",
    "title": "Polynormer: Polynomial-Expressive Graph Transformer in Linear Time",
    "year": 2024,
    "venue": "ICLR",
    "year_source": "队列",
-   "authors": null,
+   "authors": "Chenhui Deng、Zichao Yue、Zhiru Zhang。论文发表于 ICLR 2024",
    "arxiv": "2403.01232",
    "doi": null,
    "paper_url": "https://arxiv.org/abs/2403.01232",
-   "module_type": null,
-   "domain": null,
+   "module_type": "注意力",
+   "domain": "图学习",
    "halls": [
     {
      "field": "图学习",
@@ -44781,32 +44894,54 @@
     }
    ],
    "direction": null,
-   "status": "pending",
+   "status": "collected",
    "queue": [
     {
      "queue": "main",
      "no": 516,
-     "status": "待收",
+     "status": "已收",
      "segment": "3",
      "note": null
     }
    ],
    "mechanism": "大图用两两注意力很费算力，简化后又容易丢掉表达能力。Polynormer 用局部和全局两轮注意力控制特征多项式的系数，保留高次项。",
-   "skip_reason": null,
    "formula": null,
-   "copies": [],
-   "source_type": null,
+   "copies": [
+    {
+     "path": "论文复现/图学习/局部与全局等变图注意力（Polynormer）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "cornell-zhang/Polynormer",
+     "repo_url": "https://github.com/cornell-zhang/Polynormer",
+     "commit": "fc8c276c9c5dfbd616d83f65338a3392188a5e08",
+     "source_file_url": "https://github.com/cornell-zhang/Polynormer/blob/fc8c276c9c5dfbd616d83f65338a3392188a5e08/model.py",
+     "license": "BSD-3-Clause",
+     "verification": null,
+     "verification_source": null,
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "图学习",
+     "task": null,
+     "name_zh": "局部与全局等变图注意力",
+     "name_en": "Polynormer",
+     "in_index": true,
+     "en": {
+      "name": "Polynormer",
+      "license": "BSD-3-Clause"
+     }
+    }
+   ],
+   "mechanism_source": "馆长依据摘要撰写",
+   "source_type": "author",
    "license": "BSD-3-Clause",
    "license_note": "BSD-3-Clause",
+   "guo": null,
    "repo": "cornell-zhang/Polynormer",
    "repo_url": "https://github.com/cornell-zhang/Polynormer",
    "verification": null,
-   "guo": null,
-   "planned_source_type": "author",
-   "mechanism_source": "馆长依据摘要撰写",
    "missing": [
-    "name_zh",
-    "formula"
+    "formula",
+    "verification"
    ],
    "id": "2024-Polynormer",
    "mechanism_basis": "abstract",
@@ -44820,8 +44955,11 @@
    "en": {
     "title": "Polynormer: Polynomial-Expressive Graph Transformer in Linear Time",
     "venue": "ICLR",
+    "authors": "Chenhui Deng, Zichao Yue, Zhiru Zhang",
     "mechanism": "Polynormer uses local and global attention scores as coefficients in a high-degree polynomial of the input features. Its attention scheme scales linearly with graph size.",
     "license": "BSD-3-Clause",
+    "module_type": "Attention",
+    "domain": "Graph learning",
     "year_source": "the collection queue"
    }
   },
@@ -47111,17 +47249,17 @@
   },
   {
    "name_en": "SpExphormer",
-   "name_zh": null,
+   "name_zh": "分层稀疏图注意力",
    "title": "Even Sparser Graph Transformers",
    "year": 2024,
    "venue": "NeurIPS",
    "year_source": "队列",
-   "authors": null,
+   "authors": "Hamed Shirzad、Honghao Lin、Balaji Venkatachalam、Ameya Velingker、David P. Woodruff、Danica J. Sutherland。论文发表于 NeurIPS 2024",
    "arxiv": "2411.16278",
    "doi": null,
    "paper_url": "https://arxiv.org/abs/2411.16278",
-   "module_type": null,
-   "domain": null,
+   "module_type": "注意力",
+   "domain": "图学习",
    "halls": [
     {
      "field": "图学习",
@@ -47129,32 +47267,54 @@
     }
    ],
    "direction": null,
-   "status": "pending",
+   "status": "collected",
    "queue": [
     {
      "queue": "main",
      "no": 519,
-     "status": "待收",
+     "status": "已收",
      "segment": "3",
      "note": null
     }
    ],
    "mechanism": "稀疏图注意力仍可能保留大量很少用到的边。SpExphormer 先训练一个窄网络，从各层的注意力分数挑边，再用筛过的边集训练更宽的网络。",
-   "skip_reason": null,
    "formula": null,
-   "copies": [],
-   "source_type": null,
+   "copies": [
+    {
+     "path": "论文复现/图学习/分层稀疏图注意力（SpExphormer）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "hamed1375/Sp_Exphormer",
+     "repo_url": "https://github.com/hamed1375/Sp_Exphormer",
+     "commit": "1436adf8d1705aedbca26529773baaa9f1bf2b54",
+     "source_file_url": "https://github.com/hamed1375/Sp_Exphormer/blob/1436adf8d1705aedbca26529773baaa9f1bf2b54/spexphormer/layer/Spexphormer_Attention.py",
+     "license": "MIT",
+     "verification": null,
+     "verification_source": null,
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "图学习",
+     "task": null,
+     "name_zh": "分层稀疏图注意力",
+     "name_en": "SpExphormer",
+     "in_index": true,
+     "en": {
+      "name": "SpExphormer",
+      "license": "MIT"
+     }
+    }
+   ],
+   "mechanism_source": "馆长依据摘要撰写",
+   "source_type": "author",
    "license": "MIT",
    "license_note": "MIT",
+   "guo": null,
    "repo": "hamed1375/Sp_Exphormer",
    "repo_url": "https://github.com/hamed1375/Sp_Exphormer",
    "verification": null,
-   "guo": null,
-   "planned_source_type": "author",
-   "mechanism_source": "馆长依据摘要撰写",
    "missing": [
-    "name_zh",
-    "formula"
+    "formula",
+    "verification"
    ],
    "id": "2024-SpExphormer",
    "mechanism_basis": "abstract",
@@ -47168,8 +47328,11 @@
    "en": {
     "title": "Even Sparser Graph Transformers",
     "venue": "NeurIPS",
+    "authors": "Hamed Shirzad, Honghao Lin, Balaji Venkatachalam, Ameya Velingker, David P. Woodruff, Danica J. Sutherland",
     "mechanism": "SpExphormer trains a narrow model on the augmented graph first. It uses that model's attention scores to keep the active edges for each layer of a wider model.",
     "license": "MIT",
+    "module_type": "Attention",
+    "domain": "Graph learning",
     "year_source": "the collection queue"
    }
   },
@@ -49706,6 +49869,15 @@
    ],
    "id": "2025-AttentionGate",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2025-AttentionGate.svg",
+    "fig_no": null,
+    "caption": "The gating and skip maps are projected and added to predict a spatial mask, which scales the original skip features.",
+    "caption_zh": "门控特征和跳接特征投影后相加，生成空间权重，再给原始跳接特征加权。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "CAD-Unet A Capsule Network-Enhanced Unet Architecture for Accurate Segmentation of COVID-1",
     "venue": "MIA",
@@ -51665,6 +51837,15 @@
    ],
    "id": "2025-Di-SpAM",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2025-Di-SpAM.svg",
+    "fig_no": null,
+    "caption": "Parallel dilated filters are summed, gated and reweighted by pooled channels, then projected and added back to the input.",
+    "caption_zh": "多路空洞卷积相加，通道分半相乘，再用池化得到的权重重标定，最后投影并加回输入。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "DarkIR Robust Low-Light Image Restoration",
     "venue": "CVPR",
@@ -52732,17 +52913,17 @@
   },
   {
    "name_en": "ESA Graph Attention",
-   "name_zh": null,
+   "name_zh": "边集掩码图注意力",
    "title": "An end-to-end attention-based approach for learning on graphs",
    "year": 2025,
    "venue": "Nature Communications",
    "year_source": "队列",
-   "authors": null,
-   "arxiv": null,
-   "doi": null,
+   "authors": "David Buterez、Jon Paul Janet、Dino Oglic、Pietro Liò。论文发表于 Nature Communications 2025",
+   "arxiv": "2402.10793",
+   "doi": "10.1038/s41467-025-60252-z",
    "paper_url": "https://www.nature.com/articles/s41467-025-60252-z",
-   "module_type": null,
-   "domain": null,
+   "module_type": "注意力",
+   "domain": "图学习",
    "halls": [
     {
      "field": "图学习",
@@ -52750,40 +52931,65 @@
     }
    ],
    "direction": null,
-   "status": "pending",
+   "status": "collected",
    "queue": [
     {
      "queue": "main",
      "no": 520,
-     "status": "待收",
+     "status": "已收",
      "segment": "3",
      "note": null
     }
    ],
    "mechanism": "图注意力通常把节点当作令牌。ESA 改用边做令牌，交替计算带掩码和全连接的自注意力，让边的信息既能局部交换，也能传到更远处。",
-   "skip_reason": null,
    "formula": null,
-   "copies": [],
-   "source_type": null,
+   "copies": [
+    {
+     "path": "论文复现/图学习/边集掩码图注意力（ESA Graph Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "davidbuterez/edge-set-attention",
+     "repo_url": "https://github.com/davidbuterez/edge-set-attention",
+     "commit": "861a0b12d445ae80cc69b3948af623b4331321d4",
+     "source_file_url": "https://github.com/davidbuterez/edge-set-attention/blob/861a0b12d445ae80cc69b3948af623b4331321d4/esa/masked_layers.py",
+     "license": "MIT",
+     "verification": null,
+     "verification_source": null,
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "图学习",
+     "task": null,
+     "name_zh": "边集掩码图注意力",
+     "name_en": "ESA Graph Attention",
+     "in_index": true,
+     "en": {
+      "name": "ESA Graph Attention",
+      "license": "MIT"
+     }
+    }
+   ],
+   "mechanism_source": "馆长依据摘要撰写",
+   "source_type": "author",
    "license": "MIT",
    "license_note": "MIT",
+   "guo": null,
    "repo": "davidbuterez/edge-set-attention",
    "repo_url": "https://github.com/davidbuterez/edge-set-attention",
    "verification": null,
-   "guo": null,
-   "planned_source_type": "author",
-   "mechanism_source": "馆长依据摘要撰写",
    "missing": [
-    "name_zh",
-    "formula"
+    "formula",
+    "verification"
    ],
    "id": "2025-ESA-Graph-Attention",
    "mechanism_basis": "abstract",
    "en": {
     "title": "An end-to-end attention-based approach for learning on graphs",
     "venue": "Nature Communications",
+    "authors": "David Buterez, Jon Paul Janet, Dino Oglic, Pietro Liò",
     "mechanism": "ESA treats a graph as a set of edges. Its encoder interleaves masked and unrestricted self-attention, allowing edge representations to combine local and graph-wide information.",
     "license": "MIT",
+    "module_type": "Attention",
+    "domain": "Graph learning",
     "year_source": "the collection queue"
    }
   },
@@ -54451,18 +54657,18 @@
     }
    ],
    "direction": null,
-   "status": "pending",
+   "status": "skipped",
    "queue": [
     {
      "queue": "main",
      "no": 521,
-     "status": "待收",
+     "status": "跳过",
      "segment": "3",
-     "note": null
+     "note": "把可学习的傅里叶谱滤波与节点自注意力合并。 作者固定提交的文件树、README 和模块源码均未声明可核对的再分发许可。README 说明节点版来源于 Specformer，但未给 GrokFormer 的修改部分声明许可。 已转入论文复现队列第 83 条。"
     }
    ],
    "mechanism": "图自注意力偏向保留平滑的低频成分。GrokFormer 在注意力外再学图谱滤波，用傅里叶级数决定各频率成分保留多少。",
-   "skip_reason": null,
+   "skip_reason": "把可学习的傅里叶谱滤波与节点自注意力合并。 作者固定提交的文件树、README 和模块源码均未声明可核对的再分发许可。README 说明节点版来源于 Specformer，但未给 GrokFormer 的修改部分声明许可。 已转入论文复现队列第 83 条。",
    "formula": null,
    "copies": [],
    "source_type": null,
@@ -54553,6 +54759,15 @@
    ],
    "id": "2025-GSA-Gauss",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2025-GSA-Gauss.svg",
+    "fig_no": null,
+    "caption": "Channel pooling finds a peak that sets a Gaussian center, and the normalized Gaussian map weights the input.",
+    "caption_zh": "通道池化找到峰值位置，据此设置高斯中心，归一化后的高斯图给原输入加权。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Multiscale Gaussian Attention Mechanism for Tiny-Object Detection in Remote Sensing Images",
     "venue": "TGRS",
@@ -55645,6 +55860,15 @@
    ],
    "id": "2025-Kimi-Delta-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2025-Kimi-Delta-Attention.svg",
+    "fig_no": null,
+    "caption": "For each token, decay the stored state by channel, write the gated value residual, and read the updated state with the query.",
+    "caption_zh": "每步按通道衰减记忆，把门控后的值残差写入状态，再用查询读出更新后的状态。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Kimi Linear: An Expressive, Efficient Attention Architecture",
     "venue": "arXiv",
@@ -56672,6 +56896,15 @@
    ],
    "id": "2025-LWGA",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2025-LWGA.svg",
+    "fig_no": null,
+    "caption": "Four channel groups use point, local, directional and global operations, then their concatenation is projected and added to the input.",
+    "caption_zh": "四组通道分别做逐点门控、局部卷积、方向门控和全局注意力，再拼接、投影并加回输入。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "LWGANet A Lightweight Group Attention Backbone for Remote Sensing Visual Tasks",
     "venue": "arXiv",
@@ -58965,6 +59198,15 @@
    ],
    "id": "2025-RCSSC",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2025-RCSSC.svg",
+    "fig_no": null,
+    "caption": "Spatial and column gates weight shared features, then a pooled context gate modulates their fusion before the residual addition.",
+    "caption_zh": "空间门和列方向门给共享特征加权，池化上下文再调节融合结果，最后加回输入。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "ASCNet Asymmetric Sampling Correction Network for Infrared Image Destriping",
     "venue": "TGRS",
@@ -63284,6 +63526,15 @@
    ],
    "id": "2026-BIM",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2026-BIM.svg",
+    "fig_no": null,
+    "caption": "Two depthwise convolutions form features at different scales, whose channel similarities set the weights for a sequence of feature products.",
+    "caption_zh": "两路深度卷积提取不同尺度的特征，通道相似度给两路特征加权，随后逐级相乘并投影。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Visual-in-Visual A Unified and Efficient Baseline for Image Restoration",
     "venue": "TPAMI",
@@ -63912,6 +64163,15 @@
    ],
    "id": "2026-CKDA",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2026-CKDA.svg",
+    "fig_no": null,
+    "caption": "Token projections produce signed decay and write gates for a recurrent state, whose query readout passes through gated normalization.",
+    "caption_zh": "令牌投影生成带符号的衰减和写入门，查询读出递推状态，再经门控归一化与投影。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Complex KDA: Understanding and Enhancing the Expressivity of Kimi Delta Attention",
     "venue": "arXiv",
@@ -64709,6 +64969,15 @@
    ],
    "id": "2026-D-AAttn",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2026-D-AAttn.svg",
+    "fig_no": null,
+    "caption": "Learned offsets resample queries, keys and values before local window attention, and a depthwise value projection adds positional information.",
+    "caption_zh": "学习出的偏移重采样查询、键和值，再做局部窗口注意力，最后叠加值的深度卷积位置特征。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "YOLOv14 Adaptive Real-Time Object Detection for Diverse Imaging Conditions",
     "venue": "arXiv",
@@ -66159,6 +66428,15 @@
    ],
    "id": "2026-HA",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2026-HA.svg",
+    "fig_no": null,
+    "caption": "A channel gate weights convolved features and a spatial gate weights the input, then the module adds both maps.",
+    "caption_zh": "通道门给卷积特征加权，空间门给原始特征加权，两路结果相加。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "A Fine Extraction Method for Farmland Plots Based on Remote Sensing With Semantic and Edge",
     "venue": "TGRS",
@@ -67901,6 +68179,15 @@
    ],
    "id": "2026-MSE",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2026-MSE.svg",
+    "fig_no": null,
+    "caption": "The normalized input feeds a depthwise convolution and a channel gate, then their feature maps multiply before the residual addition.",
+    "caption_zh": "归一化特征进入深度卷积和通道门，两路特征逐点相乘，再加回输入。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Multinex Lightweight Low-light Image Enhancement via Multi-prior Retinex",
     "venue": "CVPR",
@@ -69230,6 +69517,15 @@
    ],
    "id": "2026-RSWAttention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2026-RSWAttention.svg",
+    "fig_no": null,
+    "caption": "Each window mixes channels with dot product weights, then a linear map over its value positions gates the result before reassembly.",
+    "caption_zh": "每个窗口用点积权重混合通道，再用值的位置线性映射门控结果，最后拼回特征图。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Dual Frequency Branch Framework with Reconstructed Sliding Windows Attention for AI-Genera",
     "venue": "TIFS",
@@ -70290,6 +70586,15 @@
    ],
    "id": "2026-SGA",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2026-SGA.svg",
+    "fig_no": null,
+    "caption": "Two projected maps supply a shared mean for Gaussian scoring, then their gated residuals are concatenated and refined by convolutions.",
+    "caption_zh": "两路投影特征提供共享均值，高斯打分为每路加权，再拼接带残差的结果并卷积。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "A Dual-Stream UNet With Parallel ChannelSpatial Interaction and Aggregation for Change Det",
     "venue": "TGRS",
@@ -70884,8 +71189,8 @@
      "commit": "4f6b528e284904b388e5dc9e367d97bc5651c5c9",
      "source_file_url": null,
      "license": null,
-     "verification": "这里直接按式 (5)–(6) 核对位置投影的 1,512 个参数，并用坐标键控递推单独算出每个事件的输出。",
-     "verification_source": "README",
+     "verification": "式 (1) 到 (8) 和算法 1 一致。缺边界坐标约定、作者实现的输入限制、低精度输出范围",
+     "verification_source": "验证记录.md",
      "index_source": null,
      "has_pdf": "有",
      "field": "计算机视觉",
@@ -70898,7 +71203,7 @@
      ],
      "en": {
       "name": "SSLA",
-      "verification_source": "the README"
+      "verification_source": "the verification log"
      }
     }
    ],
@@ -70909,7 +71214,7 @@
    "guo": null,
    "repo": null,
    "repo_url": null,
-   "verification": "这里直接按式 (5)–(6) 核对位置投影的 1,512 个参数，并用坐标键控递推单独算出每个事件的输出。",
+   "verification": "式 (1) 到 (8) 和算法 1 一致。缺边界坐标约定、作者实现的输入限制、低精度输出范围",
    "missing": [
     "formula"
    ],
@@ -73034,9 +73339,9 @@
     "跳过": 17
    },
    "3": {
-    "已收": 211,
-    "跳过": 36,
-    "待收": 93
+    "已收": 216,
+    "跳过": 39,
+    "待收": 85
    }
   },
   "repro": {
@@ -73575,6 +73880,30 @@
     "reason": "通过局部结构编码器和关系编码器构造异构图注意力。 作者固定提交的完整文件树、README 和模块源码均未声明可核对的再分发许可。README 引用 HGB 作为代码基础。 已转入论文复现队列第 80 条。"
    },
    {
+    "name": "Gradformer",
+    "queue": "main",
+    "no": 517,
+    "segment": "3",
+    "year": 2024,
+    "reason": "用随最短路距离指数衰减的掩码调节全局注意力。 作者固定提交的文件树、README 和注意力源码均未声明可核对的再分发许可。 已转入论文复现队列第 81 条。"
+   },
+   {
+    "name": "CoBFormer",
+    "queue": "main",
+    "no": 518,
+    "segment": "3",
+    "year": 2024,
+    "reason": "分开计算簇内与簇间注意力，并训练两路预测相互校正。 作者固定提交的文件树、readme.md 和 Layer/BGA.py、Layer/BGA_layer.py 均未声明可核对的再分发许可。 已转入论文复现队列第 82 条。"
+   },
+   {
+    "name": "GrokFormer",
+    "queue": "main",
+    "no": 521,
+    "segment": "3",
+    "year": 2025,
+    "reason": "把可学习的傅里叶谱滤波与节点自注意力合并。 作者固定提交的文件树、README 和模块源码均未声明可核对的再分发许可。README 说明节点版来源于 Specformer，但未给 GrokFormer 的修改部分声明许可。 已转入论文复现队列第 83 条。"
+   },
+   {
     "name": "PeLK",
     "queue": "repro",
     "no": 2,
@@ -73701,9 +74030,9 @@
     "skipped": 1
    },
    "图学习": {
-    "collected": 26,
-    "pending": 13,
-    "skipped": 10
+    "collected": 31,
+    "pending": 5,
+    "skipped": 13
    }
   },
   "pending_directions": [
@@ -81070,6 +81399,57 @@
     "year": 2023
    },
    {
+    "id": "2023-Specformer",
+    "kind": "exhibit",
+    "label": "Specformer",
+    "label_zh": "图谱特征值自注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2023
+   },
+   {
+    "id": "2023-Graphormer-GD",
+    "kind": "exhibit",
+    "label": "Graphormer-GD",
+    "label_zh": "广义距离图注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2023
+   },
+   {
+    "id": "2024-Polynormer",
+    "kind": "exhibit",
+    "label": "Polynormer",
+    "label_zh": "局部与全局等变图注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2024
+   },
+   {
+    "id": "2024-SpExphormer",
+    "kind": "exhibit",
+    "label": "SpExphormer",
+    "label_zh": "分层稀疏图注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2024
+   },
+   {
+    "id": "2025-ESA-Graph-Attention",
+    "kind": "exhibit",
+    "label": "ESA Graph Attention",
+    "label_zh": "边集掩码图注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2025
+   },
+   {
+    "id": "venue:Nature Communications",
+    "kind": "venue",
+    "label": "Nature Communications",
+    "label_en": "Nature Communications"
+   },
+   {
     "id": "2024-CANConv",
     "kind": "exhibit",
     "label": "CANConv",
@@ -81580,38 +81960,11 @@
     "year": 2023
    },
    {
-    "id": "2023-Specformer",
-    "kind": "exhibit",
-    "label": "Specformer",
-    "label_zh": null,
-    "status": "pending",
-    "src": null,
-    "year": 2023
-   },
-   {
-    "id": "2023-Graphormer-GD",
-    "kind": "exhibit",
-    "label": "Graphormer-GD",
-    "label_zh": null,
-    "status": "pending",
-    "src": null,
-    "year": 2023
-   },
-   {
-    "id": "2024-Polynormer",
-    "kind": "exhibit",
-    "label": "Polynormer",
-    "label_zh": null,
-    "status": "pending",
-    "src": null,
-    "year": 2024
-   },
-   {
     "id": "2024-Gradformer",
     "kind": "exhibit",
     "label": "Gradformer",
     "label_zh": null,
-    "status": "pending",
+    "status": "skipped",
     "src": null,
     "year": 2024
    },
@@ -81620,40 +81973,16 @@
     "kind": "exhibit",
     "label": "CoBFormer",
     "label_zh": null,
-    "status": "pending",
+    "status": "skipped",
     "src": null,
     "year": 2024
-   },
-   {
-    "id": "2024-SpExphormer",
-    "kind": "exhibit",
-    "label": "SpExphormer",
-    "label_zh": null,
-    "status": "pending",
-    "src": null,
-    "year": 2024
-   },
-   {
-    "id": "2025-ESA-Graph-Attention",
-    "kind": "exhibit",
-    "label": "ESA Graph Attention",
-    "label_zh": null,
-    "status": "pending",
-    "src": null,
-    "year": 2025
-   },
-   {
-    "id": "venue:Nature Communications",
-    "kind": "venue",
-    "label": "Nature Communications",
-    "label_en": "Nature Communications"
    },
    {
     "id": "2025-GrokFormer",
     "kind": "exhibit",
     "label": "GrokFormer",
     "label_zh": null,
-    "status": "pending",
+    "status": "skipped",
     "src": null,
     "year": 2025
    },
@@ -94919,6 +95248,81 @@
     "kind": "year"
    },
    {
+    "source": "2023-Specformer",
+    "target": "hall:图学习",
+    "kind": "hall"
+   },
+   {
+    "source": "2023-Specformer",
+    "target": "venue:ICLR",
+    "kind": "venue"
+   },
+   {
+    "source": "2023-Specformer",
+    "target": "year:2023",
+    "kind": "year"
+   },
+   {
+    "source": "2023-Graphormer-GD",
+    "target": "hall:图学习",
+    "kind": "hall"
+   },
+   {
+    "source": "2023-Graphormer-GD",
+    "target": "venue:ICLR",
+    "kind": "venue"
+   },
+   {
+    "source": "2023-Graphormer-GD",
+    "target": "year:2023",
+    "kind": "year"
+   },
+   {
+    "source": "2024-Polynormer",
+    "target": "hall:图学习",
+    "kind": "hall"
+   },
+   {
+    "source": "2024-Polynormer",
+    "target": "venue:ICLR",
+    "kind": "venue"
+   },
+   {
+    "source": "2024-Polynormer",
+    "target": "year:2024",
+    "kind": "year"
+   },
+   {
+    "source": "2024-SpExphormer",
+    "target": "hall:图学习",
+    "kind": "hall"
+   },
+   {
+    "source": "2024-SpExphormer",
+    "target": "venue:NeurIPS",
+    "kind": "venue"
+   },
+   {
+    "source": "2024-SpExphormer",
+    "target": "year:2024",
+    "kind": "year"
+   },
+   {
+    "source": "2025-ESA-Graph-Attention",
+    "target": "hall:图学习",
+    "kind": "hall"
+   },
+   {
+    "source": "2025-ESA-Graph-Attention",
+    "target": "venue:Nature Communications",
+    "kind": "venue"
+   },
+   {
+    "source": "2025-ESA-Graph-Attention",
+    "target": "year:2025",
+    "kind": "year"
+   },
+   {
     "source": "2024-CANConv",
     "target": "hall:计算机视觉/图像复原与增强",
     "kind": "hall"
@@ -95874,51 +96278,6 @@
     "kind": "year"
    },
    {
-    "source": "2023-Specformer",
-    "target": "hall:图学习",
-    "kind": "hall"
-   },
-   {
-    "source": "2023-Specformer",
-    "target": "venue:ICLR",
-    "kind": "venue"
-   },
-   {
-    "source": "2023-Specformer",
-    "target": "year:2023",
-    "kind": "year"
-   },
-   {
-    "source": "2023-Graphormer-GD",
-    "target": "hall:图学习",
-    "kind": "hall"
-   },
-   {
-    "source": "2023-Graphormer-GD",
-    "target": "venue:ICLR",
-    "kind": "venue"
-   },
-   {
-    "source": "2023-Graphormer-GD",
-    "target": "year:2023",
-    "kind": "year"
-   },
-   {
-    "source": "2024-Polynormer",
-    "target": "hall:图学习",
-    "kind": "hall"
-   },
-   {
-    "source": "2024-Polynormer",
-    "target": "venue:ICLR",
-    "kind": "venue"
-   },
-   {
-    "source": "2024-Polynormer",
-    "target": "year:2024",
-    "kind": "year"
-   },
-   {
     "source": "2024-Gradformer",
     "target": "hall:图学习",
     "kind": "hall"
@@ -95946,36 +96305,6 @@
    {
     "source": "2024-CoBFormer",
     "target": "year:2024",
-    "kind": "year"
-   },
-   {
-    "source": "2024-SpExphormer",
-    "target": "hall:图学习",
-    "kind": "hall"
-   },
-   {
-    "source": "2024-SpExphormer",
-    "target": "venue:NeurIPS",
-    "kind": "venue"
-   },
-   {
-    "source": "2024-SpExphormer",
-    "target": "year:2024",
-    "kind": "year"
-   },
-   {
-    "source": "2025-ESA-Graph-Attention",
-    "target": "hall:图学习",
-    "kind": "hall"
-   },
-   {
-    "source": "2025-ESA-Graph-Attention",
-    "target": "venue:Nature Communications",
-    "kind": "venue"
-   },
-   {
-    "source": "2025-ESA-Graph-Attention",
-    "target": "year:2025",
     "kind": "year"
    },
    {
@@ -111017,6 +111346,11 @@
    "2023-Graph-ViT": "unresolved",
    "2023-GRIT": "unresolved",
    "2023-GOAT-Graph-Transformer": "no_identifier",
+   "2023-Specformer": "unresolved",
+   "2023-Graphormer-GD": "unresolved",
+   "2024-Polynormer": "unresolved",
+   "2024-SpExphormer": "unresolved",
+   "2025-ESA-Graph-Attention": "unresolved",
    "2024-CANConv": "unresolved",
    "2022-NodeFormer": "unresolved",
    "2024-FlashAttention-3": "unresolved",
@@ -111042,13 +111376,8 @@
    "2021-GraphiT": "unresolved",
    "2023-DIFFormer": "unresolved",
    "2023-HINormer": "unresolved",
-   "2023-Specformer": "unresolved",
-   "2023-Graphormer-GD": "unresolved",
-   "2024-Polynormer": "unresolved",
    "2024-Gradformer": "unresolved",
    "2024-CoBFormer": "unresolved",
-   "2024-SpExphormer": "unresolved",
-   "2025-ESA-Graph-Attention": "no_identifier",
    "2025-GrokFormer": "no_identifier",
    "2025-HubGT": "no_identifier",
    "2026-GraphPFN-Neighborhood-Attention": "no_identifier",

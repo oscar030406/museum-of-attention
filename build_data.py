@@ -975,6 +975,7 @@ def apply_curation(exhibits: list[dict], public: bool) -> dict | None:
     for p in sorted(CURATION.glob("texts.part*.json")):
         texts.update(load_curation_json(p))
     figures = load_curation_json(CURATION / "figures.json")
+    house = load_curation_json(CURATION / "figures_house.json")
     story = load_story()
     for e in exhibits:
         t = texts.get(e["id"]) or {}
@@ -986,6 +987,9 @@ def apply_curation(exhibits: list[dict], public: bool) -> dict | None:
         f = figures.get(e["id"])
         if f and f.get("file") and (not public or is_cc(f.get("license"))):
             e["figure"] = {k: f.get(k) for k in ("file", "fig_no", "caption", "source_url", "license")}
+        elif e["id"] in house and (FIG_DIR.parent / house[e["id"]]["file"]).is_file():
+            h = house[e["id"]]       # 论文没有结构图的展品，用馆内按论文和代码画的图
+            e["figure"] = dict(file=h["file"], fig_no=None, caption=h.get("caption_en"), caption_zh=h.get("caption_zh"), source_url=None, license=None, house=True)
         e["missing"] = missing_fields(e)
         lic_key = e.get("license")
         en = dict(
