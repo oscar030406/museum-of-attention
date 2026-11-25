@@ -1,0 +1,43 @@
+{
+ "id": "efficiency",
+ "years": [2019, 2026],
+ "title_zh": "绕开平方",
+ "title_en": "Getting Around the Square",
+ "lede_zh": "自注意力让每个位置去看所有位置。序列长一倍，要算的位置对就多到四倍，显存也跟着涨。这一室收的都是绕开这个平方的办法。走到最后，它们绕回了第一室之前的东西：循环网络。",
+ "lede_en": "Self-attention has every position look at every other. Double the sequence and the number of pairs quadruples, and memory rises with it. This room holds the ways around that square. At the end of the road they arrive back at something older than Room 1: the recurrent network.",
+ "sections": [
+  {
+   "text_zh": "头一类办法最直接：不算全部的位置对，只算一部分。\n\nSparse Transformer 给注意力矩阵定了几种稀疏的图样，计算量降到 O(n√n)（本馆已登记，还没有收进来）。Longformer 让每个位置只看身边的一个滑动窗口，再按任务指定少数几个位置可以看全局，计算量随长度线性增长。BigBird 也是稀疏注意力，不过它多做了一件事：证明这样删过之后，模型仍然能逼近任意的序列函数，而且仍然图灵完备。作者还分析了那几个能看全局的 token 起了多大作用。",
+   "text_en": "The first kind of fix is the most direct: do not compute every pair, only some.\n\nSparse Transformer laid out a few sparse patterns for the attention matrix and brought the cost down to O(n√n). (It is registered here but not yet collected.) Longformer lets each position look at a sliding window around itself, and lets a few positions chosen by the task look everywhere. The cost grows linearly with length. BigBird is sparse attention too, but it did one thing more: it proved that after this pruning the model can still approximate any sequence function and is still Turing complete. Its authors also analysed how much the few global tokens contribute.",
+   "anchors": [
+    {"id": "2020-Longformer", "note_zh": "身边一个滑动窗口，外加几个能看全局的位置。", "note_en": "A sliding window nearby, plus a few positions that can see everything."},
+    {"id": "2020-BigBird", "note_zh": "证明了稀疏注意力没有丢掉表达能力。", "note_en": "Proved that sparse attention gives up no expressive power."}
+   ]
+  },
+  {
+   "text_zh": "第二类办法不删位置，改成近似地算整个注意力矩阵。\n\nReformer 用局部敏感哈希把相似的向量分到同一个桶里，只在桶内算注意力，计算量从 O(L²) 降到 O(L log L)。Linformer 发现自注意力矩阵可以用一个低秩矩阵来近似，时间和空间都降到 O(n)。Performer 用一组正交的随机特征去估计 softmax 注意力，并给出了估计无偏或接近无偏的保证。\n\n这一类里最要紧的是 Katharopoulos 等人 2020 年的线性注意力。他们把 softmax 换成核特征映射的点积，再用矩阵乘法的结合律调换计算顺序，计算量降到 O(N)。然后他们多写了一句：这样的自回归 Transformer 可以一步一步迭代着算，它就是一个循环网络。这句话在这一室的最后一段会再出现。",
+   "text_en": "The second kind of fix keeps every position and approximates the whole attention matrix.\n\nReformer uses locality-sensitive hashing to sort similar vectors into the same bucket and computes attention only within a bucket, which takes the cost from O(L²) to O(L log L). Linformer found that the self-attention matrix can be approximated by a low-rank one, bringing both time and memory to O(n). Performer estimates softmax attention with a set of orthogonal random features, and comes with a guarantee that the estimate is unbiased or nearly so.\n\nThe piece that matters most here is the linear attention of Katharopoulos and colleagues, from 2020. They replaced softmax with a dot product of kernel feature maps, then used the associativity of matrix multiplication to reorder the computation, reaching O(N). And they added one more remark: an autoregressive Transformer written this way can be computed step by step, which makes it a recurrent network. That remark returns in the last part of this room.",
+   "anchors": [
+    {"id": "2020-Reformer-LSH", "note_zh": "先用哈希分桶，只在桶里算注意力。", "note_en": "Hashes vectors into buckets and attends only within a bucket."},
+    {"id": "2020-Linformer", "note_zh": "注意力矩阵是低秩的，那就按低秩来算。", "note_en": "The attention matrix is low-rank, so compute it that way."},
+    {"id": "2020-LinearAttention", "note_zh": "调换一下乘法的顺序，注意力就成了线性的。论文的标题是「Transformer 是循环网络」。", "note_en": "Reorder the multiplication and attention becomes linear. The paper's title: Transformers are RNNs."},
+    {"id": "2021-Performer", "note_zh": "用随机特征估计 softmax 注意力，而且估得没有偏差。", "note_en": "Estimates softmax attention with random features, without bias."}
+   ]
+  },
+  {
+   "text_zh": "近似是有代价的。2022 年 cosFormer 的作者就指出，用核方法去近似 softmax 会带进误差，效果随任务起伏，和原版的 softmax 注意力比，掉点可以很明显。\n\n所以后来有人换了思路：注意力照原样精确地算，只在硬件上省，少读写几次显存。那就是第八室的 FlashAttention。",
+   "text_en": "Approximation has a price. The authors of cosFormer pointed out in 2022 that approximating softmax with kernel methods introduces error, that results swing from task to task, and that the drop against ordinary softmax attention can be large.\n\nSo a different idea followed: compute attention exactly as before, and save on the hardware instead by reading and writing GPU memory fewer times. That is FlashAttention, in Room 8.",
+   "anchors": []
+  },
+  {
+   "text_zh": "2023 年以后，「Transformer 是循环网络」这句话被重新拾了起来。\n\nRetNet 推导出循环和注意力之间的关系：同一套机制，训练时可以并行，推理时可以一步一步循环着走，每一步的代价是常数。RWKV 用线性注意力把同一个模型写成 Transformer 和循环网络两种形式，一直训练到了 140 亿参数。\n\nMamba 干脆不要注意力层。它的作者认为，以前的线性注意力、门控卷积和状态空间模型在语言上比不过注意力，毛病出在同一处：它们没法根据内容决定记什么、忘什么。于是他们让状态空间模型的参数跟着输入变。GLA 给线性注意力加上了随数据变化的门。2025 年的 Gated DeltaNet 发现门和 delta 更新规则正好互补：门能很快地清掉记忆，delta 规则能准确地改写其中的一条。\n\n本馆 2023 年以后的展品里，这类线性的循环层占了不少，也有把它们和注意力层搭着用的，例如 Jamba 就是 Transformer 层和 Mamba 层交替着堆。",
+   "text_en": "After 2023 the remark that Transformers are RNNs was picked up again.\n\nRetNet derived the connection between recurrence and attention: one mechanism that trains in parallel and, at inference, runs step by step at constant cost per step. RWKV uses linear attention to write the same model both as a Transformer and as a recurrent network, and was trained up to 14 billion parameters.\n\nMamba drops the attention layer altogether. Its authors argued that earlier linear attention, gated convolutions and state space models fall behind attention on language for one shared reason: they cannot decide what to keep and what to forget according to the content. So they made the parameters of a state space model depend on the input. GLA added data-dependent gates to linear attention. Gated DeltaNet, in 2025, found that gating and the delta update rule complement each other: a gate clears memory quickly, and the delta rule rewrites one entry precisely.\n\nA good share of this museum's exhibits from 2023 onward are linear recurrent layers of this kind. Some models mix them with attention layers. Jamba, for one, alternates Transformer layers with Mamba layers.",
+   "anchors": [
+    {"id": "2023-RetNet", "note_zh": "训练时并行，推理时循环，每一步的代价不随长度增加。", "note_en": "Parallel in training, recurrent at inference, with a per-step cost that does not grow with length."},
+    {"id": "2024-Mamba-SelectiveScan", "note_zh": "没有注意力层的语言模型：让状态空间模型按内容决定记什么。", "note_en": "A language model with no attention layer: a state space model that chooses what to remember by content."},
+    {"id": "2025-Gated-DeltaNet", "note_zh": "门负责快速清空，delta 规则负责精确改写，两样放进同一层。", "note_en": "A gate to clear memory fast and a delta rule to rewrite it precisely, in one layer."}
+   ]
+  }
+ ],
+ "more": {"y0": 2019, "y1": 2026}
+}

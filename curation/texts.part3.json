@@ -1,0 +1,680 @@
+{
+  "2018-AttnGAN-Word-Attention": {
+    "mechanism_zh": "画一只鸟时，翅膀和喙用得上的词不同。AttnGAN 让每个图像区域各自给词向量打分，再把加权得到的文字特征交给下一阶段。",
+    "mechanism_en": "AttnGAN refines an image in stages. Each region assigns its own weights to the words in the caption, so different parts of the image can draw on different details.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2018-Image-Transformer-Local-Attention": {
+    "mechanism_zh": "逐像素画大图时，整张图两两打分太费内存。Image Transformer 让每个像素只读附近已经生成的像素，二维邻域还能把相邻几行放进同一块。",
+    "mechanism_en": "Full attention gets expensive as an image grows. Image Transformer restricts each pixel's view to a nearby set of earlier pixels and can arrange that neighborhood in two dimensions.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2018-PixelSNAIL-Causal-Attention": {
+    "mechanism_zh": "因果卷积能看邻近像素，要看到更远就得多走几层。PixelSNAIL 把因果卷积和自注意力接在一起，让当前位置直接给早先的像素打分。",
+    "mechanism_en": "PixelSNAIL keeps causal convolutions for nearby pixels and adds self-attention for long-range dependencies. A pixel can consult distant earlier positions directly.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2019-STM-Space-Time-Memory-Read": {
+    "mechanism_zh": "目标被遮住再出现时，上一帧可能找不到它。STM 把带掩码的旧帧存起来，让当前帧的每个位置在时空记忆里找相似特征，按匹配分数读回信息。",
+    "mechanism_en": "STM stores past frames with their object masks. To segment a new frame, it matches each location against locations across the stored frames and reads a weighted mix of their features.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2020-DDPM-AttnBlock": {
+    "mechanism_zh": "DDPM 在去噪 U-Net 的 16×16 特征图上插入自注意力，让相隔很远的位置也能直接交换信息。每个位置给其他位置打分，再按权重合并它们的特征。",
+    "mechanism_en": "A DDPM denoiser uses spatial self-attention at the 16-by-16 level of its U-Net. Each location can read a weighted mix of features from across that map, beyond its immediate convolutional neighborhood.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2020-ImageGPT-Causal-Pixel-Attention": {
+    "mechanism_zh": "ImageGPT 把图像排成像素序列，让每个位置只读序列中更早的像素。模型从预测下一个像素的练习里学图像特征，训练时用不上类别标签。",
+    "mechanism_en": "ImageGPT learns image features by predicting the next pixel in a flattened sequence. A causal mask limits each prediction to earlier pixels, and pretraining uses no class labels.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2020-MotionSqueeze-Soft-Matching": {
+    "mechanism_zh": "先算光流再做动作识别，要多跑一套模型。MotionSqueeze 直接比较相邻两帧的特征，把局部匹配分数换成位移，再把运动特征交给下一层。",
+    "mechanism_en": "MotionSqueeze estimates motion inside the recognition network. It scores feature matches between adjacent frames and converts those scores into displacements, so the network can use motion without a separate optical-flow model.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-ADM-AttentionBlock": {
+    "mechanism_zh": "ADM 在选定的分辨率让 U-Net 的各个位置直接交换特征。多头注意力先分别缩放查询和键，再做点积，避免低精度计算先得到幅度过大的分数。",
+    "mechanism_en": "ADM gives its denoising U-Net spatial attention at selected resolutions. Each head splits the usual dot-product scale between the query and key, which helps keep their product in range at lower precision.",
+    "check_en": "Shared state_dict weights and random images were used to check the two layouts, splitting heads first and splitting QKV first. The maximum absolute difference was 0 for the forward pass and 0 for the input gradient.",
+    "basis": "readme"
+  },
+  "2021-IBRNet-View-and-Ray-Attention": {
+    "mechanism_zh": "只凭一个视角，很难知道射线上的哪些点真有物体。IBRNet 先为采样点汇合多个源视角的信息，再让同一条射线上的采样点互相做注意力，辅助估计密度。",
+    "mechanism_en": "IBRNet gathers evidence for each 3D sample from several source views. A ray Transformer then lets samples along the same ray compare features before the model predicts volume density.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-Motionformer-Trajectory-Attention": {
+    "mechanism_zh": "物体一动，同一个像素坐标在下一帧就可能落到背景上。Motionformer 先在每帧按匹配分数汇合空间特征，再沿得到的轨迹做时间注意力。",
+    "mechanism_en": "The same image coordinate can land on different objects over time. In each frame, Motionformer scores spatial locations and pools them into a trajectory token, then uses a second attention step along time.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-PCT-Offset-Attention": {
+    "mechanism_zh": "PCT 想让点的更新反映它和周围特征的差别。它先用注意力聚合点特征，再从原特征里减去聚合结果，把变换后的差值加回原特征。",
+    "mechanism_en": "PCT uses a point's difference from its attention-weighted context as the update signal. It transforms that difference before adding it back to the input feature.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-PoinTr-Geometry-Aware-Attention": {
+    "mechanism_zh": "扫描只看到物体的一部分，补点时还得顾及原有的局部形状。PoinTr 把点群变成带位置的代理令牌，既让代理做注意力，也计算邻近代理的几何关系。",
+    "mechanism_en": "PoinTr fills gaps in a scan using position-aware tokens for groups of points. Global attention connects the tokens, and a separate geometry branch explicitly models their local relationships.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-STAM-Temporal-Attention": {
+    "mechanism_zh": "短片段卷积一次只能看到视频的一小段。STAM 先把每帧压成一个表示，再让选出的帧在同一层做全局注意力，合并相隔很远的动作线索。",
+    "mechanism_en": "STAM summarizes each sampled frame before it applies temporal attention. The frame summaries can interact across the whole video, so the model can combine cues beyond a single short clip.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-STCN-Space-Time-Correspondence": {
+    "mechanism_zh": "点积偏爱少数旧位置。STCN 用负平方欧氏距离给新旧位置打分。",
+    "mechanism_en": "A few memory locations can dominate a dot-product lookup across many queries. STCN scores frame correspondences by negative squared Euclidean distance and shares those scores across the objects it tracks.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-Shifted-Chunk-Attention": {
+    "mechanism_zh": "视频里每个小块都和全片打分，训练很吃内存。Shifted Chunk Transformer 把注意力限制在块内，下一层错开边界，让原先分在两块的特征也能碰面。",
+    "mechanism_en": "Shifted Chunk Transformer confines self-attention to chunks of a video. It shifts the boundaries between layers so that patches on opposite sides of an earlier boundary can exchange information.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-TransGAN-Grid-Attention": {
+    "mechanism_zh": "TransGAN 越往后画，特征图越大。高分辨率层把图切成格子，像素令牌只和同一格里的令牌算注意力，省下整张图的分数矩阵。",
+    "mechanism_en": "TransGAN switches to grid attention as the generator raises the resolution. Tokens attend within their own grid cell, so high-resolution layers avoid a full image-wide score matrix.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-VQGAN-Transformer-Attention": {
+    "mechanism_zh": "大图逐像素排成序列，Transformer 得读很长一串。VQGAN 先用卷积把图压成离散编码，再让因果注意力根据先前的编码预测下一个。",
+    "mechanism_en": "VQGAN learns a visual vocabulary with a convolutional encoder. A causal Transformer predicts its codes in sequence, so it can model how image parts fit together on a shorter sequence than raw pixels.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-Voxel-Transformer-VoTr": {
+    "mechanism_zh": "体素卷积看得近，给整个点云算注意力又太贵。VoTr 同时查近邻和间隔更远的体素，找到非空位置才取键和值。",
+    "mechanism_en": "VoTr gives voxel features access to farther context than a local convolution. Each query looks for occupied voxels in a local neighborhood and at more widely spaced locations.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-X-ViT-Space-Time-Mixing": {
+    "mechanism_zh": "把一帧里用来匹配的键和值拿出几个通道，换成邻帧的对应通道。X-ViT 这样让空间注意力带上时间信息，分数矩阵仍按单帧的令牌数来算。",
+    "mechanism_en": "X-ViT brings time into spatial attention by taking some key and value channels from nearby frames. Each attention map still uses the number of tokens in one frame.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-ActionFormer-Local-Temporal-Attention": {
+    "mechanism_zh": "ActionFormer 在一层里只让某个时刻看附近的片段，再把同样的注意力用到更粗的时间尺度上。模型便能从每个时刻估计动作的起止，短动作和长动作各有对应的尺度。",
+    "mechanism_en": "ActionFormer uses local self-attention at several temporal resolutions. The same short attention window covers more video at coarser scales, and the detector predicts action boundaries from these features.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-GPNR-Epipolar-Attention": {
+    "mechanism_zh": "要画新视角的一条射线，GPNR 沿参考图的极线取图块，把位置换算到目标射线的坐标系，再用注意力汇合各视角和各深度的颜色。",
+    "mechanism_en": "GPNR draws patches along epipolar lines in the reference images. It describes their positions relative to the target ray, then uses attention across depths and views to predict the ray's color.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-GeoNeRF-Geometry-Aware-Attention": {
+    "mechanism_zh": "同一个三维点在某些相机里可能被挡住。GeoNeRF 把多视角匹配得到的深度线索送进注意力，让渲染器从互相吻合的视角取颜色和几何信息。",
+    "mechanism_en": "GeoNeRF builds cost volumes from neighboring views to supply geometry cues. Its renderer uses those cues in attention to gather appearance evidence from consistent views, even when some cameras have an obstructed view.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-LDM-Cross-Attention": {
+    "mechanism_zh": "潜空间里的去噪器要知道这张图该画什么。LDM 让图像位置发出查询，用文字等条件生成键和值，每个位置按匹配分数读入自己需要的条件信息。",
+    "mechanism_en": "Cross-attention gives each latent image location access to the prompt. The image features supply the queries, and the conditioning input supplies the keys and values that guide denoising.",
+    "check_en": "Shared state_dict weights and random inputs were used to check text conditioning, no text conditioning, and the CrossAttention key mask. The maximum absolute difference was 0 for the forward pass and 0 for the input gradient.",
+    "basis": "abstract"
+  },
+  "2022-MaskGIT-Bidirectional-Attention": {
+    "mechanism_zh": "按行生成图像，每多画一个令牌就得再跑一轮。MaskGIT 让被遮住的位置同时看向各个方向，先并行填图，再拿上一轮的结果继续补。",
+    "mechanism_en": "MaskGIT fills masked image tokens in parallel with bidirectional attention. Each round uses the previous guesses as context, so the image can take shape across several refinement passes.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-ORViT-Object-Region-Attention": {
+    "mechanism_zh": "视频里的手和工具可能落在不同图块。ORViT 从目标框里取出对象特征，把对象令牌和普通图块放进同一次自注意力，让图块也能读到完整的对象。",
+    "mechanism_en": "ORViT gives detected objects their own tokens. Self-attention mixes those object regions with the regular video patches, which can then carry information about the objects involved in an action.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-Point-BERT-Point-Group-Attention": {
+    "mechanism_zh": "Point-BERT 用猜缺块的办法预训练点云模型。Transformer 在点群之间做注意力，借可见点群的线索猜被遮位置的离散编号，答案由点云分词器给出。",
+    "mechanism_en": "Point-BERT turns local point patches into a masked prediction task. Attention uses context from the visible patches to recover the missing patches' discrete codes, which a learned tokenizer supplies as targets.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-Point-MAE-Visible-Group-Attention": {
+    "mechanism_zh": "缺块的坐标本身就可能泄露形状。Point-MAE 让编码器只在看得见的点群之间算注意力，等到解码时才放回遮盖令牌，重建缺掉的点。",
+    "mechanism_en": "Point-MAE keeps the masked positions out of the encoder, where their locations could give away part of the answer. The decoder adds the mask tokens and reconstructs the missing point patches.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-Point-Transformer-V2-Grouped-Vector-Attention": {
+    "mechanism_zh": "给邻点的每个通道单算权重，通道一多就费参数。Point Transformer V2 让同一组通道共用一个邻点权重，并用两点的相对位置调制打分特征。",
+    "mechanism_en": "Point Transformer V2 groups feature channels so that each group shares a weight for a given neighbor. Relative position modulates the features that determine those weights.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-SST-Sparse-Regional-Attention": {
+    "mechanism_zh": "激光雷达里的行人只占几格，降采样容易抹掉细节。SST 保留体素分辨率，只在局部窗口的非空体素之间算注意力，再错开窗口让信息跨区。",
+    "mechanism_en": "Small objects can lose detail when a LiDAR detector downsamples. SST keeps the voxel resolution and uses attention among occupied cells in local regions, with shifted regions to connect neighboring windows.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-Stratified-Transformer-Attention": {
+    "mechanism_zh": "点云分割既要看脚下的细节，也得知道远处还有什么。Stratified Transformer 给查询点密集取近处的键，稀疏取远处的键，再把相对位置写进注意力。",
+    "mechanism_en": "Stratified attention keeps many nearby keys and samples fewer faraway ones. Each point gets local detail and longer-range context, and relative position enters the attention calculation.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-StyleSwin-Double-Attention": {
+    "mechanism_zh": "局部窗口容易把隔着边界的图块分开。StyleSwin 在同一层分两组注意力头，分别读常规窗口和错开的窗口，再拼起两组的输出。",
+    "mechanism_en": "StyleSwin mixes two window layouts in one layer. One group of attention heads sees the regular grid and the other sees a shifted grid, so features can cross the regular window boundaries.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-TadTR-Temporal-Deformable-Attention": {
+    "mechanism_zh": "找视频里的动作起止时，没必要让每个查询读完整段视频。TadTR 为动作查询预测参考时刻附近的采样偏移和权重，只聚合少数时间位置的特征。",
+    "mechanism_en": "TadTR gives each action query a reference time. Learned offsets and weights let it read a few useful snippets and use that context to predict an action interval.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-TubeR-Tubelet-Attention": {
+    "mechanism_zh": "动作检测要在几帧里持续框住同一个人。TubeR 让同一条框轨迹里的查询先互相交换信息，再从视频特征里读线索，一起预测这段动作的框。",
+    "mechanism_en": "TubeR predicts a sequence of boxes for an action. Attention links the box queries within each sequence, and cross-attention reads video features for the joint prediction.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-XMem-Memory-Attention": {
+    "mechanism_zh": "长视频的旧帧全留着，记忆会越堆越大。XMem 把常用的工作记忆压进长期库，再按当前帧与工作库、长期库的匹配分数读出目标特征。",
+    "mechanism_en": "XMem keeps recent features at high resolution and consolidates useful entries into a compact long-term store. Its attention lookup matches the current frame against both stores to retrieve object features.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-AdaPoinTr-Adaptive-Query-Attention": {
+    "mechanism_zh": "点云缺哪一块，每次都可能不同。AdaPoinTr 根据残缺点云选出补点用的查询，让它们在解码时读取编码特征。训练时，掩码挡住了去噪查询向补点查询传信息。",
+    "mechanism_en": "AdaPoinTr selects completion queries from the input point cloud. A training mask stops those queries from attending to the auxiliary denoising queries, which could reveal missing geometry.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-Attend-and-Excite": {
+    "mechanism_zh": "提示词里写了两样东西，扩散模型有时只画出一样。Attend-and-Excite 看每个主体词在交叉注意力图上的最高响应，再调整当前潜变量，抬高最弱的那个峰值。",
+    "mechanism_en": "Attend-and-Excite checks the strongest cross-attention response for each subject word. During denoising it updates the latent to raise the weakest of those peaks, giving an overlooked subject more influence.",
+    "check_en": "No numerical comparison was performed because importing the official pipeline directly requires diffusers. The same input was used to compare four combinations of smoothing and end-token truncation, with a maximum absolute difference of 0 (threshold 1e-5).",
+    "basis": "abstract"
+  },
+  "2023-ConDaFormer-Disassembled-Local-Attention": {
+    "mechanism_zh": "立方窗口里两两打分，点一多就算不过来。ConDaFormer 把窗口拆成三个互相垂直的平面，在面内做注意力，并在注意力前后用逐通道卷积补回局部几何。",
+    "mechanism_en": "ConDaFormer splits a cubic attention window into three orthogonal planes to cut the number of point pairs. Depthwise convolutions before and after attention restore local geometric context.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-DSVT-Dynamic-Sparse-Voxel-Attention": {
+    "mechanism_zh": "每个体素窗口里的点数差得很远，直接凑成批次会浪费填充。DSVT 把非空体素切成大小相近的组，组内算注意力，下一层换个轴分组来传递信息。",
+    "mechanism_en": "DSVT partitions occupied voxels into near-equal sets for parallel attention. Successive layers switch the sorting axis so that voxels in different sets can meet in the next layer.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-DiT-adaLN-Zero": {
+    "mechanism_zh": "DiT 把扩散步和类别变成一组缩放、偏移和门值。缩放与偏移先调节归一化后的令牌，门值再控制注意力与前馈层加回多少，初始时整块原样放行。",
+    "mechanism_en": "DiT uses the diffusion step and class to modulate the normalized tokens and gate each residual update. The gates start at zero, so the block initially passes its input straight through.",
+    "check_en": "The fixed-commit DiTBlock and DiT were loaded to verify that both the original full-model block and the standalone initialization zeroed the modulation layer, so the output matched the input element by element. The maximum absolute difference was 0 for the forward pass and 0 for the input gradient.",
+    "basis": "readme"
+  },
+  "2023-EVAD-Keyframe-Guided-Token-Pruning": {
+    "mechanism_zh": "动作检测需要邻帧的运动线索，又用不上每一块背景。EVAD 留住关键帧的所有令牌，用注意力分数筛掉其他帧的低分令牌。",
+    "mechanism_en": "EVAD reduces the token count for video action detection without thinning the keyframe. It keeps every keyframe token and uses attention scores to decide which tokens from the other frames to retain.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-GLIGEN-Gated-Grounding-Attention": {
+    "mechanism_zh": "提示词能说画什么，却难指定物体要摆在哪。GLIGEN 把文字和框坐标合成定位令牌，和图像令牌一起做自注意力，再用可训练的门控制加回多少。",
+    "mechanism_en": "GLIGEN lets bounding boxes guide a frozen text-to-image model. It adds a self-attention layer that mixes image tokens with grounding tokens, then gates the update before adding it to the image features.",
+    "check_en": "The same state_dict was loaded, and forward outputs were compared using a nonzero gate value and identical random inputs. The maximum absolute difference was 0, with a threshold of 1e-5.",
+    "basis": "abstract"
+  },
+  "2023-GNT-View-and-Ray-Transformers": {
+    "mechanism_zh": "GNT 把新视角的渲染分成两次查询。先在源图中汇合同一个三维点的投影特征，再让目标射线上的采样点互相做注意力，读出这条射线的颜色。",
+    "mechanism_en": "GNT learns to render from nearby views in two steps. View attention aligns evidence at each 3D sample, then ray attention combines the samples along the target ray to predict a pixel.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-IP-Adapter-Decoupled-Cross-Attention": {
+    "mechanism_zh": "有些外观用一张参考图比用文字容易说清。IP-Adapter 让同一组图像查询分别读文字和参考图，各算一遍交叉注意力，再把两路输出相加。",
+    "mechanism_en": "IP-Adapter gives a reference image its own cross-attention path. The denoising queries read text and image features in separate attention passes, and the model adds the two outputs.",
+    "check_en": "The same random inputs were used to compare 3D tokens, 4D features, and the internal attn_map. The maximum absolute difference was 0, with a threshold of 1e-5.",
+    "basis": "abstract"
+  },
+  "2023-MAGVIT-Conditional-Masked-Attention": {
+    "mechanism_zh": "补视频的缺帧和补画面的一角，可以交给同一个模型。MAGVIT 把可见片段和待补位置排成时空令牌，让双向注意力从四周取线索，一轮填多个空位。",
+    "mechanism_en": "MAGVIT represents video as space-time tokens so the same model can handle different synthesis tasks. Bidirectional attention uses the available video context to predict masked tokens in parallel.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-MasaCtrl": {
+    "mechanism_zh": "换个姿势还想留住原来的纹理，MasaCtrl 就让编辑图的查询去读原图的键和值。前景和背景容易认错时，它从交叉注意力图取掩码，把两边的读取范围分开。",
+    "mechanism_en": "MasaCtrl gives the edited image's queries access to keys and values from the source image. Masks derived from cross-attention help keep foreground queries from picking up background texture.",
+    "check_en": "The controller has no state_dict. The comparison used the same step counts, layer indices, masks, and random inputs. The maximum absolute difference was 0, with a threshold of 1e-5.",
+    "basis": "abstract"
+  },
+  "2023-OctFormer-Octree-Attention": {
+    "mechanism_zh": "OctFormer 按八叉树键排点，定长分组算注意力，免去各窗口点数不齐。",
+    "mechanism_en": "OctFormer sorts points by their octree keys and groups them into attention windows with equal point counts. Those windows can change shape with the density of the point cloud.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-Plug-and-Play-Feature-Injection": {
+    "mechanism_zh": "改一句提示词，扩散模型可能把原图的布局也改掉。Plug-and-Play 在去噪时把原图的空间特征和自注意力的查询、键送进编辑分支，沿用原图各位置的对应关系。",
+    "mechanism_en": "A new prompt can change the layout as well as the subject. Plug-and-Play copies spatial features and self-attention queries and keys from the source denoising pass to preserve the arrangement during editing.",
+    "check_en": "Outputs were compared inside and outside the schedule, at timestep 1000, and for cross-attention. The maximum absolute difference was 0, with a threshold of 1e-5.",
+    "basis": "abstract"
+  },
+  "2023-SphereFormer-Radial-Window-Attention": {
+    "mechanism_zh": "激光雷达扫到的远处点太稀，立方窗口里未必有几个邻居。SphereFormer 沿传感器向外划出狭长窗口，让远点和近处较密的点在同一个窗口里做注意力。",
+    "mechanism_en": "SphereFormer partitions a LiDAR scan into narrow radial windows. A sparse point far from the sensor can attend to denser points closer to it along the same direction.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-Superpoint-Transformer-Graph-Attention": {
+    "mechanism_zh": "整片场景的原始点太多，逐点做全局注意力代价很高。Superpoint Transformer 把几何相似的邻点合成超点，再在不同尺度的超点邻接图上做注意力。",
+    "mechanism_en": "Superpoint Transformer groups nearby points with similar geometry before applying attention. At each scale the attention follows the edges of a superpoint graph, so it compares regions without scoring every raw point pair.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-Swin3D-Contextual-Relative-Attention": {
+    "mechanism_zh": "Swin3D 只在三维窗口的非空体素间算注意力，并在相邻层挪动窗口。打分还看两点的相对坐标和属性差，让稀疏格子里的细节也参与匹配。",
+    "mechanism_en": "Swin3D limits self-attention to occupied voxels in shifted 3D windows. Its contextual position encoding includes differences in point attributes as well as coordinates, giving attention more information about an irregular point cloud.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-TAdaFormer-Temporally-Adaptive-Attention": {
+    "mechanism_zh": "逐帧算空间注意力时，单帧看不出对象往哪动。TAdaFormer 先用视频的时间上下文调节逐通道卷积，再让调过的帧特征进入空间自注意力。",
+    "mechanism_en": "TAdaFormer uses temporal context to adapt a depthwise convolution before spatial attention. Each frame's tokens already carry motion context when the attention layer compares them.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-Text2Video-Zero-Cross-Frame-Attention": {
+    "mechanism_zh": "把图像扩散模型逐帧调用，人物的外观容易变。Text2Video-Zero 保留每帧自己的查询，把键和值换成首帧的，让后续帧都能读到同一份外观线索。",
+    "mechanism_en": "Text2Video-Zero lets every frame refer back to the first during denoising. Each frame keeps its own queries, but uses the first frame's keys and values to maintain a consistent subject.",
+    "check_en": "No numerical comparison was performed because importing the official utils.py directly requires decord and the annotator subpackage. The same state_dict was used to compare self-attention, masked self-attention, and text cross-attention, with a maximum absolute difference of 0 (threshold 1e-5).",
+    "basis": "abstract"
+  },
+  "2023-Tune-A-Video-Sparse-Causal-Attention": {
+    "mechanism_zh": "每帧只需向两帧借特征。Tune-A-Video 的查询从首帧和前一帧取键和值，既留住开头的外观线索，也能接着上一帧的动作往下走。",
+    "mechanism_en": "Tune-A-Video restricts each frame's spatial attention to keys and values from the first and previous frames. The first supplies a reference appearance, and the previous frame supplies recent context.",
+    "check_en": "No numerical comparison was performed because importing the official source file directly requires diffusers. The comparison used 6 sets of inputs covering group normalization, a single frame, three frames, and external key/value inputs. The maximum absolute difference was 0 (threshold 1e-5).",
+    "basis": "abstract"
+  },
+  "2023-U-ViT-Joint-Token-Attention": {
+    "mechanism_zh": "U-ViT 把扩散步、生成条件和带噪图块都排进同一个令牌序列。自注意力能直接在三者之间传信息，浅层的图像细节走长跳接送到深层。",
+    "mechanism_en": "U-ViT puts the diffusion step, the conditioning input, and the noisy patches into one attention sequence. Long skip connections also carry information from early layers to later ones.",
+    "check_en": "The maximum absolute difference was 0 for the forward pass and 0 for the input gradient.",
+    "basis": "abstract"
+  },
+  "2023-UniFormerV2-Global-Temporal-Attention": {
+    "mechanism_zh": "全片的图块两两打分，会反复比较许多相似画面。UniFormerV2 让一个全局令牌做查询，从不同深度的帧特征里读信息，汇成整段视频的表示。",
+    "mechanism_en": "UniFormerV2 uses a global token to query video features from several depths of a pretrained image Transformer. The token collects clip-wide context without comparing all video patches with one another.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-AnimateDiff-Temporal-Attention": {
+    "mechanism_zh": "已经会画图的模型要变成动画模型，AnimateDiff 给它插入一个运动块。它把同一空间位置在各帧的特征排成序列，只沿时间轴做注意力。",
+    "mechanism_en": "AnimateDiff adds a motion module to an existing image diffusion network. Each spatial location attends along its own sequence of frame features, so the image model gains a way to coordinate motion.",
+    "check_en": "No numerical comparison was performed because importing the official motion_module.py directly requires diffusers. The maximum absolute difference was 0 (threshold 1e-5).",
+    "basis": "abstract"
+  },
+  "2024-CoTracker-Proxy-Token-Attention": {
+    "mechanism_zh": "一条轨迹被挡住时，别的点还看得见。CoTracker 用少量代理令牌在轨迹之间接力做注意力，让每个点借到其他点的运动线索，同时省下轨迹两两打分的内存。",
+    "mechanism_en": "CoTracker tracks points jointly so that visible tracks can help when another point disappears. A small set of proxy tokens relays information between tracks, avoiding an attention matrix over all point pairs.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-Consistent-Self-Attention-StoryDiffusion": {
+    "mechanism_zh": "同一故事分开画，主角每张图都可能长得不一样。StoryDiffusion 从同批的其他图里抽取令牌，把它们的键和值与本图的一起交给自注意力。",
+    "mechanism_en": "StoryDiffusion lets each illustration attend to selected tokens from other images in the batch. The shared keys and values give separate scenes a common reference for the characters.",
+    "check_en": "No numerical comparison was performed because the full official application requires diffusers. The maximum absolute difference across 8 outputs was 0 (threshold 1e-5).",
+    "basis": "abstract"
+  },
+  "2024-Cutie-Object-Memory-Attention": {
+    "mechanism_zh": "只按像素找历史匹配，长得相像的背景容易搅进来。Cutie 用少量查询代表目标，让它们按前景和背景掩码读取像素，再把目标信息写回像素特征。",
+    "mechanism_en": "Pixel matches can pick up distracting lookalikes in video segmentation. Cutie uses object queries to read masked foreground or background features, then sends object-level context back to the pixels.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-DUSt3R-Bidirectional-View-Cross-Attention": {
+    "mechanism_zh": "两张照片的相机参数未知，也能试着把场景拼起来。DUSt3R 让两路解码器互相查询对方的图像令牌，再为两张图各预测一张点图，坐标都相对第一台相机。",
+    "mechanism_en": "DUSt3R reconstructs a scene from two images without prior camera calibration. The two decoders repeatedly exchange features through cross-attention and predict pixelwise 3D points in the first camera's coordinate frame.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-Directed-Diffusion-Attention": {
+    "mechanism_zh": "想把某个角色放到画面左边，单改提示词往往不够。Directed Diffusion 在去噪早期调整交叉注意力，让指定词在用户画的框内得到更强的响应。",
+    "mechanism_en": "Directed Diffusion steers object placement by editing attention early in denoising. It adjusts the cross-attention map for a chosen word toward a target that emphasizes the inside of a user-specified box.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-ELLA-Timestep-Aware-Resampler": {
+    "mechanism_zh": "提示词一长，CLIP 容易丢掉对象间的关系。ELLA 按当前去噪步调整一组查询，再拿它们对语言模型的输出做交叉注意力，为这一步挑出所需的文字信息。",
+    "mechanism_en": "ELLA connects a language model to an image denoiser for prompts with many details. Its queries depend on the diffusion step, so cross-attention can extract a different mix of language features at each stage.",
+    "check_en": "No numerical comparison was performed because importing the official model.py directly requires diffusers. The maximum absolute difference was 0, with a threshold of 1e-5.",
+    "basis": "abstract"
+  },
+  "2024-GaussianFormer-Deformable-Aggregation": {
+    "mechanism_zh": "用稠密体素描述场景，空处也要分空间。GaussianFormer 用稀疏的三维高斯表示场景，把每个高斯附近的采样点投到相机图像上，加权汇合读出的特征。",
+    "mechanism_en": "GaussianFormer represents occupied space with sparse 3D Gaussians. Each Gaussian gathers weighted image features at projections of nearby 3D samples, then uses that evidence to refine its own geometry and semantics.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-HunyuanDiT-Attention": {
+    "mechanism_zh": "把图像摊成一串令牌，行列关系还得写回注意力。HunyuanDiT 在自注意力里按二维坐标旋转图像查询和键，在交叉注意力里让图像查询读取文本键值。",
+    "mechanism_en": "HunyuanDiT rotates image queries and keys according to their row and column before spatial self-attention. A separate cross-attention layer lets image queries read the text features that guide generation.",
+    "check_en": "The same state_dict was loaded into each of the two attention classes. Identical random inputs were used to compare real and complex rotary position encodings. The maximum absolute difference for the outputs and frequency tables was 0, with a threshold of 1e-5.",
+    "basis": "readme"
+  },
+  "2024-HunyuanVideo-Hybrid-Attention": {
+    "mechanism_zh": "视频和文字需要不同的特征变换，也得在去噪时对得上。HunyuanVideo 前段用两套投影准备查询、键和值，再拼起来打分。后段把视频和文字交给同一串联合块。",
+    "mechanism_en": "HunyuanVideo first projects video and text with separate weights, then joins their queries, keys, and values for attention. Later blocks process both modalities as one stream.",
+    "check_en": "No numerical comparison was performed because Diffusers and CUDA FlashAttention were unavailable locally. The same state_dict was used to check no padding, different padding lengths within a batch, and 3D RoPE. The maximum absolute difference across 12 checks was 0 (threshold 1e-5).",
+    "basis": "readme"
+  },
+  "2024-Inside-Outside-Attention": {
+    "mechanism_zh": "换掉图中的物体时，编辑容易漏到轮廓外面。Inside-Outside Attention 用轮廓把图像分成内外两区，让前景词和背景词各管一边，也限制像素自注意力跨过边界。",
+    "mechanism_en": "Inside-Outside Attention uses a silhouette to keep a text-guided edit within the right part of the image. It restricts both word-to-image attention maps and spatial self-attention by foreground and background.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-LlamaGen-Visual-GQA": {
+    "mechanism_zh": "LlamaGen 像续写句子那样续写图像编码，因果掩码让每一步只读已知的令牌。启用分组查询时，几个查询头可以共用一套键和值，少存重复的历史特征。",
+    "mechanism_en": "LlamaGen generates discrete image codes one at a time under a causal mask. Its attention can share a key and value head across several query heads, reducing the number of distinct keys and values.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-Lumina-Next-Proportional-Attention": {
+    "mechanism_zh": "图像分辨率一加大，注意力就要在更多位置间分配权重，容易摊得太平。Lumina-Next 的比例缩放按当前序列与基准长度的对数关系调节点积分数，再做 softmax。",
+    "mechanism_en": "Larger images give softmax more tokens to spread its weight across. Lumina-Next can adjust the dot-product scale by a logarithmic function of sequence length relative to a reference length.",
+    "check_en": "No numerical comparison was performed because importing the official source file directly requires flash_attn. The maximum absolute difference was 0, with a threshold of 1e-5.",
+    "basis": "readme"
+  },
+  "2024-MVSplat-Cross-View-Transformer": {
+    "mechanism_zh": "仅凭一张图，很难定准三维高斯该放多远。MVSplat 先用交叉注意力让视图交换特征，再按候选深度比对各视图，把相似度存成估计深度用的代价体。",
+    "mechanism_en": "MVSplat exchanges features across views before it estimates depth. It tests candidate depths by comparing the projected features and stores the scores in a cost volume that helps place the 3D Gaussians.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-PixArt-Cross-Attention": {
+    "mechanism_zh": "PixArt-α 在每个去噪块里让图像位置查询文字的键和值。几张图共用一批计算时，掩码按各段文字的长度划开范围，免得一张图读到另一张图的提示词。",
+    "mechanism_en": "In each PixArt-alpha block, image queries read text keys and values. When captions of different lengths share a batch, a mask keeps each image's attention on its own caption.",
+    "check_en": "No numerical comparison was performed. The maximum absolute difference was 1.19e-07 for the forward pass and 4.37e-11 for the input gradient.",
+    "basis": "readme"
+  },
+  "2024-PixArt-KV-Compression": {
+    "mechanism_zh": "大图的注意力矩阵两边都很长。PixArt-Σ 只把键和值压到更粗的网格上，查询还留在原分辨率，每个位置照样产出自己的结果。",
+    "mechanism_en": "PixArt-Sigma shortens the key and value sequences by merging spatial tokens. Queries keep their original resolution, so every output location gets an update while attending to a smaller grid.",
+    "check_en": "No numerical comparison was performed. The maximum absolute difference was 2.38e-07 for the forward pass and 1.16e-10 for the input gradient.",
+    "basis": "abstract"
+  },
+  "2024-Point-Transformer-V3-Serialized-Attention": {
+    "mechanism_zh": "逐点找最近邻，往往比算注意力还麻烦。Point Transformer V3 沿空间填充曲线给点排序，把相邻的一段切成一组，组内用普通注意力交换特征。",
+    "mechanism_en": "Point Transformer V3 orders points along space-filling curves. Attention runs within consecutive groups in that order, which provides approximate neighborhoods without a separate nearest-neighbor search.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-SD3-MMDiT-Joint-Attention": {
+    "mechanism_zh": "文字常给图像指路，也可以反过来读图像。MMDiT 用两套权重分别投影图文令牌，把查询、键和值拼到一起算注意力，再把结果拆回各自的分支。",
+    "mechanism_en": "MMDiT lets both modalities read from each other during denoising. Text and image tokens have separate projections, but share one attention calculation before the outputs return to their respective streams.",
+    "check_en": "The maximum absolute difference was 0 for the forward pass and 0 for the input gradient.",
+    "basis": "abstract"
+  },
+  "2024-StyleAligned": {
+    "mechanism_zh": "同一套图可以换主题，还要沿用参考图的画风。StyleAligned 先向参考图对齐查询和键的均值与方差，再把参考图的键和值接进目标图的注意力。",
+    "mechanism_en": "StyleAligned shares attention with a reference image to keep a common style across prompts. It aligns query and key statistics to the reference, then lets the target read both its own values and the reference values.",
+    "check_en": "No numerical comparison was performed because importing the official sa_handler.py directly requires diffusers. The maximum absolute difference was 0, with a threshold of 1e-5.",
+    "basis": "abstract"
+  },
+  "2024-TimesFM-Patched-Decoder-Attention": {
+    "mechanism_zh": "TimesFM 把一段时间序列切成小段，每段用一个令牌表示。因果注意力只读到当前段为止，模型据此一次预测接下来的一段数值。",
+    "mechanism_en": "TimesFM groups time points into patches so that long histories fit into shorter token sequences. Causal attention reads the patches observed so far, and the decoder forecasts a block of future values.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-TokenFlow": {
+    "mechanism_zh": "逐帧改画容易让纹理一闪一闪。TokenFlow 先在原视频的扩散特征里找跨帧近邻，再把编辑后关键帧的注意力输出送到匹配的位置。",
+    "mechanism_en": "To keep an edit steady across frames, TokenFlow matches locations using diffusion features from the original video. It then propagates the edited keyframes' attention features to those matching locations.",
+    "check_en": "No numerical comparison was performed because the full official util.py requires kornia, which was unavailable locally. With the same host and state_dict, the comparison covered keyframes, first-batch frame matching, and two-keyframe interpolation in later batches. The maximum absolute difference across 3 checks was 0 (threshold 1e-5).",
+    "basis": "abstract"
+  },
+  "2024-UniTS-Sequence-and-Variate-Attention": {
+    "mechanism_zh": "预测和补缺可以共用一个模型，UniTS 用任务令牌告诉模型要做哪件事。块内一条注意力沿时间取信息，另一条把查询和键沿时间平均，算出各时刻共用的变量权重。",
+    "mechanism_en": "UniTS uses task tokens to switch between jobs such as forecasting and imputation. It attends across time, then uses time-averaged queries and keys to compute one set of weights for interactions between variables.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-VAR-Scale-Causal-Attention": {
+    "mechanism_zh": "VAR 让令牌读本尺度和粗尺度，一轮并行画完一层。",
+    "mechanism_en": "VAR generates a whole resolution level at once. Its causal mask allows attention within a level and back to coarser levels, so the image develops from the rough layout to finer detail.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-Video-P2P-Decoupled-Attention": {
+    "mechanism_zh": "逐帧改提示词容易连原视频的动作也改掉。Video-P2P 分开做重建和编辑，用各自的无条件嵌入生成注意力图，再把两路的交叉注意力合起来指导编辑。",
+    "mechanism_en": "Video-P2P uses an optimized unconditional embedding to reconstruct the source video and an initialized embedding for the edit. It combines their cross-attention maps to change the subject while preserving cues from the source.",
+    "check_en": "No numerical comparison was performed because importing the authors' inference script directly requires diffusers and decord. The maximum absolute difference across 14 comparisons was 0 (threshold 1e-5).",
+    "basis": "abstract"
+  },
+  "2024-pixelSplat-Epipolar-Transformer": {
+    "mechanism_zh": "两张照片里，同一个点只会落在另一张图的一条极线上。pixelSplat 让像素沿那条线读取带深度编码的特征，再用这些信息估计三维高斯的位置。",
+    "mechanism_en": "pixelSplat restricts each pixel's search for a match to the corresponding epipolar line in the other image. Attention combines those samples and their depth cues to help place 3D Gaussians.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-CUT3R-Recurrent-State-Attention": {
+    "mechanism_zh": "新照片一张张进来，CUT3R 每次只处理当前图和存下来的场景状态。两路令牌互做交叉注意力，旧状态给新图提供坐标参照，新图也把看到的内容写回状态。",
+    "mechanism_en": "CUT3R maintains scene tokens as images arrive. Cross-attention lets each new image read the stored scene for its 3D prediction, and lets the scene state absorb information from that image.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-Chronos-2-Group-Attention": {
+    "mechanism_zh": "预测一条序列时，旁边的变量有时提供线索。Chronos-2 把相关序列放在同一组，在同一个时间片段上做跨序列注意力，再交替沿各条序列的时间轴聚合。",
+    "mechanism_en": "Chronos-2 groups forecast targets with related series or covariates. It alternates between attention across time within a series and attention across series at the same patch index.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-CogVideoX-3D-Attention": {
+    "mechanism_zh": "文字既要对上画面里的物体，也要对上动作发生的时间。CogVideoX 分别归一化文本和视频令牌，再让它们同算联合注意力，一次就能交换跨帧、跨模态的信息。",
+    "mechanism_en": "CogVideoX normalizes text and video tokens with separate adaptive layers before joint attention. That attention connects the prompt with video tokens across both space and time.",
+    "check_en": "No numerical comparison was performed because the full official file requires sat and sgm, which were unavailable locally. The same state_dict was loaded strictly. The 6 checks covered three masks and whether V was rotated, with a maximum absolute difference of 0 (threshold 1e-5).",
+    "basis": "abstract"
+  },
+  "2025-DUET-Channel-Masked-Attention": {
+    "mechanism_zh": "预测一个变量时，让它看遍所有通道也会带进噪声。DUET 学习通道之间的频域距离，再据此生成稀疏掩码，让通道注意力只读筛出来的变量。",
+    "mechanism_en": "DUET compares time series in the frequency domain with a learned distance. It turns those comparisons into a sparse mask, so each channel attends to a selected set of other variables.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-DeformTime-Deformable-Attention": {
+    "mechanism_zh": "外部变量的影响可能隔几拍才出现。DeformTime 学习采样偏移，一路在变量和时间上挪动取键值的位置，另一路沿时间偏移，专门读取历史依赖。",
+    "mechanism_en": "DeformTime samples keys and values at learned offsets. One attention block shifts across variables and time to capture cross-series dependencies, while another shifts along time to read past context.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-DepthSplat-Multi-view-Attention": {
+    "mechanism_zh": "反光和遮挡会让多视图匹配失灵。DepthSplat 先在相邻视图之间做注意力，再把匹配得到的深度代价体和预训练的单目特征合在一起，估计高斯中心的深度。",
+    "mechanism_en": "DepthSplat exchanges features across nearby views and builds a stereo cost volume. Where matching is difficult, pretrained single-image depth features supply additional evidence for placing the 3D Gaussians.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-FAM-Diffusion-Attention-Modulation": {
+    "mechanism_zh": "把扩散模型拿去画更大的图，纹理容易跑错地方。FAM 放大原分辨率的自注意力图，与高分辨率的图加权混合，再用混合后的权重聚合高分辨率特征。",
+    "mechanism_en": "FAM blends an upsampled attention map from the model's native resolution with the map from the high-resolution pass. It uses the blended weights to guide local texture during high-resolution denoising.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-FastVAR-Cached-Token-Attention": {
+    "mechanism_zh": "画到细尺度，FastVAR 挑出偏离空间均值最大的令牌，送进注意力和前馈层。其余位置从较粗尺度缓存的令牌图插值补回。",
+    "mechanism_en": "At fine scales, FastVAR sends only tokens that differ most from the spatial mean through attention and feed-forward layers. It fills the skipped slots by interpolating a cached token map from an earlier scale.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-HART-Hybrid-Attention": {
+    "mechanism_zh": "离散令牌能装下大体轮廓，细节在量化时会丢掉一些。HART 用粗到细的尺度注意力预测离散令牌，再用小型扩散模块补上连续残差。",
+    "mechanism_en": "HART uses coarse-to-fine autoregressive attention to generate a discrete image representation. A small diffusion module then predicts the continuous detail left out by the tokenizer.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-Infinity-Bitwise-Visual-Attention": {
+    "mechanism_zh": "给每个图块在大词表里挑一个编号，词表越大越难算。Infinity 沿用粗到细的注意力，让当前尺度读取已有的粗图和文字，再把这一尺度的令牌写成一串比特。",
+    "mechanism_en": "Infinity reads earlier scales as context and attends to the text prompt. It predicts each new scale as bit labels, which lets it represent more visual codes without a separate output class for each one.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-LVSM-View-Synthesis-Attention": {
+    "mechanism_zh": "LVSM 把源图切成图块令牌，也把目标相机的射线变成令牌。只用解码器的版本让它们在同一序列做注意力，直接根据目标射线的输出预测像素。",
+    "mechanism_en": "The decoder-only LVSM puts source image patches and target camera rays into one attention sequence. The target ray tokens can read across source views, and their outputs predict the new image's pixels directly.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-MMDiT-Prompt-Editing-Attention": {
+    "mechanism_zh": "换提示词时，整张联合注意力图照搬原图，会连旧词的关系一起带进来。这种编辑法只在早期换入原图的图像查询和键，再从图文注意力图里取出局部编辑掩码。",
+    "mechanism_en": "For prompt edits in MMDiT, the method copies only the source image queries and keys during early denoising. A selected text-image attention block supplies spatial evidence for a mask when the edit should stay local.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-NoPoSplat-Multiview-Attention": {
+    "mechanism_zh": "几张照片的相机位姿未知，NoPoSplat 就让各视图的令牌在解码时互相读取。模型把相机内参也化成令牌，并把所有视图的高斯都预测到第一张图的坐标系。",
+    "mechanism_en": "NoPoSplat reconstructs from views with unknown poses. The decoder exchanges features between views and uses camera intrinsics as additional tokens, then predicts Gaussians in a single reference camera's coordinates.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-RAR-Random-Order-Attention": {
+    "mechanism_zh": "按行画图，每个位置能读到的邻居就固定了。RAR 在训练早期打乱令牌顺序，因果注意力仍只读排在前面的令牌，再逐步回到固定的扫描顺序。",
+    "mechanism_en": "RAR trains the same causal Transformer on many pixel-token orders before settling on a fixed scan order. The mask still follows the current sequence, so context can come from different sides of a patch during training.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-Radial-Attention": {
+    "mechanism_zh": "两帧隔得越远，许多位置之间的注意力本来就很弱。Radial Attention 用固定掩码留住近帧较宽的空间邻域，帧距越大，可读的空间窗口就越小。",
+    "mechanism_en": "Radial Attention uses a fixed mask to cut the cost of long video sequences. A token sees a spatial neighborhood in nearby frames, and that neighborhood shrinks as the frames get farther apart in time.",
+    "check_en": "No numerical comparison was performed because FlashInfer, Sparse SageAttention, and the SpargeAttn CUDA extension were unavailable locally. The maximum absolute difference across 8 checks was 4.77e-7.",
+    "basis": "abstract"
+  },
+  "2025-RandAR-Position-Instruction-Attention": {
+    "mechanism_zh": "补图时，先画哪个位置应该由缺口决定。RandAR 在每个待预测的图像令牌前放一个位置令牌，告诉模型下一笔落在哪，再用因果注意力读已生成的内容。",
+    "mechanism_en": "RandAR puts a position instruction before each image token it predicts. The causal decoder can then use previously generated tokens even when it fills locations in an arbitrary order.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-Show-o-Omni-Attention": {
+    "mechanism_zh": "写句子要按先后读，补一块图像却可以看四周。Show-o 在同一层里给文本套因果掩码，让图像令牌彼此双向可见，兼顾续写和去噪。",
+    "mechanism_en": "Show-o changes the attention mask to suit the data. Text tokens follow causal order, while image tokens see one another in both directions for masked image generation.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-TAPNext-Per-Frame-Point-Attention": {
+    "mechanism_zh": "视频来一帧就要报一次点的位置，等一段视频凑齐会增大延迟。TAPNext 让当前帧的图块和点令牌一起做注意力，用递归状态接上此前的轨迹。",
+    "mechanism_en": "TAPNext tracks points one frame at a time. Spatial attention lets point tokens read the current frame's patches, while a recurrent state carries context forward from earlier frames.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-TimeBridge-Integrated-Attention": {
+    "mechanism_zh": "短期波动容易让两段走势看着相像，长期趋势却有自己的用处。TimeBridge 用平稳化后的片段生成查询和键，原片段供值，跨变量的长期注意力则保留趋势。",
+    "mechanism_en": "TimeBridge normalizes patches for short-range query-key matching but reads values from the original patches. Its longer-range attention across variables retains trends that may reveal lasting relationships.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-Timer-XL-TimeAttention": {
+    "mechanism_zh": "预测一条序列的下一段，有时还得看其他变量的历史。Timer-XL 把各变量的时间片段排成一个序列，用按时间分块的因果掩码控制哪些片段可以互读。",
+    "mechanism_en": "Timer-XL flattens patches from several time series into a single sequence. Its blockwise causal mask allows attention to patches observed so far, within and across variables.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-Toto-Axial-Attention": {
+    "mechanism_zh": "把所有变量和时刻摊在一起，两两打分很贵。Toto 沿时间轴做因果注意力，沿变量轴只比较同一时刻的相关序列，还用序列标识掩码隔开无关的输入。",
+    "mechanism_en": "Toto separates attention across time from attention across variables to avoid scoring every pair. Time attention is causal, and an ID mask confines each variate's same-time lookup to related series.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2026-GlobalSplat-Latent-Scene-Attention": {
+    "mechanism_zh": "每张照片都各自生成一批高斯，同一面墙就可能算好几遍。GlobalSplat 让固定数量的场景令牌用交叉注意力读取所有照片的特征，先合并多视图信息，再解码三维高斯。",
+    "mechanism_en": "GlobalSplat uses a fixed set of scene tokens to gather evidence from every input view through cross-attention. It resolves overlap in those tokens before decoding the 3D Gaussians.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2026-LLSA": {
+    "mechanism_zh": "序列太长时，连挑选稀疏块都可能费算力。LLSA 先在粗粒度挑出高分块，再只在入选块里往细处找，同时保留较粗的键和值供全局查询。",
+    "mechanism_en": "LLSA narrows the search for key blocks from coarse to fine. It also lets queries read keys and values at several resolutions, keeping global context without scoring every fine-grained block pair.",
+    "check_en": "No numerical comparison was performed because the official operator's forward pass depends on Triton GPU kernels that were unavailable locally. The 4 checks covered L1, L2, full blocks, and an incomplete final block. The maximum absolute difference was 2.09e-7.",
+    "basis": "abstract"
+  },
+  "2026-LitePT-PointROPE-Attention": {
+    "mechanism_zh": "点云的浅层要处理密集的局部细节，LitePT 把注意力留给降采样后的深层。PointROPE 把每个头的查询和键分成三段，分别按点的三个坐标轴旋转。",
+    "mechanism_en": "LitePT uses convolutions on dense early features and saves attention for deeper, coarser layers. PointROPE splits each head's queries and keys into three parts and rotates each part by the corresponding coordinate.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2026-MV-TAP-Cross-View-Attention": {
+    "mechanism_zh": "在一台相机里被挡住的点，另一台相机可能还看得见。MV-TAP 给各视角的点匹配特征加上相机几何编码，再用跨视角注意力合并线索，更新轨迹。",
+    "mechanism_en": "MV-TAP tracks points across synchronized cameras. It adds camera geometry to each view's matching features and uses cross-view attention to combine evidence for each trajectory.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2026-RAPID": {
+    "mechanism_zh": "视频去噪相邻几步里，值得算的注意力块往往差不多。RAPID 在早期给块打分，存下分数和稀疏掩码，后面的步直接拿来用，省去反复筛选。",
+    "mechanism_en": "RAPID scores attention blocks early in video denoising and caches the resulting sparse mask. Later steps reuse it, so they can skip the repeated search for important blocks.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2026-SANA-Video-2-0-Attention-Residuals": {
+    "mechanism_zh": "线性注意力走了好几层，早先全量注意力混入的特征还得传下去。SANA-Video 2.0 让后层的查询沿网络深度给各已完成层块的摘要打分，再按权重读回。",
+    "mechanism_en": "SANA-Video 2.0 gives later layers weighted access to summaries of completed blocks. Attention across depth lets them reuse features from earlier softmax layers while most token mixing stays linear.",
+    "check_en": "No numerical comparison was performed because the full file requires the Sana diffusion package, which was unavailable locally. The maximum absolute difference across 25 checks was 0 (threshold 1e-5).",
+    "basis": "abstract"
+  },
+  "2026-SANA-Video-Block-Linear-Attention": {
+    "mechanism_zh": "视频每续一段，逐帧存键和值就会多占一截内存。SANA-Video 把历史键和键值乘积分别累加成定长状态，新视频块用查询读取这个状态。",
+    "mechanism_en": "SANA-Video accumulates key features and key-value products in a fixed-size state. Each new video block queries that state, so the attention cache does not grow with the length of the video.",
+    "check_en": "No numerical comparison was performed because the full file requires the Sana diffusion package, which was unavailable locally. The maximum absolute difference across 10 outputs was 0 (threshold 1e-5), and the cached values also matched element by element.",
+    "basis": "abstract"
+  },
+  "2026-SLA": {
+    "mechanism_zh": "视频里只有少数注意力块值得精算，可把所有弱连接都扔掉也会丢信息。SLA 给分数最高的块做 softmax 注意力，用线性分支补回较弱的贡献。",
+    "mechanism_en": "SLA uses softmax attention for the blocks with the largest estimated weights. A linear path accounts for smaller contributions that a purely sparse calculation would miss.",
+    "check_en": "No numerical comparison was performed because Triton and a usable CUDA backend were unavailable locally. The maximum absolute difference was 4.77e-7 when the sparse branch used FP32.",
+    "basis": "abstract"
+  },
+  "2026-SLA2": {
+    "mechanism_zh": "SLA 按分数大小决定哪些块要精算，SLA2 把这件事交给可训练的路由器。路由器从压缩后的查询和键选块，模型还学习用多大的比例混合稀疏和线性结果。",
+    "mechanism_en": "SLA2 trains a router to choose sparse attention blocks from pooled queries and keys. It also learns how much of the final output to take from the sparse and linear branches.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2026-SparVAR": {
+    "mechanism_zh": "粗图里的注意力范围，到了细图还常用得上。SparVAR 把一个较粗尺度选出的键值块映射到后续尺度，并保留跨尺度的局部连接，少算细图里的全量注意力。",
+    "mechanism_en": "SparVAR uses the attention pattern from an earlier scale to select key blocks at finer scales. It also keeps local links across scales, reducing attention work without skipping the fine generation stages.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2026-TokenSplat-Split-Attention": {
+    "mechanism_zh": "相机位姿和场景外观要同时估计，两种线索容易搅在一起。TokenSplat 在视图内让图像令牌互相做注意力，相机令牌也读同一视图的图像键和值，供位姿回归。",
+    "mechanism_en": "TokenSplat separates scene and pose features in its decoder. Within a view, image tokens attend to each other, and a camera query reads their keys and values for pose prediction.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2026-Utonia-Point-Rotary-Attention": {
+    "mechanism_zh": "室内扫描和室外点云的坐标尺度与密度不同。Utonia 先把采样粒度调到相近的尺度，再用三维坐标旋转点令牌的查询和键，让分块注意力也能看相对几何。",
+    "mechanism_en": "Utonia rescales point clouds from different sources to comparable spatial granularity. Rotary position encoding uses the resulting coordinates to bring relative geometry into each attention block.",
+    "check_en": "",
+    "basis": "abstract"
+  }
+}

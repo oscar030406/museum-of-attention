@@ -1,0 +1,44 @@
+{
+ "id": "alignment",
+ "years": [2014, 2017],
+ "title_zh": "对齐的年代",
+ "title_en": "The Age of Alignment",
+ "lede_zh": "2014 年的翻译模型先把整句源文压进一个定长向量，再一个词一个词往外译。句子一长，这个向量就装不下了。注意力最初只是一个补救办法：译每个词的时候，回头去源句里找该看的地方。",
+ "lede_en": "In 2014 a neural translator squeezed the whole source sentence into one fixed-length vector, then wrote the translation word by word. Long sentences did not fit. Attention began as a patch: before writing each word, look back at the source and find the part that matters.",
+ "sections": [
+  {
+   "text_zh": "Bahdanau 等人把话挑明了：定长向量是这套编码器加解码器结构的瓶颈。他们让解码器每生成一个目标词，就给源句的每个位置打一个分，再按分数把这些位置的表示加权求和。这组分数相当于一份软对齐，源句不用事先切成片段。英法翻译上，它追平了当时最好的短语翻译系统。\n\n一年后 Luong 等人把这个想法拆开来试。全局注意力每一步看全部源词，局部注意力每一步只看一小段。在英德翻译上，局部注意力比不带注意力的系统高出 5.0 BLEU。",
+   "text_en": "Bahdanau and colleagues said it plainly: the fixed-length vector is the bottleneck of the encoder-decoder design. Their decoder scores every source position each time it writes a target word, then takes a weighted sum of those positions. The scores work as a soft alignment, so the source never has to be cut into segments beforehand. On English-French it matched the best phrase-based system of the day.\n\nA year later Luong and colleagues took the idea apart. Global attention looks at every source word at each step. Local attention looks at a small window. On English-German, local attention beat systems without attention by 5.0 BLEU.",
+   "anchors": [
+    {"id": "2015-Bahdanau-Attention", "note_zh": "一切从这里开始：解码器每译一个词，都对源句各位置重新打分。", "note_en": "Where it starts: the decoder rescores every source position for each word it writes."},
+    {"id": "2015-Luong-Attention", "note_zh": "把「看全部」和「只看一段」放在一起比，还试了几种算分数的办法。", "note_en": "Set looking at everything against looking at a window, and tried several ways to compute the score."}
+   ]
+  },
+  {
+   "text_zh": "打分、加权、求和，这三步很快就不只用在翻译上。Show, Attend and Tell 把源句换成图像的各个区域，模型每写一个词，先决定看图的哪一块。它给了两种训练办法：软注意力可以直接反向传播，硬注意力每次只采样一个区域，靠变分下界来训练。\n\nKnowing When to Look 接着问了一个很实在的问题：写「the」「of」这种词，根本用不着看图，模型为什么每一步都得看？作者加了一个视觉哨兵，让模型每写一个词之前先决定这一步要不要看图。",
+   "text_en": "Score, weight, sum. The three steps soon left translation. Show, Attend and Tell swapped the source sentence for regions of an image, so the model chooses where to look before each word of a caption. It came with two ways to train: soft attention, which backpropagates directly, and hard attention, which samples one region at a time and trains through a variational lower bound.\n\nKnowing When to Look then asked a practical question. Words like \"the\" and \"of\" need no image at all, so why must the model look at every step? The authors added a visual sentinel that lets the model decide, word by word, whether to look.",
+   "anchors": [
+    {"id": "2015-Show-Attend-and-Tell", "note_zh": "注意力第一次看图：源句换成了图像区域。", "note_en": "Attention looks at a picture for the first time: image regions replace source words."},
+    {"id": "2017-Visual-Sentinel", "note_zh": "给模型一个「这一步不看图」的选项。", "note_en": "Gives the model the option not to look."}
+   ]
+  },
+  {
+   "text_zh": "同一时期还有一条线，把注意力当成读写存储的手段。神经图灵机用注意力读写一块外部存储，整个系统可以端到端求导（这一件本馆列在打算复现的名单里，还没有展品）。端到端记忆网络把原先需要逐步监督的记忆网络改成了端到端训练，输出之前可以对记忆读好几轮。键值记忆网络再往前一步，把「去哪里找」和「取什么回来」分开编码：用键定位，用值读出。「键」和「值」这两个词，后来成了注意力的标准说法。\n\n指针网络换了一种用法。前面的模型都用注意力权重去混合编码器的状态，它直接把权重最大的那个输入位置当作输出。这样输出的可选范围就能随输入长度变化，凸包、Delaunay 三角剖分、旅行商这类问题都可以这么解。",
+   "text_en": "A second line of work in the same years treated attention as a way to read and write memory. The Neural Turing Machine used attention to address an external memory, and the whole system stayed differentiable. (It is on this museum's list to reproduce and has no exhibit yet.) End-to-End Memory Networks removed the step-by-step supervision that earlier memory networks needed, and could read the memory several times before answering. Key-Value Memory Networks went one step further and encoded where to look separately from what to bring back: keys for addressing, values for reading. Those two words later became the standard vocabulary of attention.\n\nPointer Networks used the weights differently. Earlier models used them to blend encoder states. A pointer network takes the input position with the largest weight and returns it as the output. The set of possible outputs can then grow with the input, which suits problems such as convex hulls, Delaunay triangulation and the travelling salesman.",
+   "anchors": [
+    {"id": "2015-MemN2N", "note_zh": "记忆网络从此可以端到端训练，一次回答之前读好几轮记忆。", "note_en": "Memory networks trained end to end, with several reads of memory before each answer."},
+    {"id": "2016-KV-MemNN", "note_zh": "用键找位置，用值取内容。", "note_en": "Keys find the place. Values carry the content."},
+    {"id": "2015-Pointer-Networks", "note_zh": "注意力权重本身就是答案：它指向输入里的一个元素。", "note_en": "The attention weights are the answer: they point at one element of the input."}
+   ]
+  },
+  {
+   "text_zh": "到 2016、2017 年，注意力开始在两段文字之间来回比对。可分解注意力模型把自然语言推理拆成一批可以并行求解的小问题，完全不看词序，参数比前人的模型少了将近一个数量级。BiDAF 在问题和段落之间双向计算注意力，中途也不把段落压成一个定长向量。\n\n不过到这时为止，注意力始终是挂在循环网络或别的主干上的一个部件。下一室讲它怎样自己成了主干。",
+   "text_en": "By 2016 and 2017 attention was comparing two pieces of text against each other. The Decomposable Attention model broke natural language inference into small problems that can be solved in parallel. It ignored word order entirely and used almost an order of magnitude fewer parameters than earlier models. BiDAF ran attention in both directions between a question and a passage, and never compressed the passage into a single fixed-length vector along the way.\n\nThrough all of this, attention stayed a part bolted onto a recurrent network or some other backbone. The next room shows how it became the backbone.",
+   "anchors": [
+    {"id": "2016-Decomposable-Attention", "note_zh": "只靠注意力做句子对比，不用循环网络，也不看词序。", "note_en": "Compares two sentences with attention alone: no recurrence, no word order."},
+    {"id": "2017-BiDAF", "note_zh": "问题看段落，段落也看问题。", "note_en": "The question attends to the passage, and the passage attends back."}
+   ]
+  }
+ ],
+ "more": {"y0": 2014, "y1": 2017}
+}

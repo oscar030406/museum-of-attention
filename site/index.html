@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>注意力博物馆</title>
+<meta name="description" content="个人收藏的注意力模块：注意力简史导览、展品、时间线和谱系。">
+<link rel="icon" href="assets/emblem.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  // 主题在样式加载前定下来，避免闪一下
+  try { var th = localStorage.getItem("acm-theme"); if (th === "light" || th === "dark") document.documentElement.setAttribute("data-theme", th); } catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">跳到正文</a>
+<header class="topbar">
+  <a class="brand" href="#/" aria-label="注意力博物馆" data-i18n-aria="brand">
+    <svg class="emblem" viewBox="0 0 20 20" aria-hidden="true"><use href="#emblem"/></svg>
+    <span class="brand-text"><span class="brand-zh">注意力博物馆</span><span class="brand-en">Museum of Attention</span></span>
+  </a>
+  <nav class="nav" aria-label="主导航" data-i18n-aria="navLabel">
+    <a href="#/tour" data-route="tour" data-i18n="nav.tour">导览</a>
+    <a href="#/gallery" data-route="gallery" data-i18n="nav.gallery">展品</a>
+    <a href="#/timeline" data-route="timeline" data-i18n="nav.timeline">时间线</a>
+    <a href="#/graph" data-route="graph" data-i18n="nav.graph">关系图</a>
+    <a href="#/census" data-route="census" data-i18n="nav.census">统计</a>
+    <a href="#/about" data-route="about" data-i18n="nav.about">关于</a>
+  </nav>
+  <div class="tools">
+    <button class="tool" id="lang-btn" type="button" aria-label="Switch to English" data-i18n-aria="langLabel">EN</button>
+    <button class="tool" id="theme-btn" type="button" aria-label="切换深浅色" data-i18n-aria="themeLabel">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 3.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg>
+      <span id="theme-label">自动</span>
+    </button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <p class="loading" data-i18n="loading">正在开馆……</p>
+</main>
+
+<div id="drawer-root"></div>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+
+<footer class="foot">
+  <p id="foot-text"></p>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="emblem" viewBox="0 0 20 20">
+    <g fill="none" stroke="currentColor" stroke-width="0.55" opacity=".45"><rect x="6.23" y="1.82" width="3.15" height="3.15"/><rect x="10.63" y="1.82" width="3.15" height="3.15"/><rect x="15.03" y="1.82" width="3.15" height="3.15"/><rect x="10.63" y="6.23" width="3.15" height="3.15"/><rect x="15.03" y="6.23" width="3.15" height="3.15"/><rect x="15.03" y="10.63" width="3.15" height="3.15"/></g>
+    <g fill="currentColor"><rect x="1.55" y="5.95" width="3.7" height="3.7" opacity="0.55"/><rect x="1.55" y="10.35" width="3.7" height="3.7" opacity="0.32"/><rect x="5.95" y="10.35" width="3.7" height="3.7" opacity="0.66"/><rect x="1.55" y="14.75" width="3.7" height="3.7" opacity="0.3"/><rect x="5.95" y="14.75" width="3.7" height="3.7" opacity="0.42"/><rect x="10.35" y="14.75" width="3.7" height="3.7" opacity="0.66"/></g>
+    <g style="fill:var(--rose)"><rect x="1.55" y="1.55" width="3.7" height="3.7"/><rect x="5.95" y="5.95" width="3.7" height="3.7"/><rect x="10.35" y="10.35" width="3.7" height="3.7"/><rect x="14.75" y="14.75" width="3.7" height="3.7"/></g>
+  </symbol>
+</svg>
+<script src="assets/app.js"></script>
+<script src="assets/graph.js"></script>
+</body>
+</html>

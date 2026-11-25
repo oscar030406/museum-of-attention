@@ -1,0 +1,43 @@
+{
+ "id": "position",
+ "years": [2018, 2024],
+ "title_zh": "先后和长短",
+ "title_en": "Order and Length",
+ "lede_zh": "第二室留下一笔账：自注意力分不出谁先谁后。Transformer 的办法是在输入上加一份绝对位置，第几个词就加第几号。这一室收的是此后几年里换掉这份位置表示的办法，以及模型训好之后，怎样让它读比训练时更长的东西。",
+ "lede_en": "Room 2 left a debt unpaid: self-attention cannot tell first from last. The Transformer's answer was to add an absolute position to the input, number one for the first word and so on. This room holds the ways that answer was replaced in the years after, and the ways a trained model can be made to read more than it was trained on.",
+ "sections": [
+  {
+   "text_zh": "2018 年 Shaw 等人换了个想法：要紧的不是一个词排第几，而是两个词隔多远。他们把这个相对距离直接写进了自注意力的计算里。在 WMT 2014 的英德和英法翻译上，这比绝对位置分别高出 1.3 和 0.3 BLEU。再把绝对位置一起加上，也没有更多的好处。\n\n后面两件是对它的整理。T5 把做法简化到底：每一档相对距离只对应一个数，直接加在注意力分数上，距离越远分档越粗。DeBERTa 给每个词准备两个向量，一个表示内容，一个表示位置，词和词之间的注意力也拆开来，内容和位置各算各的。",
+   "text_en": "In 2018 Shaw and colleagues changed the premise. What matters is not where a word sits in the sequence but how far apart two words are. They wrote that relative distance straight into the self-attention computation. On WMT 2014 English-German and English-French it beat absolute positions by 1.3 and 0.3 BLEU. Adding absolute positions on top brought no further gain.\n\nThe next two exhibits tidy the idea up. T5 simplifies it as far as it goes: each bucket of relative distance maps to a single number added to the attention score, and the buckets grow coarser with distance. DeBERTa gives each word two vectors, one for content and one for position, and splits the attention between words the same way, computing content and position separately.",
+   "anchors": [
+    {"id": "2018-Relative-Attention-Shaw", "note_zh": "不记第几个，只记隔多远。", "note_en": "Records how far apart, not which place."},
+    {"id": "2020-T5-Relative-Position-Bias", "note_zh": "每一档距离对应一个数，加在注意力分数上。", "note_en": "One number per distance bucket, added to the attention score."},
+    {"id": "2021-DeBERTa-Disentangled-Attention", "note_zh": "内容一个向量，位置一个向量，分开算注意力。", "note_en": "One vector for content, one for position, attended to separately."}
+   ]
+  },
+  {
+   "text_zh": "旋转位置编码 RoPE 把绝对和相对接到了一起。它按每个词的绝对位置，把查询和键各自转过一个角度。两个向量再做点积的时候，结果只和它们转过的角度之差有关，也就是只和相对位置有关。\n\n提出它的 RoFormer 论文 2021 年挂在 arXiv 上，本馆按 2024 年的期刊版登记，所以展签上写的是 2024。LLaMA 这一批大语言模型用的就是它。",
+   "text_en": "Rotary position embedding, RoPE, joined the absolute and the relative. It rotates each query and each key by an angle set by the word's absolute position. When two such vectors meet in a dot product, the result depends only on the difference between their angles, which is to say only on relative position.\n\nThe RoFormer paper that introduced it appeared on arXiv in 2021. This museum catalogues it by the 2024 journal version, which is why the label says 2024. LLaMA and the large language models of its generation use it.",
+   "anchors": [
+    {"id": "2024-RoPE", "note_zh": "按绝对位置旋转向量，点积之后只剩相对位置。", "note_en": "Rotates vectors by absolute position. After the dot product only relative position remains."}
+   ]
+  },
+  {
+   "text_zh": "位置怎么表示，还管着另一件事：模型能读多长。\n\n2022 年 ALiBi 的作者问得很直接：推理时来了一段比训练时更长的输入，怎么办？他们发现，只要换一种位置表示，模型就能往外推，而当时已有的几种办法推得都不怎么样。ALiBi 不往词向量上加任何位置信息，只在算注意力分数的时候，按查询和键隔得多远扣掉一点分，隔得越远扣得越多。一个 13 亿参数的模型在长度 1024 上训练，可以用到 2048。",
+   "text_en": "How position is represented governs one more thing: how much a model can read.\n\nThe authors of ALiBi, in 2022, put the question directly. What happens when an input at inference is longer than anything seen in training? They found that changing the position method alone lets a model extrapolate, and that the methods in use at the time extrapolated poorly. ALiBi adds no position information to the word vectors. It only subtracts a little from each attention score according to the distance between query and key: the farther apart, the more. A 1.3-billion-parameter model trained at length 1024 can then be used at 2048.",
+   "anchors": [
+    {"id": "2022-ALiBi", "note_zh": "不加位置向量，隔得越远，注意力分数扣得越多。训练时短，用的时候可以长。", "note_en": "No position vectors. The farther apart, the more the score is docked. Train short, use long."}
+   ]
+  },
+  {
+   "text_zh": "LLaMA 这类模型已经用 RoPE 训好了，下一个问题是怎样把它的窗口拉长。\n\n2023 年的位置插值认为不能硬往外推：位置一超出训练时的范围，注意力分数会高得离谱，自注意力就全乱了。所以它反过来，把更长输入的位置编号等比例压回原来的窗口里。LLaMA 微调不到 1000 步，就能读到 32768 个 token。\n\n后面两件接着改这个压缩的办法。YaRN 扩同样的窗口，用的 token 少 10 倍，训练步数少 2.5 倍。LongRoPE 发现各个维度、各段位置该压多少并不一样，按这个不均匀去压，再分两步放大，把窗口推到了 2048k 个 token。",
+   "text_en": "Models such as LLaMA had already been trained with RoPE. The next question was how to stretch their window.\n\nPosition Interpolation, in 2023, argued against plain extrapolation: once positions leave the trained range, attention scores shoot far too high and self-attention falls apart. It went the other way and scaled the position indices of a longer input down into the original window. With fewer than 1000 steps of fine-tuning, LLaMA could read 32768 tokens.\n\nThe next two exhibits refine that scaling. YaRN extends the same window with ten times fewer tokens and 2.5 times fewer training steps. LongRoPE found that different dimensions and different stretches of positions should not be scaled by the same amount. Scaling them unevenly, then enlarging in two stages, pushed the window to 2048k tokens.",
+   "anchors": [
+    {"id": "2023-Position-Interpolation", "note_zh": "不往外推，把长输入的位置编号压回训练时的窗口里。", "note_en": "Does not extrapolate. Scales the positions of a long input back into the trained window."},
+    {"id": "2024-YaRN", "note_zh": "同样是扩窗口，要的数据和训练步数都少得多。", "note_en": "Extends the window with far less data and far fewer training steps."},
+    {"id": "2024-LongRoPE", "note_zh": "各维度压得不一样多，分两步把窗口扩到两百万 token。", "note_en": "Scales each dimension by a different amount and reaches two million tokens in two stages."}
+   ]
+  }
+ ],
+ "more": {"y0": 2018, "y1": 2024}
+}

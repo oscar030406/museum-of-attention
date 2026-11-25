@@ -1,0 +1,44 @@
+{
+ "id": "cnn-attention",
+ "years": [2015, 2021],
+ "title_zh": "卷积网络里的小模块",
+ "title_en": "Small Modules Inside the ConvNet",
+ "lede_zh": "做视觉的人问的是另一个问题：一张特征图里，哪些通道要紧，哪些位置要紧？他们的答案大多是一个几十行的小模块，往现成的卷积网络里一插就能用。",
+ "lede_en": "Vision researchers asked a different question: within one feature map, which channels matter, and which positions? Their answers were mostly small modules, a few dozen lines each, that drop into an existing convolutional network.",
+ "sections": [
+  {
+   "text_zh": "最早的尝试还不叫注意力。2015 年的空间变换网络在网络中间学一个几何变换，看着特征图自己的内容，决定把它平移、缩放还是转个角度，不需要额外的标注。2017 年的残差注意力网络用一个先下采样再上采样的支路生成注意力图，又借残差连接的思路，让带注意力的网络可以堆到几百层。",
+   "text_en": "The earliest attempts did not yet call themselves attention. The Spatial Transformer Network of 2015 learns a geometric transform in the middle of a network. It looks at the feature map itself and decides whether to shift, scale or rotate it, with no extra labels. The Residual Attention Network of 2017 builds its attention maps with a branch that downsamples and then upsamples, and borrows the idea of residual connections so that a network with attention can be stacked hundreds of layers deep.",
+   "anchors": [
+    {"id": "2015-STN", "note_zh": "让网络自己把特征图摆正：学一个平移、缩放、旋转的变换。", "note_en": "Lets the network straighten its own feature map by learning to shift, scale and rotate it."},
+    {"id": "2017-RAN", "note_zh": "注意力模块配上残差连接，几百层也训得动。", "note_en": "Attention modules with residual connections, trainable at hundreds of layers."}
+   ]
+  },
+  {
+   "text_zh": "2018 年的 SE 模块把问题缩到通道上。它给每个通道算一个权重，再把通道的响应按权重重新调一遍。做法很简单，效果却足够拿下 ILSVRC 2017 分类赛的第一名，top-5 错误率 2.251%。\n\nCBAM 接着补上了位置：先算通道注意力，再算一张空间注意力图，两样依次乘回特征图。同一年做图像超分辨率的 RCAN 也用了通道注意力，本馆把它收在图像复原那一厅。",
+   "text_en": "The SE block of 2018 narrowed the question to channels. It computes one weight per channel and rescales each channel's response by it. The idea is simple, and it was enough to win the ILSVRC 2017 classification challenge with a top-5 error of 2.251%.\n\nCBAM then added position. It computes channel attention first, then a spatial attention map, and multiplies both back into the features in turn. RCAN, a super-resolution network from the same year, uses channel attention too. This museum keeps it in the image restoration hall.",
+   "anchors": [
+    {"id": "2018-SE", "note_zh": "给每个通道一个权重。这一室后面的展品，多半都在回应它。", "note_en": "One weight per channel. Much of what follows in this room answers it."},
+    {"id": "2018-CBAM", "note_zh": "通道之后再看位置，两张注意力图先后乘回去。", "note_en": "Channels first, then positions: two attention maps applied one after the other."}
+   ]
+  },
+  {
+   "text_zh": "同一年，Non-local 网络从另一头走了过来。卷积一次只看一小块邻域，Non-local 把一个位置的输出写成所有位置特征的加权和，隔得再远也能直接联系上。论文里说得明白：机器翻译里的自注意力，就是这种非局部操作的一个特例。上一室的东西，就这样进了卷积网络。\n\n代价是每个位置都要和所有位置算一遍。CCNet 的办法是让每个像素只看自己所在的那一行和那一列，连做两轮，信息就传遍了全图。和 Non-local 相比，显存少用 11 倍，计算量少约 85%。做分割的 DANet 则把位置注意力和通道注意力并排放在一起。",
+   "text_en": "In the same year the Non-local network arrived from the other direction. A convolution sees one small neighbourhood at a time. A non-local block writes the output at one position as a weighted sum of the features at every position, so distant points connect directly. The paper says so outright: self-attention in machine translation is a special case of this non-local operation. That is how the subject of the previous room entered the convolutional network.\n\nThe cost is that every position must be compared with every other. CCNet lets each pixel look only along its own row and column, then repeats the step once more so that information reaches the whole image. Against the non-local block it uses 11 times less GPU memory and about 85% less computation. DANet, a segmentation network, places position attention and channel attention side by side.",
+   "anchors": [
+    {"id": "2018-Non-local", "note_zh": "自注意力进入视觉：每个位置都是全图所有位置的加权和。", "note_en": "Self-attention enters vision: each position becomes a weighted sum over the whole image."},
+    {"id": "2018-CCNet", "note_zh": "只看同一行和同一列，算两轮就覆盖全图。", "note_en": "Looks only along its row and column. Two rounds cover the image."}
+   ]
+  },
+  {
+   "text_zh": "2019 年的 GCNet 把这两条线接到了一起。作者发现，Non-local 给图上不同位置算出来的全局上下文几乎一模一样，那就没必要每个位置各算一份，算一份大家共用就行。这样简化之后，结构和 SE 很像，他们索性把两者写成同一个三步框架。\n\n再往后的改进，一是减重，二是把位置信息补回来。ECA 把 SE 拆开来看，发现里面的降维对学通道权重有害，于是去掉降维，改用一维卷积，只让相邻的几个通道互相商量。坐标注意力沿着高和宽两个方向分别汇总特征，通道权重里就带上了位置。",
+   "text_en": "GCNet joined the two lines in 2019. Its authors found that the global context a non-local block computes is almost the same for every position in the image. There is then no need to compute it once per position: compute it once and share it. Simplified this way, the block looks much like SE, and the authors wrote both as a single three-step framework.\n\nLater work cut weight and put position back in. ECA took SE apart and found that its dimensionality reduction hurts the learning of channel weights. It dropped the reduction and used a one-dimensional convolution so that each channel consults only a few neighbours. Coordinate Attention pools features along height and along width separately, so the channel weights carry position with them.",
+   "anchors": [
+    {"id": "2019-GCNet", "note_zh": "全局上下文只算一份，大家共用。Non-local 和 SE 从此是一家。", "note_en": "Computes the global context once and shares it. Non-local and SE turn out to be one family."},
+    {"id": "2020-ECA-Net", "note_zh": "去掉 SE 里的降维，相邻通道之间用一维卷积交流。", "note_en": "Drops the dimensionality reduction in SE and lets neighbouring channels talk through a 1D convolution."},
+    {"id": "2021-CoordAtt", "note_zh": "沿高和宽分别汇总，通道注意力从此知道东西在哪。", "note_en": "Pools along height and width separately, so channel attention knows where things are."}
+   ]
+  }
+ ],
+ "more": {"y0": 2015, "y1": 2021}
+}

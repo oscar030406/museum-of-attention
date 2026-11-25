@@ -1,0 +1,43 @@
+{
+ "id": "self-attention",
+ "years": [2017, 2020],
+ "title_zh": "2017：只剩下注意力",
+ "title_en": "2017: Attention and Nothing Else",
+ "lede_zh": "上一室里，注意力一直是循环网络上的一个部件。2017 年有人把循环网络整个拿掉，只留注意力。一句话里的每个词同时去看其他所有的词，整句可以一起算。",
+ "lede_en": "In the last room, attention was a part attached to a recurrent network. In 2017 someone took the recurrent network away and kept only the attention. Every word in a sentence looks at every other word at once, and the whole sentence is computed together.",
+ "sections": [
+  {
+   "text_zh": "2017 年的翻译模型大多用循环网络或卷积做编码器和解码器，再用注意力把两头接起来。Vaswani 等人的 Transformer 只留下了中间这一段：编码器和解码器都由多头自注意力和前馈层一层层堆成。没有了循环，训练就不必一个词一个词地往下走，整个序列可以并行。\n\n结果很干脆。WMT 2014 英德翻译得到 28.4 BLEU，比此前最好的成绩高出 2 BLEU 以上，被超过的成绩里还包括多个模型的集成。英法翻译用 8 张 GPU 训练 3.5 天，单个模型得到 41.8 BLEU。\n\n自注意力不是这篇论文发明的。同年稍早，Lin 等人已经用它来生成句向量（本馆打算复现，还没有展品），不过在那里它还只是循环网络上面的一层。",
+   "text_en": "Most translation models of 2017 used recurrent or convolutional networks for the encoder and the decoder, with attention as the link between them. The Transformer of Vaswani and colleagues kept only the link. Encoder and decoder alike are stacks of multi-head self-attention and feed-forward layers. With no recurrence, training no longer has to walk through a sentence one word at a time, and the whole sequence runs in parallel.\n\nThe results were blunt. On WMT 2014 English-German it scored 28.4 BLEU, more than 2 BLEU above the previous best, ensembles included. On English-French a single model reached 41.8 BLEU after 3.5 days on eight GPUs.\n\nThe paper did not invent self-attention. Earlier that year Lin and colleagues had used it to build sentence embeddings (on this museum's list to reproduce, with no exhibit yet), but there it was still one layer on top of a recurrent network.",
+   "anchors": [
+    {"id": "2017-MHA", "note_zh": "Transformer 里的多头注意力。本馆此后的大多数展品，都是在改它的某一步。", "note_en": "Multi-head attention from the Transformer. Most later exhibits in this museum change one step of it."}
+   ]
+  },
+  {
+   "text_zh": "拿掉循环，也就一并丢了两样东西。\n\n一样是顺序。Transformer 的结构本身分不出谁在前谁在后，只能在输入上另加一份位置表示。这件事后来成了一整条研究线，放在第七室讲。\n\n另一样是循环带来的那种「同一个步骤反复做」的倾向。Universal Transformer 的作者发现，标准 Transformer 连复制一个字符串都学不牢，输入只要比训练时见过的长就会出错。他们让同一层沿深度方向反复使用，并让每个位置自己决定算几轮就停。",
+   "text_en": "Removing recurrence removed two other things with it.\n\nOne was order. Nothing in the Transformer's structure tells first from last, so a position signal has to be added to the input. That became a research line of its own, and Room 7 is devoted to it.\n\nThe other was the habit, built into a recurrent network, of applying the same step again and again. The authors of the Universal Transformer found that a standard Transformer cannot reliably learn even to copy a string: it fails once the input is longer than anything seen in training. They reused one layer repeatedly along the depth of the network and let each position decide how many rounds to run before stopping.",
+   "anchors": [
+    {"id": "2019-Universal-Transformer", "note_zh": "同一层反复用，把循环带回 Transformer，每个位置自己决定什么时候停。", "note_en": "Reuses one layer over and over to bring recurrence back, and lets each position choose when to halt."}
+   ]
+  },
+  {
+   "text_zh": "自注意力很快被搬到了翻译以外的数据上。\n\nQANet 做阅读理解，编码器里只有卷积和自注意力，卷积管近处，自注意力管全局，在 SQuAD 上训练比循环网络的模型快 3 到 13 倍。GAT 把它搬到图上：每个节点只给自己的邻居打分，不用对矩阵求逆，也不用事先知道整张图长什么样。Set Transformer 处理没有顺序的集合，并从稀疏高斯过程里借来「诱导点」的办法，把自注意力的计算量从平方降到线性。SAGAN 把它放进生成对抗网络，生成图像某一处的细节时，可以参考图上所有位置。",
+   "text_en": "Self-attention soon moved to data other than translation.\n\nQANet, built for reading comprehension, has only convolution and self-attention in its encoder: convolution for what is nearby, self-attention for the whole passage. It trains 3 to 13 times faster on SQuAD than recurrent models. GAT took self-attention to graphs. Each node scores only its neighbours, with no matrix inversion and no need to know the whole graph in advance. Set Transformer handles sets, which have no order, and borrows inducing points from sparse Gaussian processes to bring the cost of self-attention down from quadratic to linear. SAGAN put self-attention inside a generative adversarial network, so a detail anywhere in the image can draw on every other location.",
+   "anchors": [
+    {"id": "2018-QANet", "note_zh": "阅读理解的编码器不用循环网络：卷积看近处，自注意力看全篇。", "note_en": "A reading-comprehension encoder with no recurrence: convolution for nearby words, self-attention for the whole passage."},
+    {"id": "2018-GAT", "note_zh": "图上的自注意力，每个节点只看邻居。", "note_en": "Self-attention on a graph, where each node looks only at its neighbours."},
+    {"id": "2019-Set-Transformer", "note_zh": "给无序集合用的注意力，用少量诱导点代替两两比较。", "note_en": "Attention for unordered sets, with a few inducing points in place of all-pairs comparison."},
+    {"id": "2019-SAGAN", "note_zh": "生成图像时，远处的像素也能互相参考。", "note_en": "Lets distant parts of a generated image inform each other."}
+   ]
+  },
+  {
+   "text_zh": "音乐和语音的序列比句子长得多，也更在意两个音之间隔了多久。Music Transformer 指出，Shaw 等人的相对位置做法要存一份随长度平方增长的中间结果，长曲子根本放不下。他们把这份存储降到线性，生成了一分钟长的乐曲。Conformer 做语音识别，把卷积和 Transformer 合在一个模块里，卷积负责相邻几帧，自注意力负责整段话。",
+   "text_en": "Music and speech run far longer than sentences, and care more about how far apart two events are. Music Transformer pointed out that the relative-position scheme of Shaw and colleagues stores an intermediate result that grows with the square of the length, which a long piece cannot afford. They cut that storage to linear and generated compositions a minute long. Conformer, for speech recognition, joins convolution and the Transformer in one block: convolution for neighbouring frames, self-attention for the whole utterance.",
+   "anchors": [
+    {"id": "2019-Music-Transformer", "note_zh": "把相对位置注意力的内存从平方降到线性，才写得出一分钟的曲子。", "note_en": "Cuts the memory of relative-position attention from quadratic to linear, enough to write a minute of music."},
+    {"id": "2020-Conformer-MHSA", "note_zh": "语音识别里卷积和自注意力搭档：一个听相邻几帧，一个听整句。", "note_en": "Convolution and self-attention paired for speech: one hears neighbouring frames, the other the whole utterance."}
+   ]
+  }
+ ],
+ "more": {"y0": 2017, "y1": 2020}
+}

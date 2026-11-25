@@ -1,0 +1,37 @@
+{
+ "id": "multimodal",
+ "years": [2018, 2024],
+ "title_zh": "图和字之间",
+ "title_en": "Between Images and Words",
+ "lede_zh": "第一室里的看图说话，是注意力第一次跨在图像和文字中间。这以后问题换了三回。先是「写每个词的时候看图的哪里」，然后是「图和字怎样在一个网络里互相交换信息」，最后是「怎样把图接到一个现成的大语言模型上」。",
+ "lede_en": "Image captioning, in Room 1, was the first time attention stood between a picture and a sentence. The question has changed three times since. First: where in the image to look while writing each word. Then: how images and text can trade information inside one network. Finally: how to attach an image to a large language model that already exists.",
+ "sections": [
+  {
+   "text_zh": "2018 年的自底向上和自顶向下注意力，换掉了注意力看的单位。以前是把图切成均匀的格子，它先用 Faster R-CNN 找出图里的一个个物体区域，再由任务决定每个区域该占多少权重。这个模型拿了 2017 年 VQA 挑战赛的第一名。\n\n接下来的两件都在琢磨图和问题怎样互相看。BAN 觉得当时的协同注意力太省事：给图像和问题各算一个注意力分布，两者之间的交互就漏掉了。可要是每一对图像区域和问题词都单独学，又算不起。它用双线性注意力取了个折中。MCAN 则发现，协同注意力模型往深里堆，几乎得不到好处。它把三样东西组成一层：问题自己的自注意力，图像自己的自注意力，问题引导图像的注意力。这样的层才堆得深。",
+   "text_en": "Bottom-Up and Top-Down Attention, in 2018, changed the unit that attention looks at. Earlier models cut the image into an even grid. This one first uses Faster R-CNN to find object regions, then lets the task decide how much weight each region gets. It took first place in the 2017 VQA Challenge.\n\nThe next two exhibits both work on how an image and a question should look at each other. BAN found the co-attention of the day too frugal: one attention distribution for the image and one for the question leaves out the interaction between them. Yet learning attention for every pair of image region and question word costs too much. Bilinear attention was its compromise. MCAN found that co-attention models gain almost nothing from added depth. It built a layer from three parts: self-attention over the question, self-attention over the image, and attention over the image guided by the question. Layers of that kind can be stacked deep.",
+   "anchors": [
+    {"id": "2018-Bottom-Up-and-Top-Down-Attention", "note_zh": "注意力不再看格子，改看检测出来的一个个物体。", "note_en": "Attention stops looking at grid cells and looks at detected objects."},
+    {"id": "2018-BAN", "note_zh": "用双线性注意力，把图像区域和问题词两两之间的关系算进来。", "note_en": "Bilinear attention that accounts for every pairing of image region and question word."},
+    {"id": "2019-MCAN", "note_zh": "自注意力加上问题引导的注意力，组成可以堆深的一层。", "note_en": "Self-attention plus question-guided attention, combined into a layer that can be stacked deep."}
+   ]
+  },
+  {
+   "text_zh": "2019 年，BERT 那套先预训练、再微调的办法被搬到了图文上（BERT 本身本馆还没有收）。ViLBERT 把 BERT 扩成两条流，图像走一条，文字走一条，两条流在协同注意力层里交换信息，四个下游任务都刷新了成绩。同年的 LXMERT 用了三个编码器，分别管物体之间的关系、语言和跨模态。\n\n2021 年的 ALBEF 指出了一个被忽略的问题：图像的 token 和文字的 token 本来就没有对齐，硬塞进同一个编码器，它很难学会两者怎么交互。所以 ALBEF 分两步走，先用对比损失把图和字对齐，再用交叉注意力融合。",
+   "text_en": "In 2019 the recipe from BERT, pretrain first and fine-tune later, was carried over to images and text. (BERT itself is not yet held here.) ViLBERT extended BERT into two streams, one for the image and one for the text, which trade information through co-attention layers. It set new results on four downstream tasks. LXMERT, from the same year, uses three encoders: one for relations between objects, one for language, one across the two.\n\nALBEF, in 2021, named a problem others had passed over. Image tokens and text tokens are not aligned to begin with, so an encoder handed both at once struggles to learn how they interact. ALBEF works in two steps: align images and text with a contrastive loss, then fuse them with cross-attention.",
+   "anchors": [
+    {"id": "2019-ViLBERT", "note_zh": "图像和文字各走一条流，在协同注意力层里碰头。", "note_en": "One stream for the image, one for the text, meeting in co-attention layers."},
+    {"id": "2021-ALBEF", "note_zh": "先对齐，再融合。", "note_en": "Align first, then fuse."}
+   ]
+  },
+  {
+   "text_zh": "大语言模型出来以后，把整个图文模型从头到尾训一遍变得太贵。通行的做法变成：图像编码器和语言模型都用现成的，参数冻住不动，只在中间搭一座小桥。这座桥的核心几乎都是交叉注意力。\n\nFlamingo 在冻结的语言模型各层之间插进带门控的交叉注意力层（本馆已登记，还没有收进来）。BLIP-2 的 Q-Former 准备一小组可学习的查询向量，让它们通过交叉注意力去冻结的图像特征里取信息。它要训练的参数比 Flamingo80B 少 54 倍，零样本 VQAv2 的成绩反而高出 8.7%。Qwen-VL 更省：只用一层交叉注意力和一组可学习的查询，把长短不一的图像特征压成固定长度，再交给语言模型。\n\n2024 年的 CogVLM 对这条路提出了异议。它认为只把图像特征映射到语言模型的输入端，融合得太浅。于是它在语言模型每一层的注意力和前馈部分里，各加了一套只处理图像 token 的可训练参数，叫作视觉专家。",
+   "text_en": "Once large language models arrived, training a whole image-text model end to end became too expensive. The common practice changed: take an image encoder and a language model off the shelf, freeze both, and build a small bridge between them. The core of that bridge is almost always cross-attention.\n\nFlamingo inserts gated cross-attention layers between the layers of a frozen language model. (It is registered here but not yet collected.) The Q-Former of BLIP-2 keeps a small set of learnable query vectors and sends them, through cross-attention, to fetch information from frozen image features. It trains 54 times fewer parameters than Flamingo80B and still scores 8.7% higher on zero-shot VQAv2. Qwen-VL is leaner still: a single cross-attention layer and one set of learnable queries compress image features of any length to a fixed length before they reach the language model.\n\nCogVLM, in 2024, disagreed with this route. Mapping image features only into the input of the language model, it argued, fuses the two too shallowly. It added to the attention and feed-forward parts of every layer a set of trainable parameters that handle only image tokens, and called it the visual expert.",
+   "anchors": [
+    {"id": "2023-Q-Former-BLIP-2", "note_zh": "一小组可学习的查询，去冻结的图像特征里取语言模型用得上的信息。", "note_en": "A small set of learnable queries that fetch from frozen image features what a language model can use."},
+    {"id": "2023-Qwen-VL-Resampler", "note_zh": "一层交叉注意力，把长短不一的图像特征压成固定长度。", "note_en": "One cross-attention layer that compresses image features of any length to a fixed length."},
+    {"id": "2024-CogVLM-Visual-Expert", "note_zh": "在语言模型每一层里，给图像 token 单独配一套参数。", "note_en": "A separate set of parameters for image tokens inside every layer of the language model."}
+   ]
+  }
+ ],
+ "more": {"y0": 2018, "y1": 2024}
+}

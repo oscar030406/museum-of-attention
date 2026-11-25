@@ -1,0 +1,252 @@
+.overview-page .overview-shell {
+  max-width: 1680px;
+  padding: 0 clamp(12px, 2.7vw, 46px) 12px;
+}
+
+.overview-masthead, .overview-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.overview-masthead {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: .875rem;
+  font-weight: 650;
+}
+
+.overview-masthead nav {
+  display: flex;
+  gap: 16px;
+  font-size: .8125rem;
+  font-weight: 400;
+}
+
+.overview-heading {
+  align-items: flex-end;
+  padding: 10px 0;
+}
+
+.overview-heading h1 {
+  font-size: clamp(1.625rem, 2.5vw, 2.375rem);
+  font-weight: 700;
+}
+
+.ov-segment {
+  display: inline-flex;
+  flex: none;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.ov-segment button, .overview-map .ov-next {
+  min-height: 34px;
+  padding: 4px 11px;
+  border: 0;
+  color: var(--ink);
+  background: var(--surface);
+  font-size: .8125rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.ov-segment button + button { border-inline-start: 1px solid var(--line-strong); }
+.ov-segment [aria-pressed="true"] { color: var(--surface); background: var(--ink); }
+.ov-segment button:disabled { color: var(--ink-2); cursor: default; }
+
+.overview-map .ov-controls, .overview-map .ov-options, .overview-map .ov-search,
+.overview-map .ov-key, .overview-map .ov-legend, .overview-map .ov-legend li {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.overview-map .ov-controls {
+  gap: 8px 16px;
+  padding: 6px 0 7px;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.overview-map .ov-options { gap: 8px 14px; }
+.overview-map .ov-search { flex-wrap: nowrap; flex: 0 1 310px; gap: 6px; min-width: 0; }
+
+.overview-map input[type="search"] {
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+  padding: 5px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  color: var(--ink);
+  background: var(--surface);
+  font: inherit;
+  font-size: .875rem;
+}
+
+.overview-map input[type="search"]::placeholder { color: var(--ink-2); }
+.overview-map .ov-next { border: 1px solid var(--line-strong); }
+.overview-map .ov-filter { display: inline-flex; align-items: center; gap: 5px; font-size: .875rem; cursor: pointer; }
+.overview-map .ov-filter input { accent-color: var(--ink); }
+.overview-map .ov-results { color: var(--ink-2); font-size: .8125rem; }
+
+.overview-map .ov-key {
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding: 0 0 6px;
+  color: var(--ink-2);
+  font-size: .8125rem;
+}
+
+.overview-map .ov-total { color: var(--ink); font-weight: 650; }
+.overview-map .ov-legend { gap: 2px 14px; margin: 0; padding: 0; list-style: none; }
+.overview-map .ov-legend li { gap: 6px; }
+.overview-map .ov-key-dot { width: 7px; height: 7px; border: 1px solid var(--ink-2); border-radius: 50%; background: var(--ink-2); }
+.overview-map .ov-key-open { background: var(--surface); }
+.overview-map .ov-key-anchor { border-color: var(--wall); background: var(--wall); }
+.overview-map .ov-key-line { width: 16px; border-top: 2px solid var(--ink-2); }
+.overview-map .ov-key-citation { border-width: 1px; }
+
+.overview-map .ov-chart {
+  position: relative;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.overview-map .ov-year-row, .overview-map .ov-row {
+  display: grid;
+  grid-template-columns: var(--ov-label-width) repeat(var(--ov-year-count), minmax(0, 1fr));
+}
+
+.overview-map .ov-year-row {
+  min-height: 47px;
+  border-bottom: 1px solid var(--line-strong);
+  background: var(--bg);
+}
+
+.overview-map .ov-axis-name { align-self: center; padding-inline: 12px; color: var(--ink-2); font-size: .8125rem; }
+.overview-map .ov-year-title {
+  display: grid;
+  align-content: center;
+  padding: 4px 2px;
+  border-inline-start: 1px solid var(--line);
+  font: 650 .875rem/1.15 var(--font);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.overview-map .ov-year-title small, .overview-map .ov-row-title small {
+  display: block;
+  margin-top: 2px;
+  color: var(--ink-2);
+  font-size: .75rem;
+  font-weight: 400;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.overview-map .ov-row { min-height: 50px; }
+.overview-map .ov-row + .ov-row { border-top: 1px solid var(--line); }
+.overview-map .ov-row-title {
+  padding: 7px 10px;
+  background: var(--bg);
+  font-size: .8125rem;
+  font-weight: 630;
+  line-height: 1.28;
+  overflow-wrap: anywhere;
+}
+
+.overview-map .ov-row-title small { display: inline-block; margin-inline-start: 5px; }
+.overview-map .ov-anchor-list {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+  gap: 0 13px;
+  padding: 2px 10px 5px;
+  background: var(--bg);
+}
+.overview-map .ov-cell { min-width: 0; padding: 6px; border-inline-start: 1px solid var(--line); }
+.overview-map .ov-dots { display: block; overflow: visible; }
+.overview-map .ov-anchor-name {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 2px;
+  color: var(--ink);
+  font-size: .6875rem;
+  line-height: 1.16;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.overview-map .ov-anchor-name:hover, .overview-map .ov-anchor-name.is-near { text-decoration: underline; }
+
+.overview-map .ov-dot { --ov-point: var(--ink-2); }
+.overview-map .ov-dot.is-anchor { --ov-point: var(--wall); }
+.overview-map .ov-dot:focus-visible { outline: none; }
+.overview-map .ov-hit { fill: transparent; }
+.overview-map .ov-mark { fill: var(--surface); stroke: var(--ov-point); stroke-width: 1.05; }
+.overview-map .is-collected .ov-mark { fill: var(--ov-point); }
+.overview-map .ov-ring { fill: none; stroke: var(--ink); stroke-width: 1; visibility: hidden; pointer-events: none; }
+.overview-map .ov-dot.is-match .ov-ring, .overview-map .ov-dot:focus-visible .ov-ring,
+.overview-map .ov-dot.is-active .ov-ring { visibility: visible; }
+.overview-map .ov-dot.is-current .ov-ring { stroke-width: 2; }
+.overview-map .is-inspecting .ov-dot:not(.is-near) { opacity: .19; }
+
+.overview-map .ov-links {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.overview-map .ov-links path { fill: none; stroke: var(--ink-2); }
+.overview-map .ov-lineage { stroke-width: 1.45; opacity: .87; }
+.overview-map .ov-citations { stroke-width: .65; opacity: .42; }
+
+.overview-map .ov-tooltip {
+  position: fixed;
+  z-index: 25;
+  max-width: min(22rem, calc(100vw - 16px));
+  padding: 8px 11px;
+  border: 1px solid var(--ink-2);
+  color: var(--ink);
+  background: var(--surface);
+  font-size: .875rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+}
+
+.overview-map .ov-tooltip span { display: block; color: var(--ink-2); font-size: .8125rem; }
+
+.overview-map.is-vertical .ov-controls { position: sticky; z-index: 4; top: 0; }
+.overview-map.is-vertical .ov-search { flex-basis: 100%; }
+.overview-map.is-vertical input[type="search"] { font-size: 1rem; }
+.overview-map.is-vertical .ov-row { grid-template-columns: var(--ov-label-width) minmax(0, 1fr); min-height: 0; }
+.overview-map.is-vertical .ov-year-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 7px 10px;
+  border-inline-start: 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+.overview-map .ov-year-section + .ov-year-section { border-top: 1px solid var(--line-strong); }
+.overview-map.is-vertical .ov-row-title { padding: 7px 8px; background: var(--surface); }
+.overview-map.is-vertical .ov-row-title small { display: block; margin-inline-start: 0; }
+.overview-map.is-vertical .ov-cell { padding: 7px 7px 7px 8px; }
+.overview-map.is-vertical .ov-mark { r: 3.15; }
+.overview-map.is-vertical .ov-ring { r: 4.85; }
+.overview-map.is-vertical .ov-dot { scroll-margin-block: 110px 16px; }
+.overview-map.is-vertical .ov-anchor-name { font-size: .8125rem; line-height: 1.35; }
+
+@media (max-width: 480px) {
+  .overview-masthead { padding-block: 8px; }
+  .overview-heading { padding-block: 12px; }
+  .overview-map .ov-legend { column-gap: 10px; }
+}

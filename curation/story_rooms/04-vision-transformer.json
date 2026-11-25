@@ -1,0 +1,44 @@
+{
+ "id": "vision-transformer",
+ "years": [2019, 2023],
+ "title_zh": "视觉 Transformer：窗口、金字塔和采样点",
+ "title_en": "Vision Transformers: Windows, Pyramids and Sampling Points",
+ "lede_zh": "上一室的模块，是在卷积旁边补一点全局信息。2019 年以后事情倒了过来：视觉模型拿注意力当主干，再回头把卷积擅长的两样本事补上，一样是先看近处，一样是大小物体都照顾到。",
+ "lede_en": "The modules in the last room added a little global information beside the convolutions. After 2019 the arrangement flipped. Vision models took attention as the backbone, then worked to recover two things convolution does well: looking nearby first, and handling objects of every size.",
+ "sections": [
+  {
+   "text_zh": "先有人试着直接替换卷积。2019 年的注意力增强卷积指出，卷积只在一小块邻域里运算，看不到全局。作者设计了带二维相对位置的自注意力，单独拿它替换卷积已经有竞争力，把它的输出和卷积的输出拼在一起效果最好。\n\n2020 年 Zhao 等人把问题问得更彻底：整套识别网络只用自注意力搭，行不行？他们比较了两种做法。成对的自注意力和上一室的一样，本质上是对一个集合做运算。成块的自注意力则严格强于卷积。",
+   "text_en": "First came attempts to replace convolution directly. Attention Augmented Convolution, in 2019, pointed out that a convolution works on one small neighbourhood and cannot see the whole image. Its authors designed self-attention with two-dimensional relative positions. Used alone in place of convolution it was already competitive, and it worked best when its output was concatenated with the convolution's.\n\nIn 2020 Zhao and colleagues pushed the question further: can a whole recognition network be built from self-attention alone? They compared two forms. Pairwise self-attention, the kind seen in the last room, is in essence an operation on a set. Patchwise self-attention is strictly more powerful than convolution.",
+   "anchors": [
+    {"id": "2019-AAConv", "note_zh": "给自注意力配上二维相对位置，和卷积的输出拼在一起用。", "note_en": "Self-attention with 2D relative positions, concatenated with the output of a convolution."},
+    {"id": "2020-SA-ResNet", "note_zh": "不用卷积，只用自注意力搭出一整套识别网络。", "note_en": "A whole recognition network built from self-attention, with no convolution."}
+   ]
+  },
+  {
+   "text_zh": "ViT 把图像切成小块，像处理一句话那样直接送进 Transformer 做分类（这一件本馆还没有收）。PVT 的作者随即指出它的短处：ViT 是为分类设计的，输出的分辨率低，计算和内存开销又大，很难直接拿去做检测和分割。PVT 的办法是做成金字塔，特征图一级一级缩小，大图上的计算量就降了下来，可以直接顶替卷积骨干。\n\nSwin Transformer 走的是另一条路。它只在互不重叠的小窗口里算自注意力，到下一层把窗口挪开半个窗口的距离，信息就能跨窗口流动。这样一来，计算量随图像尺寸线性增长。SwinIR 很快把这套窗口注意力用到了超分辨率和去噪上。",
+   "text_en": "ViT cuts an image into patches and feeds them to a Transformer for classification, the way one would feed a sentence. (This museum does not hold it yet.) The authors of PVT soon named its weakness. ViT was designed for classification: its output resolution is low and its compute and memory costs are high, so it is hard to use directly for detection or segmentation. PVT builds a pyramid. The feature map shrinks stage by stage, which cuts the cost on large images and lets the model stand in for a convolutional backbone.\n\nSwin Transformer went another way. It computes self-attention only inside small non-overlapping windows, then shifts the windows by half a window in the next layer so that information crosses between them. Computation then grows linearly with image size. SwinIR quickly applied the same window attention to super-resolution and denoising.",
+   "anchors": [
+    {"id": "2021-PVT-SRA", "note_zh": "金字塔结构，特征图逐级缩小，Transformer 才做得了检测和分割。", "note_en": "A pyramid whose feature maps shrink stage by stage, which makes detection and segmentation feasible."},
+    {"id": "2021-Swin-WMSA", "note_zh": "只在小窗口里算注意力，下一层把窗口挪开半格。", "note_en": "Attention inside small windows, shifted by half a window in the next layer."},
+    {"id": "2021-SwinIR", "note_zh": "Swin 的窗口注意力用来修图：超分辨率、去噪。", "note_en": "Swin's window attention put to work restoring images: super-resolution and denoising."}
+   ]
+  },
+  {
+   "text_zh": "检测是另一条线。DETR 用 Transformer 做端到端的目标检测（本馆同样还没有收），但它收敛很慢，用得起的特征分辨率也有限。可变形 DETR 让每个查询只看参考点周围的几个采样点，不再看全图。训练轮数少了 10 倍，小物体也检得更准。\n\n这种采样的办法来自 2017 年的可变形卷积：采样位置往哪偏，从任务里自己学出来，不需要额外的标注。",
+   "text_en": "Detection is a separate line. DETR does object detection end to end with a Transformer (also not yet held here), but it converges slowly and can afford only limited feature resolution. Deformable DETR lets each query look at a few sampling points around a reference point instead of the whole image. It needs ten times fewer training epochs and detects small objects better.\n\nThe sampling idea comes from Deformable Convolution in 2017: where to move each sampling point is learned from the task itself, with no extra labels.",
+   "anchors": [
+    {"id": "2021-Deformable-DETR", "note_zh": "每个查询只看参考点附近的几个点，训练轮数少 10 倍。", "note_en": "Each query looks at a handful of points near a reference. Ten times fewer training epochs."}
+   ]
+  },
+  {
+   "text_zh": "再往后的工作，都在近处和全局之间找平衡。MaxViT 把注意力拆成两步，先在小块里看近处，再隔着固定间距看全局，不管输入多大，计算量都是线性的。邻域注意力让每个像素只看离它最近的一圈邻居，像卷积核那样在图上滑动。BiFormer 分两层筛选：先以区域为单位，把最不相干的那些区域整块去掉，再在留下的区域里做细致的注意力。",
+   "text_en": "Later work looked for a balance between near and far. MaxViT splits attention into two steps: first within small blocks for what is close, then across a fixed grid for the whole image. The cost stays linear whatever the input size. Neighborhood Attention lets each pixel look only at its nearest ring of neighbours and slides across the image like a convolution kernel. BiFormer filters at two levels. It first drops the least relevant regions wholesale, then applies fine-grained attention within the regions that remain.",
+   "anchors": [
+    {"id": "2022-MaxViT", "note_zh": "先看块内，再隔着间距看全图，两步加起来仍是线性的计算量。", "note_en": "Blocks first, then a spaced-out grid over the whole image. The two steps together stay linear."},
+    {"id": "2023-NA", "note_zh": "每个像素只看最近的邻居，像卷积核一样滑过去。", "note_en": "Each pixel looks at its nearest neighbours and slides along like a kernel."},
+    {"id": "2023-BiFormer", "note_zh": "先整块去掉不相干的区域，再在剩下的地方细看。", "note_en": "Drops irrelevant regions wholesale, then looks closely at what is left."}
+   ]
+  }
+ ],
+ "more": {"y0": 2019, "y1": 2023}
+}

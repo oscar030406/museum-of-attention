@@ -1,0 +1,503 @@
+{
+ "thesis_zh": "这座馆登记了 {n} 件注意力模块，最早的是 2014 年机器翻译里的软对齐，最晚的是 2026 年大模型里的稀疏注意力和线性循环层。它们都在改写同一个计算：模型对输入的各个位置打分，再按分数加权求和。2017 年这个计算自己成了网络，此后多数展品都在处理它带来的三个问题：计算量随序列长度平方增长，推理时的键值缓存随生成长度变大，以及它本身分不出先后。",
+ "thesis_en": "This museum holds {n} attention modules, from the soft alignments of 2014 machine translation to the sparse and recurrent layers of 2026 language models. All of them rework one operation: score every position of the input, then take a weighted sum. In 2017 that operation became the whole network. Most of what followed deals with three problems it brought along. Compute grows with the square of the sequence length. The key-value cache grows with every generated token. And the operation has no built-in sense of order.",
+ "chapters": [
+  {
+   "id": "alignment",
+   "years": [
+    2014,
+    2017
+   ],
+   "title_zh": "对齐的年代：解码器学会回看",
+   "title_en": "The Age of Alignment",
+   "lede_zh": "2014 年的神经机器翻译先把整句源文压成一个定长向量，再逐词译出。注意力从这里开始：解码器每译一个词，就回到源句里找该看的位置。",
+   "lede_en": "Early neural translators squeezed a whole source sentence into one fixed-length vector before writing a word. Attention began as a way out: at each step, the decoder looks back at the source and picks what it needs.",
+   "body_zh": "Bahdanau 等人认为，定长向量是编码器和解码器这套结构的瓶颈。他们让解码器在生成每个目标词时，对源句的每个位置打分，再按分数加权求和。这组权重就是一份软对齐，不用事先把源句切成硬片段。在英法翻译上，这个模型追平了当时最好的短语翻译系统。Luong 等人随后比较了两类做法：全局注意力每一步看全部源词，局部注意力每一步只看其中一段。英德翻译上，局部注意力比不带注意力的系统高 5.0 BLEU。\n\n「打分、加权、求和」很快离开了翻译。Show, Attend and Tell 把源句换成图像区域，生成每个词时决定看图的哪一块。它给了两种训练办法：软注意力可以直接反向传播，硬注意力用变分下界做随机训练。Knowing When to Look 接着指出，「the」「of」这类词用不到图像，模型却被迫每一步都看图。作者加了一个视觉哨兵，让模型每一步先决定要不要看图。\n\n另一条线把注意力当成读写存储的手段。神经图灵机（馆里列为候选）用注意力读写外部存储，整个系统可以端到端求导。端到端记忆网络把记忆网络改成端到端训练，所需监督少得多，并在每次输出前做多跳读取，作者把它看作 RNNsearch 的多步推广。键值记忆网络把寻址和读出分开编码：用键找位置，用值取内容。指针网络又换了一种用法。前作用注意力权重混合编码器状态，指针网络直接用权重指向输入里的一个元素，把它当作输出。这样，输出词表可以随输入长度变化，凸包、Delaunay 三角剖分和旅行商问题都能这样解。\n\n到 2016、2017 年，注意力开始在两段文字之间来回比对。可分解注意力模型用注意力把自然语言推理拆成可以并行求解的子问题，不依赖词序，参数比前作少将近一个数量级。BiDAF 在问题和段落之间双向计算注意力，也不提前把段落压成定长向量。这时的注意力仍然挂在 RNN 或别的主干上。下一室讲它怎样自己成为主干。",
+   "body_en": "Bahdanau and colleagues suspected that the fixed-length vector was the bottleneck of encoder-decoder translation. Each time their model emits a target word, it scores every source position and takes a weighted sum. The weights form a soft alignment, so the sentence never has to be cut into hard segments. On English-French it matched the best phrase-based systems of the day. Luong and colleagues then compared a global version, which reads every source word at each step, with a local one that reads a window. On English-German the local version gained 5.0 BLEU over a system without attention.\n\nThe same recipe of score, weight and sum soon left translation. Show, Attend and Tell swapped source words for image regions and decided where to look before writing each word of a caption. It offered two ways to train: a soft version learned by plain backpropagation, and a hard, stochastic one trained through a variational lower bound. Knowing When to Look then pointed out that words like \"the\" and \"of\" need no image at all. Its visual sentinel lets the decoder decide, word by word, whether to look.\n\nA second line used attention to read memory. The Neural Turing Machine, listed here as a candidate, reads and writes an external memory through attention and stays differentiable end to end. End-To-End Memory Networks trained the earlier Memory Networks without step-by-step supervision and read memory in several hops per answer, which the authors describe as a multi-step RNNsearch. Key-Value Memory Networks encode memory twice, keys for finding a slot and values for what comes out. Pointer Networks turned attention into an answer: the weights point at one element of the input, so the output vocabulary can grow with the input. That was enough to learn convex hulls, Delaunay triangulations and small travelling-salesman tours.\n\nBy 2016 and 2017 attention was comparing two texts with each other. The Decomposable Attention Model split natural language inference into subproblems that run in parallel, ignored word order, and used almost ten times fewer parameters than earlier models. BiDAF ran attention in both directions between question and passage and did not squeeze the passage into a single vector early. In all of these, attention still sat on top of a recurrent or other backbone. The next room shows it becoming the backbone.",
+   "anchors": [
+    {
+     "id": "2015-Bahdanau-Attention",
+     "note_zh": "指出编码器交给解码器的定长向量是瓶颈，让解码器对源句各位置软对齐。",
+     "note_en": "Named the fixed-length vector as the bottleneck and let the decoder softly align to every source position."
+    },
+    {
+     "id": "2015-Luong-Attention",
+     "note_zh": "比较了每步看全部源词的全局注意力和只看一段的局部注意力。",
+     "note_en": "Compared global attention over all source words with local attention over a window."
+    },
+    {
+     "id": "2015-Show-Attend-and-Tell",
+     "note_zh": "把注意力从源句搬到图像区域，给出软、硬两种训练方式。",
+     "note_en": "Moved attention from source words to image regions, with soft and hard ways to train it."
+    },
+    {
+     "id": "2017-Visual-Sentinel",
+     "note_zh": "加了一个视觉哨兵，让模型每生成一个词先决定要不要看图。",
+     "note_en": "Added a visual sentinel so the captioner can decide, word by word, whether to look at the image."
+    },
+    {
+     "id": "2015-MemN2N",
+     "note_zh": "把记忆网络改成端到端训练，在每次输出前对记忆做多跳读取。",
+     "note_en": "Trained memory networks end to end and read the memory in several hops per output."
+    },
+    {
+     "id": "2016-KV-MemNN",
+     "note_zh": "把记忆的寻址和读出分开编码，用键找位置，用值取内容。",
+     "note_en": "Split memory into keys for addressing and values for reading."
+    },
+    {
+     "id": "2015-Pointer-Networks",
+     "note_zh": "直接用注意力权重指向输入中的一个元素，把它当作输出。",
+     "note_en": "Used the attention weights themselves as a pointer to one input element."
+    },
+    {
+     "id": "2016-Decomposable-Attention",
+     "note_zh": "用注意力把自然语言推理拆成可并行的子问题，不依赖词序。",
+     "note_en": "Used attention to split natural language inference into parallel subproblems without word order."
+    },
+    {
+     "id": "2017-BiDAF",
+     "note_zh": "在问题和段落之间双向计算注意力，不提前把段落压成定长向量。",
+     "note_en": "Ran attention both ways between question and passage without summarizing the passage early."
+    }
+   ],
+   "more": {
+    "y0": 2014,
+    "y1": 2017
+   }
+  },
+  {
+   "id": "self-attention",
+   "years": [
+    2017,
+    2020
+   ],
+   "title_zh": "2017：自注意力独立成网络",
+   "title_en": "2017: Attention Becomes the Network",
+   "lede_zh": "Transformer 拿掉了循环和卷积，只用注意力搭网络。序列里每个位置同时看其他所有位置，整句可以并行计算。",
+   "lede_en": "The Transformer dropped recurrence and convolution and built a network from attention alone. Every position looks at every other position at once, so a whole sentence can be processed in parallel.",
+   "body_zh": "2017 年的机器翻译模型多用 RNN 或卷积做编码器和解码器，再用注意力把两者连起来。Vaswani 等人的 Transformer 只留下注意力：编码器和解码器都由多头自注意力和前馈层堆成。去掉循环以后，训练可以沿整个序列并行。在 WMT 2014 英德翻译上，它得到 28.4 BLEU，比此前最好的结果（包括集成模型）高 2 BLEU 以上。英法翻译上，它在 8 张 GPU 上训练 3.5 天，单模型得到 41.8 BLEU。同年稍早，Lin 等人已经用自注意力生成句向量（馆里列为候选），但那时自注意力还是 RNN 上的一层。\n\n拿掉循环也拿掉了两样东西。一是顺序：Transformer 的结构里没有位置信息，只能在输入上加绝对位置表示，第七室专讲这件事。二是循环的归纳偏置。Universal Transformer 的作者发现，标准 Transformer 在复制字符串这类简单任务上，只要输入比训练时长就会失败。他们让同一层在深度方向反复使用，并给每个位置加了动态停止机制。\n\n自注意力随后被搬到别的数据上。QANet 的编码器只用卷积和自注意力，卷积负责局部，自注意力负责全局，在 SQuAD 上训练快 3 到 13 倍。GAT 在图上做带掩码的自注意力，每个节点只看邻居，不用求逆矩阵，也不用事先知道整张图。Set Transformer 用在无序集合上，并借稀疏高斯过程里的诱导点，把自注意力的计算从平方降到线性。SAGAN 把自注意力放进生成对抗网络，生成某处细节时可以参考图上所有位置。\n\n音乐和语音的序列更长，也更看重相对时间。Music Transformer 指出，Shaw 等人的相对位置做法要存一份随长度平方增长的中间量，他们把它降到线性，生成了长达一分钟的乐曲。Conformer 在语音识别里把卷积和 Transformer 合在一起，用卷积建局部依赖，用自注意力建全局依赖。",
+   "body_en": "In 2017 most translation systems were recurrent or convolutional encoder-decoders joined by attention. The Transformer of Vaswani and colleagues kept only the attention. Encoder and decoder are stacks of multi-head self-attention and feed-forward layers, and with recurrence gone, training runs in parallel across the whole sequence. It reached 28.4 BLEU on WMT 2014 English-German, more than 2 BLEU above the best earlier results, ensembles included. On English-French a single model reached 41.8 BLEU after 3.5 days on eight GPUs. A few months earlier Lin and colleagues had used self-attention to build sentence embeddings (a candidate here), but as a layer on top of a recurrent network.\n\nRemoving recurrence removed two other things. One was order: nothing in the architecture knows where a token sits, so absolute positions have to be added to the input. Room 7 follows that problem. The other was the inductive bias of recurrence. The Universal Transformer authors found that a standard Transformer fails at tasks as simple as copying a string once the input is longer than anything seen in training. Their fix reuses one layer over and over in depth and lets each position decide when to stop.\n\nSelf-attention then spread to other kinds of data. QANet built a reading-comprehension encoder from convolution for local context and self-attention for global context, and trained 3 to 13 times faster on SQuAD. Graph Attention Networks mask self-attention so that each node attends only to its neighbours, with no matrix inversion and no need to know the graph in advance. Set Transformer handles unordered sets and borrows inducing points from sparse Gaussian processes to bring the cost from quadratic to linear. SAGAN put self-attention inside a GAN, so a detail anywhere in the image can draw on every other location.\n\nMusic and speech bring longer sequences, where relative timing matters. Music Transformer noted that the relative-position method of Shaw and colleagues stores an intermediate tensor that grows with the square of the length. The authors reduced it to linear and generated minute-long pieces. Conformer combined convolution and self-attention for speech recognition: convolution for local patterns, attention for the rest of the utterance.",
+   "anchors": [
+    {
+     "id": "2017-MHA",
+     "note_zh": "Transformer 原文：只用多头注意力和前馈层搭成编码器和解码器。",
+     "note_en": "The Transformer paper: encoder and decoder built from multi-head attention and feed-forward layers alone."
+    },
+    {
+     "id": "2019-Universal-Transformer",
+     "note_zh": "在深度方向循环使用同一层，补回 Transformer 缺少的循环偏置。",
+     "note_en": "Reused one layer recurrently in depth to restore the bias that recurrence used to provide."
+    },
+    {
+     "id": "2018-QANet",
+     "note_zh": "阅读理解编码器只用卷积和自注意力，训练比 RNN 模型快 3 到 13 倍。",
+     "note_en": "A reading-comprehension encoder of convolution and self-attention only, 3 to 13 times faster to train."
+    },
+    {
+     "id": "2018-GAT",
+     "note_zh": "把自注意力用到图上，每个节点只对邻居打分。",
+     "note_en": "Brought self-attention to graphs, with each node scoring only its neighbours."
+    },
+    {
+     "id": "2019-Set-Transformer",
+     "note_zh": "为无序集合设计，用诱导点把自注意力降到线性。",
+     "note_en": "Self-attention for unordered sets, made linear with inducing points."
+    },
+    {
+     "id": "2019-SAGAN",
+     "note_zh": "把自注意力放进生成对抗网络，生成细节时参考全图。",
+     "note_en": "Put self-attention into a GAN so generated details can draw on the whole image."
+    },
+    {
+     "id": "2019-Music-Transformer",
+     "note_zh": "把相对位置注意力的中间存储从平方降到线性，用来生成长乐曲。",
+     "note_en": "Cut the memory of relative-position attention from quadratic to linear to compose long pieces."
+    },
+    {
+     "id": "2020-Conformer-MHSA",
+     "note_zh": "在语音识别里把卷积和自注意力并用，分别管局部和全局。",
+     "note_en": "Paired convolution and self-attention for speech, one for local and one for global context."
+    }
+   ],
+   "more": {
+    "y0": 2017,
+    "y1": 2020
+   }
+  },
+  {
+   "id": "cnn-attention",
+   "years": [
+    2015,
+    2021
+   ],
+   "title_zh": "卷积网络里的通道和空间注意力",
+   "title_en": "Attention Inside the ConvNet",
+   "lede_zh": "视觉这一支问的是另一个问题：一张特征图里，哪些通道、哪些位置更重要。答案通常是一个可以插进现成骨干网络的小模块。",
+   "lede_en": "In vision, attention first answered a different question: which channels and which locations of a feature map matter. The answer was usually a small block you could drop into an existing network.",
+   "body_zh": "空间变换网络（2015）是较早的一次尝试。它在网络里学一个几何变换，按特征图自身的内容去平移、缩放和旋转特征，不需要额外监督。残差注意力网络（2017）用自底向上、自顶向下的结构生成注意力图，再用注意力残差学习把网络堆到数百层。\n\nSE 模块（2018）把重点放在通道之间的关系上。它为每个通道算一个权重，重新标定通道的响应。以 SENet 为基础的模型拿下 ILSVRC 2017 分类第一，top-5 错误率 2.251%。CBAM 在通道注意力之后再算一张空间注意力图，两张图依次乘回特征图。图像复原厅里的 RCAN（2018）也用通道注意力，按通道间的关系重新缩放超分辨率网络的特征。\n\n同一年，Non-local 网络从另一头入手。卷积和循环每次只处理一个邻域，Non-local 把一个位置的响应写成所有位置特征的加权和，用来捕捉远距离依赖。原文指出，机器翻译里的自注意力是这种非局部操作的一个特例。代价随之而来：每个位置都要和所有位置算一次。CCNet 让每个像素只看它所在的十字路径，再循环一次覆盖全图，显存比 Non-local 少 11 倍，计算量少约 85%。分割网络 DANet 则并联位置注意力和通道注意力两个模块。\n\nGCNet（2019）把这两条线接了起来。作者发现，Non-local 对图中不同查询位置算出的全局上下文几乎一样，于是只算一份与查询无关的上下文。简化后的结构和 SE 很像，他们把两者统一成一个三步框架。之后的改进集中在减重和补位置信息上。ECA（2020）拆解 SE 后发现，降维对学习通道注意力有害，于是去掉降维，改用一维卷积只在相邻通道间交互。坐标注意力（2021）把位置信息嵌进通道注意力，沿高和宽两个方向分别聚合特征。",
+   "body_en": "Spatial Transformer Networks (2015) came early. The module learns a geometric transform inside the network and warps a feature map according to its own content, with no extra supervision. The Residual Attention Network (2017) produced attention maps with a bottom-up, top-down structure and used attention residual learning to train hundreds of layers.\n\nThe Squeeze-and-Excitation block (2018) turned to the relationships between channels. It computes one weight per channel and rescales the channel responses. SENet models won the ILSVRC 2017 classification task with a top-5 error of 2.251%. CBAM follows channel attention with a spatial attention map and multiplies both into the features in turn. In the image-restoration hall, RCAN (2018) uses the same kind of channel attention to rescale features in a super-resolution network.\n\nThat same year, Non-local Networks came at the problem from the other side. Convolution and recurrence each process one neighbourhood at a time. A non-local block writes the response at a position as a weighted sum over all positions. The paper notes that self-attention from machine translation is a special case. The price is that every position meets every other one. CCNet lets each pixel attend only along its row and column, then repeats once to cover the image. It uses 11 times less GPU memory and about 85% fewer FLOPs than the non-local block. DANet, a segmentation network, runs position attention and channel attention side by side.\n\nGCNet (2019) joined the two lines. Its authors found that a non-local block computes almost the same global context for every query position in an image, so one query-independent context is enough. The simplified block looks much like SE, and the paper folds both into one three-step framework. Later work made the blocks lighter and put position back in. ECA-Net (2020) took SE apart, found that its dimensionality reduction hurts, and replaced it with a 1D convolution across neighbouring channels. Coordinate Attention (2021) embeds position into channel attention by pooling along height and width separately.",
+   "anchors": [
+    {
+     "id": "2015-STN",
+     "note_zh": "在网络里学几何变换，按特征图内容平移、缩放和旋转特征。",
+     "note_en": "Learns a geometric warp inside the network, driven by the feature map itself."
+    },
+    {
+     "id": "2017-RAN",
+     "note_zh": "堆叠注意力模块，用注意力残差学习训练数百层的网络。",
+     "note_en": "Stacked attention modules and trained hundreds of layers with attention residual learning."
+    },
+    {
+     "id": "2018-SE",
+     "note_zh": "为每个通道算一个权重，重新标定通道响应。",
+     "note_en": "Computes one weight per channel and rescales the channel responses."
+    },
+    {
+     "id": "2018-CBAM",
+     "note_zh": "先算通道注意力，再算空间注意力，依次乘回特征图。",
+     "note_en": "Applies channel attention, then spatial attention, to the same feature map."
+    },
+    {
+     "id": "2018-Non-local",
+     "note_zh": "把每个位置的响应写成所有位置特征的加权和，把自注意力带进视觉。",
+     "note_en": "Writes each response as a weighted sum over all positions, bringing self-attention into vision."
+    },
+    {
+     "id": "2018-CCNet",
+     "note_zh": "每个像素只看十字路径，循环两次覆盖全图，显存比 Non-local 少 11 倍。",
+     "note_en": "Attends along a criss-cross path twice to cover the image with 11 times less memory than non-local."
+    },
+    {
+     "id": "2019-GCNet",
+     "note_zh": "发现 Non-local 的全局上下文几乎与查询无关，把它和 SE 统一成一个框架。",
+     "note_en": "Found non-local context nearly query-independent and unified it with SE."
+    },
+    {
+     "id": "2020-ECA-Net",
+     "note_zh": "去掉 SE 的降维，用一维卷积做相邻通道间的交互。",
+     "note_en": "Dropped SE's dimensionality reduction for a 1D convolution across neighbouring channels."
+    },
+    {
+     "id": "2021-CoordAtt",
+     "note_zh": "沿高和宽两个方向分别聚合，把位置信息嵌进通道注意力。",
+     "note_en": "Pools along height and width separately to embed position into channel attention."
+    }
+   ],
+   "more": {
+    "y0": 2015,
+    "y1": 2021
+   }
+  },
+  {
+   "id": "vision-transformer",
+   "years": [
+    2019,
+    2023
+   ],
+   "title_zh": "视觉 Transformer：窗口、金字塔和可变形采样",
+   "title_en": "Vision Transformers: Windows, Pyramids and Deformable Sampling",
+   "lede_zh": "上一室的模块是在卷积旁边补全局信息。2019 年以后，视觉模型反过来用注意力当主干，再想办法补回卷积擅长的局部性和多尺度。",
+   "lede_en": "The previous room added global context to convolutions. From 2019, vision models turned this around, using attention as the backbone and then finding ways to recover the locality and multi-scale structure that convolutions had for free.",
+   "body_zh": "注意力增强卷积（2019）指出，卷积只在局部邻域里运算，缺少全局信息。作者提出二维相对自注意力，单独替换卷积时已有竞争力，和卷积拼接时效果最好。Zhao 等人（2020）比较了成对和成块两种自注意力，成对形式本质上是集合运算，成块形式严格强于卷积。\n\nViT（馆里未收）把图像切成块，直接送进 Transformer 做分类。PVT（2021）的作者指出，ViT 专为分类设计，输出分辨率低，计算和内存开销大，难以直接用于检测和分割。PVT 用逐级缩小的金字塔降低大特征图上的计算，可以直接替换卷积骨干。Swin Transformer 把自注意力限制在不重叠的局部窗口里，下一层把窗口移开一半，让信息跨窗口流动，计算量随图像尺寸线性增长。SwinIR 随后把 Swin 用到图像复原上。\n\n检测是另一条线。DETR（馆里未收）用 Transformer 做端到端检测，但收敛慢，能用的特征分辨率也有限。可变形 DETR（2021）的注意力只看参考点周围的少量采样点，训练轮数少 10 倍，小物体也检得更好。这个采样方式借自可变形卷积（2017）：从任务中学出采样位置的偏移，不需要额外监督。\n\n之后的工作在局部和全局之间找折中。MaxViT（2022）把注意力拆成分块的局部注意力和空洞的全局注意力两步，在任意输入分辨率上都保持线性复杂度。邻域注意力（2023）让每个像素只看离它最近的邻居，像卷积一样滑动。BiFormer（2023）先在区域层面滤掉最不相关的键值对，再在剩下的区域里做 token 之间的细粒度注意力。",
+   "body_en": "Attention Augmented Convolutional Networks (2019) pointed out that convolution only ever sees a local neighbourhood. The authors built a two-dimensional relative self-attention that could already replace convolution on its own, and worked best when the authors concatenated its feature maps with convolutional ones. Zhao and colleagues (2020) compared two forms: pairwise self-attention, which is at heart a set operator, and patchwise self-attention, which is strictly more powerful than convolution.\n\nViT, which this museum does not hold, cut an image into patches and fed them straight to a Transformer for classification. The PVT authors (2021) noted that ViT targets classification, with low-resolution outputs and high compute and memory cost, which made detection and segmentation hard. PVT shrinks its feature maps stage by stage, like a pyramid, and can replace a convolutional backbone outright. Swin Transformer confines attention to non-overlapping local windows and shifts the windows in the next layer so information crosses between them. Its cost grows linearly with image size. SwinIR then applied Swin to image restoration.\n\nDetection followed its own path. DETR, also not in the collection, treated detection as an end-to-end Transformer problem but converged slowly and worked at limited resolution. Deformable DETR (2021) lets each query attend to a handful of sampling points around a reference point. It trains in ten times fewer epochs and does better on small objects. The sampling idea comes from Deformable Convolution (2017), which learns sampling offsets from the task itself.\n\nLater designs looked for a balance between local and global. MaxViT (2022) splits attention into a blocked local step and a dilated global step and stays linear at any resolution. Neighborhood Attention (2023) restricts each pixel to its nearest neighbours and slides like a convolution. BiFormer (2023) first discards the least relevant key-value pairs at the level of regions, then runs fine-grained token attention inside the regions that remain.",
+   "anchors": [
+    {
+     "id": "2019-AAConv",
+     "note_zh": "提出二维相对自注意力，把它的特征图和卷积特征图拼接。",
+     "note_en": "Introduced 2D relative self-attention and concatenated its maps with convolutional features."
+    },
+    {
+     "id": "2020-SA-ResNet",
+     "note_zh": "比较成对和成块两种自注意力，用它们搭出整套识别网络。",
+     "note_en": "Compared pairwise and patchwise self-attention as building blocks for whole recognition networks."
+    },
+    {
+     "id": "2021-PVT-SRA",
+     "note_zh": "用逐级缩小的金字塔把 Transformer 带到检测和分割上。",
+     "note_en": "A pyramid of shrinking feature maps that took Transformers to detection and segmentation."
+    },
+    {
+     "id": "2021-Swin-WMSA",
+     "note_zh": "在局部窗口里算注意力，逐层移动窗口，计算量随图像尺寸线性增长。",
+     "note_en": "Window attention with shifted windows, linear in image size."
+    },
+    {
+     "id": "2021-SwinIR",
+     "note_zh": "把 Swin 的窗口注意力用于超分辨率、去噪等图像复原任务。",
+     "note_en": "Brought Swin window attention to super-resolution, denoising and other restoration tasks."
+    },
+    {
+     "id": "2021-Deformable-DETR",
+     "note_zh": "每个查询只看参考点附近的少量采样点，训练轮数比 DETR 少 10 倍。",
+     "note_en": "Each query samples a few points near a reference, training ten times faster than DETR."
+    },
+    {
+     "id": "2022-MaxViT",
+     "note_zh": "把注意力拆成分块局部和空洞全局两步，保持线性复杂度。",
+     "note_en": "Splits attention into blocked local and dilated global steps at linear cost."
+    },
+    {
+     "id": "2023-NA",
+     "note_zh": "让每个像素只看最近的邻居，像卷积一样滑动。",
+     "note_en": "Each pixel attends to its nearest neighbours in a sliding window, like a convolution."
+    },
+    {
+     "id": "2023-BiFormer",
+     "note_zh": "先在区域层面筛掉无关的键值，再在剩下的区域里做细粒度注意力。",
+     "note_en": "Filters key-value pairs at region level, then attends token to token in what remains."
+    }
+   ],
+   "more": {
+    "y0": 2019,
+    "y1": 2023
+   }
+  },
+  {
+   "id": "multimodal",
+   "years": [
+    2018,
+    2024
+   ],
+   "title_zh": "图像和文字之间的注意力",
+   "title_en": "Attention Between Images and Words",
+   "lede_zh": "看图说话是注意力最早的跨模态用法。之后的问题从「生成每个词时看图的哪里」变成「图像和文字怎样在一个网络里交换信息」，最后变成「怎样把图像接进一个现成的大语言模型」。",
+   "lede_en": "Captioning was attention's first cross-modal job. The question then grew. First it was where to look for each word, then how images and text should exchange information inside one network, and finally how to plug an image into a language model that already exists.",
+   "body_zh": "自底向上和自顶向下注意力（2018）把注意力的单位从均匀网格换成了物体：Faster R-CNN 先提出图像区域，任务再决定各区域的权重。它拿下 2017 年 VQA 挑战赛第一名。BAN（2018）认为，为每一对多模态输入通道都学注意力，代价太高。而常用的协同注意力为两种模态各建一个分布，又忽略了两者之间的交互。BAN 改用双线性注意力。MCAN（2019）发现，深层协同注意力模型比浅层几乎没有提升。它把问题的自注意力、图像的自注意力和问题引导图像的注意力组合成一层，再一层层堆深。\n\n2019 年，BERT（馆里未收）的预训练办法被搬到图文上。ViLBERT 把 BERT 扩成两条流，分别处理图像和文字，两条流通过协同注意力层交互，在四个下游任务上都取得了最好成绩。同年的 LXMERT 用物体关系、语言和跨模态三个编码器。ALBEF（2021）指出，视觉 token 和文字 token 本来没有对齐，多模态编码器很难学到两者的交互。它在用交叉注意力融合之前，先用对比损失把图像和文字对齐。\n\n大语言模型出现以后，端到端训练整个图文模型越来越贵。主流做法变成冻结现成的图像编码器和语言模型，在中间接一座小桥，桥的核心多是交叉注意力。Flamingo（2022，馆里已登记、待收）在冻结的语言模型层之间插入带门控的交叉注意力层。BLIP-2（2023）的 Q-Former 用一组可学习的查询向量，通过交叉注意力从冻结的图像特征中取信息。它的可训练参数比 Flamingo80B 少 54 倍，零样本 VQAv2 反而高 8.7%。Qwen-VL（2023）用单层交叉注意力和一组可学习查询，把图像特征压成定长序列再交给语言模型。CogVLM（2024）认为，把图像特征只映射到语言模型的输入空间，融合得太浅。它在语言模型的注意力层和前馈层里各加了一套可训练的视觉专家。",
+   "body_en": "Bottom-Up and Top-Down Attention (2018) changed what attention attends to, from a uniform grid to objects. Faster R-CNN proposes image regions, and the task decides how much each one counts. The approach took first place in the 2017 VQA Challenge. Bilinear Attention Networks (2018) argued that learning attention over every pair of multimodal channels costs too much. The usual co-attention, on the other hand, builds a separate distribution for each modality and misses the interaction between them. BAN used bilinear attention instead. MCAN (2019) observed that deep co-attention models barely beat shallow ones. It combined question self-attention, image self-attention and question-guided image attention into one layer, then stacked those layers deep.\n\nIn 2019 the pre-training recipe of BERT, which this museum does not hold, moved to image-text data. ViLBERT extended BERT into two streams, one for images and one for text, that talk through co-attentional layers, and it set new results on four downstream tasks. LXMERT, from the same year, used three encoders: one for object relations, one for language and one across modalities. ALBEF (2021) pointed out that visual and word tokens start out unaligned, which makes their interaction hard to learn. It aligns images and text with a contrastive loss before fusing them through cross-attention.\n\nOnce large language models arrived, training a whole vision-language model end to end became expensive. The common answer was to freeze an existing image encoder and an existing language model and build a small bridge between them, usually out of cross-attention. Flamingo (2022, registered but not yet collected) inserts gated cross-attention layers between the frozen layers of its language model. The Q-Former in BLIP-2 (2023) sends a set of learned query vectors through cross-attention to read the frozen image features. It has 54 times fewer trainable parameters than Flamingo80B and scores 8.7% higher on zero-shot VQAv2. Qwen-VL (2023) uses a single cross-attention layer with learned queries to compress image features into a fixed-length sequence for the language model. CogVLM (2024) judged that mapping image features into the input space of a language model fuses them too shallowly. It added a trainable visual expert to the attention and feed-forward layers.",
+   "anchors": [
+    {
+     "id": "2018-Bottom-Up-and-Top-Down-Attention",
+     "note_zh": "把注意力的单位从网格换成检测出的物体区域。",
+     "note_en": "Made detected object regions, not grid cells, the unit of visual attention."
+    },
+    {
+     "id": "2018-BAN",
+     "note_zh": "用双线性注意力同时建模两种模态之间的交互。",
+     "note_en": "Used bilinear attention to model the interaction between both modalities at once."
+    },
+    {
+     "id": "2019-MCAN",
+     "note_zh": "把自注意力和问题引导的注意力组合成层，堆出深层协同注意力。",
+     "note_en": "Combined self-attention and question-guided attention into layers deep enough to pay off."
+    },
+    {
+     "id": "2019-ViLBERT",
+     "note_zh": "图像和文字各走一条流，用协同注意力层交换信息。",
+     "note_en": "Two streams, image and text, exchanging information through co-attentional layers."
+    },
+    {
+     "id": "2021-ALBEF",
+     "note_zh": "先用对比损失对齐图文，再用交叉注意力融合。",
+     "note_en": "Aligns image and text with a contrastive loss before fusing them with cross-attention."
+    },
+    {
+     "id": "2023-Q-Former-BLIP-2",
+     "note_zh": "用可学习查询经交叉注意力读取冻结的图像特征，接到冻结的语言模型上。",
+     "note_en": "Learned queries read frozen image features through cross-attention and feed a frozen language model."
+    },
+    {
+     "id": "2023-Qwen-VL-Resampler",
+     "note_zh": "用单层交叉注意力把变长的图像特征压成定长序列。",
+     "note_en": "One cross-attention layer compresses variable-length image features into a fixed-length sequence."
+    },
+    {
+     "id": "2024-CogVLM-Visual-Expert",
+     "note_zh": "在语言模型的注意力层里为图像 token 加一套可训练的视觉专家。",
+     "note_en": "Adds a trainable visual expert to the language model's attention for image tokens."
+    }
+   ],
+   "more": {
+    "y0": 2018,
+    "y1": 2024
+   }
+  },
+  {
+   "id": "efficiency",
+   "years": [
+    2019,
+    2026
+   ],
+   "title_zh": "效率之争：从近似到回归循环",
+   "title_en": "The Efficiency Race: From Approximation Back to Recurrence",
+   "lede_zh": "自注意力让每个位置看所有位置，计算和内存都随序列长度平方增长。这一室收的是绕开平方项的办法，最后一段讲它们怎样绕回了循环网络。",
+   "lede_en": "Self-attention lets every position look at every other, so compute and memory grow with the square of the length. This room collects the ways around that square, and shows how they led back to recurrent networks.",
+   "body_zh": "第一类办法是只算一部分位置对。Sparse Transformer（2019，馆里已登记、待收）把注意力矩阵分解成稀疏模式，复杂度降到 O(n√n)。Longformer（2020）把局部滑窗注意力和少量按任务指定的全局注意力合在一起，复杂度随长度线性增长。BigBird（2020）也用稀疏注意力，并证明它仍是序列函数的通用逼近器，而且图灵完备，作者还分析了少量全局 token 的好处。\n\n第二类办法是近似整个注意力矩阵。Reformer（2020）用局部敏感哈希代替点积注意力，复杂度从 O(L²) 降到 O(L log L)。Linformer（2020）发现自注意力可以用低秩矩阵近似，时间和空间复杂度都降到 O(n)。Katharopoulos 等人（2020）把 softmax 换成核特征映射的点积，再利用矩阵乘法的结合律把复杂度降到 O(N)。他们还指出，这样写出的自回归 Transformer 可以逐步迭代计算，和 RNN 是同一类东西。Performer（2021）用正交随机特征（FAVOR+）去估计 softmax 注意力，给出了无偏或近似无偏的保证。\n\n近似有代价。cosFormer（2022）的作者指出，核方法近似 softmax 带来误差，表现随任务变化，和原版 softmax 注意力相比会明显掉点。第八室的 FlashAttention 换了思路：照算精确的注意力，只减少显存读写。\n\n2023 年以后，「Transformer 也是 RNN」这句话被重新拾起。RetNet 推导了循环和注意力之间的联系，同一机制可以并行训练，也可以用 O(1) 的代价循环推理。RWKV 用线性注意力把模型写成 Transformer 或 RNN 两种形式，训练到了 140 亿参数。Mamba 的作者认为，此前的线性注意力、门控卷积和状态空间模型在语言上不如注意力，关键弱点是不能按内容推理。他们让状态空间模型的参数随输入变化，造出一个没有注意力层的网络。GLA（2024）给线性注意力加上数据相关的门。Gated DeltaNet（2025）发现门控和 delta 更新规则互补：门控能快速擦除记忆，delta 规则能精确改写其中一条。作者还把它和滑窗注意力层混合使用。馆里 2023 年以后的展品中还有不少这类线性循环层，也有把它们和注意力层混搭的模型，例如 Jamba 交替堆叠 Transformer 层和 Mamba 层。",
+   "body_en": "The first approach computes only some of the pairs. Sparse Transformer (2019, registered but not yet collected) factorized the attention matrix into sparse patterns and cut the cost to O(n√n). Longformer (2020) combined sliding-window attention with a few task-specific global tokens and scaled linearly. BigBird (2020) also used sparse attention and proved it is still a universal approximator of sequence functions and Turing complete. Its analysis also shows why a few global tokens help.\n\nThe second approach approximates the whole matrix. Reformer (2020) replaced dot-product attention with locality-sensitive hashing, bringing the cost from O(L²) to O(L log L). Linformer (2020) showed that self-attention can be approximated by a low-rank matrix and reached O(n) in time and space. Katharopoulos and colleagues (2020) swapped the softmax for a dot product of kernel feature maps and used the associativity of matrix products to reach O(N). They also showed that an autoregressive Transformer written this way can be computed step by step, which makes it a kind of recurrent network. Performer (2021) estimated softmax attention with positive orthogonal random features, FAVOR+, with unbiased or nearly unbiased estimates.\n\nApproximation had a cost. The cosFormer authors (2022) wrote that kernel approximations of softmax introduce errors, behave differently from task to task, and can fall well short of the original. FlashAttention, in Room 8, took another route: compute exact attention and cut the memory traffic instead.\n\nAfter 2023 the idea that a Transformer can be a recurrent network came back. RetNet derived a link between recurrence and attention, giving one mechanism that trains in parallel and runs at O(1) cost per step. RWKV used linear attention to write the same model as either a Transformer or an RNN and trained it to 14 billion parameters. The Mamba authors argued that linear attention, gated convolutions and state space models had all lagged attention on language because they could not reason based on content. They made the state space parameters depend on the input and built a network with no attention layers at all. GLA (2024) gave linear attention data-dependent gates. Gated DeltaNet (2025) found that gating and the delta rule complement each other: the gate erases memory quickly, while the delta rule rewrites one entry precisely. The authors also mixed it with sliding-window attention layers. The collection after 2023 holds many more linear recurrent layers, and some hybrids that mix them with attention. Jamba, for one, stacks Transformer and Mamba layers in turn.",
+   "anchors": [
+    {
+     "id": "2020-Longformer",
+     "note_zh": "局部滑窗加少量全局注意力，复杂度随长度线性增长。",
+     "note_en": "Sliding-window attention plus a few global tokens, linear in length."
+    },
+    {
+     "id": "2020-BigBird",
+     "note_zh": "证明稀疏注意力仍是通用逼近器且图灵完备。",
+     "note_en": "Proved that sparse attention remains a universal approximator and Turing complete."
+    },
+    {
+     "id": "2020-Reformer-LSH",
+     "note_zh": "用局部敏感哈希把注意力复杂度从 O(L²) 降到 O(L log L)。",
+     "note_en": "Locality-sensitive hashing took attention from O(L²) to O(L log L)."
+    },
+    {
+     "id": "2020-Linformer",
+     "note_zh": "用低秩矩阵近似自注意力，复杂度降到线性。",
+     "note_en": "A low-rank approximation of self-attention with linear cost."
+    },
+    {
+     "id": "2020-LinearAttention",
+     "note_zh": "用核特征映射和结合律把注意力降到线性，并把它写成 RNN。",
+     "note_en": "Kernel feature maps and associativity made attention linear and revealed it as an RNN."
+    },
+    {
+     "id": "2021-Performer",
+     "note_zh": "用正交随机特征无偏地估计 softmax 注意力。",
+     "note_en": "Estimates softmax attention without bias using orthogonal random features."
+    },
+    {
+     "id": "2023-RetNet",
+     "note_zh": "同一机制可以并行训练，也可以循环推理，每步代价 O(1)。",
+     "note_en": "One mechanism that trains in parallel and infers recurrently at O(1) per step."
+    },
+    {
+     "id": "2024-Mamba-SelectiveScan",
+     "note_zh": "让状态空间模型的参数随输入变化，造出没有注意力层的语言模型。",
+     "note_en": "Input-dependent state space parameters, in a language model with no attention layers."
+    },
+    {
+     "id": "2025-Gated-DeltaNet",
+     "note_zh": "把门控擦除和 delta 规则的精确改写合在一个线性循环层里。",
+     "note_en": "Combines gated erasure with precise delta-rule updates in one linear recurrent layer."
+    }
+   ],
+   "more": {
+    "y0": 2019,
+    "y1": 2026
+   }
+  },
+  {
+   "id": "position",
+   "years": [
+    2018,
+    2024
+   ],
+   "title_zh": "位置和长度",
+   "title_en": "Position and Length",
+   "lede_zh": "自注意力的结构里没有先后。Transformer 只能在输入上加绝对位置表示，这一室收的是之后八年里换掉这份表示、再把训练好的模型拉长的办法。",
+   "lede_en": "Self-attention has no built-in order, so the Transformer added absolute positions to its input. This room follows eight years of replacing that signal, then stretching trained models to longer inputs.",
+   "body_zh": "Shaw 等人（2018）把元素之间的相对距离写进自注意力。WMT 2014 英德和英法翻译上，它比绝对位置表示分别高 1.3 和 0.3 BLEU，再同时加上绝对位置也没有进一步提升。T5（2020）把这个做法简化：每个相对距离只对应一个标量偏置，直接加在注意力分数上，距离按对数分桶。DeBERTa（2021）用两个向量分别表示一个词的内容和位置，词与词之间的注意力分别用内容和相对位置的矩阵计算。\n\nRoFormer 论文（2021 年发在 arXiv，馆藏按 2024 年 Neurocomputing 版登记）提出旋转位置编码 RoPE。它用旋转矩阵编码绝对位置，乘进查询和键以后，注意力分数里只剩相对位置的依赖。LLaMA 等大语言模型用的就是 RoPE。\n\n位置表示也决定模型能处理多长的输入。ALiBi（2022）的作者问：模型怎样在推理时处理比训练时更长的序列？他们发现只要换一种位置表示就能外推，而现有方法外推的效率不高。ALiBi 不在词向量上加位置嵌入，只按查询和键之间的距离给注意力分数加一个惩罚。13 亿参数的模型在 1024 长度上训练，可以外推到 2048。\n\n对 LLaMA 这类用 RoPE 训好的模型，下一个问题是怎样把窗口拉长。位置插值（2023）的作者认为，外推会产生极高的注意力分数，彻底破坏自注意力。所以他们把位置索引线性缩小到原来的窗口之内，LLaMA 只需不到 1000 步微调，就能扩到 32768 长度。YaRN（2024）扩展窗口所需的 token 少 10 倍，训练步数少 2.5 倍。LongRoPE（2024）找出位置插值里的两种不均匀性，再分两步扩展，把窗口推到 2048k token。",
+   "body_en": "Shaw and colleagues (2018) wrote the relative distance between elements directly into self-attention. On WMT 2014 English-German and English-French it beat absolute positions by 1.3 and 0.3 BLEU, and adding absolute positions back on top gave nothing more. T5 (2020) simplified the idea to a single learned scalar per relative distance, added to the attention logits, with distances grouped into logarithmic buckets. DeBERTa (2021) represents each word with two vectors, one for content and one for position, and computes attention between words from separate content and relative-position matrices.\n\nThe RoFormer paper, posted to arXiv in 2021 and catalogued here under its 2024 journal version in Neurocomputing, introduced rotary position embedding, RoPE. It encodes absolute position as a rotation applied to queries and keys, so that only relative position survives in the attention score. LLaMA and other large language models adopted it.\n\nThe choice of position signal also decides how long an input a model can handle. The ALiBi authors (2022) asked how a model can cope at inference with sequences longer than any it saw in training. They found that changing the position method is enough to allow extrapolation, and that existing methods did it poorly. ALiBi adds no position embedding to the word vectors. It penalizes each query-key score in proportion to their distance. A 1.3-billion-parameter model trained on length 1024 extrapolated to length 2048.\n\nFor models like LLaMA, already trained with RoPE, the next question was how to stretch the window. The Position Interpolation authors (2023) argued that extrapolating past the training length can produce extremely high attention scores that wreck self-attention. They scaled position indices down to fit the original window instead, and extended LLaMA to 32768 tokens with under 1000 fine-tuning steps. YaRN (2024) needed 10 times fewer tokens and 2.5 times fewer training steps than earlier extension methods. LongRoPE (2024) exploited two kinds of non-uniformity in positional interpolation and extended the window in two stages to 2048k tokens.",
+   "anchors": [
+    {
+     "id": "2018-Relative-Attention-Shaw",
+     "note_zh": "把元素间的相对距离写进自注意力，取代输入端的绝对位置。",
+     "note_en": "Put relative distances into self-attention in place of absolute positions on the input."
+    },
+    {
+     "id": "2020-T5-Relative-Position-Bias",
+     "note_zh": "每个相对距离对应一个标量偏置，按对数分桶，加在注意力分数上。",
+     "note_en": "One scalar bias per bucketed relative distance, added to the attention logits."
+    },
+    {
+     "id": "2021-DeBERTa-Disentangled-Attention",
+     "note_zh": "用两个向量分开表示内容和位置，分别计算它们之间的注意力。",
+     "note_en": "Separate vectors for content and position, with attention computed between them."
+    },
+    {
+     "id": "2024-RoPE",
+     "note_zh": "用旋转矩阵编码绝对位置，让注意力分数只依赖相对位置。",
+     "note_en": "Rotates queries and keys by absolute position so scores depend only on relative position."
+    },
+    {
+     "id": "2022-ALiBi",
+     "note_zh": "去掉位置嵌入，按距离线性惩罚注意力分数，训练短、测试长。",
+     "note_en": "No position embedding, just a distance penalty on scores: train short, test long."
+    },
+    {
+     "id": "2023-Position-Interpolation",
+     "note_zh": "把位置索引缩回训练窗口内，少量微调就把 RoPE 模型扩到 32768 长度。",
+     "note_en": "Scales position indices back into the trained window to extend RoPE models to 32768 tokens."
+    },
+    {
+     "id": "2024-YaRN",
+     "note_zh": "用更少的 token 和训练步数扩展 RoPE 模型的上下文窗口。",
+     "note_en": "Extends the context of RoPE models with far fewer tokens and steps."
+    },
+    {
+     "id": "2024-LongRoPE",
+     "note_zh": "利用位置插值的不均匀性，分两步把窗口扩到 2048k token。",
+     "note_en": "Uses non-uniform interpolation in two stages to reach a 2048k-token window."
+    }
+   ],
+   "more": {
+    "y0": 2018,
+    "y1": 2024
+   }
+  },
+  {
+   "id": "llm-era",
+   "years": [
+    2019,
+    2026
+   ],
+   "title_zh": "大模型年代：头、缓存和稀疏",
+   "title_en": "The Large-Model Era: Heads, Caches and Sparsity",
+   "lede_zh": "模型变大以后，瓶颈从训练转到推理。每生成一个词，都要把此前所有词的键和值从显存里再读一遍。",
+   "lede_en": "As models grew, the bottleneck moved from training to inference. Every new token means reading the keys and values of all earlier tokens from memory again.",
+   "body_zh": "Shazeer 在 2019 年就指出了这个问题。训练时整条序列可以并行，增量解码时不行，每一步都要反复加载很大的键张量和值张量，速度受显存带宽限制。他的多查询注意力让所有头共享同一组键和值，解码快得多，质量只略有下降。GQA（2023）取了中间：键值头的数目多于一个、少于查询头。作者还给出了一个办法，只用原预训练 5% 的算力，就把已有的多头模型检查点改造过来。\n\nFlashAttention（2022）处理的是另一种浪费。作者指出，第六室的那些近似方法降低了计算复杂度，却常常拿不到实际的时钟加速。他们认为缺的是 IO 感知：算法要计入 GPU 高带宽显存和片上 SRAM 之间的读写。FlashAttention 用分块计算精确的注意力，减少这两层存储之间的读写次数。PagedAttention（2023）把操作系统虚拟内存的分页办法用到键值缓存上，减少碎片和重复存储造成的显存浪费。\n\n缓存本身也在被压缩和裁剪。H2O（2023）发现，少数 token 贡献了注意力分数的大部分，于是只在缓存里保留这些 token 和最近的 token。StreamingLLM（2024）发现，只缓存最近窗口的做法在文本超过缓存长度后会失效，而保留最开头几个 token 的键值，就能把效果基本找回。作者把这几个 token 叫注意力汇点：它们本身不一定有意义，却吸收了很高的注意力分数。DeepSeek-V2 的多头潜在注意力（2024）把键值缓存压进一个潜在向量，比 DeepSeek 67B 少用 93.3% 的键值缓存。NSA（2025）把粗粒度的 token 压缩和细粒度的 token 选择结合起来，让稀疏注意力在训练时就能学，也和硬件对齐。\n\n也有人回头修改 softmax 注意力本身。Diff Transformer 认为，Transformer 会把注意力过多地分给无关的上下文，于是用两张 softmax 注意力图相减来抵消噪声。门控注意力（2025）在缩放点积注意力的输出后面加一个按头计算的 sigmoid 门。作者认为效果来自两点：门给注意力加上了非线性，门的分数又是稀疏的。他们还报告，这个门缓解了注意力汇点。",
+   "body_en": "Shazeer pointed at the problem in 2019. Training runs in parallel across the sequence, but incremental decoding cannot, and each step reloads large key and value tensors, so memory bandwidth sets the speed. His multi-query attention shares one set of keys and values across all heads. Decoding becomes much faster at a small cost in quality. GQA (2023) took the middle road, with more than one key-value head but fewer than the query heads. Its authors also showed how to convert an existing multi-head checkpoint using 5% of the original pre-training compute.\n\nFlashAttention (2022) went after a different kind of waste. Its authors noted that the approximate methods of Room 6 lowered the compute complexity but often brought no wall-clock speedup. What was missing, they argued, was IO-awareness: counting the reads and writes between the GPU's high-bandwidth memory and its on-chip SRAM. FlashAttention computes exact attention in tiles to cut that traffic. PagedAttention (2023) borrowed paging from operating-system virtual memory to manage the key-value cache, reducing the memory lost to fragmentation and duplication.\n\nOther work compressed and pruned the cache itself. H2O (2023) found that a small share of tokens carries most of the attention mass, and keeps only those plus the most recent ones. StreamingLLM (2024) showed that caching only a recent window fails once the text outgrows the cache. Keeping the first few tokens as well brings most of the quality back. The authors called those tokens attention sinks: they soak up high attention scores whether or not they mean anything. Multi-head Latent Attention in DeepSeek-V2 (2024) compresses the key-value cache into a latent vector and cut the cache by 93.3% compared with DeepSeek 67B. NSA (2025) combines coarse token compression with fine token selection so that sparse attention can be trained from the start and runs well on the hardware.\n\nOthers went back to softmax attention itself. Diff Transformer holds that a Transformer gives too much attention to irrelevant context, and subtracts one softmax attention map from another to cancel the noise. Gated Attention (2025) adds a head-specific sigmoid gate after scaled dot-product attention. Its authors trace the gain to the non-linearity and the sparse gate scores it adds, and report that it eases the attention-sink effect.",
+   "anchors": [
+    {
+     "id": "2019-MQA",
+     "note_zh": "所有头共享一组键和值，缓解增量解码的显存带宽瓶颈。",
+     "note_en": "All heads share one set of keys and values to ease the bandwidth limit of decoding."
+    },
+    {
+     "id": "2023-GQA",
+     "note_zh": "键值头的数目介于多查询和多头之间，并能从多头检查点改造得到。",
+     "note_en": "A number of key-value heads between multi-query and multi-head, convertible from existing checkpoints."
+    },
+    {
+     "id": "2022-FlashAttention",
+     "note_zh": "分块计算精确注意力，减少显存和片上存储之间的读写。",
+     "note_en": "Exact attention computed in tiles to cut traffic between GPU memory and on-chip SRAM."
+    },
+    {
+     "id": "2023-PagedAttention",
+     "note_zh": "按操作系统分页的办法管理键值缓存，减少显存浪费。",
+     "note_en": "Manages the key-value cache in pages, as an operating system manages memory."
+    },
+    {
+     "id": "2024-StreamingLLM",
+     "note_zh": "保留开头几个注意力汇点 token 加最近窗口，让模型处理无限长的流式输入。",
+     "note_en": "Keeps a few attention-sink tokens plus a recent window to stream text of any length."
+    },
+    {
+     "id": "2024-MLA",
+     "note_zh": "把键值缓存压进潜在向量，缓存比 DeepSeek 67B 少 93.3%。",
+     "note_en": "Compresses the key-value cache into a latent vector, 93.3% smaller than DeepSeek 67B's."
+    },
+    {
+     "id": "2025-NSA",
+     "note_zh": "粗粒度压缩加细粒度选择，可以在训练时就学的稀疏注意力。",
+     "note_en": "Sparse attention that combines compression and selection and can be trained from the start."
+    },
+    {
+     "id": "na-DiffAttn",
+     "note_zh": "用两张 softmax 注意力图相减，抵消分给无关上下文的注意力。",
+     "note_en": "Subtracts two softmax attention maps to cancel attention paid to irrelevant context."
+    },
+    {
+     "id": "2025-GatedAttention",
+     "note_zh": "在注意力输出后加按头的 sigmoid 门，作者报告它缓解了注意力汇点。",
+     "note_en": "A per-head sigmoid gate after attention, which its authors report eases attention sinks."
+    }
+   ],
+   "more": {
+    "y0": 2019,
+    "y1": 2026
+   }
+  }
+ ]
+}

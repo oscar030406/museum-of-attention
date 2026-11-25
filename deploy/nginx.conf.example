@@ -1,0 +1,27 @@
+# 注意力博物馆 · nginx 配置样例
+# 网站是纯静态文件，把 site/ 目录的内容放到 root 指向的位置即可。
+# 页面路由用 # 号（如 /#/gallery），不需要改写规则。
+# 把 museum.example.com 换成实际域名，HTTPS 证书可以用 certbot --nginx 申请。
+
+server {
+    listen 80;
+    server_name museum.example.com;
+    root /var/www/attention-museum;
+    index index.html;
+
+    # museum.json 约 1.6 MB、图谱库约 1.5 MB，压缩后各约 0.3 MB
+    gzip on;
+    gzip_comp_level 6;
+    gzip_types application/json application/javascript text/css image/svg+xml text/plain;
+
+    # 字体文件内容不变，可以长期缓存
+    location /assets/fonts/ {
+        add_header Cache-Control "public, max-age=31536000, immutable";
+    }
+
+    # 其余文件每次向服务器确认是否更新，更新数据后访客马上看到新内容
+    location / {
+        add_header Cache-Control "no-cache";
+        try_files $uri $uri/ =404;
+    }
+}

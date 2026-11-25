@@ -1,0 +1,710 @@
+{
+  "2013-GMM-Attention": {
+    "mechanism_zh": "生成下一个笔尖位置时，LSTM 得知道写到了哪个字。它用多个高斯窗给字符加权，每步只把窗中心往前推。",
+    "mechanism_en": "To keep the moving pen aligned with the text, the LSTM weights characters with a mixture of Gaussian windows. The center of each window advances at every step.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2015-Location-Sensitive-Attention": {
+    "mechanism_zh": "长录音里，相似的发音可能把解码器拉回先前的位置。先对上一步的注意力权重做卷积，再把得到的位置特征加进当前声学帧的打分。",
+    "mechanism_en": "Similar sounds can pull a recognizer back to a frame it has already read. Convolving the previous attention weights gives the next round of frame scoring a sense of where it left off.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2017-Hard-Monotonic-Attention": {
+    "mechanism_zh": "软注意力每输出一步就得看完整段输入。单调注意力从上次停下的地方继续扫，逐个给输入位置算停下的概率，选中一个就输出。",
+    "mechanism_en": "Full-sequence attention has to wait for the end of the input. This decoder scans forward from its last selection, estimating a stop probability at each position and reading the first one it accepts.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2018-GaAN": {
+    "mechanism_zh": "图上不同邻居可能提供不同线索，多头注意力却照单全收各头的输出。GaAN 从中心节点和邻域算出门值，给每个头的聚合结果再乘一次权重。",
+    "mechanism_en": "GaAN adds a second set of weights to graph attention. A small convolutional network looks at the node and its neighborhood and sets a gate for each head's output.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2018-TTS-Forward-Attention-with-Transition-Agent": {
+    "mechanism_zh": "合成语音时，发音可以在同一个音素上停留，也可以进入下一个。前向注意力只累加单调对齐路径的概率，转移模块每步给停留和前移分配权重。",
+    "mechanism_en": "Speech synthesis needs an alignment that moves in text order. Forward attention recursively sums the probabilities of paths that honor that order, while a transition agent weighs whether to stay on the current phone or advance.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2019-HAN": {
+    "mechanism_zh": "异质图上，沿不同元路径找到的邻居带来的信息也不同。HAN 先在每条元路径内给邻居打分并聚合，再给整条元路径的结果分配权重。",
+    "mechanism_en": "HAN weighs neighbors separately for each kind of path through a heterogeneous graph. A second attention step combines the path-specific summaries according to how informative each meta-path is.",
+    "check_en": "The example checks the shape of the edge-score tensor and cross-checks the sparse implementation against an explicit dense neighbor computation.",
+    "basis": "abstract"
+  },
+  "2019-HGAT-Text-Classification": {
+    "mechanism_zh": "短文本词少，标注也少。HGAT 把文本和补充信息放进同一张异质图，给邻居节点和节点类型分别打分，再合并邻居传来的信息。",
+    "mechanism_en": "A short text offers few clues on its own. HGAT adds related information to a heterogeneous graph and learns how much each neighboring node and each type of neighbor should contribute.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2019-MILk-Attention": {
+    "mechanism_zh": "同声传译既要决定再听多久，也要记得前面说了什么。MILk 用硬注意力定下读到哪里，再从当前位置回看所有已读词，做一次软注意力。",
+    "mechanism_en": "One attention head decides how far the translator reads before speaking. A soft head then weighs every source token heard so far, even tokens far behind that boundary.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2019-RGAT-PyG": {
+    "mechanism_zh": "图上的连边可能代表不同关系。RGAT 用各关系自己的投影给邻居打分，softmax 可在同类边内算，也可让各类边放在一起竞争。",
+    "mechanism_en": "An edge type changes how RGAT projects and scores a neighbor. Its softmax can weigh neighbors separately for each relation or make all incoming edges compete for the same weight.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2019-SAGPool": {
+    "mechanism_zh": "图池化得决定留下哪些节点。SAGPool 用图卷积综合节点特征和连边，给每个节点算一个分数，只保留得分靠前的节点，并按分数调整其特征。",
+    "mechanism_en": "Which nodes should survive graph pooling? SAGPool scores them with a graph convolution, keeps the highest-ranked nodes, and scales their features by their scores.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2020-Augmented-Memory-Transformer": {
+    "mechanism_zh": "流式识别不能等整段录音到齐。当前音频片段只和本段内的帧及记忆表里的向量算注意力，表里的向量是处理过的片段留下的摘要。",
+    "mechanism_en": "A streaming acoustic model works on a short segment at a time. Its attention reads the current segment together with a memory bank of embeddings left by earlier segments.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2020-Axial-DeepLab-Position-Sensitive-Attention": {
+    "mechanism_zh": "整张图两两打分很费算力，小窗口又看不到远处。Axial-DeepLab 沿图像的高和宽各算一次注意力，并把相对位置带入计算。",
+    "mechanism_en": "Axial-DeepLab splits expensive two-dimensional attention into two passes, one down the columns and one along the rows. Position-sensitive attention keeps track of where the features lie along each axis.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2020-Contextual-Block-Streaming-Transformer": {
+    "mechanism_zh": "音频切块后，说话人的声音特征还得传下去。每块接收上一块留下的上下文向量，把它和本块声学特征一起送进注意力层。",
+    "mechanism_en": "A speech encoder can process one block at a time and still carry context forward. Each block's self-attention receives a context embedding from the preceding block alongside the current acoustic features.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2020-DETR-Object-Query-Attention": {
+    "mechanism_zh": "DETR 把检测写成一次集合预测，省去手工设定的锚框和事后去重。固定数量的可学习查询一边交换信息，一边从图像特征中取值，并行输出各自的预测。",
+    "mechanism_en": "A fixed set of learned object queries reads the image and exchanges information inside the decoder. DETR turns those queries into a set of detections in one pass, dispensing with predefined anchors and duplicate suppression.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2020-DySAT": {
+    "mechanism_zh": "动态网络里，只看一张快照会漏掉节点关系的变化。DySAT 先对每张图里的邻居做注意力，再沿时间给同一节点在各张图里的表示分配权重。",
+    "mechanism_en": "DySAT first weighs a node's neighbors within each graph snapshot. It then applies attention across snapshots of that node to capture how its surroundings changed.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2020-Graph-Bert": {
+    "mechanism_zh": "整张大图的连边让节点难以分批处理。Graph-Bert 给每个目标节点采样一小组上下文节点，去掉显式边，让这组节点直接做自注意力。",
+    "mechanism_en": "Graph-Bert samples a small context for each target node so it can process large graphs in batches. Self-attention runs over the sampled nodes without explicit edges.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2020-MAGNN": {
+    "mechanism_zh": "一条元路径的中间节点也带着信息。MAGNN 先把它们编码进各条路径实例，在同类实例间加权聚合，再用另一层注意力合并不同类型的元路径。",
+    "mechanism_en": "MAGNN includes the intermediate nodes when it encodes each path instance. One round of attention pools instances of the same type, and another combines the resulting meta-path summaries.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2020-MMA-Speech-Recognition": {
+    "mechanism_zh": "流式识别得等各头找到发音边界才出词，掉队的头会拖住解码。MMA 训练时随机遮住一些头，让其余头也学会对齐，解码时再同步各头。",
+    "mechanism_en": "A lagging attention head can hold up the next token in streaming speech recognition. HeadDrop masks random heads during training so the rest learn to align, and head-synchronous decoding coordinates their boundary decisions.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2020-MMHA": {
+    "mechanism_zh": "同声翻译不必按固定节奏读入。MMHA 让 Transformer 解码器的每个注意力头在已到达的输入中单调向前找边界，各头可以停在不同位置。",
+    "mechanism_en": "Monotonic Multihead Attention gives each decoder head its own learned reading boundary. These boundaries move forward through the available input as the translation proceeds.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2020-SAN-M": {
+    "mechanism_zh": "自注意力能联系相隔很远的发音。SAN-M 再并上一条 DFSMN 记忆支路，用可学习滤波汇集相邻帧，把局部声学信息加回注意力输出。",
+    "mechanism_en": "SAN-M pairs attention over distant speech frames with a DFSMN memory block. The memory block filters nearby frames and adds that local information to the attention output.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-AdaBins-Mini-ViT-Attention": {
+    "mechanism_zh": "深度分箱随图而变。AdaBins 看全图定档，再按像素加权混合。",
+    "mechanism_en": "An image gets its own set of depth bins from a Transformer that sees the whole scene. Each pixel's depth is a weighted combination of those bin centers.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-Conditional-DETR-Cross-Attention": {
+    "mechanism_zh": "原版 DETR 的查询得靠内容特征摸索物体在哪。Conditional DETR 从解码器表示生成空间查询，让各个交叉注意力头集中寻找框的某一侧或内部区域。",
+    "mechanism_en": "Conditional DETR derives a spatial query from the decoder embedding. It steers each cross-attention head toward a band where a particular box edge or interior region is likely to lie.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-DGL-EGATConv": {
+    "mechanism_zh": "只按节点特征打分会漏掉边本身的信息。EGAT 把起点、终点和边的特征一起用于打分，让更新后的边表示也能传到下一层。",
+    "mechanism_en": "EGAT looks at the edge as well as the nodes it connects when it assigns attention weights. The layer also passes updated edge features to the next layer.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-Efficient-Conformer-Grouped-Attention": {
+    "mechanism_zh": "音频帧一多，Conformer 的注意力就吃紧。Grouped Attention 把相邻帧拼成一组，用组向量算组与组的注意力，缩短参与两两匹配的序列。",
+    "mechanism_en": "Grouped attention packs consecutive acoustic frames into wider vectors before computing self-attention. The attention matrix compares groups of frames, so each axis is shorter.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-GMT-Graph-Multiset-Transformer": {
+    "mechanism_zh": "整图取平均会把节点等量相加，也不管它们怎样相连。GMT 用多头注意力把节点聚成全图表示，聚合时考虑节点之间的结构关系。",
+    "mechanism_en": "A mean gives every node the same influence and ignores the graph structure. GMT pools the nodes with multihead attention that takes their structural relationships into account.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-Gophormer": {
+    "mechanism_zh": "整张大图上的全连接注意力难以算完。Gophormer 为目标节点抽取一个局部子图，再按子图里节点间的远近调节注意力打分。",
+    "mechanism_en": "Gophormer samples an ego-graph around the node it wants to classify. Attention runs inside that sample, with a structural bias that reflects how close each pair of nodes is.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-GraphiT": {
+    "mechanism_zh": "一组节点特征本身交代不了图的结构。GraphiT 用图核给节点对的自注意力加上相对位置权重，让连边带来的邻近关系也能左右打分。",
+    "mechanism_en": "GraphiT gives pairs of nodes a relative position derived from a graph kernel. That term shapes self-attention scores even when the input arrives as a set of node features.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-GraphTrans-Readout": {
+    "mechanism_zh": "只沿边传消息，隔得很远的节点很难交换信息。GraphTrans 先跑图网络，再让所有节点做无位置编码的自注意力，由图级令牌汇总结果。",
+    "mechanism_en": "A graph network handles local message passing first. GraphTrans then lets all node embeddings attend to one another without positional encodings and gathers the result in a graph-level token.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-K-Net-Dynamic-Kernel-Attention": {
+    "mechanism_zh": "K-Net 给每个候选区域一个掩码核。它按当前掩码汇集区域特征，用这些特征更新核，再让各个核做自注意力，帮助它们分清各自负责的对象。",
+    "mechanism_en": "K-Net pools image features under each predicted mask and uses them to update that mask's kernel. Self-attention lets the kernels exchange information before they draw the next set of masks.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-MAGNA": {
+    "mechanism_zh": "只给直连邻居打分，隔几条边的信息就得等下一层。MAGNA 先算单跳注意力，再沿图扩散这些权重，让多条路径上的节点在同一层参与聚合。",
+    "mechanism_en": "MAGNA starts with attention scores on individual edges. It diffuses those scores along paths so a single layer can aggregate information from nodes several hops away.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-MaskFormer-Query-Mask-Decoder": {
+    "mechanism_zh": "逐像素分类把类别分给各个位置。MaskFormer 让查询读图像并给整块区域分类，再把查询变成掩码向量，与像素特征做点积画出掩码。",
+    "mechanism_en": "MaskFormer uses decoder queries to read image features and predict a class per region. The dot product of a query's mask embedding with pixel embeddings gives the region's mask.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-MaX-DeepLab-Dual-Path-Attention": {
+    "mechanism_zh": "全景分割可以直接画出带类别的掩码。MaX-DeepLab 在卷积特征之外放入一组全局记忆，让像素特征与记忆向量交换信息，再一起生成掩码。",
+    "mechanism_en": "MaX-DeepLab lets a global memory stream communicate directly with pixel features in the convolutional stream. The mask Transformer uses those features to predict class-labeled masks.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-SAN-Graph-Transformer": {
+    "mechanism_zh": "图节点没有词序可借。SAN 从图拉普拉斯的谱里学习每个节点的位置编码，把它加在节点特征上，再让所有节点两两做注意力。",
+    "mechanism_en": "SAN learns node positions from the graph's Laplacian spectrum and adds those positions to the node features. Every node can then attend directly to every other node.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-Segmenter-Class-Mask-Attention": {
+    "mechanism_zh": "光看一个图像块，常分不清它属于哪一类。Segmenter 让类别令牌和图像块一起做自注意力，再按两者的相似度给每类画掩码。",
+    "mechanism_en": "A patch can be ambiguous in isolation. Segmenter's mask decoder lets class tokens and patch tokens attend to one another, then scores each patch against the class tokens to draw a mask for each class.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-SepFormer-Dual-Path-Attention": {
+    "mechanism_zh": "语音分离既要抓住短音节，也要联系相隔很远的声音。SepFormer 把音频特征切成块，交替在块内和块间做自注意力，代替逐帧运行的循环层。",
+    "mechanism_en": "SepFormer divides the audio features into chunks. Attention alternates between positions within each chunk and corresponding positions across chunks, giving it both a short and a long time scale.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-SMCA-Spatial-Modulation": {
+    "mechanism_zh": "DETR 训练初期得从整张特征图找目标。SMCA 先从查询估一个框，生成以估计位置为中心的高斯图，再用它加重框附近的注意力。",
+    "mechanism_en": "SMCA starts from a rough box estimate. It uses a Gaussian map around that location to steer decoder attention toward nearby image features and make the initial search easier.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-SuperGAT": {
+    "mechanism_zh": "图里有些连边会把无关节点拉进邻域。SuperGAT 除了给邻居打分，还让注意力的打分函数预测两点间有没有边，用这项任务训练打分。",
+    "mechanism_en": "A graph can link the wrong neighbors. SuperGAT also uses its attention scores to predict whether a pair of nodes shares an edge, giving the scoring function a training signal from the graph itself.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-U2-Dynamic-Chunk-Attention": {
+    "mechanism_zh": "同一个语音识别模型可以边听边认，也可以等录音收齐。U2 改变编码器注意力的分块大小，让模型读到不同长度的右侧上下文。",
+    "mechanism_en": "U2 controls how much future audio the encoder can see by changing the attention chunk size. The same recognizer can therefore stream with limited lookahead or process a complete recording.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2021-U2-Bidirectional-Decoder-Attention": {
+    "mechanism_zh": "同一段语音可能有几个像样的转写。U2++ 把第一遍留下的候选分别从左到右、从右到左送进注意力解码器，再合并两边的分数重排。",
+    "mechanism_en": "U2++ revisits the first pass's transcription candidates with two attention decoders, one reading the text forward and one backward. It combines their scores to rerank the candidates.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-AdaMixer-Query-Adaptive-Mixing": {
+    "mechanism_zh": "要找大小各异的物体，查询得能换地方、换尺度。AdaMixer 让每个查询预测采样偏移，再用这个查询控制 MLP 如何混合取回的特征。",
+    "mechanism_en": "Each AdaMixer query predicts where and at which scales to sample image features. The same query controls an MLP that mixes the sampled features for its detection.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-Anchor-DETR-RCDA": {
+    "mechanism_zh": "二维特征图上的交叉注意力要存下每个查询对所有位置的分数。RCDA 把匹配拆成行和列，分别算一维权重，再沿两个方向取值。",
+    "mechanism_en": "RCDA avoids storing a full two-dimensional score map for every object query. It computes separate row and column weights and pools image features along the two axes.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-CMGAN-Time-Frequency-Attention": {
+    "mechanism_zh": "去噪要同时考虑一个频带随时间怎样变，以及同一时刻各频带怎样配合。CMGAN 把两轮 Conformer 注意力分给谱图的时间轴和频率轴。",
+    "mechanism_en": "CMGAN runs one Conformer stage along time and another along frequency. That lets the speech enhancer compare frames within a band and bands within a frame.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-DAB-DETR-Anchor-Attention": {
+    "mechanism_zh": "DAB-DETR 让每个查询带着一个框找物体。框宽和框高调节交叉注意力的覆盖范围，每层读完图像特征再更新框坐标。",
+    "mechanism_en": "A DAB-DETR query carries the coordinates of a box. The box's width and height shape its spatial attention map, and the decoder refines the coordinates after each layer.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-DN-DETR-Denoising-Query-Mask": {
+    "mechanism_zh": "DETR 训练初期，同一物体可能反复换匹配对象。DN-DETR 加入带噪的标注框供解码器练习还原，并用掩码隔开去噪组，避免常规查询偷看答案。",
+    "mechanism_en": "DN-DETR gives the decoder noisy ground-truth boxes to reconstruct while its regular assignments are still unstable. An attention mask separates denoising groups and keeps matching queries from seeing the denoising inputs.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-EGT": {
+    "mechanism_zh": "图卷积要沿边一层层传递消息。EGT 让所有节点直接做自注意力，由独立的边通道给打分加偏置并控制门值，边通道也随层更新。",
+    "mechanism_en": "EGT gives every node access to every other node. A separate edge channel supplies biases and gates for attention and carries the updated pairwise information to the next layer.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-GroupViT-Grouping-Attention": {
+    "mechanism_zh": "没有像素标注，图像块也可以自己分组。GroupViT 用组令牌给各块打分，将每块分给一个组，再把小组逐层合成更大的区域。",
+    "mechanism_en": "GroupViT learns to group patches from image-level text supervision. Attention matches patches to group tokens, then successive grouping stages build larger regions.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-GSAT": {
+    "mechanism_zh": "图里有些边只碰巧和标签一起出现。GSAT 学习每条边的保留概率，随机抽取子图，并用信息瓶颈约束限制无关边携带的信息。",
+    "mechanism_en": "GSAT learns a retention probability for each edge and samples a subgraph from those probabilities. An information bottleneck pushes the model to keep the connections it needs for the prediction.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-HTS-AT": {
+    "mechanism_zh": "长谱图上的全局注意力占用大量显存。HTS-AT 先在局部谱图窗口内做自注意力，再逐层合并令牌，让后面的层看到更大的范围。",
+    "mechanism_en": "HTS-AT starts with attention inside small spectrogram windows. As it merges tokens between stages, later layers can see more of the recording without comparing every original patch.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-kMaX-DeepLab-Cluster-Attention": {
+    "mechanism_zh": "视觉解码器常让每个查询在整张图上找像素。kMaX-DeepLab 反过来让每个像素选得分最高的查询，再把选中同一查询的像素汇总给它。",
+    "mechanism_en": "In kMaX-DeepLab, each pixel chooses its best-scoring query. The decoder then sums the features assigned to each query, turning a large cross-attention map into a clustering step.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-NeWCRFs-Window-Attention": {
+    "mechanism_zh": "整张图上的全连接条件随机场算起来太贵。NeWCRFs 把图像分成窗口，在每个窗口内用多头注意力计算像素对的势函数，再据此调整深度。",
+    "mechanism_en": "A fully connected conditional random field is expensive over a whole image. NeWCRFs confines it to windows, where multihead attention computes the pairwise potentials used to refine depth.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-PaSST-Structured-Patchout": {
+    "mechanism_zh": "谱图切成小块后，令牌越多，自注意力越贵。PaSST 训练时随机丢掉整段时间或频率上的谱图块，只对剩下的令牌算注意力。",
+    "mechanism_en": "During training, PaSST drops entire time or frequency strips from the spectrogram's patch sequence. Self-attention runs on the surviving patches, reducing the number of pairwise comparisons.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-SAT-Graph-Transformer": {
+    "mechanism_zh": "位置编码相近的节点，周围结构未必相像。SAT 先编码以各节点为根的子图，用这些局部结构向量生成查询和键，再给节点对打分。",
+    "mechanism_en": "SAT reads the neighborhood rooted at each node before computing attention. The resulting subgraph embeddings supply the queries and keys, so the scores can reflect structural similarity.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-Sparse-DETR-Encoder-Attention": {
+    "mechanism_zh": "多尺度特征让 DETR 的编码器收到大量令牌。Sparse DETR 预测哪些令牌会被解码器读到，只挑这些令牌做可变形注意力更新。",
+    "mechanism_en": "Sparse DETR predicts which encoder tokens the decoder is likely to read. It spends its deformable attention updates on those tokens, even when the feature pyramid supplies many more.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-SpeechT5-Relative-Attention": {
+    "mechanism_zh": "语音帧和文字令牌共用同一套 Transformer。SpeechT5 在自注意力的点积分数里加入相对位置项，让排序线索取决于两个输入位置相隔多远。",
+    "mechanism_en": "SpeechT5 shares a Transformer between speech and text. Its self-attention adds a relative position term to the dot-product score, giving it information about the separation between two inputs.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-UGformer": {
+    "mechanism_zh": "UGformer 给图注意力安排了两种读法。一个版本给每个中心节点抽样一组邻居，另一个直接让全图节点做自注意力。",
+    "mechanism_en": "UGformer offers two scopes for graph self-attention. It can run a Transformer over a sampled neighborhood for each node or let all input nodes attend to one another.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-ViTDet-Window-Propagation-Attention": {
+    "mechanism_zh": "大图让逐块都做全局注意力的代价升高。ViTDet 多数层只在固定窗口内算注意力，穿插少量跨窗口层，让窗口之间也能传递信息。",
+    "mechanism_en": "Most ViTDet blocks use attention inside fixed, unshifted windows. A few cross-window blocks pass information between windows, making a plain ViT practical for detection.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2022-WavLM-Gated-Relative-Bias": {
+    "mechanism_zh": "两帧相隔同样久，在不同语音片段里的意义可以不同。WavLM 让查询内容控制相对位置偏置的强度，再把偏置加进注意力分数。",
+    "mechanism_en": "WavLM does not give a given time lag the same bias everywhere. A gate computed from the query controls how much that lag contributes to the attention score.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-BEATs-Gated-Relative-Attention": {
+    "mechanism_zh": "同样的帧间距在一段音乐和一段环境音中未必同等重要。BEATs 让当前声学令牌生成门值，在自注意力里调节各个相对距离的偏置。",
+    "mechanism_en": "BEATs lets each acoustic query gate its relative position bias. The contribution of a time offset to the attention score can therefore vary with the sound at the query.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-Co-DETR-Decoder-Auxiliary-Query-Mask": {
+    "mechanism_zh": "DETR 的一对一匹配给解码器留下的正样本很少。Co-DETR 把辅助检测头选中的正样本坐标变成额外查询，训练时用掩码隔开不同来源的查询组。",
+    "mechanism_en": "Co-DETR turns positive locations from auxiliary detection heads into additional decoder queries. During training, an attention mask separates query groups so the decoder can learn from extra positives.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-DDQ-Dense-Distinct-Query-Attention": {
+    "mechanism_zh": "查询放得密，邻近查询往往都盯着同一个目标。DDQ 先从密集候选里挑出互异查询，再用掩码控制哪些查询可以在解码器里互相读取。",
+    "mechanism_en": "Dense queries help cover crowded scenes but can duplicate one another. DDQ filters overlapping candidates and masks decoder self-attention around the distinct queries it keeps.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-DIFFormer": {
+    "mechanism_zh": "只看图上给定的边，可能错过没有连边的相关节点。DIFFormer 从能量约束的扩散推导两两权重，让样本按这些权重交换信息。",
+    "mechanism_en": "DIFFormer derives pairwise attention weights from an energy-constrained diffusion process. The weights let instances exchange information even when no input edge connects them.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-DINO-Contrastive-Denoising-Mask": {
+    "mechanism_zh": "去噪训练既要找回正确的框，也要放弃偏得太远的框。DINO 将正负去噪查询分组，用自注意力掩码隔开各组，也不让匹配查询读到去噪查询。",
+    "mechanism_en": "DINO trains the decoder to recover boxes from positive noisy queries and reject negative ones. A self-attention mask separates the denoising groups and keeps matching queries from reading them.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-Focus-DETR-Token-Attention": {
+    "mechanism_zh": "编码器把精力花在背景上，会挤掉真正需要的计算。Focus-DETR 用位置和类别信息给多尺度令牌打分，筛出前景候选，让得分较高的候选再做自注意力。",
+    "mechanism_en": "Focus-DETR scores multiscale tokens for localization and category evidence. It drops background candidates and gives the most promising object tokens an extra chance to interact.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-GOAT-Graph-Transformer": {
+    "mechanism_zh": "大图里，远处的节点也可能和当前节点有关。GOAT 用随机特征近似全图自注意力，让每个节点在计算上能读到全图，又不用展开两两分数。",
+    "mechanism_en": "GOAT uses a random-feature approximation to global self-attention. Every node can draw on the whole graph without materializing all pairwise scores.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-Graph-ViT": {
+    "mechanism_zh": "图上逐边传消息很难连起远处的节点，逐节点做全局注意力又太贵。Graph ViT 先把图分成子图，将每块压成一个令牌，再让块与块做注意力。",
+    "mechanism_en": "Graph ViT embeds patches of a graph as tokens and runs attention between those tokens. Long-range information can move across patches without scoring every pair of nodes.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-Graphormer-GD": {
+    "mechanism_zh": "同样长的最短路，沿途可走的路线可能差很多。Graphormer-GD 把节点对的最短路或电阻距离送进注意力打分，让图的连通方式影响取值。",
+    "mechanism_en": "Graphormer-GD feeds graph distances into node-to-node attention. Shortest-path and resistance distances supply different views of connectivity, including whether a route has alternatives.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-GRIT": {
+    "mechanism_zh": "把图只当一袋节点，注意力就少了结构线索。GRIT 用随机游走概率初始化节点对的表示，再在注意力层里同时更新节点及其两两关系。",
+    "mechanism_en": "GRIT starts each node pair with features drawn from random-walk probabilities. The attention layer then updates both node embeddings and the pair features that help determine their interactions.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-HINormer": {
+    "mechanism_zh": "异质图上的远邻不能只按节点特征比较。HINormer 编码节点周围的局部结构，再把连到目标的关系类型带入注意力，给不同邻居分配权重。",
+    "mechanism_en": "HINormer builds structural features around each node and encodes the types of relations involved. Its attention uses both kinds of information when weighing neighbors across a wider neighborhood.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-Lite-DETR-Key-Aware-Deformable-Attention": {
+    "mechanism_zh": "多尺度检测里，细网格的令牌特别多。Lite DETR 交错更新粗细特征，并让采样点的键和查询一起决定可变形注意力的权重。",
+    "mechanism_en": "Lite DETR interleaves updates to coarse and fine feature maps to spare work on the largest grids. In its deformable attention, the sampled key helps determine the weight assigned to that location.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-Mask-DINO-Mask-Enhanced-Queries": {
+    "mechanism_zh": "检测查询可以先描出轮廓，再据此找框。Mask DINO 用初始掩码的外接框设定解码器的参考位置，查询按参考框从多尺度特征采样。",
+    "mechanism_en": "Mask DINO can turn a preliminary mask into a box that initializes the decoder's spatial reference. The query then reads multiscale image features at deformable sampling points tied to that box.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-MossFormer": {
+    "mechanism_zh": "分块语音分离里，远处的帧往往要绕一层才能交换信息。MossFormer 同时算块内完整自注意力和覆盖全序列的线性注意力。",
+    "mechanism_en": "MossFormer runs full self-attention within each audio chunk and linearized self-attention across the entire sequence. The global branch lets distant frames interact directly.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-NAGphormer": {
+    "mechanism_zh": "把大图所有节点排成一串，自注意力的计算量会随节点数快速上升。NAGphormer 给每个节点把各跳邻域分别汇成令牌，在这条短序列里算注意力。",
+    "mechanism_en": "NAGphormer makes a short sequence for each node, with one token summarizing each hop of its neighborhood. Self-attention only has to mix that node's hop summaries.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-OneFormer-Task-Conditioned-Attention": {
+    "mechanism_zh": "同一张图做语义、实例或全景分割时，输出要求各不相同。OneFormer 用任务令牌设定查询，让查询沿当前掩码限定的区域读取图像特征。",
+    "mechanism_en": "A task token tells OneFormer which kind of segmentation to produce. The decoder's queries read image features inside their current masks and refine them for that task.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-OpenSeeD-Decoupled-Mask-Attention": {
+    "mechanism_zh": "检测只需要找前景，分割还得给背景画掩码。OpenSeeD 把两类查询分组解码，让前景目标和背景区域各自聚合图像线索。",
+    "mechanism_en": "Detection queries look for objects, while segmentation also has to account for background regions. OpenSeeD decodes foreground and background queries separately so they do not interfere with one another.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-PixelFormer-Skip-Attention": {
+    "mechanism_zh": "估深需要全图线索，物体边缘又依赖细节。PixelFormer 从粗特征建立像素查询，再用交叉注意力逐层读取更细的跳接特征。",
+    "mechanism_en": "PixelFormer starts with pixel queries from the coarsest encoder features. Skip attention lets those queries pull in higher-resolution details as the decoder refines the depth map.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-SAM-Two-Way-Prompt-Attention": {
+    "mechanism_zh": "同一张图里，点在哪，分割结果就可能不同。SAM 让提示令牌互相做自注意力，再让提示和图像令牌双向交换信息，生成对应的掩码。",
+    "mechanism_en": "A point prompt can change which object SAM segments. Prompt tokens first attend to one another, then exchange information with image tokens in both directions before the mask is drawn.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-SAN-Open-Vocabulary-Mask-Attention": {
+    "mechanism_zh": "整图分类的 CLIP 要给局部区域认类别，得知道该看哪里。SAN 的旁路一支预测掩码，另一支生成注意力偏置，引导固定的 CLIP 识别候选区域。",
+    "mechanism_en": "SAN gives a frozen CLIP model regions to classify. One branch of a small side network predicts candidate masks, and the other supplies attention biases for recognizing those regions.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-SeamlessStreaming-Monotonic-Decoder": {
+    "mechanism_zh": "同声翻译要在一句话说完之前开始输出。SeamlessStreaming 让解码器各头在已收到的语音里向前找读取边界，据此决定何时继续翻译。",
+    "mechanism_en": "SeamlessStreaming can start translating before the speaker finishes a sentence. Monotonic attention heads advance through the incoming speech and determine when the decoder has heard enough to continue.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-SegCLIP-Semantic-Grouping-Attention": {
+    "mechanism_zh": "CLIP 学会了认整图里的概念，分割还得找到概念落在哪些块上。SegCLIP 用可学习的区域中心给图像块打分，把相近的块聚成区域。",
+    "mechanism_en": "SegCLIP gives a CLIP-based model learnable region centers. Patches are scored against those centers and gathered into groups that can be turned into segmentation masks.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-Specformer": {
+    "mechanism_zh": "Specformer 让特征值互相做注意力，滤波时能看全谱。",
+    "mechanism_en": "Specformer makes the graph's eigenvalues attend to one another. It builds a spectral filter from the resulting representations, so the treatment of one frequency can depend on the rest of the spectrum.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2023-X-Decoder-Generalized-Attention": {
+    "mechanism_zh": "分割掩码和生成文字通常分开解码。X-Decoder 把通用查询和由文本生成的查询放进同一个解码器，从图像特征读出掩码或语言令牌。",
+    "mechanism_en": "X-Decoder uses a common decoder for masks and language tokens. It reads image features with two kinds of queries: generic slots and queries formed from text.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-BinsFormer-Scale-bin-Attention": {
+    "mechanism_zh": "自适应深度分箱得随场景选择合适的间距。BinsFormer 的解码查询逐层读取不同尺度的图像特征，预测一组深度区间，再按像素的分布混合区间中心。",
+    "mechanism_en": "BinsFormer treats the depth bins as a set to predict. Decoder queries inspect image features from coarse to fine, and each pixel's bin probabilities determine how to combine the predicted centers.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-BS-RoFormer-Band-Split-Attention": {
+    "mechanism_zh": "从混音里分出乐器，要同时追踪声音的延续和频带之间的联系。BS-RoFormer 先拆频带，再交替沿时间和频带做注意力，两轴都加 RoPE。",
+    "mechanism_en": "BS-RoFormer splits the spectrogram into bands. RoPE attention alternates between following each band through time and comparing the bands at a given moment.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-CAT-Seg-Cost-Aggregation-Attention": {
+    "mechanism_zh": "单看每个位置与类别名称的相似度，容易在区域边界附近判错。CAT-Seg 把这些相似度排成一张表，分别沿图像空间和候选类别做注意力聚合。",
+    "mechanism_en": "CAT-Seg starts with a table of cosine similarities between image locations and class names. It refines the table with attention across locations and across classes before assigning pixel labels.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-ClearCLIP-Self-Self-Attention": {
+    "mechanism_zh": "CLIP 的整图特征容易把背景带进局部分割。ClearCLIP 在末层用查询与查询的相似度打分，并去掉残差和前馈分支，只留下注意力输出。",
+    "mechanism_en": "ClearCLIP changes the last CLIP layer to compare queries with queries. It keeps the attention output alone, dropping the residual and feed-forward paths that can blur local distinctions.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-CoBFormer": {
+    "mechanism_zh": "全图注意力可能让远处节点的分数盖过近邻。CoBFormer 分开计算簇内和簇间注意力，留一条专门读近邻的路径，也让远处的簇交换信息。",
+    "mechanism_en": "CoBFormer gives local interactions their own attention layer inside each cluster. A separate Transformer connects clusters, so nearby nodes need not compete directly with every distant node.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-DFormer-RGB-D-Attention": {
+    "mechanism_zh": "深度图的几何线索容易在为 RGB 设计的网络里丢掉。DFormer 把颜色和深度一起用于空间注意力，再用深度特征调节对应位置的颜色特征。",
+    "mechanism_en": "DFormer uses both color and depth features to compute spatial attention. Depth also modulates color features at individual locations, so geometric information enters the block directly.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-Gradformer": {
+    "mechanism_zh": "普通全局注意力不会主动照顾图上的近邻。Gradformer 加一张随图距离指数衰减的掩码，让各头各自学习多远的节点仍值得关注。",
+    "mechanism_en": "Gradformer applies a distance-decay mask to graph attention. Each head learns its own mask, keeping nearby nodes prominent while leaving a route for distant information.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-LW-DETR-Group-Query-Attention": {
+    "mechanism_zh": "要让轻量检测器在训练时看到更多正样本，LW-DETR 把查询分成多组，各组单独做自注意力并共享解码器权重。推理时只用主组。",
+    "mechanism_en": "LW-DETR trains several groups of object queries with a shared decoder. Self-attention stays within each group, and only the primary group is used at inference.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-MossFormer2": {
+    "mechanism_zh": "MossFormer 的注意力更擅长联系远处的声音，容易漏掉细粒度的重复变化。MossFormer2 加上带门控的扩张 FSMN，用卷积补上这部分时序信息。",
+    "mechanism_en": "MossFormer2 adds a gated, dilated FSMN to the original attention module. This convolutional memory picks up finer temporal patterns while attention handles longer-range dependencies.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-Polynormer": {
+    "mechanism_zh": "大图用两两注意力很费算力，简化后又容易丢掉表达能力。Polynormer 用局部和全局两轮注意力控制特征多项式的系数，保留高次项。",
+    "mechanism_en": "Polynormer uses local and global attention scores as coefficients in a high-degree polynomial of the input features. Its attention scheme scales linearly with graph size.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-Relation-DETR-Position-Bias": {
+    "mechanism_zh": "检测查询只按内容做自注意力，会漏掉框之间的位置关系。Relation-DETR 编码两框的相对位置和尺度，把结果加进每轮查询的打分。",
+    "mechanism_en": "Relation-DETR turns the relative position and size of two predicted boxes into an attention bias. It adds that bias to decoder self-attention as the boxes are refined.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-Right-chunk-Decoder-Only-ASR": {
+    "mechanism_zh": "纯因果掩码只让文字令牌看见发音边界以前的语音。Right-chunk Attention 把可见范围向右挪一点，让解码器多听几个语音令牌再出字。",
+    "mechanism_en": "A strictly causal decoder can only use the speech preceding a text token's boundary. Right-chunk attention lets that token read a bounded stretch of later speech before the decoder commits.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-RT-DETR-AIFI": {
+    "mechanism_zh": "多尺度特征全交给注意力，检测器会算得太重。RT-DETR 只在最高层特征图内做自注意力，层与层之间改用卷积融合。",
+    "mechanism_en": "RT-DETR reserves self-attention for the highest-level feature map. Convolutions do the work of merging features across scales, keeping large maps out of the attention calculation.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-RT-DETRv2-Discrete-Sampling-Attention": {
+    "mechanism_zh": "不同分辨率的特征图不必用同样多的采样点。RT-DETRv2 让各层单独设定点数，还可以在离散位置直接取值，省去双线性插值。",
+    "mechanism_en": "RT-DETRv2 lets deformable attention use a different number of samples at each feature scale. It can also read discrete grid positions directly, avoiding bilinear interpolation.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-Salience-DETR-Self-Attention": {
+    "mechanism_zh": "检测编码器逐层更新所有令牌，背景也要占计算量。Salience DETR 每层按分数挑出更可能对应物体的令牌，把注意力更新留给它们。",
+    "mechanism_en": "Salience DETR scores encoder tokens for how likely they are to describe an object. Each layer spends its attention updates on the selected tokens, using a score trained to avoid favoring particular object scales.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-SCLIP-Correlative-Self-Attention": {
+    "mechanism_zh": "CLIP 会认整张图，却常把类别画到不相干的块上。SCLIP 在最后一层分别算查询对和键对的相似度，再合起来给图像块分配注意力。",
+    "mechanism_en": "SCLIP changes the last attention layer to compare query with query and key with key. It reuses the pretrained projections and combines the two similarity maps to give CLIP finer spatial responses.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-Semantic-SAM-Granularity-Attention": {
+    "mechanism_zh": "点在车轮上，可能想分出轮子，也可能想选整辆车。Semantic-SAM 给一次点击配上多个查询，让各查询从图像特征中读取不同粒度的区域。",
+    "mechanism_en": "A click on a wheel can mean the wheel or the whole car. Semantic-SAM gives the click multiple queries that read image features and predict masks at different levels of detail.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-Simul-Whisper-Alignment-Attention": {
+    "mechanism_zh": "Whisper 原本要等一段语音到齐再转写。Simul-Whisper 看特定交叉注意力头把当前词对齐到哪一帧，读到分块末尾附近就暂缓输出。",
+    "mechanism_en": "Simul-Whisper reads the alignment already present in Whisper's cross-attention. When a token points too close to the end of the current audio chunk, the decoder waits for more speech.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-SpExphormer": {
+    "mechanism_zh": "稀疏图注意力仍可能保留大量很少用到的边。SpExphormer 先训练一个窄网络，从各层的注意力分数挑边，再用筛过的边集训练更宽的网络。",
+    "mechanism_en": "SpExphormer trains a narrow model on the augmented graph first. It uses that model's attention scores to keep the active edges for each layer of a wider model.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-TF-GridNet-Full-band-Attention": {
+    "mechanism_zh": "单独追踪每个频带，容易漏掉声音跨频带的变化。TF-GridNet 把每帧的频带特征合成查询和键，用整帧的相似度沿时间做自注意力。",
+    "mechanism_en": "TF-GridNet forms each frame's queries and keys from features across the frequency bands. Its temporal attention compares whole frames, giving speech separation a view of how the bands change together.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2024-USEF-TFGridNet-Cross-Attention": {
+    "mechanism_zh": "一段参考录音里，每一帧提供的说话人线索都不同。USEF-TFGridNet 用混音帧作查询，对参考语音做多头交叉注意力，为每帧取回目标人的线索。",
+    "mechanism_en": "USEF-TFGridNet uses mixture frames to query the enrollment recording. Multihead cross-attention selects speaker cues for each frame, avoiding the need for a separate speaker encoder.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-ChunkFormer-Masked-Chunk-Attention": {
+    "mechanism_zh": "长录音整段送进 Conformer，注意力会吃掉太多内存。ChunkFormer 把录音切块，用掩码限定每块能读取的左右语音上下文。",
+    "mechanism_en": "ChunkFormer processes a long recording a chunk at a time. A mask lets each chunk read a limited stretch of audio on either side without attending to the entire recording.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-D-FINE-Gated-Decoder-Attention": {
+    "mechanism_zh": "解码器换了关注的目标时，原查询里的线索可能会干扰下一层。D-FINE 将原查询和交叉注意力输出拼接后算出两组门值，再把两路各自加权相加。",
+    "mechanism_en": "D-FINE concatenates a query with its cross-attention output to compute two sigmoid gates. The gates scale the old query and the new image evidence before the decoder adds them.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-EoMT-Masked-Query-Attention": {
+    "mechanism_zh": "给 ViT 做分割通常得另接解码器。EoMT 把掩码查询放进 ViT 后几层，训练时先让查询只读掩码内的图像块，再逐步放开限制。",
+    "mechanism_en": "EoMT puts mask queries into the late blocks of a plain ViT. The queries start training with attention restricted to their predicted masks, and that restriction is gradually lifted.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-ESA-Graph-Attention": {
+    "mechanism_zh": "图注意力通常把节点当作令牌。ESA 改用边做令牌，交替计算带掩码和全连接的自注意力，让边的信息既能局部交换，也能传到更远处。",
+    "mechanism_en": "ESA treats a graph as a set of edges. Its encoder interleaves masked and unrestricted self-attention, allowing edge representations to combine local and graph-wide information.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-GrokFormer": {
+    "mechanism_zh": "图自注意力偏向保留平滑的低频成分。GrokFormer 在注意力外再学图谱滤波，用傅里叶级数决定各频率成分保留多少。",
+    "mechanism_en": "Graph self-attention tends to retain low-frequency signals. GrokFormer adds a learned spectral filter whose Fourier series can also pick out higher-frequency structure.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-HubGT": {
+    "mechanism_zh": "整张大图两两做注意力太贵。HubGT 先用枢纽标签编码节点间的层级关系，训练时按标签读取图结构，兼顾近邻和远处的连接。",
+    "mechanism_en": "HubGT precomputes hierarchical labels based on graph hubs. The attention model can use those labels to pick up local structure and long-range connections without processing the full graph during training.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-Mr-DETR-Instruction-Attention": {
+    "mechanism_zh": "检测器的一对一匹配给每个目标分到的正样本少。Mr. DETR 在一对多训练支路里加可学习的指令令牌，让物体查询在自注意力中读取它。",
+    "mechanism_en": "Mr. DETR trains its decoder on both one-to-one and one-to-many assignments. An auxiliary self-attention route adds learned instruction tokens that steer queries toward the one-to-many task.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-NACLIP-Neighbor-Attention": {
+    "mechanism_zh": "CLIP 分割时，远处相似的块可能抢走局部注意力。NACLIP 用键与键的相似度打分，再按图像块之间的距离加高斯偏置，给邻近块更多权重。",
+    "mechanism_en": "NACLIP compares keys with keys in CLIP's last attention layer. A Gaussian bias boosts patches near each location, where the context is more useful for drawing a segmentation mask.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-SAM-3-Promptable-Concept-Attention": {
+    "mechanism_zh": "给出一类物体的短语或示例图，SAM 3 要找出所有符合的实例。解码器的物体查询用交叉注意力同时读取提示和图像特征。",
+    "mechanism_en": "SAM 3 can find every instance that matches a phrase or a visual example. Its object queries attend to both the prompt tokens and the image features before predicting masks.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-U-MixFormer-Multi-Scale-Mixed-Attention": {
+    "mechanism_zh": "分割既需要跳接特征里的细节，也需要粗尺度的上下文。U-MixFormer 用当前层的跳接特征生成查询，把多层特征混成键和值。",
+    "mechanism_en": "U-MixFormer uses the current skip connection to form its queries. The keys and values mix features from several encoder and decoder stages, giving fine details access to broader context.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2025-YOLOv13-HyperACE": {
+    "mechanism_zh": "两个位置的相似度说不清一组区域怎样配合。HyperACE 学习不同位置和尺度上的特征对各条超边的归属权重，再沿超边汇集并传回信息。",
+    "mechanism_en": "HyperACE learns how strongly features at different locations and scales belong to each hyperedge. It pools and redistributes information through those edges, letting groups of features interact together.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2026-Falcon-Audio-Visual-Attention": {
+    "mechanism_zh": "流式分离里，Falcon 在时频平面上做注意力，掩码挡住未来帧。",
+    "mechanism_en": "Falcon applies self-attention over a flattened time-frequency grid. A causal mask lets each position read every frequency band in the current and past frames, so speaker extraction can stream.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2026-GLA-CLIP-Global-Local-Attention": {
+    "mechanism_zh": "滑窗各看各的，同一物体跨窗时可能被判成两类。GLA-CLIP 把所有窗口的键和值放到一起，再用与查询最相似的一组令牌作为跨窗比较的参照。",
+    "mechanism_en": "GLA-CLIP pools keys and values from all windows. For each query it builds an anchor from similar patches across the image, giving patches inside and outside the window a common reference.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2026-GraphPFN-Neighborhood-Attention": {
+    "mechanism_zh": "把图节点当表格行会丢掉邻接关系。GraphPFN 在表格模型里加了邻域注意力，让节点先按权重读取邻居特征，再用于节点预测。",
+    "mechanism_en": "GraphPFN extends a tabular model with graph neighborhood attention. A node can gather a weighted summary of its neighbors before the model makes a prediction for it.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2026-Selective-Lookahead-ASR": {
+    "mechanism_zh": "每层都向右多看一点，叠起来就可能等很久。Selective Lookahead 给注意力和卷积共用一条可见性规则，让前瞻始终止于固定数量的分块。",
+    "mechanism_en": "A little lookahead in each layer can accumulate into a long delay. Selective Lookahead shares a visibility rule across attention and convolution so the encoder's future reach stays fixed as layers are added.",
+    "check_en": "",
+    "basis": "abstract"
+  },
+  "2026-SPAR-Resolution-Adaptive-Attention": {
+    "mechanism_zh": "高分辨率分割常要把重叠滑窗逐个跑完。SPAR 让 ViT 在整图上算注意力，训练时拿滑窗拼接的特征作目标，推理时一次生成密集特征。",
+    "mechanism_en": "SPAR trains a single-pass ViT to match the dense features of a sliding-window teacher. At inference it attends across the whole image and produces a feature map in one pass.",
+    "check_en": "",
+    "basis": "abstract"
+  }
+}
