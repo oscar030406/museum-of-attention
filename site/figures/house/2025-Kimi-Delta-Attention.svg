@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="qk" data-to="heads" d="M 153 514 L 153 453" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="state" data-to="decay" d="M 421 507 L 459 453" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="g" data-to="decay" d="M 622 514 L 534 453" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="heads" data-to="delta" d="M 195 397 L 418 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="heads" data-to="read" d="M 123 397 L 123 229 L 281 208" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="decay" data-to="delta" d="M 494 397 L 524 326" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="vb" data-to="delta" d="M 820 514 L 664 326" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="delta" data-to="read" d="M 445 270 L 396 208" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="delta" data-to="final" d="M 638 270 L 737 197" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="read" data-to="out" d="M 345 152 L 345 93" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="qk"><rect x="74" y="514" width="158" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="153" y="540.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Queries and keys</text>
+</g>
+<g class="node" id="state"><rect x="330.5" y="507" width="181" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="421" y="531.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">S(prev)</text>
+<text x="421" y="549.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Zero or cached state</text>
+</g>
+<g class="node" id="g"><rect x="541" y="514" width="162" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="622" y="540.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Log decay g</text>
+</g>
+<g class="node" id="vb"><rect x="723" y="514" width="194" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="820" y="540.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Value v and gate β</text>
+</g>
+<g class="node" id="heads"><rect x="53.5" y="397" width="199" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="153" y="421.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Repeat Q and K heads</text>
+<text x="153" y="439.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scale Q by 1/√K by default</text>
+</g>
+<g class="node" id="decay"><rect x="397.5" y="397" width="193" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="494" y="421.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Decay state</text>
+<text x="494" y="439.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">D = exp(g) ⊗ S(prev)</text>
+</g>
+<g class="node" id="delta"><rect x="371.5" y="270" width="343" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="543" y="294.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Write value residual</text>
+<text x="543" y="312.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">e = v − kᵀD,   S(next) = D + β k ⊗ e</text>
+</g>
+<g class="node" id="read"><rect x="257" y="152" width="176" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="345" y="176.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Query read</text>
+<text x="345" y="194.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">qᵀ S(next)</text>
+</g>
+<g class="node" id="final"><rect x="641" y="155" width="192" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="737" y="181.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Optional final state</text>
+</g>
+<g class="node" id="out"><rect x="259" y="51" width="172" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="345" y="77.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Token outputs</text>
+</g>
+<text x="159" y="489" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qk--heads">B×T×H×K</text>
+<text x="359" y="499" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge state--decay">B×J×K×V</text>
+<text x="587" y="481" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge g--decay">B×T×J×K</text>
+<text x="238" y="360" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge heads--delta">k: B×J×K</text>
+<text x="129" y="289" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge heads--read">q: B×J×K</text>
+<text x="518" y="367" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge decay--delta">B×J×K×V</text>
+<text x="748" y="417" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge vb--delta">v: B×J×V, β: B×J</text>
+<text x="436" y="248" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge delta--read">B×J×K×V</text>
+<text x="351" y="128" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge read--out">B×T×J×V</text>
+</svg>

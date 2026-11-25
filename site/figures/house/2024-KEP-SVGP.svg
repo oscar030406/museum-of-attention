@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="qk" d="M 398 532 L 249 492" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="weights" d="M 506 532 L 665 499" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="qk" data-to="score" d="M 311 450 L 378 412" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="weights" data-to="score" d="M 596 443 L 526 412" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="score" data-to="v1" d="M 452 356 L 452 329" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="v1" data-to="mean" d="M 358 287 L 287 258" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="v1" data-to="cov" d="M 546 287 L 598 258" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="mean" data-to="sum" d="M 247 202 L 402 178" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="cov" data-to="sum" d="M 638 202 L 501 178" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="sum" data-to="p" d="M 452 136 L 452 116" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="out" d="M 452 82 L 452 60" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="373.5" y="532" width="157" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="452" y="558.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tokens</text>
+</g>
+<g class="node" id="qk"><rect x="137" y="450" width="224" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="249" y="476.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear Q and K → L2 norm</text>
+</g>
+<g class="node" id="weights"><rect x="529.5" y="443" width="271" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="665" y="467.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Sample M positions if needed</text>
+<text x="665" y="485.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Token projection per head → Wₑ, Wᵣ</text>
+</g>
+<g class="node" id="score"><rect x="329.5" y="356" width="245" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="452" y="380.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Low rank scores</text>
+<text x="452" y="398.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">QWₑ + KWᵣ</text>
+</g>
+<g class="node" id="v1"><rect x="317.5" y="287" width="269" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="452" y="313.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Scale by squared diagonal entries</text>
+</g>
+<g class="node" id="mean"><rect x="152.5" y="202" width="189" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="247" y="226.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Posterior mean</text>
+<text x="247" y="244.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Multiply by learned m</text>
+</g>
+<g class="node" id="cov"><rect x="499" y="202" width="278" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="638" y="226.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Posterior factor × Gaussian noise</text>
+<text x="638" y="244.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Project triangular factor, then sample</text>
+</g>
+<g class="node" id="sum"><rect x="376.5" y="136" width="151" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="452" y="162.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Add mean + noise</text>
+</g>
+<g class="node" id="p"><rect x="309" y="82" width="286" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="452" y="104.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear r → d, merge heads, Dropout</text>
+</g>
+<g class="node" id="out"><rect x="377" y="26" width="150" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="452" y="48.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output tokens</text>
+</g>
+<text x="315" y="507" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--qk">B×N×C</text>
+<text x="578" y="531" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--weights">B×N×C</text>
+<text x="242" y="426" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qk--score">Each B×h×N×d</text>
+<text x="589" y="431" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge weights--score">Each B×h×d×r</text>
+<text x="458" y="342" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge score--v1">B×h×N×r</text>
+<text x="247" y="186" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge mean--sum">B×h×N×r</text>
+<text x="597" y="186" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge cov--sum">B×h×N×r</text>
+<text x="458" y="130" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge sum--p">B×h×N×r</text>
+<text x="458" y="73" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge p--out">B×N×C</text>
+</svg>

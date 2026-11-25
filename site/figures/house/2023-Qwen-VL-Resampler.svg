@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="query" data-to="qn" d="M 140 494 L 140 420" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="pos" data-to="q" d="M 381 494 L 318 314" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="pos" data-to="ip" d="M 457 494 L 525 420" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="kv" d="M 756 494 L 756 427" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="qn" data-to="q" d="M 140 378 L 235 314" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="ip" data-to="k" d="M 525 378 L 552 314" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="kv" data-to="k" d="M 716 371 L 630 314" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="kv" data-to="m" d="M 816 371 L 816 208 L 646 144" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="score" d="M 275 272 L 360 227" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="k" data-to="score" d="M 590 272 L 485 227" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="score" data-to="m" d="M 425 171 L 496 144" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="m" data-to="out" d="M 546 102 L 546 76" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="query"><rect x="52" y="494" width="176" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="140" y="520.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Learned grid queries</text>
+</g>
+<g class="node" id="pos"><rect x="321.5" y="494" width="185" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="414" y="520.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Fixed 2D sine/cosine</text>
+</g>
+<g class="node" id="x"><rect x="675" y="494" width="162" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="756" y="520.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Visual tokens</text>
+</g>
+<g class="node" id="qn"><rect x="53" y="378" width="174" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="140" y="404.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">LayerNorm + repeat</text>
+</g>
+<g class="node" id="ip"><rect x="434" y="378" width="182" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="525" y="404.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Bicubic resize</text>
+</g>
+<g class="node" id="kv"><rect x="660" y="371" width="192" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="756" y="395.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear or identity</text>
+<text x="756" y="413.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">LayerNorm</text>
+</g>
+<g class="node" id="q"><rect x="206.5" y="272" width="137" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="275" y="298.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Q + position</text>
+</g>
+<g class="node" id="k"><rect x="521.5" y="272" width="137" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="590" y="298.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">K + position</text>
+</g>
+<g class="node" id="score"><rect x="303" y="171" width="244" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="425" y="195.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled dot product + Softmax</text>
+<text x="425" y="213.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Project Q and K, optional mask</text>
+</g>
+<g class="node" id="m"><rect x="389" y="102" width="314" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="546" y="128.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Project V, weight, merge heads, Linear</text>
+</g>
+<g class="node" id="out"><rect x="444" y="28" width="204" height="48" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="546" y="48.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Batch-first output</text>
+<text x="546" y="66.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">B×M×D</text>
+</g>
+<text x="146" y="462" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge query--qn">M×D</text>
+<text x="301" y="378" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge pos--q">M×D</text>
+<text x="504" y="463" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge pos--ip">M×D</text>
+<text x="762" y="466" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--kv">B×N×C</text>
+<text x="131" y="343" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qn--q">M×B×D</text>
+<text x="504" y="343" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge ip--k">N×D</text>
+<text x="682" y="339" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge kv--k">N×B×D</text>
+<text x="822" y="241" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge kv--m">V: N×B×D</text>
+<text x="253" y="250" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--score">M×B×D</text>
+<text x="528" y="241" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge k--score">N×B×D</text>
+<text x="489" y="166" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge score--m">B×H×M×N</text>
+<text x="552" y="89" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge m--out">M×B×D</text>
+</svg>

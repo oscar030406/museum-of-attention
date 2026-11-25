@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="qkv" d="M 419 530 L 276 493" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="offset" d="M 491 530 L 617 500" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="qkv" data-to="warp" d="M 276 451 L 403 416" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="offset" data-to="warp" d="M 617 444 L 516 416" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="warp" data-to="windows" d="M 395 374 L 352 337" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="warp" data-to="pe" d="M 528 374 L 783 330" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="windows" data-to="score" d="M 280 281 L 275 250" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="windows" data-to="mix" d="M 427 281 L 496 227 L 496 178" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="score" data-to="mix" d="M 368 194 L 424 178" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="mix" data-to="restore" d="M 466 136 L 466 118" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="restore" data-to="out" d="M 511 76 L 595 61" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="pe" data-to="out" d="M 783 288 L 723 61" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="380" y="530" width="146" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="453" y="556.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="qkv"><rect x="158.5" y="451" width="235" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="276" y="477.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Conv 1×1 + BN for QK and V</text>
+</g>
+<g class="node" id="offset"><rect x="494.5" y="444" width="245" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="617" y="468.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Offset CNN → sampling grid</text>
+<text x="617" y="486.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Two Conv 3×3 layers, BN, SiLU</text>
+</g>
+<g class="node" id="warp"><rect x="348" y="374" width="210" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="453" y="400.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Bilinear grid sampling</text>
+</g>
+<g class="node" id="windows"><rect x="177" y="281" width="270" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="312" y="305.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Reflect pad, shift, partition</text>
+<text x="312" y="323.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split areas and heads</text>
+</g>
+<g class="node" id="pe"><rect x="686.5" y="288" width="193" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="783" y="314.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">DW Conv 5×5 + BN on V</text>
+</g>
+<g class="node" id="score"><rect x="143.5" y="194" width="263" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="275" y="218.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ → Mask → Softmax</text>
+<text x="275" y="236.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Shift mask when applicable</text>
+</g>
+<g class="node" id="mix"><rect x="396" y="136" width="140" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="466" y="162.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Weight V</text>
+</g>
+<g class="node" id="restore"><rect x="260" y="76" width="298" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="409" y="102.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Merge windows, reverse shift, crop</text>
+</g>
+<g class="node" id="out"><rect x="533.5" y="27" width="259" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="663" y="49.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Add position → Conv 1×1 + BN</text>
+</g>
+<text x="279" y="527" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--qkv">B×C×H×W</text>
+<text x="289" y="428" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge qkv--warp">QK, V</text>
+<text x="587" y="427" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge offset--warp">B×H×W×2</text>
+<text x="251" y="360" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge warp--windows">B×3C×H×W total</text>
+<text x="638" y="367" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge warp--pe">V: B×C×H×W</text>
+<text x="285" y="272" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge windows--score">Q, K</text>
+<text x="502" y="204" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge windows--mix">V: A×h×d×N</text>
+<text x="311" y="183" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge score--mix">A×h×N×N</text>
+<text x="472" y="131" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge mix--restore">A×N×C</text>
+<text x="465" y="66" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge restore--out">B×C×H×W</text>
+<text x="759" y="172" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge pe--out">B×C×H×W</text>
+</svg>

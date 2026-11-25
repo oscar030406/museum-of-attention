@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="scale" d="M 336 504 L 351 450" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="scale" d="M 597 504 L 464 450" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="scale" data-to="bounds" d="M 454 394 L 478 354" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="scale" data-to="root" d="M 328 394 L 328 310 L 342 250.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a" data-to="bounds" d="M 706 504 L 706 380 L 654 354" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="bounds" data-to="root" d="M 533 298 L 546 250.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="root" data-to="norm" d="M 476 177.5 L 476 130" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="norm" data-to="out" d="M 476 88 L 476 60" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<g class="node" id="x"><rect x="257.5" y="504" width="157" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="336" y="530.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input scores X</text>
+</g>
+<g class="node" id="a"><rect x="558" y="504" width="182" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="649" y="530.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Broadcast alpha α</text>
+</g>
+<g class="node" id="scale"><rect x="273" y="394" width="234" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="390" y="418.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Scale scores</text>
+<text x="390" y="436.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">z = (α − 1) X</text>
+</g>
+<g class="node" id="bounds"><rect x="389" y="298" width="288" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="533" y="322.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Set threshold bounds</text>
+<text x="533" y="340.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">From max(z), α and row length N</text>
+</g>
+<g class="node" id="root"><rect x="282.5" y="177.5" width="387" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="476" y="201.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Bisect threshold τ</text>
+<text x="476" y="219.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">p = max(0, z − τ)^(1/(α − 1))</text>
+<text x="476" y="237.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Adjust τ according to sum(p) − 1</text>
+</g>
+<g class="node" id="norm"><rect x="355.5" y="88" width="241" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="476" y="114.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Normalize each row if enabled</text>
+</g>
+<g class="node" id="out"><rect x="373" y="26" width="206" height="34" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="476" y="48.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Sparse weights</text>
+</g>
+<text x="348" y="479" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--scale">B×T×N</text>
+<text x="549" y="479" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--scale">B×T×1</text>
+<text x="477" y="379" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge scale--bounds">max(z)</text>
+<text x="263" y="324" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge scale--root">z: B×T×N</text>
+<text x="712" y="414" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge a--bounds">α</text>
+<text x="551" y="268" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge bounds--root">Bounds and α</text>
+<text x="482" y="159" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge root--norm">B×T×N</text>
+<text x="482" y="76" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge norm--out">B×T×N</text>
+</svg>

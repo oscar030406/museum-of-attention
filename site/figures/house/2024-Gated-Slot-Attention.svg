@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="q" d="M 416 530 L 114 480" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="k" d="M 442 530 L 303 480" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="x" data-to="g" d="M 470 530 L 503 480" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="x" data-to="v" d="M 517 530 L 805 473" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="q" data-to="score" d="M 114 424 L 114 309 L 187 279" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="k" data-to="hk" d="M 303 424 L 307 372" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="g" data-to="hk" d="M 456 424 L 402 372" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="g" data-to="hv" d="M 546 424 L 621 372" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="v" data-to="hv" d="M 805 431 L 728 372" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="hk" data-to="score" d="M 352 316 L 298 279" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="score" data-to="read" d="M 242 223 L 394 195" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="hv" data-to="read" d="M 671 316 L 513 195" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="read" data-to="proj" d="M 449 139 L 449 113" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="proj" data-to="out" d="M 449 79 L 449 60" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="396" y="530" width="148" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="470" y="556.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tokens</text>
+</g>
+<g class="node" id="q"><rect x="36" y="424" width="156" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="114" y="448.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project Q</text>
+<text x="114" y="466.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Optional feature map</text>
+</g>
+<g class="node" id="k"><rect x="222.5" y="424" width="161" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="303" y="448.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project K</text>
+<text x="303" y="466.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Optional feature map</text>
+</g>
+<g class="node" id="g"><rect x="413" y="424" width="180" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="503" y="448.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project slot gate</text>
+<text x="503" y="466.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">f = exp(LogSigmoid / n)</text>
+</g>
+<g class="node" id="v"><rect x="717" y="431" width="176" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="805" y="457.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project V + SiLU</text>
+</g>
+<g class="node" id="hk"><rect x="243" y="316" width="218" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="352" y="340.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Update key slots</text>
+<text x="352" y="358.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Kₛ = f Kₛ(prev) + k ⊗ (1 − f)</text>
+</g>
+<g class="node" id="hv"><rect x="559" y="316" width="224" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="671" y="340.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Update value slots</text>
+<text x="671" y="358.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Vₛ = f Vₛ(prev) + (1 − f) ⊗ v</text>
+</g>
+<g class="node" id="score"><rect x="131" y="223" width="222" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="242" y="247.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Score and normalize slots</text>
+<text x="242" y="265.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax(qᵀKₛ / √K)</text>
+</g>
+<g class="node" id="read"><rect x="355.5" y="139" width="187" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="449" y="163.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Mix slot values</text>
+<text x="449" y="181.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Weighted sum over M</text>
+</g>
+<g class="node" id="proj"><rect x="293.5" y="79" width="311" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="449" y="101.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Merge heads, SiLU, RMSNorm, Linear</text>
+</g>
+<g class="node" id="out"><rect x="382.5" y="26" width="133" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="449" y="48.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output tokens</text>
+</g>
+<text x="243" y="496" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--q">B×T×C</text>
+<text x="123" y="319" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--score">B×T×H×K</text>
+<text x="236" y="400" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge k--hk">B×T×H×K</text>
+<text x="434" y="394" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge g--hk">f, 1 − f</text>
+<text x="584" y="417" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge g--hv">B×T×H×M</text>
+<text x="790" y="410" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--hv">B×T×H×V</text>
+<text x="347" y="303" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge hk--score">B×H×K×M</text>
+<text x="269" y="197" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge score--read">B×T×H×M</text>
+<text x="624" y="271" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge hv--read">B×H×M×V</text>
+<text x="455" y="126" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge read--proj">B×T×H×V</text>
+<text x="399" y="73" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge proj--out">B×T×C</text>
+</svg>

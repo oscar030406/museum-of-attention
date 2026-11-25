@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="chunk" d="M 480 533 L 480 509" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="out" d="M 545 533 L 901 500 L 901 105 L 607 60" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="chunk" data-to="proj" d="M 480 467 L 480 440" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="proj" data-to="qk" d="M 480 398 L 481 371" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="proj" data-to="local" d="M 362 398 L 142 333 L 142 280.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="proj" data-to="kv" d="M 603 398 L 775 349 L 775 280.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="proj" data-to="gate" d="M 329 398 L 58 347 L 58 147 L 317 121" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="qk" data-to="local" d="M 391 315 L 287 280.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="qk" data-to="kv" d="M 589 315 L 636 280.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="qk" data-to="read" d="M 496 315 L 462 251 L 575 181" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="kv" data-to="read" d="M 692 219.5 L 681 181" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="local" data-to="gate" d="M 229 207.5 L 388 121" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="read" data-to="gate" d="M 636 139 L 503 121" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="gate" data-to="out" d="M 410 79 L 434 60" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="407.5" y="533" width="145" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="559.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tokens</text>
+</g>
+<g class="node" id="chunk"><rect x="368.5" y="467" width="223" height="42" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="480" y="493.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Split sequence into chunks</text>
+</g>
+<g class="node" id="proj"><rect x="319" y="398" width="322" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="424.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Norm → Linear → SiLU → Split U, V, Z</text>
+</g>
+<g class="node" id="qk"><rect x="352.5" y="315" width="257" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="481" y="339.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Affine maps on Z → RoPE</text>
+<text x="481" y="357.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Local and global Q, K</text>
+</g>
+<g class="node" id="local"><rect x="98" y="207.5" width="262" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="229" y="231.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Within-chunk weights and mix</text>
+<text x="229" y="249.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">ReLU(QKᵀ / L + position bias)²</text>
+<text x="229" y="267.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Optional causal mask → Weight V</text>
+</g>
+<g class="node" id="kv"><rect x="576" y="219.5" width="232" height="61" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="692" y="246.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Summarize V across chunks</text>
+<text x="692" y="264.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">KᵀV / L → Average eligible chunks</text>
+</g>
+<g class="node" id="read"><rect x="541" y="139" width="190" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="636" y="165.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Query reads summary</text>
+</g>
+<g class="node" id="gate"><rect x="278.5" y="79" width="263" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="410" y="105.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Add both paths → Multiply by U</text>
+</g>
+<g class="node" id="out"><rect x="400.5" y="26" width="247" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="524" y="48.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear, join chunks, add input</text>
+</g>
+<text x="486" y="523" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--chunk">B×T×C</text>
+<text x="816" y="145" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--out">Input bypass</text>
+<text x="486" y="455" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge chunk--proj">B×G×L×C</text>
+<text x="487" y="384" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge proj--qk">Z: B×G×L×S</text>
+<text x="148" y="312" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge proj--local">V</text>
+<text x="781" y="332" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge proj--kv">V: B×G×L×E</text>
+<text x="68" y="163" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge proj--gate">U: B×G×L×E</text>
+<text x="245" y="303" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qk--local">Local Q, K</text>
+<text x="622" y="310" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qk--kv">Global K</text>
+<text x="474" y="256" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qk--read">Global Q</text>
+<text x="689" y="194" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge kv--read">B×G×S×E</text>
+<text x="231" y="164" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge local--gate">B×G×L×E</text>
+<text x="543" y="117" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge read--gate">B×G×L×E</text>
+<text x="438" y="75" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge gate--out">B×G×L×E</text>
+</svg>

@@ -55,6 +55,10 @@ def main() -> int:
         else:
             missing.append(v["file"])
 
+    # 馆内自己画的图，全部带上
+    if (HERE / "site" / "figures" / "house").is_dir():
+        shutil.copytree(HERE / "site" / "figures" / "house", OUT / "site" / "figures" / "house")
+
     # 公开版的数据：只引用上面这些图。生成完把本机的数据恢复成完整版
     try:
         if cc_only:
@@ -66,7 +70,7 @@ def main() -> int:
 
     data = json.loads((OUT / "site" / "data" / "museum.json").read_text(encoding="utf-8"))
     referenced = {e["figure"]["file"] for e in data["exhibits"] if e.get("figure")}
-    shipped = {p.relative_to(OUT / "site").as_posix() for p in (OUT / "site" / "figures").glob("*")}
+    shipped = {p.relative_to(OUT / "site").as_posix() for p in (OUT / "site" / "figures").rglob("*") if p.is_file()}
     leaks = []
     for p in OUT.rglob("*"):
         if p.is_file() and "vendor" not in p.parts and ".git" not in p.parts and p.name != "site.json" and p.suffix in {".py", ".js", ".css", ".html", ".md", ".txt", ".json", ".mjs", ".example"} and p.stat().st_size < 3_000_000:

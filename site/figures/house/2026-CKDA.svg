@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="qkv" d="M 430 529 L 202 483" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="signed" d="M 480 529 L 462 483" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="x" data-to="beta" d="M 514 529 L 701 483" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="x" data-to="g" d="M 539 529 L 848 506 L 848 376" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="qkv" data-to="qk" d="M 202 427 L 249 369" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="qkv" data-to="rec" d="M 125 427 L 125 365 L 125 287 L 295 260.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="signed" data-to="qk" d="M 405 427 L 360 369" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="signed" data-to="rec" d="M 497 427 L 497 340 L 480 260.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="beta" data-to="rec" d="M 701 427 L 648 260.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="qk" data-to="rec" d="M 306 313 L 401 260.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="rec" data-to="norm" d="M 560 187.5 L 560 147" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="g" data-to="norm" d="M 848 334 L 848 171 L 661 147" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="norm" data-to="out" d="M 560 91 L 560 68" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="408.5" y="529" width="143" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="480" y="555.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tokens</text>
+</g>
+<g class="node" id="qkv"><rect x="98" y="427" width="208" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="202" y="451.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project Q, K, V</text>
+<text x="202" y="469.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Short Conv1D + SiLU</text>
+</g>
+<g class="node" id="signed"><rect x="347.5" y="427" width="229" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="462" y="451.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project signed decay</text>
+<text x="462" y="469.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Tanh, sign and log magnitude</text>
+</g>
+<g class="node" id="beta"><rect x="613" y="427" width="176" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="701" y="451.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Project write gate</text>
+<text x="701" y="469.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Sigmoid × 1 or 2</text>
+</g>
+<g class="node" id="g"><rect x="769" y="334" width="158" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="848" y="360.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project output gate</text>
+</g>
+<g class="node" id="qk"><rect x="182" y="313" width="248" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="306" y="337.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Transform Q and K</text>
+<text x="306" y="355.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Expand heads, apply prefix sign, L2</text>
+</g>
+<g class="node" id="rec"><rect x="258.5" y="187.5" width="443" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="480" y="211.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Recurrent state update and read</text>
+<text x="480" y="229.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">D = exp(g) ⊗ S(prev),   S = D + β k ⊗ (v − kᵀD)</text>
+<text x="480" y="247.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Output per token: qᵀS / √K</text>
+</g>
+<g class="node" id="norm"><rect x="438" y="91" width="244" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="560" y="115.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">RMSNorm × SiLU gate</text>
+<text x="560" y="133.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Merge heads + Linear</text>
+</g>
+<g class="node" id="out"><rect x="488.5" y="26" width="143" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="560" y="52.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Output tokens</text>
+</g>
+<text x="271" y="520" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--qkv">B×T×C</text>
+<text x="241" y="396" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qkv--qk">Q, K</text>
+<text x="131" y="323" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge qkv--rec">V</text>
+<text x="384" y="392" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge signed--qk">sign(a)</text>
+<text x="501" y="329" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge signed--rec">g = log |a|</text>
+<text x="681" y="341" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge beta--rec">B×T×J</text>
+<text x="306" y="278" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qk--rec">B×T×J×K</text>
+<text x="566" y="165" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge rec--norm">B×T×J×V</text>
+<text x="783" y="253" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge g--norm">B×T×J×V</text>
+<text x="566" y="81" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge norm--out">B×T×C</text>
+</svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="l" d="M 403 531 L 225 486" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="gq" d="M 451 531 L 460 479" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="x" data-to="gkv" d="M 499 531 L 725 486" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-ink)"/>
+<path class="flow" data-from="x" data-to="out" d="M 524 531 L 900 487 L 900 118 L 609 60" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="l" data-to="ls" d="M 144 430 L 155 384.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="l" data-to="lv" d="M 286 430 L 286 287 L 276 261" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="gq" data-to="gs" d="M 460 437 L 476 376" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="gkv" data-to="gs" d="M 661 430 L 586 376" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="gkv" data-to="gv" d="M 769 430 L 769 319 L 693 268" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="ls" data-to="lv" d="M 155 311.5 L 192 261" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="gs" data-to="gv" d="M 522 320 L 578 268" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="lv" data-to="cat" d="M 234 219 L 388 174" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="gv" data-to="cat" d="M 632 212 L 502 174" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="cat" data-to="p" d="M 445 132 L 445 113" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="p" data-to="out" d="M 445 79 L 479 60" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="382" y="531" width="156" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="460" y="557.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input features</text>
+</g>
+<g class="node" id="l"><rect x="49.5" y="430" width="251" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="175" y="454.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Per local head group: Q, K, V</text>
+<text x="175" y="472.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×1 → depthwise mixer</text>
+</g>
+<g class="node" id="gq"><rect x="363" y="437" width="194" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="460" y="463.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Global Q: Conv 1×1</text>
+</g>
+<g class="node" id="gkv"><rect x="602" y="430" width="246" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="725" y="454.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Global K, V</text>
+<text x="725" y="472.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">AvgPool → Conv 1×1</text>
+</g>
+<g class="node" id="ls"><rect x="36" y="311.5" width="238" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="155" y="335.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Local elementwise Q ⊗ K</text>
+<text x="155" y="353.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv 1×1, Swish, Conv 1×1</text>
+<text x="155" y="371.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Scale → Tanh → Dropout</text>
+</g>
+<g class="node" id="gs"><rect x="401.5" y="320" width="241" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="522" y="344.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Scaled QKᵀ → Softmax</text>
+<text x="522" y="362.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dropout over pooled weights</text>
+</g>
+<g class="node" id="lv"><rect x="161.5" y="219" width="145" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="234" y="245.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Weight local V</text>
+</g>
+<g class="node" id="gv"><rect x="536.5" y="212" width="191" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="632" y="236.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Weight pooled V</text>
+<text x="632" y="254.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Restore full feature grid</text>
+</g>
+<g class="node" id="cat"><rect x="358.5" y="132" width="173" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="445" y="158.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Concat head groups</text>
+</g>
+<g class="node" id="p"><rect x="348.5" y="79" width="193" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="445" y="101.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → Dropout</text>
+</g>
+<g class="node" id="out"><rect x="471" y="26" width="152" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="547" y="48.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Add input</text>
+</g>
+<text x="210" y="519" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--l">B×C×H×W</text>
+<text x="855" y="103" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--out">Input bypass</text>
+<text x="158" y="403" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge l--ls">Q, K: B×Cₗ×H×W</text>
+<text x="292" y="335" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge l--lv">V</text>
+<text x="474" y="404" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge gq--gs">B×h×P×d</text>
+<text x="616" y="389" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge gkv--gs">K: B×h×P′×d</text>
+<text x="775" y="335" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge gkv--gv">V: B×h×P′×d</text>
+<text x="108" y="276" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge ls--lv">B×Cₗ×H×W</text>
+<text x="556" y="308" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge gs--gv">B×h×P×P′</text>
+<text x="225" y="192" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge lv--cat">B×Cₗ×H×W</text>
+<text x="606" y="195" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge gv--cat">B×Cɢ×H×W</text>
+<text x="451" y="126" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge cat--p">B×C×H×W</text>
+</svg>
