@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25T22:36:23+09:00",
+ "generated": "2026-11-25T22:41:50+09:00",
  "sources": [
   "INDEX.md",
   "工具与模板/模块收集/队列.md",
@@ -98060,8 +98060,8 @@
   ]
  },
  "story": {
-  "thesis_zh": "这座馆里有 {n} 件注意力模块。最早的一件出自 2014 年的机器翻译，最晚的几件出自 2026 年的大语言模型。它们改来改去的是同一个计算：给输入的每个位置打一个分，再按分数加权求和。\n\n2017 年，这个计算自己成了一整个网络。此后的展品大多在收拾它留下的三件麻烦事。序列长一倍，计算量要到四倍。模型往外写得越长，要存的键和值越多。它自己还分不出谁先谁后。\n\n导览分八个展室，按年代往下走。赶时间的话，可以只看第一、二、六、八室。",
-  "thesis_en": "This museum holds {n} attention modules. The earliest comes from machine translation in 2014, the latest from the large language models of 2026. All of them rework one computation: give every position of the input a score, then take a weighted sum.\n\nIn 2017 that computation became a whole network on its own. Most exhibits since then deal with three problems it left behind. Double the sequence and the cost quadruples. The longer a model writes, the more keys and values it must store. And it cannot tell first from last by itself.\n\nThe tour has eight rooms, in rough order of time. If you are short of time, see Rooms 1, 2, 6 and 8.",
+  "thesis_zh": "这座馆里有 {n} 件注意力模块。最早的一件出自 2013 年，那个网络在学写字。最晚的几件出自 2026 年的大语言模型。导览从 2014 年的机器翻译讲起。它们改来改去的是同一个计算：给输入的每个位置打一个分，再按分数加权求和。\n\n2017 年，这个计算自己成了一整个网络。此后的展品大多在收拾它留下的三件麻烦事。序列长一倍，计算量要到四倍。模型往外写得越长，要存的键和值越多。它自己还分不出谁先谁后。\n\n导览分八个展室，按年代往下走。赶时间的话，可以只看第一、二、六、八室。",
+  "thesis_en": "This museum holds {n} attention modules. The earliest dates from 2013, in a network learning to write by hand. The latest come from the large language models of 2026. The tour begins with machine translation in 2014. All of them rework one computation: give every position of the input a score, then take a weighted sum.\n\nIn 2017 that computation became a whole network on its own. Most exhibits since then deal with three problems it left behind. Double the sequence and the cost quadruples. The longer a model writes, the more keys and values it must store. And it cannot tell first from last by itself.\n\nThe tour has eight rooms, in rough order of time. If you are short of time, see Rooms 1, 2, 6 and 8.",
   "chapters": [
    {
     "id": "alignment",

@@ -18,4 +18,4 @@
 
 ## 第三方组件
 
-`site/assets/vendor/` 和 `site/assets/fonts/` 里的组件和字体各按自己的许可。清单和各自的许可见 `README.md` 的「第三方组件」一节。
+`site/assets/vendor/` 和 `site/assets/fonts/` 里的组件和字体各按自己的许可。清单和各自的许可见 `docs/MAINTAINING.zh-CN.md` 的「第三方组件」一节。
