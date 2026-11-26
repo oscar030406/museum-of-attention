@@ -14,7 +14,7 @@
 
 ## What this is
 
-A static website that presents a personal library of attention modules as a museum. The collection holds 890 modules, and it grows as the library grows. Each exhibit has a label with the paper's own figure, a short introduction in Chinese and English, links to the paper and the code, and the earlier and later work it connects to.
+A static website that presents a personal library of attention modules as a museum. The collection holds more than 1,200 modules, and it grows as the library grows. Each exhibit has a label with the paper's own figure, a short introduction in Chinese and English, links to the paper and the code, and the earlier and later work it connects to.
 
 The centre of the site is a guided tour in eight rooms. It tells how one computation, a score for every position followed by a weighted sum, went from a patch on a translation model in 2014 to the whole network in 2017, and what the field has done about its costs since then.
 
