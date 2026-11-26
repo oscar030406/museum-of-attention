@@ -1378,6 +1378,13 @@
   "source_url": "https://arxiv.org/html/2102.08602",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2021-LayoutLMv2-Spatial-Aware-Self-Attention": {
+  "file": "figures/2021-LayoutLMv2-Spatial-Aware-Self-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "An illustration of the model architecture and pre-training strategies for LayoutLMv2",
+  "source_url": "https://arxiv.org/html/2012.14740",
+  "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+ },
  "2021-Luna": {
   "file": "figures/2021-Luna.webp",
   "fig_no": "Figure 2",
@@ -1938,6 +1945,13 @@
   "source_url": "https://arxiv.org/html/2201.12086",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2022-BROS-Relative-Spatial-Attention": {
+  "file": "figures/2022-BROS-Relative-Spatial-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Schematic illustrations of document KIE pipeline.",
+  "source_url": "https://arxiv.org/html/2108.04539",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2022-Block-Recurrent-Transformer": {
   "file": "figures/2022-Block-Recurrent-Transformer.webp",
   "fig_no": "Figure 1",
@@ -2232,11 +2246,25 @@
   "source_url": "https://arxiv.org/html/2112.10752",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2022-LayoutLMv3-Spatial-Bias-Attention": {
+  "file": "figures/2022-LayoutLMv3-Spatial-Bias-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Comparisons with existing works (e.g., DocFormer [(Appalaraju et al., 2021)] and SelfDoc [(Li et al., 2021b)] ) on (1) image embedding : our LayoutLMv3 uses linear patches to reduce the computational bottleneck of CNNs and eliminate the need for region supervision in training object detectors; (2) pre-training objectives on image modality : our LayoutLMv3 learns to reconstruct discrete image tokens of masked patches instead of raw pixels or region features to capture high-level layout structures rather than noisy details.",
+  "source_url": "https://arxiv.org/html/2204.08387",
+  "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+ },
  "2022-Lepard-Position-Aware-Point-Attention": {
   "file": "figures/2022-Lepard-Position-Aware-Point-Attention.webp",
   "fig_no": "Figure 2",
   "caption": "Overview of the proposed method. (The symbols are : Positional encoding function $\\Theta(\\cdot)$ ; : Rigid 3D transformation; : Matrix-vector multiplication; : Source and target). Given the input point cloud $\\mathbf{S}$ and $\\mathbf{T}$, the KPFCN backbone grid-subsample them to $\\mathbf{\\hat{S}}$ and $\\hat{\\mathbf{T}}$, and extract geometry features $\\mathbf{x}^{\\mathbf{\\hat{S}}}$ and $\\mathbf{x}^{\\mathbf{\\hat{T}}}$ (Sec. 4.1 ). The positions informations are encoded as $\\Theta(\\mathbf{\\hat{S}})$ and $\\Theta(\\mathbf{\\hat{T}})$ using the 3D relative positional encoding function (Sec. 4.2 ). The position codes and geometry features are then processed by the first TMP layer which includes a T ransformer block with self and cross attentions (Sec. 4.3 ), a differentiable M atching layer (Sec. 4.4 ), and a soft P rocurestes layer to estimate the rigid fitting $\\mathbf{R,t}$ (Sec. 4.6 ). Based on the rigid fitting estimation, the Repositioning layer adjusts source’s position code $\\Theta(\\mathbf{\\hat{S}})$ (Sec. 4.7 ). Given the updated positions and transformed features, the second TMP layer predicts the final matches.",
   "source_url": "https://arxiv.org/html/2111.12591",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2022-LiLT-Layout-Text-Bi-Attention": {
+  "file": "figures/2022-LiLT-Layout-Text-Bi-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "The substitution of language does not appear obviously unnatural when the layout structure remains unchanged, as shown in a (a) form/(b) receipt. The detailed content has been re-synthesized to avoid the sensitive information leak. Best viewed in zoomed-in.",
+  "source_url": "https://arxiv.org/html/2202.13669",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2022-LongT5": {
@@ -3100,6 +3128,13 @@
   "source_url": "https://arxiv.org/html/2303.00748",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2023-GeoLayoutLM-Geometric-Relation": {
+  "file": "figures/2023-GeoLayoutLM-Geometric-Relation.webp",
+  "fig_no": "Figure 2",
+  "caption": "An overview of GeoLayoutLM.",
+  "source_url": "https://arxiv.org/html/2304.10759",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2023-Graph-ViT": {
   "file": "figures/2023-Graph-ViT.webp",
   "fig_no": "Figure 1",
@@ -3175,6 +3210,13 @@
   "fig_no": "Figure 1.1",
   "caption": "The ${\\sf Hyena}$ operator is defined as a recurrence of two efficient subquadratic primitives: an implicit long convolution $h$ (i.e. Hyena filters parameterized by a feed-forward network) and multiplicative element-wise gating of the (projected) input. The depth of the recurrence specifies the size of the operator. Hyena can equivalently be expressed as a multiplication with data-controlled (conditioned by the input $u$ ) diagonal matrices $\\mathsf{D}_{x}$ and Toeplitz matrices $\\mathsf{S}_{h}$. In addition, Hyena exhibits sublinear parameter scaling (in sequence length) and unrestricted context, similar to attention, while having lower time complexity.",
   "source_url": "https://arxiv.org/html/2302.10866",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2023-I2VGen-XL-Temporal-Attention": {
+  "file": "figures/2023-I2VGen-XL-Temporal-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "The overall framework of I2VGen-XL. In the base stage, two hierarchical encoders are employed to simultaneously capture high-level semantics and low-level details of input images, ensuring more realistic dynamics while preserving the content and structure of images. In the refinement stage, a separate diffusion model is utilized to enhance the resolution and significantly improve the temporal continuity of videos by refining details. “D.Enc.” and “G.Enc.” denote the detail encoder and global encoder, respectively.",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04145",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2023-IP-Adapter-Decoupled-Cross-Attention": {
@@ -3436,6 +3478,13 @@
   "source_url": "https://arxiv.org/html/2309.06180",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2023-Paint-by-Example-Exemplar-Cross-Attention": {
+  "file": "figures/2023-Paint-by-Example-Exemplar-Cross-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "Illustration of the copy-and-paste artifacts of the naive solution. The generated image is extremely unnatural.",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2211.13227",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2023-PatchTST": {
   "file": "figures/2023-PatchTST.webp",
   "fig_no": "Figure 1",
@@ -3667,6 +3716,13 @@
   "source_url": "https://arxiv.org/html/2303.11926",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2023-Structured-Diffusion-Guidance": {
+  "file": "figures/2023-Structured-Diffusion-Guidance.webp",
+  "fig_no": "Figure 3",
+  "caption": "An illustration of our cross-attention design with structured representations. We unflatten the query and attention maps and omit the feature dimension $d$ of all query, key, and value tensors for demonstration purposes. Note that noun phrases at multiple hierarchies are extracted and encoded through the frozen CLIP text encoder and projected to value vectors.",
+  "source_url": "https://arxiv.org/html/2212.05032",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2023-Superpoint-Transformer-Graph-Attention": {
   "file": "figures/2023-Superpoint-Transformer-Graph-Attention.webp",
   "fig_no": "Figure 2",
@@ -3730,6 +3786,13 @@
   "source_url": "https://arxiv.org/html/2209.12152",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2023-UDOP-Vision-Text-Layout-Attention": {
+  "file": "figures/2023-UDOP-Vision-Text-Layout-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Layout-induced vision-text embedding.",
+  "source_url": "https://arxiv.org/html/2212.02623",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2023-USES-Memory-Token-Attention": {
   "file": "figures/2023-USES-Memory-Token-Attention.webp",
   "fig_no": "Figure 1",
@@ -3757,6 +3820,13 @@
   "caption": "Overall architecture of Video-LLaMA.",
   "source_url": "https://arxiv.org/html/2306.02858",
   "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2023-VideoComposer-Temporal-Attention": {
+  "file": "figures/2023-VideoComposer-Temporal-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Overall architecture of VideoComposer. First, a video is decomposed into three types of conditions, including textual condition, spatial conditions and temporal conditions. Then, we feed these conditions into the unified STC-encoder or the CLIP model to embed control signals. Finally, the resulting conditions are leveraged to jointly guide VLDMs for denoising.",
+  "source_url": "https://arxiv.org/html/2306.02018",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2023-X-Decoder-Generalized-Attention": {
   "file": "figures/2023-X-Decoder-Generalized-Attention.webp",
@@ -4136,6 +4206,13 @@
   "source_url": "https://arxiv.org/html/2407.08608",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2024-Florence-2-Spatial-Cross-Attention": {
+  "file": "figures/2024-Florence-2-Spatial-Cross-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Florence-2 consists of an image encoder and standard multi-modality encoder-decoder. We train Florence-2 on our FLD-5B data in a unified multitask learning paradigm, resulting in a generaslist vision foundation model, which can perform various vision tasks.",
+  "source_url": "https://arxiv.org/html/2311.06242",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2024-Fredformer-Frequency-Attention": {
   "file": "figures/2024-Fredformer-Frequency-Attention.webp",
   "fig_no": "Figure 3",
@@ -4283,6 +4360,13 @@
   "source_url": "https://ar5iv.labs.arxiv.org/html/2212.00210",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2024-InstantID-Identity-Attention": {
+  "file": "figures/2024-InstantID-Identity-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "The overall pipeline of our proposed InstantID. Our model consists of three parts to maintain high facial fidelity. First, we adopt a face encoder instead of CLIP to extract semantic face features and use a trainable projection layer to project them to the space of text features. We take the projected feature as face embedding. Then, a lightweight adaptive module with decoupled cross-attention is introduced to support images as prompts. Finally, we propose IdentityNet to encode complex features in reference facial images with additional weak spatial control. In IdentityNet, the generation process is fully guided by face embedding without any textual information. Only newly added modules are updated, while the pre-trained text-to-image model remains frozen to ensure flexibility. After training, users can generate ID-preserving images of any style in high fidelity for free.",
+  "source_url": "https://arxiv.org/html/2401.07519",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2024-InternVL-QLLaMA": {
   "file": "figures/2024-InternVL-QLLaMA.webp",
   "fig_no": "Figure 1",
@@ -4297,11 +4381,25 @@
   "source_url": "https://arxiv.org/html/2403.19887",
   "license": "http://creativecommons.org/licenses/by-sa/4.0/"
  },
+ "2024-JetMoE-Head-Sharing-Attention": {
+  "file": "figures/2024-JetMoE-Head-Sharing-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "JetMoE architecture",
+  "source_url": "https://arxiv.org/html/2404.07413",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2024-KIVI": {
   "file": "figures/2024-KIVI.webp",
   "fig_no": "Figure 3",
   "caption": "The overview of KIVI algorithm. For ease of illustration, we omit the value cache and attention output parts. The detailed pseudo-code is provided in Algorithm 1. Here “Q_Matmul” is the mix-precision matrix multiplication which fuses the dequantization with matrix multiplication at the tiling level.",
   "source_url": "https://ar5iv.labs.arxiv.org/html/2402.02750",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2024-L-GATr-Lorentz-Equivariant-Attention": {
+  "file": "figures/2024-L-GATr-Lorentz-Equivariant-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Schematic view of the data-analysis workflow in high-energy physics. Measurements (top) are processed in parallel with simulated data (bottom); their comparison is ultimately the basis for most scientific conclusions. In orange, we show how the three applications of L-GATr we experiment with in this paper fit into this workflow. The architecture is also applicable in several other stages, including reconstruction and inference.",
+  "source_url": "https://arxiv.org/html/2405.14806",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2024-LLaMA-Adapter-Zero-init-Attention": {
@@ -4338,6 +4436,13 @@
   "caption": "The working mechanism of Physics-Cross-Attention in encoder and decoder respectively.",
   "source_url": "https://arxiv.org/html/2406.03923",
   "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+ },
+ "2024-LTX-Video-Space-Time-Attention": {
+  "file": "figures/2024-LTX-Video-Space-Time-Attention.webp",
+  "fig_no": "Figure 6",
+  "caption": "The LTX-Video 3D transformer-block architecture. Our architecture builds upon [8] [8], replacing LayerNorm with RMSNorm and incorporating QK-normalization and RoPE positional embeddings.",
+  "source_url": "https://arxiv.org/html/2501.00103",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2024-LW-DETR-Group-Query-Attention": {
   "file": "figures/2024-LW-DETR-Group-Query-Attention.webp",
@@ -4472,13 +4577,6 @@
   "source_url": "https://arxiv.org/html/2312.11825",
   "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
  },
- "2024-MotherNet-Attention-Readout": {
-  "file": "figures/2024-MotherNet-Attention-Readout.webp",
-  "fig_no": "Figure 1",
-  "caption": "MotherNet architecture. Given training data $(x_{1},y_{1}),\\dots,(x_{r},y_{r})$, the transformer produces a vector $\\phi$, which is reshaped to weight matrices of an MLP with low-rank weight structure. Green blocks are individual data points and their activations, orange layers are activations created during in-context learning or in the forward-pass during meta-learning, and light blue layers are learned during meta-training.",
-  "source_url": "https://arxiv.org/html/2312.08598",
-  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
- },
  "2024-MotionAGFormer-Adaptive-Graph-Transformer-Fusion": {
   "file": "figures/2024-MotionAGFormer-Adaptive-Graph-Transformer-Fusion.webp",
   "fig_no": "Figure 2",
@@ -4491,6 +4589,13 @@
   "fig_no": "Fig. 1",
   "caption": "Model architecture. Left : Octo tokenizes task descriptions (green) and input observations (blue) using a pretrained language model and a lightweight CNN, respectively. Top : The transformer backbone processes the sequence of task and observation tokens and produces readout tokens (purple) that get passed to output heads to produce actions. Bottom : The block-wise attention structure of the transformer allows us to add or remove inputs and outputs during finetuning: for example, we can add new observations (blue, dashed) or action spaces (purple, dashed) without modifying any pretrained parameters.",
   "source_url": "https://arxiv.org/html/2405.12213",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2024-Open-Sora-Plan-Video-Attention": {
+  "file": "figures/2024-Open-Sora-Plan-Video-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "The model architecture of the Open-Sora Plan consists of a VAE, a Diffusion Transformer, and conditional encoders. The conditional injection encoders enable precise manipulation of individual frames (whether it’s the first frame, a subset of frames, or all frames) using designated structural signals, such as images, canny edges, depth maps, and sketches.",
+  "source_url": "https://arxiv.org/html/2412.00131",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2024-PaliGemma-Prefix-Attention": {
@@ -5165,6 +5270,13 @@
   "source_url": "https://arxiv.org/html/2412.10859",
   "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
  },
+ "2025-DeepSeek-OCR-DeepEncoder-Attention": {
+  "file": "figures/2025-DeepSeek-OCR-DeepEncoder-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "The architecture of DeepSeek-OCR. DeepSeek-OCR consists of a DeepEncoder and a DeepSeek-3B-MoE decoder. DeepEncoder is the core of DeepSeek-OCR, comprising three components: a SAM [17] for perception dominated by window attention, a CLIP [29] for knowledge with dense global attention, and a 16 $\\times$ token compressor that bridges between them.",
+  "source_url": "https://arxiv.org/html/2510.18234",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2025-DeformTime-Deformable-Attention": {
   "file": "figures/2025-DeformTime-Deformable-Attention.webp",
   "fig_no": "Figure 1",
@@ -5192,6 +5304,13 @@
   "caption": "Pipeline of GLA.",
   "source_url": "https://arxiv.org/html/2405.18428",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2025-Doge-Dynamic-Mask-Attention": {
+  "file": "figures/2025-Doge-Dynamic-Mask-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Dynamic Mask Attention Architecture. Left : Content-Aware Mask Computation. The mask computation part of dynamic mask attention. In the outer loop, the stride weight $\\Delta$ and gate weight $A$ are loaded into high-speed SRAM, and in the inner loop, the zero-order hold method is used to loop through the $V$ blocks loaded into SRAM, sampling from it to generate content-aware $K$ masks. These masks are then causally broadcast to the length of $Q$ in HBM. Finally, in the outer loop, all mask blocks are concatenated to form the final content-aware sparse dynamic mask. Right : Position-Aware Weights Computation. The weight computation part of dynamic mask attention, where in the outer loop, the $K$ and $V$ blocks are looped and loaded into SRAM, and in the inner loop, the $Q$ blocks are accessed, loaded into SRAM, and the output of the attention weight computation is written back to HBM. If the current position of the $K$ block is designated as masked in the dynamic mask, the attention weight at that position is directly filled with 0, skipping the computation at that position, forming the final position-aware sparse attention weights.",
+  "source_url": "https://arxiv.org/html/2508.02124",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2025-DroPE": {
   "file": "figures/2025-DroPE.webp",
@@ -5312,6 +5431,13 @@
   "source_url": "https://arxiv.org/html/2505.06708",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2025-GenCast-Sparse-Mesh-Attention": {
+  "file": "figures/2025-GenCast-Sparse-Mesh-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Schematic of how GenCast produces a forecast. The blue box shows how conditioning inputs, $(X^{0},X^{-1})$, and an initial noise sample, $Z^{1}_{0}$, are refined by the neural network refinement function, $r_{\\theta}$ (green box), which is parameterised by $\\theta$. The resulting $Z^{1}_{1}$ is the first refined candidate state, and this process repeats $N$ times. The final $Z^{1}_{N}$ is then added as a residual to $X^{0}$, to produce the weather state at the next time step, $X^{1}$. This process then repeats, autoregressively, $T=30$ times, conditioning on $(X^{t},X^{t-1})$ and using a new initial noise sample $Z^{t}_{0}$ at each step, to produce the full weather trajectory sample (for visual clarity, we illustrate the previous state in parentheses, $(X^{t-1})$, below the current state, $X^{t}$ ). Each trajectory generated via independent $Z^{1:T}_{0}$ noise samples represents a sample from, $p\\left(X^{1:T}|X^{0},X^{-1}\\right)$.",
+  "source_url": "https://arxiv.org/html/2312.15796",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2025-HART-Hybrid-Attention": {
   "file": "figures/2025-HART-Hybrid-Attention.webp",
   "fig_no": "Figure 6",
@@ -5375,13 +5501,6 @@
   "source_url": "https://arxiv.org/html/2412.04431",
   "license": "http://creativecommons.org/publicdomain/zero/1.0/"
  },
- "2025-L-GATr-Lorentz-Equivariant-Attention": {
-  "file": "figures/2025-L-GATr-Lorentz-Equivariant-Attention.webp",
-  "fig_no": "Figure 1",
-  "caption": "Schematic view of the data-analysis workflow in high-energy physics. Measurements (top) are processed in parallel with simulated data (bottom); their comparison is ultimately the basis for most scientific conclusions. In orange, we show how the three applications of L-GATr we experiment with in this paper fit into this workflow. The architecture is also applicable in several other stages, including reconstruction and inference.",
-  "source_url": "https://arxiv.org/html/2405.14806",
-  "license": "http://creativecommons.org/licenses/by/4.0/"
- },
  "2025-LION": {
   "file": "figures/2025-LION.webp",
   "fig_no": "Figure 6",
@@ -5423,6 +5542,13 @@
   "caption": "Overall framework of LYT-Net. The architecture consists of several detachable blocks like Channel-wise Denoiser (CWD), Multi-headed Self-Attention (MHSA), Multi-stage Squeeze and Excite Fusion (MSEF).",
   "source_url": "https://arxiv.org/html/2401.15204",
   "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+ },
+ "2025-Latte-Factorized-Latent-Video-Attention": {
+  "file": "figures/2025-Latte-Factorized-Latent-Video-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "The Latte architecture for video generation. Four model variants of Latte are proposed to capture spatio-temporal information in videos efficiently. Each block depicted in light orange represents a Transformer block. The standard Transformer blocks (described in Fig. 10 of the Appendix) are employed in (a) and (b). Meanwhile, (c) and (d) employ our custom Transformer block variants. For the sake of simplicity, encoding and decoding processes for VAE are not shown in the diagram.",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2401.03048",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2025-LieRE": {
   "file": "figures/2025-LieRE.webp",
@@ -5480,6 +5606,13 @@
   "source_url": "https://arxiv.org/html/2304.12620",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2025-MiniMax-01-Lightning-Attention": {
+  "file": "figures/2025-MiniMax-01-Lightning-Attention.webp",
+  "fig_no": "Figure 5",
+  "caption": "Illustration of the computations for softmax attention (left) and linear attention (right). The input length is $N$ and feature dimension is $d$, with $d\\ll N$. Tensors in the same box are associated with computation. The linearized formulation allows $O(N)$ time and space complexity.",
+  "source_url": "https://arxiv.org/html/2501.08313",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2025-MoBA": {
   "file": "figures/2025-MoBA.webp",
   "fig_no": "Figure 1",
@@ -5492,6 +5625,13 @@
   "fig_no": "Figure 2",
   "caption": "Molmo follows the simple and standard design of connecting a vision encoder and a language model.",
   "source_url": "https://arxiv.org/html/2409.17146",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2025-MotherNet-Attention-Readout": {
+  "file": "figures/2025-MotherNet-Attention-Readout.webp",
+  "fig_no": "Figure 1",
+  "caption": "MotherNet architecture. Given training data $(x_{1},y_{1}),\\dots,(x_{r},y_{r})$, the transformer produces a vector $\\phi$, which is reshaped to weight matrices of an MLP with low-rank weight structure. Green blocks are individual data points and their activations, orange layers are activations created during in-context learning or in the forward-pass during meta-learning, and light blue layers are learned during meta-training.",
+  "source_url": "https://arxiv.org/html/2312.08598",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2025-Mr-DETR-Instruction-Attention": {
@@ -5522,6 +5662,13 @@
   "source_url": "https://ar5iv.labs.arxiv.org/html/2410.24207",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2025-OLMo-3-Hybrid-Attention": {
+  "file": "figures/2025-OLMo-3-Hybrid-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "The model flow encompasses training data, code and intermediate checkpoints for all stages of development. While both fully-open and open-weights models release their final checkpoints (dark teal), fully-open releases like Marin, Apertus, and Olmo provide data along their model flow, enabling the careful study of intermediate development stages (beige). Olmo 3 Think 32B is shown here along with other open models of comparable size and architecture. Olmo 3 Think is competitive with Qwen 3 32B, which does not have a released base model. Its underlying Olmo 3 Base 32B surpasses all other fully-open base models.",
+  "source_url": "https://arxiv.org/html/2512.13961",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2025-PDE-Transformer-Shifted-Space-Channel-Attention": {
   "file": "figures/2025-PDE-Transformer-Shifted-Space-Channel-Attention.webp",
   "fig_no": "Figure 2",
@@ -5529,12 +5676,26 @@
   "source_url": "https://arxiv.org/html/2505.24717",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2025-PaddleOCR-VL-Dynamic-Resolution-Attention": {
+  "file": "figures/2025-PaddleOCR-VL-Dynamic-Resolution-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "The overview of PaddleOCR-VL.",
+  "source_url": "https://arxiv.org/html/2510.14528",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2025-Palu": {
   "file": "figures/2025-Palu.webp",
   "fig_no": "Figure 2",
   "caption": "Palu uses low-rank decomposition $(\\mathbf{W}\\approx\\mathbf{A}\\mathbf{B})$ to project the key (or value) to a lower-dimensional latent representation $(\\mathbf{h})$, thereby reducing the size of the KV-Cache. The original key $(\\mathbf{K}_{t})$ is reconstructed on-the-fly with $\\mathbf{B}^{k}$, and $\\mathbf{B}^{v}$ is fused into $\\mathbf{W}^{o}$ to avoid reconstruction overhead. The fusion also reduces the computational burden for output projection.",
   "source_url": "https://arxiv.org/html/2407.21118",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2025-Phi-4-Multimodal-Audio-Attention": {
+  "file": "figures/2025-Phi-4-Multimodal-Audio-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "A overview of the Multimodal architecture for Phi-4-Multimodal",
+  "source_url": "https://arxiv.org/html/2503.01743",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2025-PolaLinearAttn": {
   "file": "figures/2025-PolaLinearAttn.webp",
@@ -5550,11 +5711,25 @@
   "source_url": "https://arxiv.org/html/2405.04532",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2025-Qwen2-5-VL-Window-and-Temporal-M-RoPE": {
+  "file": "figures/2025-Qwen2-5-VL-Window-and-Temporal-M-RoPE.webp",
+  "fig_no": "Figure 1",
+  "caption": "The Qwen2.5-VL framework demonstrates the integration of a vision encoder and a language model decoder to process multimodal inputs, including images and videos. The vision encoder is designed to handle inputs at their native resolution and supports dynamic FPS sampling. Images of varying sizes and video frames with different FPS rates are dynamically mapped to token sequences of varying lengths. Notably, MRoPE aligns time IDs with absolute time along the temporal dimension, enabling the model to better comprehend temporal dynamics, such as the pace of events and precise moment localization. The processed visual data is subsequently fed into the Qwen2.5 LM Decoder. We have re-engineered the vision transformer (ViT) architecture, incorporating advanced components such as FFN with SwiGLU activation, RMSNorm for normalization, and window-based attention mechanisms to enhance performance and efficiency.",
+  "source_url": "https://arxiv.org/html/2502.13923",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2025-Qwen3-Next-Partial-Rotary-Gated-Attention": {
   "file": "figures/2025-Qwen3-Next-Partial-Rotary-Gated-Attention.webp",
   "fig_no": "Figure 6",
   "caption": "Comparison of massive activations and attention sink phenomena across different gating configurations. Row 1 (Baseline): Significant massive activations and attention sinks emerge after the 6th layer. Row 2 (SDPA Gating): Reduced activations and no attention sinks observed. Row 3 (Value Layer Gating): Similar activations to Row 2 but with residual attention sinks. Rows 4–5 (Reduced Sparsity via cross-head share and NS-sigmoid): Massive activations and attention sinks resemble the baseline.",
   "source_url": "https://arxiv.org/html/2505.06708",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2025-Qwen3-VL-Interleaved-MRoPE": {
+  "file": "figures/2025-Qwen3-VL-Interleaved-MRoPE.webp",
+  "fig_no": "Figure 1",
+  "caption": "The Qwen3-VL framework integrates a vision encoder and a language model decoder to process multimodal inputs, including text, images, and video. The vision encoder is specifically designed to handle dynamic, native-resolution visual inputs, mapping them to visual tokens of variable length. To enhance perceptual capability and preserve rich visual information, we incorporate the pioneering DeepStack mechanism, which injects visual tokens from multiple layers of the vision encoder into corresponding layers of the LLM. Furthermore, we adopt Interleaved MRoPE to encode positional information for multimodal inputs with a balanced frequency spectrum, and introduce text-based timestamp tokens to more effectively capture the temporal structure of video sequences.",
+  "source_url": "https://arxiv.org/html/2511.21631",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2025-RALA": {
@@ -5970,6 +6145,13 @@
   "source_url": "https://arxiv.org/html/2609.36259",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2026-DeepSeek-OCR-2-Causal-Flow-Attention": {
+  "file": "figures/2026-DeepSeek-OCR-2-Causal-Flow-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "DeepSeek-OCR 2 adopts the visual token compression mechanism from DeepEncoder, employing an 80M-parameter image compressor that reduces visual tokens by a factor of 16. DeepEncoder V2 differs by replacing DeepEncoder’s CLIP module with a compact language model architecture. Through customized attention masks, this LM-style vision encoder acquires CLIP’s knowledge compression capabilities while initiating causal modeling of visual sequences.",
+  "source_url": "https://arxiv.org/html/2601.20552",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2026-Falcon-Audio-Visual-Attention": {
   "file": "figures/2026-Falcon-Audio-Visual-Attention.webp",
   "fig_no": "Figure 2",
@@ -5989,6 +6171,13 @@
   "fig_no": "Figure 6",
   "caption": "Architecture of the Causal LR Projection-In Layer.",
   "source_url": "https://arxiv.org/html/2510.12747",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2026-Functional-Attention-for-PDEs": {
+  "file": "figures/2026-Functional-Attention-for-PDEs.webp",
+  "fig_no": "Figure 1",
+  "caption": "Architecture Overview. Top: Input functions are encoded by MLP, processed through $N$ FuncAttn blocks, and decoded by MLP. Bottom: In each FuncAttn Module, $\\mathbf{Q},\\mathbf{K},\\mathbf{V}$ are transformed to the spectral domain where cross-space attention computes optimal linear mapping $\\mathbf{C}$, then inverse-transformed. Purple blocks denote learnable layers. MLP, LN, and FFN stand for Multi-Layer Perceptron, Layer Norm, and Feed-Forward Network, respectively. The Basis Component learns an adaptive basis, and the Basis Transform and Inverse Transform modules apply the learned basis for computing functional attention.",
+  "source_url": "https://arxiv.org/html/2605.31559",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2026-GLA-CLIP-Global-Local-Attention": {
@@ -6047,6 +6236,13 @@
   "source_url": "https://arxiv.org/html/2606.19348",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2026-HeadRouter-Adaptive-Head-Routing": {
+  "file": "figures/2026-HeadRouter-Adaptive-Head-Routing.webp",
+  "fig_no": "Figure 4",
+  "caption": "Pipeline of our method. We mainly introduce instance-adaptive attention head router (IARouter) to adaptively activate attention heads based on their semantic sensitivity, enabling a more accurate representation of the edited specific images.",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2411.15034",
+  "license": "http://creativecommons.org/licenses/by-sa/4.0/"
+ },
  "2026-HiLS-Attention": {
   "file": "figures/2026-HiLS-Attention.webp",
   "fig_no": "Figure 3",
@@ -6094,6 +6290,13 @@
   "fig_no": "Figure 1",
   "caption": "Overview of the LTX-2 architecture. Raw video and audio signals are encoded into modality-specific latent tokens via causal VAEs, while text is processed through a refined embedding pipeline. A dual-stream diffusion transformer jointly denoises audio and video latents with bidirectional audiovisual cross-attention and text conditioning, producing synchronized audiovisual outputs.",
   "source_url": "https://arxiv.org/html/2601.03233",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2026-Latent-Sparse-Attention-Low-Dimensional-Retrieval": {
+  "file": "figures/2026-Latent-Sparse-Attention-Low-Dimensional-Retrieval.webp",
+  "fig_no": "Figure 6",
+  "caption": "D-LSA speedup of one global attention layer. Prefill and decode speedup over the baseline attention (log scale), Full Attention for Qwen-3.8-27B and Block Sparse Attention (Flat) for GLM-5.3-Flash, required memory at 10M with one index key per block of four keys for Block Sparse Attention (Flat), and prefill scaling up to 100M (log-log), extrapolated beyond 10M (shaded).",
+  "source_url": "https://arxiv.org/html/2610.42147",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2026-LimiX-2M-Readout-Aligned-Attention": {
@@ -6397,8 +6600,8 @@
   "source_url": "https://arxiv.org/html/2601.22275",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
- "2026-VOSR-Condition-Structure-Enhancement-Attention": {
-  "file": "figures/2026-VOSR-Condition-Structure-Enhancement-Attention.webp",
+ "2026-VOSR-Vision-Semantic-Cross-Attention": {
+  "file": "figures/2026-VOSR-Vision-Semantic-Cross-Attention.webp",
   "fig_no": "Figure 2",
   "caption": "Overview of VOSR. (a) Framework overview. Given an LR image, VOSR builds two complementary conditions from the input: a spatially aligned structural condition in the VAE latent space and a high-level visual semantic condition extracted by a pretrained vision encoder. These conditions are injected into a diffusion transformer to predict the denoising velocity for HR reconstruction. (b) Condition and guidance design. Compared with prior vision-only SR that mainly relies on structural-only conditioning, VOSR introduces an additional visual semantic condition to reduce semantic ambiguity in restoration. Moreover, instead of using a fully unconditional branch as in standard classifier-free guidance, VOSR adopts a restoration-oriented guidance and removes semantic guidance while retaining weakened LR structural cues, making the guidance input-anchored and more suitable for restoration.",
   "source_url": "https://arxiv.org/html/2604.03225",

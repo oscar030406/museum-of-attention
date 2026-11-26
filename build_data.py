@@ -130,7 +130,13 @@ def ascii_only(s: str | None) -> str | None:
     return s if s and not CJK.search(s) else None
 
 
+EN_TERMS: dict[str, dict] = {}
+
+
 def table_en(table: dict, kind: str, v: str | None) -> str | None:
+    if not EN_TERMS and (HERE / "curation" / "en_terms.json").is_file():     # 馆藏扩充带进来的取值，译文放在馆长层
+        EN_TERMS.update(json.loads((HERE / "curation" / "en_terms.json").read_text(encoding="utf-8")))
+    table = {**EN_TERMS.get(kind, {}), **table}
     if not v:
         return None
     if v in table or ascii_only(v):
