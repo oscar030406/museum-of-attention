@@ -167,7 +167,11 @@
   "高能物理": "High-energy physics",
   "文本生成视频": "Text-to-video generation",
   "目标跟踪": "Object tracking",
-  "多目标跟踪": "Multi-object tracking"
+  "多目标跟踪": "Multi-object tracking",
+  "三维感知": "3D perception",
+  "光流": "Optical flow",
+  "多视图立体视觉": "Multi-view stereo",
+  "局部特征匹配": "Local feature matching"
  },
  "license": {
   "Emmi AI Non-Production License（许可全文）": "Emmi AI Non-Production License (full license text)",
@@ -181,10 +185,12 @@
   "未找到覆盖新增注意力的再分发许可": "No redistribution license found for the added attention",
   "见许可文件": "See the license file",
   "许可证文件": "License file",
-  "非商业研究或评估许可": "Non-commercial research or evaluation license"
+  "非商业研究或评估许可": "Non-commercial research or evaluation license",
+  "Project Registration License v1.0（PRL v1.0）": "Project Registration License v1.0 (PRL v1.0)"
  },
  "module_type": {
   "图结构学习": "Graph structure learning",
-  "状态空间": "State space"
+  "状态空间": "State space",
+  "上下文压缩": "Context compression"
  }
 }

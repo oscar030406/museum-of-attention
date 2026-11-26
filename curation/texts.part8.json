@@ -1,0 +1,146 @@
+{
+  "2021-LoFTR-Local-Feature-Attention": {
+    "mechanism_zh": "先检测关键点再匹配，在白墙这类缺纹理的地方常常找不到点。LoFTR 跳过检测，在粗分辨率上让两张图的特征交替做图内自注意力和图间交叉注意力，每个位置的描述子都看过两张图，再从中取稠密匹配并细化。",
+    "mechanism_en": "LoFTR skips keypoint detection. On coarse feature maps it alternates self-attention within each image and cross-attention between the two, so every descriptor is conditioned on both images before dense matches are drawn and refined.",
+    "check_en": "The official LocalFeatureTransformer was compared using the same state_dict and random inputs. For linear attention, the maximum absolute difference was 0 both with padding and without a mask.",
+    "basis": "abstract"
+  },
+  "2021-STARK-Spatio-Temporal-Cross-Attention": {
+    "mechanism_zh": "STARK 把初始模板、随视频更新的动态模板和当前搜索区的特征拼成一条序列，送进编码器做全局注意力。解码器只放一个可学习的查询，读完这份记忆后直接预测目标框的角点，不用锚框和后处理。",
+    "mechanism_en": "STARK concatenates the initial template, a dynamically updated template and the search region into one sequence for a Transformer encoder. A single learned query in the decoder reads this memory, and a small head predicts the box corners directly.",
+    "check_en": "Maximum absolute difference 0. The comparison threshold was 1e-5.",
+    "basis": "abstract"
+  },
+  "2021-TransT-Siamese-Feature-Fusion-Attention": {
+    "mechanism_zh": "孪生跟踪器常用互相关比较模板和搜索区，这一步只是局部的线性匹配，容易丢掉语义。TransT 改用注意力融合两路特征：每路先用自注意力增强自身，再用交叉注意力读另一路，最后由搜索区去查询模板。",
+    "mechanism_en": "TransT replaces the correlation step of Siamese trackers with attention. Template and search features each refine themselves with self-attention and exchange information through cross-attention, and a final layer lets the search region query the template.",
+    "check_en": "Maximum absolute difference 0. The comparison threshold was 1e-5.",
+    "basis": "abstract"
+  },
+  "2022-AiATrack-Attention-in-Attention": {
+    "mechanism_zh": "普通注意力给每对查询和键单独打分，背景杂乱时分数常常出错。AiA 把相关矩阵里的相关向量当作查询、键和值，在它们之间再做一次注意力，求出一份残差修正，加回原相关图后再去汇聚值。",
+    "mechanism_en": "Ordinary attention scores each query-key pair on its own, which gets noisy in cluttered scenes. AiA runs an inner attention over the correlation vectors themselves, seeking consensus among them, and adds the resulting residual to the correlation map before aggregating values.",
+    "check_en": "The output and the averaged attention weights were compared with the official AiAModule. With the same state_dict and the same random input, the maximum absolute difference was 0.",
+    "basis": "abstract"
+  },
+  "2022-MOTR-Temporal-Aggregation-Attention": {
+    "mechanism_zh": "MOTR 给每个已跟上的目标配一个轨迹查询，逐帧传下去，在下一帧接着解码同一个目标。传下去之前，时序聚合网络把本帧的隐状态和上一帧的轨迹查询相加，作为自注意力的查询和键，值只用本帧隐状态。",
+    "mechanism_en": "MOTR passes each object's track query from frame to frame. Before handing it on, a temporal aggregation layer runs self-attention with queries and keys that add the last frame's track query to the current state, and values from the current state.",
+    "check_en": "The track fields were compared with the official QueryInteractionModule, covering inference and the training branch with random dropping and false-positive insertion. With the same state_dict and the same random input, the maximum absolute difference was 0.",
+    "basis": "abstract"
+  },
+  "2022-MVSTER-Epipolar-Cross-Attention": {
+    "mechanism_zh": "多视图立体要先按每个候选深度把源图特征投到参考视角，再融合成代价体。MVSTER 拿参考图上的像素作查询，沿极线取出各个深度候选处的源图特征作键，用交叉注意力算出各深度的权重来汇聚代价。",
+    "mechanism_en": "MVSTER treats each reference pixel as a query and the source-view features sampled along its epipolar line, one per depth hypothesis, as keys. Cross-attention over these hypotheses gives the weights that fuse the multi-view cost volume.",
+    "check_en": "The official stagenet was compared using the same state_dict, random inputs and regularizer. The maximum absolute difference was 0 on all three paths: per-depth fusion, group correlation with inverse depth, and per-view fusion.",
+    "basis": "abstract"
+  },
+  "2022-OSTrack-Template-Search-Joint-Attention": {
+    "mechanism_zh": "以往的跟踪器先分别抽模板和搜索区的特征，再另做关系建模。OSTrack 把两者的图块拼进同一个 ViT，从第一层起就做联合自注意力。中途它按模板对每个搜索令牌的注意力得分，提早丢掉像背景的候选。",
+    "mechanism_en": "OSTrack feeds template and search patches into one ViT, so feature extraction and matching happen in the same self-attention from the first layer. Along the way it drops search tokens that receive little attention from the template.",
+    "check_en": "Maximum absolute difference 0. The comparison threshold was 1e-5.",
+    "basis": "abstract"
+  },
+  "2022-ToMP-Target-Model-Attention": {
+    "mechanism_zh": "ToMP 让 Transformer 来预测跟踪用的目标模型。训练帧特征加上前景标签和框的编码，与测试帧特征一起进编码器。解码器以前景嵌入为查询，输出一组卷积滤波器的权重，直接作用在编码后的测试帧特征上。",
+    "mechanism_en": "ToMP lets a Transformer predict the tracker's target model. Training-frame features tagged with foreground and box encodings are encoded jointly with the test frame, and a decoder queried with the foreground embedding outputs filter weights for the encoded test features.",
+    "check_en": "Maximum absolute difference 0. The comparison threshold was 1e-5.",
+    "basis": "abstract"
+  },
+  "2022-TrackFormer-Track-Query-Attention": {
+    "mechanism_zh": "TrackFormer 用注意力完成帧间关联。上一帧留下的轨迹查询和用来发现新目标的对象查询一起进解码器，先互相做自注意力，再用可变形注意力读当前帧的特征，同一条查询一路代表同一个身份。",
+    "mechanism_en": "TrackFormer links objects across frames through attention alone. Track queries carried over from the previous frame join fresh object queries in the decoder, attend to one another, then read current-frame features with deformable attention, each track query keeping its identity.",
+    "check_en": "No numerical comparison was performed (official original class). With the same state_dict and the same random input, the maximum absolute difference was 9.53674316e-07.",
+    "basis": "abstract"
+  },
+  "2022-TransMVSNet-Feature-Matching-Attention": {
+    "mechanism_zh": "TransMVSNet 把多视图立体看成特征匹配问题。参考图只做图内自注意力，源图则交替做自注意力和读参考图的交叉注意力，两边都用线性注意力，聚合远距离上下文后再逐对算特征相关。",
+    "mechanism_en": "TransMVSNet treats multi-view stereo as feature matching. Reference features pass through self-attention, while source features alternate self-attention with cross-attention to the reference, all with linear attention, before pairwise correlation builds the cost volume.",
+    "check_en": "The official FMT was compared using the same state_dict and random inputs. The maximum absolute difference was 0 for both the intermediate reference-view outputs and the source-view output.",
+    "basis": "abstract"
+  },
+  "2023-ARTrack-Autoregressive-Trajectory-Attention": {
+    "mechanism_zh": "ARTrack 把框的坐标量化成词表里的令牌，像写句子一样逐个生成。解码器里，坐标令牌之间做带因果掩码的自注意力，前几帧的轨迹也排在其中，交叉注意力再去读模板和搜索区的视觉特征。",
+    "mechanism_en": "ARTrack quantizes box coordinates into tokens and generates them one by one. In the decoder, causal self-attention runs over coordinate tokens, including the trajectory from earlier frames, and cross-attention reads the template and search features.",
+    "check_en": "The official Pix2Track was compared using the same state_dict and random inputs. The maximum absolute difference was 0 on both the step-by-step decoding branch and the teacher-forcing branch.",
+    "basis": "abstract"
+  },
+  "2023-MeMOTR-Long-Term-Track-Memory-Attention": {
+    "mechanism_zh": "只看相邻两帧，轨迹的特征容易飘。MeMOTR 给每条轨迹存一份按指数滑动平均缓慢更新的长期记忆。记忆注意力层拿它作键，以两帧融合后的特征作查询、本帧输出作值，结果加上记忆后预测下一帧的轨迹嵌入。",
+    "mechanism_en": "MeMOTR keeps each track's long-term memory as a slow running average. Its memory-attention layer takes that memory as keys, two fused adjacent frames as queries and the current output as values, then adds the memory back for the next track embedding.",
+    "check_en": "All fields of the track output were compared with the official QueryUpdater, including the queries, long-term memory, last output and reference points. With the same state_dict and the same random input, the maximum absolute difference was 0.",
+    "basis": "abstract"
+  },
+  "2023-MixFormerV2-Track-Prediction-Attention": {
+    "mechanism_zh": "MixFormerV2 在模板和搜索区的令牌后面接上四个可学习的预测令牌，一起送进 Transformer。模板令牌只看模板，搜索令牌和预测令牌看全部，最后每个预测令牌过一个 MLP，读出框的一条边。",
+    "mechanism_en": "MixFormerV2 appends four learnable prediction tokens to the template and search tokens. Template tokens attend only to templates, while search and prediction tokens attend to everything, and an MLP reads one side of the box from each prediction token.",
+    "check_en": "The full forward pass, the template cache and the forward pass on search frames only were compared with the official Attention. With the same state_dict and the same random input, the maximum absolute difference was 0.",
+    "basis": "abstract"
+  },
+  "2023-SeqTrack-Autoregressive-Tracking-Attention": {
+    "mechanism_zh": "SeqTrack 把跟踪写成序列生成：编码器用双向 Transformer 处理模板和搜索区，解码器用因果 Transformer 逐个输出框的坐标令牌。每个坐标令牌只看它前面的令牌，再用交叉注意力读取编码后的视觉特征。",
+    "mechanism_en": "SeqTrack frames tracking as sequence generation. A bidirectional encoder processes template and search images, and a causal decoder emits the box as coordinate tokens, each attending to earlier tokens and, through cross-attention, to the encoded visual features.",
+    "check_en": "Maximum absolute difference 0. The last coordinate token was also changed to confirm that the outputs at earlier positions stayed the same.",
+    "basis": "abstract"
+  },
+  "2024-ARTrackV2-Dual-Modal-Autoregressive-Attention": {
+    "mechanism_zh": "ARTrackV2 去掉了帧内逐个生成坐标的步骤，把前几帧的轨迹提示、外观提示和模板、搜索区令牌一起送进编码器，一帧之内并行算完。掩码不让外观令牌看到轨迹令牌，免得它照着预测框去裁特征。",
+    "mechanism_en": "ARTrackV2 drops coordinate-by-coordinate decoding within a frame. Trajectory prompts, appearance prompts, template and search tokens pass through one encoder in parallel, and a mask stops appearance tokens from attending to trajectory tokens, so they cannot just crop along the predicted box.",
+    "check_en": "After the same state_dict was loaded, the inference branch and the branch with appearance supervision were compared. The maximum absolute difference was 0 on both.",
+    "basis": "abstract"
+  },
+  "2024-Efficient-LoFTR-Aggregated-Attention": {
+    "mechanism_zh": "相邻位置的注意力信息大多重复，在整张特征图上做 Transformer 是浪费。Efficient LoFTR 先用带步长的逐通道卷积聚合查询，用最大池化聚合键和值，在缩小后的令牌上做普通注意力，再上采样回原尺寸。",
+    "mechanism_en": "Neighbouring positions share most of their attention, so Efficient LoFTR shrinks the map first. Queries are aggregated with a strided depthwise convolution and keys and values with max pooling, vanilla attention runs on the reduced tokens, and the result is upsampled.",
+    "check_en": "The official LocalFeatureTransformer was compared using the same state_dict and random inputs. SDPA and plain attention were each checked with masked and unmasked inputs, and the maximum absolute difference was 0 in every case.",
+    "basis": "abstract"
+  },
+  "2024-HIPTrack-Historical-Prompt-Attention": {
+    "mechanism_zh": "HIPTrack 在参数冻住的跟踪器旁边接一个历史提示网络。历史帧的特征和前景掩码编成提示值存进记忆库，当前搜索区用负的 L2 距离和库里的键比相似度，按 softmax 权重取回提示，在通道维上拼到当前特征后面。",
+    "mechanism_en": "HIPTrack adds a historical prompt network beside a frozen tracker. Past search features and foreground masks are encoded into a memory bank, the current search region matches its keys by negative L2 distance, and the softmax-weighted prompts are concatenated to the current features.",
+    "check_en": "get_affinity and readout were compared with those of the official HistoricalPromptDecoder, covering five-dimensional history and a flattened cache. With the same state_dict and the same random input, the maximum absolute difference was 0.",
+    "basis": "abstract"
+  },
+  "2024-MVSFormer-Position-Aware-Attention": {
+    "mechanism_zh": "MVSFormer++ 在冻住的 DINOv2 旁边挂一路视图间注意力，逐层取它的特征，用线性注意力在参考视图和源视图之间交换信息，并加上归一化的二维位置编码。高分辨率一级也交替做视图内自注意力和视图间交叉注意力。",
+    "mechanism_en": "MVSFormer++ attaches a side branch to a frozen DINOv2 that injects cross-view attention layer by layer, using linear attention and normalized 2D positional encoding. A higher-resolution stage alternates within-view self-attention and cross-view attention.",
+    "check_en": "The original CrossVITDecoder and FMT classes were compared using the same state_dict and random inputs. The maximum absolute difference was 0 for the low-resolution output, the reference-view output and the source-view output.",
+    "basis": "abstract"
+  },
+  "2025-Llama-4-Temperature-Scaled-NoPE": {
+    "mechanism_zh": "",
+    "mechanism_en": "",
+    "check_en": "",
+    "basis": "none"
+  },
+  "2025-Moirai-2-0-Any-Variate-Causal-Attention": {
+    "mechanism_zh": "Moirai 2.0 是只有解码器的时序预测模型。它的因果掩码按时间编号来定，同一时刻的几个变量可以互相看。注意力分数另加一项偏置，只区分两个令牌属于同一变量还是不同变量，时间先后交给旋转位置编码。",
+    "mechanism_en": "Moirai 2.0 is a decoder-only forecaster. Its causal mask follows time indices, so variates at the same time step see one another, and the scores add a bias that only tells same-variate from cross-variate pairs, with rotary encoding for time.",
+    "check_en": "No numerical comparison was performed (direct import in the original dependency environment). For an isolated check, the unmodified official class was imported with temporary type-annotation placeholders and compared using the same state_dict and random inputs. The maximum absolute difference was 0.",
+    "basis": "readme"
+  },
+  "2025-MOTIP-Identity-Decoder-Attention": {
+    "mechanism_zh": "MOTIP 把关联写成身份分类。历史轨迹的特征拼上从身份词典取出的嵌入，当作键和值。当前帧的检测作查询，先彼此做自注意力，再去查轨迹，并加上相对时间偏置，最后分类出各自的身份编号。",
+    "mechanism_en": "MOTIP treats association as ID classification. Historical tracklets carry learned ID embeddings and serve as keys and values, while current detections act as queries that first attend to each other, and a relative temporal bias helps predict each detection's ID label.",
+    "check_en": "The ID scores and masks were compared with the official IDDecoder. With the same state_dict and the same random input, the maximum absolute difference was 0.",
+    "basis": "abstract"
+  },
+  "2025-Time-MoE-Sparse-Expert-Forecasting-Attention": {
+    "mechanism_zh": "Time-MoE 是只有解码器的时序基础模型，一步一步往后预测。每层先做带旋转位置编码的因果自注意力，再由路由器给每个令牌挑几个专家前馈网络，外加一个带门控的共享专家，每次只算被选中的那几路。",
+    "mechanism_en": "Time-MoE is a decoder-only forecasting model. Each layer runs causal self-attention with rotary positions, then a router sends every token to a few expert feed-forward networks plus a gated shared expert, so only part of the model runs per prediction.",
+    "check_en": "The output, causal attention weights and expert routing scores of the official eager decoder layer were compared. With the same state_dict and the same random input, the maximum absolute difference was 0.",
+    "basis": "abstract"
+  },
+  "2026-SVOO-Semantic-Video-Sparse-Attention": {
+    "mechanism_zh": "SVOO 发现视频扩散模型每层注意力能剪掉多少，几乎不随输入变化，于是事先离线测好每层的保留比例。生成时，它把查询和键交替按对方的簇中心聚类，按这个比例只计算选中的查询键块，不用重新训练。",
+    "mechanism_en": "SVOO finds that how much each layer's attention can be pruned barely changes with the input, so it profiles per-layer ratios offline. At generation time it co-clusters queries and keys against each other's centroids and computes only the selected blocks, without retraining.",
+    "check_en": "No numerical comparison was performed (official original class). Maximum absolute difference 2.98023224e-7.",
+    "basis": "abstract"
+  },
+  "2026-TempoControl-Temporal-Attention-Guidance": {
+    "mechanism_zh": "文本生成视频时，很难指定某个物体在第几帧出现。TempoControl 取出这个词在各帧上的交叉注意力强度，让它的走势和控制信号的皮尔逊相关变大，再加上幅值项和熵项，推理时按损失的梯度更新潜变量，模型本身不动。",
+    "mechanism_en": "TempoControl sets when a concept appears in a generated video. During inference it reads the word's cross-attention across frames and nudges the latent by gradient so that curve correlates with a control signal, with magnitude and entropy terms added.",
+    "check_en": "No numerical comparison was performed (official original class). In addition, the seven official guidance methods and the two loss formulas were loaded in isolation and compared on the original grid with the same inputs, covering the single-concept and two-concept losses, correlation coefficients and input gradients.",
+    "basis": "abstract"
+  }
+}

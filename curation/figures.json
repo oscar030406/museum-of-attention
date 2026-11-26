@@ -1385,6 +1385,13 @@
   "source_url": "https://arxiv.org/html/2012.14740",
   "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
  },
+ "2021-LoFTR-Local-Feature-Attention": {
+  "file": "figures/2021-LoFTR-Local-Feature-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Overview of the proposed method. LoFTR has four components: 1. A local feature CNN extracts the coarse-level feature maps $\\tilde{F}^{A}$ and $\\tilde{F}^{B}$, together with the fine-level feature maps $\\hat{F}^{A}$ and $\\hat{F}^{B}$ from the image pair $I^{A}$ and $I^{B}$ (Section 3.1 ). 2. The coarse feature maps are flattened to 1-D vectors and added with the positional encoding. The added features are then processed by the Local Feature TRansformer (LoFTR) module, which has $N_{c}$ self-attention and cross-attention layers (Section 3.2 ). 3. A differentiable matching layer is used to match the transformed features, which ends up with a confidence matrix $\\mathcal{P}_{c}$. The matches in $\\mathcal{P}_{c}$ are selected according to the confidence threshold and mutual-nearest-neighbor criteria, yielding the coarse-level match prediction $\\mathcal{M}_{c}$ (Section 3.3 ). 4. For every selected coarse prediction $(\\tilde{i},\\tilde{j})\\in\\mathcal{M}_{c}$, a local window with size $w\\times w$ is cropped from the fine-level feature map. Coarse matches will be refined within this local window to a sub-pixel level as the final match prediction $\\mathcal{M}_{f}$ (Section 3.4 ).",
+  "source_url": "https://arxiv.org/html/2104.00680",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2021-Luna": {
   "file": "figures/2021-Luna.webp",
   "fig_no": "Figure 2",
@@ -1602,6 +1609,13 @@
   "source_url": "https://arxiv.org/html/2103.13915",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2021-STARK-Spatio-Temporal-Cross-Attention": {
+  "file": "figures/2021-STARK-Spatio-Temporal-Cross-Attention.webp",
+  "fig_no": "Figure 4",
+  "caption": "Framework for spatio-temporal tracking. The differences with the spatial-only architecture are highlighted in pink.",
+  "source_url": "https://arxiv.org/html/2103.17154",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2021-STCN-Space-Time-Correspondence": {
   "file": "figures/2021-STCN-Space-Time-Correspondence.webp",
   "fig_no": "Figure 1",
@@ -1784,6 +1798,13 @@
   "source_url": "https://arxiv.org/html/2102.07074",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2021-TransT-Siamese-Feature-Fusion-Attention": {
+  "file": "figures/2021-TransT-Siamese-Feature-Fusion-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Architecture of our Transformer tracking framework. This framework contains three fundamental components: feature extraction backbone, feature fusion network, and prediction head. The proposed attention-based feature fusion network is naturally applied on the Siamese-based feature extraction backbone.",
+  "source_url": "https://arxiv.org/html/2103.15436",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2021-TripletAttention": {
   "file": "figures/2021-TripletAttention.webp",
   "fig_no": "Figure 3",
@@ -1909,6 +1930,13 @@
   "caption": "Our decoder structure of the AdaMixer. There are two operator streams on a query: one on its content vector $\\mathbf{q}$ (the solid horizontal line) and one on its positional vector $(x,y,z,r)$ (the dashed horizontal line). Each operator on the content vector in the decoder is followed by a residual addition and LayerNorm.",
   "source_url": "https://arxiv.org/html/2203.16507",
   "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2022-AiATrack-Attention-in-Attention": {
+  "file": "figures/2022-AiATrack-Attention-in-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "Overview of the proposed Transformer tracking framework. The self-attention and cross-attention blocks are all equipped with the proposed AiA module. Note that only the components on the light green background need to be computed during the inference phase as described in Sec. 3.3.",
+  "source_url": "https://arxiv.org/html/2207.09603",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2022-Anchor-DETR-RCDA": {
   "file": "figures/2022-Anchor-DETR-RCDA.webp",
@@ -2302,6 +2330,13 @@
   "source_url": "https://arxiv.org/html/2111.12707",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2022-MOTR-Temporal-Aggregation-Attention": {
+  "file": "figures/2022-MOTR-Temporal-Aggregation-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "The overall architecture of MOTR. “Enc” represents a convolutional neural network backbone and the Transformer encoder that extracts image features for each frame. The concatenation of detect queries $q_{d}$ and track queries $q_{tr}$ is fed into the Deformable DETR decoder (Dec) to produce the hidden states. The hidden states are used to generate the prediction $\\widehat{Y}$ of newborn and tracked objects. The query interaction module (QIM) takes the hidden states as input and produces track queries for the next frame.",
+  "source_url": "https://arxiv.org/html/2105.03247",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2022-MPViT": {
   "file": "figures/2022-MPViT.webp",
   "fig_no": "Figure 3",
@@ -2336,6 +2371,13 @@
   "caption": "Given a text query and a sequence of video frames, the proposed model outputs prediction sequences for all object instances in the video prior to determining the referred instance. Here predictions with the same color and shape belong to the same sequence and attend to the same object instance in different frames. Note that the order of instance predictions for different frames remains the same. Best viewed in color.",
   "source_url": "https://arxiv.org/html/2111.14821",
   "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+ },
+ "2022-MVSTER-Epipolar-Cross-Attention": {
+  "file": "figures/2022-MVSTER-Epipolar-Cross-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "MVSTER architecture. MVSTER firstly extracts features via FPN, then the multi-view features are aggregated by the epipolar Transformer, where the auxiliary branch makes monocular depth estimation to enhance context. Subsequently, the aggregated feature volume is regularized by 3D CNNs, producing depth estimations. Finally, optimal transport is utilized to optimize the predicted depth.",
+  "source_url": "https://arxiv.org/html/2204.07346",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2022-MViTv2": {
   "file": "figures/2022-MViTv2.webp",
@@ -2447,6 +2489,13 @@
   "fig_no": "Figure 2",
   "caption": "An ORViT block. The input patch-tokens $X$ and boxes $B$ are used as input to the “Object-Region Attention” and “Object-Dynamics Module” components. Each component outputs a $THW\\times d$ tensor and the two tensors are summed to obtain new patch tokens $Y$.",
   "source_url": "https://ar5iv.labs.arxiv.org/html/2110.06915",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2022-OSTrack-Template-Search-Joint-Attention": {
+  "file": "figures/2022-OSTrack-Template-Search-Joint-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "(a) The overall framework of the proposed one-stream framework. The template and search region are split, flattened, and linear projected. Image embeddings are then concatenated and fed into Transformer encoder layers for joint feature extraction and relation modeling. (b) The structure of the encoder layer with early candidate elimination module, which is insert after the multi-head attention operation [44].",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2203.11991",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2022-PETR-Position-Embedding-Cross-Attention": {
@@ -2680,6 +2729,13 @@
   "source_url": "https://arxiv.org/html/2106.10271",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2022-ToMP-Target-Model-Attention": {
+  "file": "figures/2022-ToMP-Target-Model-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Comparison between trackers that employ optimization based model prediction and our Transformer-based model prediction. The model optimizer [ $\\color[rgb]{0.9023,0.9023,0.9023}\\blacksquare$ ] in Fig. 2(a) is replaced by the model predictor in Fig. 2(b) that consists of the proposed modules [ $\\color[rgb]{1,1,0.6016}\\blacksquare$, $\\color[rgb]{0.9961,0.8008,0.3984}\\blacksquare$, $\\color[rgb]{0.9961,0.8008,0.6016}\\blacksquare$, $\\color[rgb]{0.9922,0.6055,0.3984}\\blacksquare$ ].",
+  "source_url": "https://arxiv.org/html/2203.11192",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2022-TokenGT": {
   "file": "figures/2022-TokenGT.webp",
   "fig_no": "Figure 1",
@@ -2694,6 +2750,13 @@
   "source_url": "https://arxiv.org/html/2202.02541",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2022-TrackFormer-Track-Query-Attention": {
+  "file": "figures/2022-TrackFormer-Track-Query-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "TrackFormer casts multi-object tracking as a set prediction problem performing joint detection and tracking-by-attention. The architecture consists of a CNN for image feature extraction, a Transformer [51] encoder for image feature encoding and a Transformer decoder which applies self- and encoder-decoder attention to produce output embeddings with bounding box and class information. At frame $t=0$, the decoder transforms $N_{\\text{object}}$ object queries (white) to output embeddings either initializing new autoregressive track queries or predicting the background class (crossed). On subsequent frames, the decoder processes the joint set of $N_{\\text{object}}+N_{\\text{track}}$ queries to follow or remove (blue) existing tracks as well as initialize new tracks (purple).",
+  "source_url": "https://arxiv.org/html/2101.02702",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2022-TransDreamer-Causal-World-Model-Attention": {
   "file": "figures/2022-TransDreamer-Causal-World-Model-Attention.webp",
   "fig_no": "Figure 1",
@@ -2706,6 +2769,13 @@
   "fig_no": "Figure 4",
   "caption": "We first condense the image features along the vertical dimension, and then project the features onto the BEV plane using cross attention with the LiDAR BEV features. Each image is processed by a separate multi-head attention layer, which captures the relation between image column and BEV locations.",
   "source_url": "https://arxiv.org/html/2203.11496",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2022-TransMVSNet-Feature-Matching-Attention": {
+  "file": "figures/2022-TransMVSNet-Feature-Matching-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "Architecture of the Feature Matching Transformer. FMT performs positional encoding to all features maps and flattens them at the spatial dimension. Then the attention blocks get involved and perform intra- and inter-attention upon features. Note that the number of attention blocks $N_{a}$ is set as 4 in our implementation.",
+  "source_url": "https://arxiv.org/html/2111.14600",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2022-TransNormer": {
@@ -3345,6 +3415,13 @@
   "source_url": "https://arxiv.org/html/2206.02777",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2023-MeMOTR-Long-Term-Track-Memory-Attention": {
+  "file": "figures/2023-MeMOTR-Long-Term-Track-Memory-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Overview of MeMOTR. Like most DETR-based [6] methods, we exploit a ResNet-50 [15] backbone and a Transformer [32] Encoder to learn a 2D representation of an input image. We use different colors to indicate different tracked targets, and the learnable detect query $Q_{det}$ is illustrated in gray. Then the Detection Decoder $\\mathcal{D}_{det}$ processes the detect query to generate the detect embedding $E_{det}^{t}$, which aligns with the track embedding $E_{tck}^{t}$ from previous frames. Long-term memory is denoted as $M_{tck}^{t}$. The initialization process in the blue dotted arrow will be applied to newborn objects. Our Long-Term Memory and Temporal Interaction Module is discussed in Section 3.3 and 3.4. More details are illustrated in Figure 2.",
+  "source_url": "https://arxiv.org/html/2307.15700",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2023-MeViS-Language-Guided-Motion-Attention": {
   "file": "figures/2023-MeViS-Language-Guided-Motion-Attention.webp",
   "fig_no": "Figure 5",
@@ -3371,6 +3448,13 @@
   "fig_no": "Figure 1",
   "caption": "Sliding Window Attention. The number of operations in vanilla attention is quadratic in the sequence length, and the memory increases linearly with the number of tokens. At inference time, this incurs higher latency and smaller throughput due to reduced cache availability. To alleviate this issue, we use sliding window attention: each token can attend to at most $W$ tokens from the previous layer (here, $W=3$ ). Note that tokens outside the sliding window still influence next word prediction. At each attention layer, information can move forward by $W$ tokens. Hence, after $k$ attention layers, information can move forward by up to $k\\times W$ tokens.",
   "source_url": "https://arxiv.org/html/2310.06825",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2023-MixFormerV2-Track-Prediction-Attention": {
+  "file": "figures/2023-MixFormerV2-Track-Prediction-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "MixFormerV2 Framework. MixFormerV2 is a fully transformer tracking framework, composed of a transformer backbone and two simple MLP heads on the learnable prediction tokens.",
+  "source_url": "https://arxiv.org/html/2305.15896",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2023-MossFormer": {
@@ -3688,6 +3772,13 @@
   "source_url": "https://arxiv.org/html/2211.14813",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2023-SeqTrack-Autoregressive-Tracking-Attention": {
+  "file": "figures/2023-SeqTrack-Autoregressive-Tracking-Attention.webp",
+  "fig_no": "Fig. 2",
+  "caption": "(a) Architecture of the proposed SeqTrack. The key component is an encoder-decoder transformer. The encoder extracts visual features from input video frames. The causal decoder autoregressively generates the sequence of the bounding box tokens using the extracted features. (b) Detailed transformer block in the causal decoder. The input embeddings interact in a casual manner through a masked multi-head attention mechanism. The visual feature is incorporated into the decoder via a multi-head attention layer.",
+  "source_url": "https://arxiv.org/html/2304.14394",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2023-Slide-Attention": {
   "file": "figures/2023-Slide-Attention.webp",
   "fig_no": "Figure 1",
@@ -3889,6 +3980,13 @@
   "fig_no": "Figure 2",
   "caption": "The overview of AMFormer. $L$ is the layer number.",
   "source_url": "https://arxiv.org/html/2402.02334",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2024-ARTrackV2-Dual-Modal-Autoregressive-Attention": {
+  "file": "figures/2024-ARTrackV2-Dual-Modal-Autoregressive-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "ARTrackV2 framework. Initially, we utilize a Transformer encoder to process all tokens within a frame in parallel, with a masking strategy shown on the top right. Subsequently, appearance tokens are directed to a reconstruction decoder, where the object’s appearance within the ongoing search region is reconstructed. Simultaneously, the confidence token is fed into an MLP to predict the IoU between the estimated and ground truth bounding boxes, serving as a measure of the quality of appearance tokens.",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2312.17133",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2024-ATD-Adaptive-Token-Dictionary": {
@@ -4157,6 +4255,13 @@
   "source_url": "https://arxiv.org/html/2403.05135",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2024-Efficient-LoFTR-Aggregated-Attention": {
+  "file": "figures/2024-Efficient-LoFTR-Aggregated-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "Detailed Transformer Module Comparison. Unlike LoFTR which uses all tokens of feature maps to compute attention and resort to linear attention to reduce the computational cost, the proposed attention module first aggregates features for salient tokens, which is significantly more efficient for attention. Then the vanilla attention is utilized to transform aggregated features, where relative positional encoding is inserted to capture the spatial information. Transformed features are upsampled and fused with the original features to form the final features.",
+  "source_url": "https://arxiv.org/html/2403.04765",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2024-EfficientAtt": {
   "file": "figures/2024-EfficientAtt.webp",
   "fig_no": "Figure 1",
@@ -4260,6 +4365,13 @@
   "fig_no": "Figure 1",
   "caption": "Network Structure of HGRN2. Each HGRN2 layer includes a token mixer layer, HGRU2, and a channel mixer, GLU. HGRU2 employs recurrent computation as described in Eq. 3, where $\\mathbf{i}_{t}$ is the input state, $\\mathbf{g}_{t}$ is the forget gate, $\\mathbf{o}_{t}$ is the output gate, and $\\beta^{i}$ is the lower bound for layer $i$.",
   "source_url": "https://arxiv.org/html/2404.07904",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2024-HIPTrack-Historical-Prompt-Attention": {
+  "file": "figures/2024-HIPTrack-Historical-Prompt-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "Overview of our proposed HIPTrack. The whole structure consists of a feature extraction network, a history prompt network, and a head prediction network. The historical prompt network comprises a historical prompt encoder and a historical prompt decoder.",
+  "source_url": "https://arxiv.org/html/2311.02072",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2024-HRAMi": {
@@ -4526,6 +4638,13 @@
   "fig_no": "Figure 2",
   "caption": "Multi-resolution Time-Series Transformer (MTST) Architecture.",
   "source_url": "https://arxiv.org/html/2311.04147",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2024-MVSFormer-Position-Aware-Attention": {
+  "file": "figures/2024-MVSFormer-Position-Aware-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "The Overview of MVSFormer++. (a) Feature extraction enhanced with SVA module, normalized 2D-PE, and Norm&ALS. (b) Multi-scale cost volume formation and regularization, where CVT is strengthed by FPE and AAS resulting in solid depth estimation.",
+  "source_url": "https://arxiv.org/html/2401.11673",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2024-MVSplat-Cross-View-Transformer": {
@@ -5585,6 +5704,13 @@
   "source_url": "https://ar5iv.labs.arxiv.org/html/2508.07519",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2025-MOTIP-Identity-Decoder-Attention": {
+  "file": "figures/2025-MOTIP-Identity-Decoder-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Overview of MOTIP. There are three primary components: a DETR detector detects objects, a learnable ID dictionary represents different identities, and an ID Decoder predicts the ID labels of current objects, as we detailed in Sec. 3.2. We combine object features with their corresponding ID embeddings to form the historical trajectories $\\mathcal{T}_{t-T:t-1}$. Subsequently, the ID tokens are regarded as identity prompts, and the ID Decoder performs in-context ID prediction based on them, as discussed in Sec. 3.1 and Sec. 3.2.",
+  "source_url": "https://arxiv.org/html/2403.16848",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2025-MWSA": {
   "file": "figures/2025-MWSA.webp",
   "fig_no": "Figure 3",
@@ -5619,6 +5745,13 @@
   "caption": "Illustration of mixture of block attention (MoBA). (a) A running example of MoBA; (b) Integration of MoBA into Flash Attention.",
   "source_url": "https://arxiv.org/html/2502.13189",
   "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+ },
+ "2025-Moirai-2-0-Any-Variate-Causal-Attention": {
+  "file": "figures/2025-Moirai-2-0-Any-Variate-Causal-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Overview of the Moirai 2.0 architecture. Panel 1 illustrates the end-to-end pipeline from patched input time series through the transformer backbone to predicted quantiles. Panel 2 highlights the quantile loss, which compares each ground-truth value against all predicted quantiles without requiring quantile labels, enforcing correct ordering and spacing. Panel 3 depicts patch-level random masking used to improve robustness. Panel 4 shows a simplified view of the autoregressive multi-step quantile decoding strategy, where quantile forecasts are recursively rolled out to construct predictive distributions across the horizon.",
+  "source_url": "https://arxiv.org/html/2511.11698",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2025-Molmo-Image-Pooling-Attention": {
   "file": "figures/2025-Molmo-Image-Pooling-Attention.webp",
@@ -5955,6 +6088,13 @@
   "caption": "An illustration of the pruning procedure of ThinK. Within each attention head, scores are computed for each channel, and only the top $T$ channels out of $D$ are selected for retention. A binary channel mask, along with the pruned keys, is then stored in the cache memory.",
   "source_url": "https://arxiv.org/html/2407.21018",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2025-Time-MoE-Sparse-Expert-Forecasting-Attention": {
+  "file": "figures/2025-Time-MoE-Sparse-Expert-Forecasting-Attention.webp",
+  "fig_no": "Figure 5",
+  "caption": "Causal attention layer.",
+  "source_url": "https://arxiv.org/html/2409.16040",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2025-TimeBridge-Integrated-Attention": {
   "file": "figures/2025-TimeBridge-Integrated-Attention.webp",
@@ -6495,6 +6635,13 @@
   "source_url": "https://arxiv.org/html/2603.06228",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2026-SVOO-Semantic-Video-Sparse-Attention": {
+  "file": "figures/2026-SVOO-Semantic-Video-Sparse-Attention.webp",
+  "fig_no": "Figure 4",
+  "caption": "The framework of SVOO consists of two stages for accelerating video generation. Offline stage (left): we profile the intrinsic attention sparsity of each transformer layer and derive a layer-wise sparsity schedule. Online stage (right): we perform bidirectional co-clustering to partition queries and keys into coupled blocks, and then select salient block pairs according to the offline schedule.",
+  "source_url": "https://arxiv.org/html/2603.18636",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2026-ScoPE-LLM": {
   "file": "figures/2026-ScoPE-LLM.webp",
   "fig_no": "Figure 1",
@@ -6543,6 +6690,13 @@
   "caption": "Architecture of TabICLv2. Given an input $X\\in\\mathbb{R}^{n\\times m}$, repeated feature grouping encodes columns into multiple groups via circular shifts to break feature symmetries, and target-aware embedding injects target information from the beginning. $\\text{TF}_{\\text{col}}$ embeds each feature through a set transformer, $\\text{TF}_{\\text{row}}$ aggregates features into row representations $h$, and $\\text{TF}_{\\text{icl}}$ performs in-context learning to predict test targets $\\hat{y}$. QASSMax, our query-aware scalable softmax, is applied in the part of $\\text{TF}_{\\text{col}}$ where inducing points aggregate input information and $\\text{TF}_{\\text{icl}}$ to mitigate attention fading and improve long-context generalization.",
   "source_url": "https://arxiv.org/html/2602.11139",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2026-TempoControl-Temporal-Attention-Guidance": {
+  "file": "figures/2026-TempoControl-Temporal-Attention-Guidance.webp",
+  "fig_no": "Figure 3",
+  "caption": "Illustration of TempoControl. During a single denoising step $t$, we extract spatial attention maps $\\bar{A}^{t}_{j,i}$ (for word $i$ at temporal index $j$ ), aggregate to a temporal attention signal $a_{i}^{t}$, and align it with the target mask vector $m_{i}$ via temporal and spatial losses. Gradients $\\nabla\\mathcal{L}$ are used to update the latent code $z_{t}$.",
+  "source_url": "https://arxiv.org/html/2510.02226",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2026-TiRex-2-Asymmetric-Group-Attention": {
   "file": "figures/2026-TiRex-2-Asymmetric-Group-Attention.webp",
