@@ -6,7 +6,7 @@ export const strings = {
     grouping: "怎么分行", room: "按展室", field: "按领域", collectedOnly: "只看已收藏的",
     search: "找一件展品", next: "下一个", found: n => `找到 ${n} 件`, empty: "没有叫这个名字的",
     count: n => `${n} 件`, year: "年份", unknownYear: "年份不详", unknownVenue: "出处不详",
-    other: "还没归到展室的", legend: "图例", collected: "已收藏", pending: "还没收", anchor: "导览里讲到的",
+    other: "八室之外的线索", legend: "图例", collected: "已收藏", pending: "还没收", anchor: "导览里讲到的",
     lineage: "前作和后作", citation: "引用", total: "图上共",
   },
   en: {
@@ -16,7 +16,7 @@ export const strings = {
     grouping: "Rows", room: "By room", field: "By field", collectedOnly: "Held only",
     search: "Find an exhibit", next: "Next", found: n => `${n} found`, empty: "Nothing by that name",
     count: n => `${n} ${n === 1 ? "exhibit" : "exhibits"}`, year: "Year", unknownYear: "Year not recorded", unknownVenue: "Venue not recorded",
-    other: "Not yet placed in a room", legend: "Key", collected: "Held", pending: "Not yet held", anchor: "On the tour",
+    other: "Lines outside the eight rooms", legend: "Key", collected: "Held", pending: "Not yet held", anchor: "On the tour",
     lineage: "Earlier and later versions", citation: "Cites", total: "On this map",
   },
 };
@@ -40,6 +40,7 @@ function roomAssignments(exhibits, chapters) {
   function roomFor(exhibit) {
     const { id, year, halls } = exhibit;
     if (anchors.has(id)) return anchors.get(id);
+    if (exhibit.room) return exhibit.room === "beyond" ? other : exhibit.room;
     if (!hasYear(year)) return other;
 
     const choices = [];

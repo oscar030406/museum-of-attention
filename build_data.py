@@ -993,7 +993,10 @@ def apply_curation(exhibits: list[dict], public: bool) -> dict | None:
     figures = load_curation_json(CURATION / "figures.json")
     house = load_curation_json(CURATION / "figures_house.json")
     story = load_story()
+    rooms = load_curation_json(CURATION / "rooms.json")     # 馆长逐件定的展室。没有的展品由总图按领域和年份估
     for e in exhibits:
+        if e["id"] in rooms:
+            e["room"] = rooms[e["id"]]
         t = texts.get(e["id"]) or {}
         if (t.get("mechanism_zh") or "").strip():
             e["mechanism"] = t["mechanism_zh"].strip()
