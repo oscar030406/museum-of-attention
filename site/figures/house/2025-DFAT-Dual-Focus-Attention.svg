@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 490 533 L 490 501" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="p" data-to="score" d="M 420 465 L 194 442" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="p" data-to="near" d="M 490 465 L 490 443.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="near" data-to="sim" d="M 490 388.5 L 490 358.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="score" data-to="pick" d="M 194 368 L 243 274.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="sim" data-to="pick" d="M 490 303.5 L 396 274.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="pick" data-to="pool" d="M 316 219.5 L 316 191.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="pool" data-to="attn" d="M 386 136.5 L 475 128.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="near" data-to="pool" d="M 598 388.5 L 650 357 L 650 195 L 448 193 L 410 191.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="p" data-to="attn" d="M 575 465 L 778 450 L 778 145 L 670 128.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="attn" data-to="out" d="M 580 73.5 L 580 61" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<g class="node" id="x"><rect x="377.5" y="533" width="225" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="490" y="556" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Query and memory points</text>
+</g>
+<g class="node" id="p"><rect x="364.5" y="465" width="251" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="490" y="488" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Concatenate point features</text>
+</g>
+<g class="node" id="score"><rect x="56.5" y="368" width="275" height="74" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="194" y="391" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">All-point scaled dot products</text>
+<text class="box" x="194" y="410" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Row Softmax ⊗ column Softmax</text>
+<text class="box" x="194" y="429" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Take each row’s max and argmax</text>
+</g>
+<g class="node" id="near"><rect x="353.5" y="388.5" width="273" height="55" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="490" y="411.5" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Gather indexed neighborhoods</text>
+<text class="box" x="490" y="430.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Pad with a zero feature</text>
+</g>
+<g class="node" id="sim"><rect x="353.5" y="303.5" width="273" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="490" y="326.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Center–neighbor dot products</text>
+<text class="box" x="490" y="345.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Mask zero scores → Softmax</text>
+</g>
+<g class="node" id="pick"><rect x="164.5" y="219.5" width="303" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="316" y="242.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Rank neighbors by score product</text>
+<text class="box" x="316" y="261.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Top 3 plus center’s best match</text>
+</g>
+<g class="node" id="pool"><rect x="172" y="136.5" width="288" height="55" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="316" y="159.5" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Gather selected neighborhoods</text>
+<text class="box" x="316" y="178.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Mean-pool each spot</text>
+</g>
+<g class="node" id="attn"><rect x="446" y="73.5" width="268" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="580" y="96.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Local cross-attention</text>
+<text class="box" x="580" y="115.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">QKV → masked Softmax → mix V</text>
+</g>
+<g class="node" id="out"><rect x="431" y="25" width="298" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="580" y="48" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Residual FFN and split point sets</text>
+</g>
+<text class="edge x--p" x="496" y="520" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">1×N₁×C and 1×N₂×C</text>
+<text class="edge p--score" x="307" y="473" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">N×C</text>
+<text class="edge near--sim" x="496" y="374" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">N×(1+J)×C</text>
+<text class="edge score--pick" x="239" y="298" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">Match confidence and index</text>
+<text class="edge sim--pick" x="471" y="289" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">Local similarity</text>
+<text class="edge pick--pool" x="322" y="205" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">N×4 indices</text>
+<text class="edge near--pool" x="559" y="186" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Neighborhood features</text>
+<text class="edge p--attn" x="784" y="303" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">N queries, length 1</text>
+</svg>

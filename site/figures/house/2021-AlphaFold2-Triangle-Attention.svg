@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="pair" data-to="norm" d="M 525 532 L 525 490.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="mask" data-to="score" d="M 126 511.5 L 93 485 L 93 306 L 272 280.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="norm" data-to="bias" d="M 431 435.5 L 237 388.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="norm" data-to="p" d="M 525 435.5 L 525 388.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="norm" data-to="gate" d="M 619 435.5 L 796 388.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="bias" data-to="score" d="M 237 333.5 L 311 280.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="p" data-to="score" d="M 475 333.5 L 391 280.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="p" data-to="mix" d="M 557 333.5 L 575 315 L 575 202 L 557 181" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="score" data-to="mix" d="M 339 225.5 L 483 181" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="mix" data-to="gp" d="M 525 145 L 565 120" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="gate" data-to="gp" d="M 796 333.5 L 796 304 L 796 132 L 694 120" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="gp" data-to="out" d="M 625 84 L 625 62" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<g class="node" id="pair"><rect x="457" y="532" width="136" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="525" y="555" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Pair features</text>
+</g>
+<g class="node" id="mask"><rect x="26" y="511.5" width="200" height="55" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="126" y="534.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Pair mask</text>
+<text class="box" x="126" y="553.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Transpose for column mode</text>
+</g>
+<g class="node" id="norm"><rect x="370" y="435.5" width="310" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="525" y="458.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Select row or column orientation</text>
+<text class="box" x="525" y="477.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">LayerNorm</text>
+</g>
+<g class="node" id="bias"><rect x="120" y="333.5" width="234" height="55" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="237" y="356.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Project pair bias</text>
+<text class="box" x="237" y="375.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Shared over the fixed index</text>
+</g>
+<g class="node" id="p"><rect x="434.5" y="333.5" width="181" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="525" y="356.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Linear Q, K and V</text>
+<text class="box" x="525" y="375.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Scale Q by 1/√d</text>
+</g>
+<g class="node" id="gate"><rect x="698.5" y="333.5" width="195" height="55" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="796" y="356.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Optional output gate</text>
+<text class="box" x="796" y="375.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Linear → Sigmoid</text>
+</g>
+<g class="node" id="score"><rect x="257" y="225.5" width="164" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="339" y="248.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">QKᵀ + pair bias</text>
+<text class="box" x="339" y="267.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Mask keys → Softmax</text>
+</g>
+<g class="node" id="mix"><rect x="439.5" y="145" width="171" height="36" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="525" y="168" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Weighted sum of V</text>
+</g>
+<g class="node" id="gp"><rect x="504.5" y="84" width="241" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="625" y="107" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Gate ⊗ response, if enabled</text>
+</g>
+<g class="node" id="out"><rect x="491.5" y="26" width="267" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="625" y="49" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Linear and restore orientation</text>
+</g>
+<text class="edge pair--norm" x="531" y="516" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">N×N×C</text>
+<text class="edge mask--score" x="190" y="307" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">N×N</text>
+<text class="edge norm--bias" x="349" y="412" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">N×N×C</text>
+<text class="edge bias--score" x="280" y="315" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">h×N×N</text>
+<text class="edge p--score" x="444" y="309" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Q, K</text>
+<text class="edge p--mix" x="581" y="264" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">V: N×N×h×d</text>
+<text class="edge score--mix" x="427" y="213" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">N×h×N×N</text>
+<text class="edge gate--gp" x="802" y="223" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">N×N×h×d</text>
+<text class="edge gp--out" x="631" y="77" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">N×N×h×d</text>
+</svg>

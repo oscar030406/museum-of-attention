@@ -1138,5 +1138,180 @@
     "file": "figures/house/na-GENet.svg",
     "caption_en": "Gather local context with average pooling, resize it to the feature grid, then apply sigmoid weights to scale the input.",
     "caption_zh": "在局部范围内做平均池化来汇总上下文，将其放大到原网格，再经 Sigmoid 生成缩放权重。"
+  },
+  "2018-AGNN-Cosine-Graph-Attention": {
+    "file": "figures/house/2018-AGNN-Cosine-Graph-Attention.svg",
+    "caption_en": "Scaled cosine scores weight source nodes after normalization over incoming edges, and each destination sums its weighted messages.",
+    "caption_zh": "对入边的余弦分数做归一化，再加权求和源节点特征，得到各目标节点的输出。"
+  },
+  "2019-HetGNN-Neighbor-Type-Attention": {
+    "file": "figures/house/2019-HetGNN-Neighbor-Type-Attention.svg",
+    "caption_en": "Bidirectional LSTMs encode node contents and same-type neighbors, then type weights blend the three neighbor summaries with the center node.",
+    "caption_zh": "双向 LSTM 编码节点内容和同类邻居，再按类型权重融合三路邻居摘要与中心节点。"
+  },
+  "2021-ABCNet-Attention": {
+    "file": "figures/house/2021-ABCNet-Attention.svg",
+    "caption_en": "Pointwise projections form normalized queries and keys, then spatial key and value totals produce a normalized response at each pixel.",
+    "caption_zh": "逐点投影生成归一化查询与键，再汇总空间位置的键和值，为每个像素计算归一化响应。"
+  },
+  "2021-AlphaFold2-Triangle-Attention": {
+    "file": "figures/house/2021-AlphaFold2-Triangle-Attention.svg",
+    "caption_en": "Pair features supply queries, keys, values, and a third-edge bias for masked row or column attention, with a sigmoid gate on the result.",
+    "caption_zh": "成对特征生成查询、键、值和三角第三边的偏置，按行或列计算带掩码的注意力，再用 Sigmoid 门控。"
+  },
+  "2021-SepFormer-Dual-Path-Attention": {
+    "file": "figures/house/2021-SepFormer-Dual-Path-Attention.svg",
+    "caption_en": "Overlapping speech chunks attend within chunks and then across chunks at matching offsets before overlap-add restores the sequence.",
+    "caption_zh": "把语音序列切成重叠块，先在块内做注意力，再跨块比较相同偏移处的帧，最后重叠相加。"
+  },
+  "2022-ABC": {
+    "file": "figures/house/2022-ABC.svg",
+    "caption_en": "Token controls compress projected keys and values into a fixed number of slots, and each query reads a softmax-weighted mixture of slot values.",
+    "caption_zh": "用令牌控制量把键和值压缩到固定数量的槽，再用每个查询对槽做 Softmax 并读取槽值。"
+  },
+  "2022-Dehamer-Attention": {
+    "file": "figures/house/2022-Dehamer-Attention.svg",
+    "caption_en": "A hazy image supplies dark-channel position codes for feature tokens, which mix within windows that alternate between regular and shifted partitions.",
+    "caption_zh": "从雾图提取暗通道位置编码，加到特征令牌上，再交替用普通窗口和移位窗口混合特征。"
+  },
+  "2022-GeoTransformer-Geometric-Structure-Attention": {
+    "file": "figures/house/2022-GeoTransformer-Geometric-Structure-Attention.svg",
+    "caption_en": "Point distances and neighbor angles add a geometric term to feature scores before self-attention mixes values within each point cloud.",
+    "caption_zh": "把点间距离和邻居夹角编码成几何项，加到特征打分上，再在同一点云内加权混合。"
+  },
+  "2022-RVRT-Guided-Deformable-Attention": {
+    "file": "figures/house/2022-RVRT-Guided-Deformable-Attention.svg",
+    "caption_en": "Flow plus learned offsets sample keys and values from a nearby clip, and query scores select how to mix the sampled values.",
+    "caption_zh": "光流与学习得到的偏移共同定位邻近片段中的键和值，再用查询分数加权混合采样值。"
+  },
+  "2022-Stripformer-Strip-Attention": {
+    "file": "figures/house/2022-Stripformer-Strip-Attention.svg",
+    "caption_en": "Horizontal and vertical strip tokens attend along their respective axes, then restore the grid and fuse channels with a residual connection.",
+    "caption_zh": "横向和纵向条带令牌分别沿各自的轴做注意力，再恢复网格、拼接通道并加回输入。"
+  },
+  "2022-TTVSR-Trajectory-Aware-Attention": {
+    "file": "figures/house/2022-TTVSR-Trajectory-Aware-Attention.svg",
+    "caption_en": "Trajectory locations sample past features, then the best cosine match picks one time step per patch and scales the fused features.",
+    "caption_zh": "沿轨迹采样历史特征，用余弦相似度为每个图块选一个时刻，再按最高分缩放融合特征。"
+  },
+  "2022-UNetFormer-GLTB": {
+    "file": "figures/house/2022-UNetFormer-GLTB.svg",
+    "caption_en": "Window attention and directional pooling collect wider context, then a convolution branch adds local detail before separable projection.",
+    "caption_zh": "用窗口注意力和沿轴池化汇聚较大范围的上下文，再合入局部卷积分支并做可分离卷积。"
+  },
+  "2022-ViTDet-Window-Propagation-Attention": {
+    "file": "figures/house/2022-ViTDet-Window-Propagation-Attention.svg",
+    "caption_en": "A window block mixes nearby patches first, then a global block spreads information across windows using height and width relative positions.",
+    "caption_zh": "先在窗口内混合邻近图块，再用带高宽相对位置项的全局注意力把信息传到其他窗口。"
+  },
+  "2023-CASCADE-Attention-Gate": {
+    "file": "figures/house/2023-CASCADE-Attention-Gate.svg",
+    "caption_en": "Decoder gating features and skip features form a shared sigmoid mask that multiplies the original skip features at each spatial position.",
+    "caption_zh": "把解码门控特征与跳连特征合成一张 Sigmoid 掩码，再逐位置乘回原始跳连特征。"
+  },
+  "2023-Co-DETR-Decoder-Auxiliary-Query-Mask": {
+    "file": "figures/house/2023-Co-DETR-Decoder-Auxiliary-Query-Mask.svg",
+    "caption_en": "Positive assignments become auxiliary decoder queries, with zero padding masked across all heads or sampled background queries filling the remaining slots.",
+    "caption_zh": "把正样本分配整理成辅助解码查询。空位可补零并对所有头屏蔽，也可填入抽样的背景查询。"
+  },
+  "2023-CTformer-Dilated-Token-Attention": {
+    "file": "figures/house/2023-CTformer-Dilated-Token-Attention.svg",
+    "caption_en": "Patch tokens mix twice with a dilated unfolding between rounds, then a final unfolding and projection return tokens alongside two skips.",
+    "caption_zh": "图像块令牌做两次注意力，中间用膨胀展开取样，最后再次展开并投影，连同两级跳连令牌返回。"
+  },
+  "2023-NGswin-N-Gram-Window-Attention": {
+    "file": "figures/house/2023-NGswin-N-Gram-Window-Attention.svg",
+    "caption_en": "Neighboring window summaries attend in both directions, then their merged context updates patch tokens before a second attention pass within each window.",
+    "caption_zh": "双向聚合邻窗摘要，把合并后的上下文加到每个窗口的令牌上，再做窗口内注意力。"
+  },
+  "2023-PIP-Prior-Prompt-Interaction": {
+    "file": "figures/house/2023-PIP-Prior-Prompt-Interaction.svg",
+    "caption_en": "A degradation label selects a prompt that modulates image features, and a learned restoration prompt reads those features through channel cross-attention.",
+    "caption_zh": "退化标签选择提示并调制图像特征，再由可学习的复原提示通过通道交叉注意力读取这些特征。"
+  },
+  "2023-SigLIP-MAP-Head": {
+    "file": "figures/house/2023-SigLIP-MAP-Head.svg",
+    "caption_en": "A learned query pools image tokens through multi-head attention, then a residual MLP refines the resulting image vector.",
+    "caption_zh": "用一条可学习查询对图像令牌做多头注意力池化，再用残差 MLP 更新得到的图像向量。"
+  },
+  "2023-SRFormer-Permuted-SA": {
+    "file": "figures/house/2023-SRFormer-Permuted-SA.svg",
+    "caption_en": "Each full-resolution query attends to keys and values that pack four neighboring positions into one token, then the window output keeps the full grid.",
+    "caption_zh": "把相邻四个位置的键和值重排成一个令牌，让完整窗口的每个查询都从压缩后的键和值读取。"
+  },
+  "2024-AlphaFold3-Atom-Cross-Attention": {
+    "file": "figures/house/2024-AlphaFold3-Atom-Cross-Attention.svg",
+    "caption_en": "Local atom queries gather keys from indexed subsets, mix values using pair-biased scores, then apply single-conditioned gates and a residual transition.",
+    "caption_zh": "局部原子查询按索引收集键，用含成对偏置的分数加权混合值，再经过单原子条件门控和残差变换。"
+  },
+  "2024-ClearCLIP-Self-Self-Attention": {
+    "file": "figures/house/2024-ClearCLIP-Self-Self-Attention.svg",
+    "caption_en": "The same query projection supplies both sides of the similarity matrix, whose softmax weights mix projected values into output tokens.",
+    "caption_zh": "用同一查询投影计算相似度矩阵，再用 Softmax 权重混合投影后的值，得到输出令牌。"
+  },
+  "2024-HiT-SR-Spatial-Channel-Correlation": {
+    "file": "figures/house/2024-HiT-SR-Spatial-Channel-Correlation.svg",
+    "caption_en": "Each window correlates queries and values across compressed spatial positions and across channels, then restores the grid and fuses both results.",
+    "caption_zh": "窗口内的查询和值分别在压缩空间位置和通道上计算相关性，再恢复网格并融合两路结果。"
+  },
+  "2024-Right-chunk-Decoder-Only-ASR": {
+    "file": "figures/house/2024-Right-chunk-Decoder-Only-ASR.svg",
+    "caption_en": "Speech and text lengths and chunk IDs determine which earlier keys each decoder token can see and how its position is numbered.",
+    "caption_zh": "根据语音和文本长度及分块编号，确定每个解码令牌可见的键，并生成位置编号。"
+  },
+  "2024-RT-DETRv2-Discrete-Sampling-Attention": {
+    "file": "figures/house/2024-RT-DETRv2-Discrete-Sampling-Attention.svg",
+    "caption_en": "Queries predict sample locations and weights, then integer lookup gathers values from feature levels and a weighted sum updates each query.",
+    "caption_zh": "查询预测采样位置和权重，再用整数坐标从多尺度特征取值，按权重求和以更新查询。"
+  },
+  "2024-Simul-Whisper-Alignment-Attention": {
+    "file": "figures/house/2024-Simul-Whisper-Alignment-Attention.svg",
+    "caption_en": "Selected decoder attention heads are standardized, smoothed and averaged to align each token to audio and pick the last token’s strongest frame.",
+    "caption_zh": "选取解码器注意力头，做标准化、平滑和平均，得到令牌到音频的对齐，并选出末令牌的最高分帧。"
+  },
+  "2024-StyleID-Style-Injection-Attention": {
+    "file": "figures/house/2024-StyleID-Style-Injection-Attention.svg",
+    "caption_en": "Content and current queries blend before scaled attention reads style keys and values and projects the resulting features.",
+    "caption_zh": "先混合内容查询和当前查询，再用缩放打分读取风格键和值，并投影得到输出特征。"
+  },
+  "2024-VRT-Temporal-Mutual-Attention": {
+    "file": "figures/house/2024-VRT-Temporal-Mutual-Attention.svg",
+    "caption_en": "Each two-frame window mixes all tokens by self-attention, then joins that result with both directions of cross-frame attention.",
+    "caption_zh": "双帧窗口对全部令牌做自注意力，再与两个方向的跨帧注意力结果拼接。"
+  },
+  "2024-X-Restormer-Cross-Scope-Attention": {
+    "file": "figures/house/2024-X-Restormer-Cross-Scope-Attention.svg",
+    "caption_en": "Channel attention first mixes feature channels, then spatial queries read larger overlapping neighborhoods and return a refined feature map.",
+    "caption_zh": "先做通道注意力，再让空间查询读取范围更大的重叠邻域，得到更新后的特征图。"
+  },
+  "2025-AdaIR-Frequency-Mining-Attention": {
+    "file": "figures/house/2025-AdaIR-Frequency-Mining-Attention.svg",
+    "caption_en": "An adaptive FFT split yields low and high features that read decoder values, gate each other, and feed a final cross-attention update.",
+    "caption_zh": "用自适应频谱掩码分出高低频。两路各自读取解码特征并相互门控，再做一次交叉注意力更新。"
+  },
+  "2025-DFAT-Dual-Focus-Attention": {
+    "file": "figures/house/2025-DFAT-Dual-Focus-Attention.svg",
+    "caption_en": "Global match confidence and local neighbor similarity select spots whose pooled neighborhoods serve as keys and values for cross-attention.",
+    "caption_zh": "把全局匹配置信度和局部邻居相似度结合起来选点，再把选中点的邻域均值用作交叉注意力的键和值。"
+  },
+  "2025-EoMT-Masked-Query-Attention": {
+    "file": "figures/house/2025-EoMT-Masked-Query-Attention.svg",
+    "caption_en": "Learned queries join patch tokens, predict segmentation masks, and use those masks to restrict query-to-patch attention in the final encoder blocks.",
+    "caption_zh": "把可学习查询接到图块令牌前，用预测掩码限制查询可见的图块，再在编码器末段更新令牌。"
+  },
+  "2025-LYT-Net-Luminance-Denoising-Attention": {
+    "file": "figures/house/2025-LYT-Net-Luminance-Denoising-Attention.svg",
+    "caption_en": "Luminance features become spatial tokens whose multi-head attention mixes values across positions before restoring the feature map.",
+    "caption_zh": "把亮度特征整理成空间令牌，通过多头注意力混合各位置的值，再恢复成特征图。"
+  },
+  "2025-TabPFNv2-Row-Column-Attention": {
+    "file": "figures/house/2025-TabPFNv2-Row-Column-Attention.svg",
+    "caption_en": "Within-row attention mixes feature groups, then attention down each column reads training rows before a residual MLP updates the table.",
+    "caption_zh": "先在每行内混合各特征组，再沿每列读取训练行，最后用残差 MLP 更新整张表。"
+  },
+  "2026-GRAPE": {
+    "file": "figures/house/2026-GRAPE.svg",
+    "caption_en": "Token features steer causal attention through cumulative query–key rotations or a distance penalty gated by each key, then heads merge into output tokens.",
+    "caption_zh": "用令牌特征控制因果注意力。一路按累积相位旋转查询和键，另一路按键调节距离惩罚，最后合并注意力头。"
   }
 }

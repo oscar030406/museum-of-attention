@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="input" data-to="sel" d="M 484 516.5 L 484 479" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="sel" data-to="stack" d="M 484 443 L 484 397" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="stack" data-to="z" d="M 484 361 L 484 321.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="z" data-to="median" d="M 484 266.5 L 484 236.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="median" data-to="avg" d="M 484 181.5 L 484 144" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="avg" data-to="matrix" d="M 403 108 L 300 65" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="avg" data-to="arg" d="M 565 108 L 673 65" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<g class="node" id="input"><rect x="326.5" y="516.5" width="315" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="484" y="539.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Decoder cross-attention snapshots</text>
+<text class="box" x="484" y="558.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">After Softmax</text>
+</g>
+<g class="node" id="sel"><rect x="312.5" y="443" width="343" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="484" y="466" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Select configured layer and head pairs</text>
+</g>
+<g class="node" id="stack"><rect x="302" y="361" width="364" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="484" y="384" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Concatenate token steps and stack heads</text>
+</g>
+<g class="node" id="z"><rect x="320" y="266.5" width="328" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="484" y="289.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Standardize each head and frame</text>
+<text class="box" x="484" y="308.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Subtract token mean, divide by token SD</text>
+</g>
+<g class="node" id="median"><rect x="358" y="181.5" width="252" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="484" y="204.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Median filter across frames</text>
+<text class="box" x="484" y="223.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Reflect padding, width 7</text>
+</g>
+<g class="node" id="avg"><rect x="302.5" y="108" width="363" height="36" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="484" y="131" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Average heads and crop to audio length</text>
+</g>
+<g class="node" id="matrix"><rect x="219" y="29" width="162" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="300" y="52" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Alignment matrix</text>
+</g>
+<g class="node" id="arg"><rect x="550" y="29" width="246" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="673" y="52" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Argmax of last token’s row</text>
+</g>
+<text class="edge input--sel" x="490" y="502" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">h×Tᵢ×F per snapshot</text>
+<text class="edge sel--stack" x="490" y="424" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Tᵢ×F per selected head</text>
+<text class="edge stack--z" x="490" y="345" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">A×T×F</text>
+<text class="edge z--median" x="490" y="258" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">A×T×F</text>
+<text class="edge median--avg" x="490" y="167" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">A×T×F</text>
+<text class="edge avg--matrix" x="361" y="86" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">T×Fvalid</text>
+<text class="edge avg--arg" x="630" y="97" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">T×Fvalid</text>
+</svg>

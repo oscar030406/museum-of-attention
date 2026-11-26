@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="enc" d="M 397 517.5 L 397 491.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="enc" data-to="center" d="M 352 436.5 L 211 386" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="enc" data-to="lstm" d="M 442 436.5 L 584 395.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="edges" data-to="lstm" d="M 772 447 L 714 395.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="center" data-to="join" d="M 211 350 L 358 303.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="lstm" data-to="join" d="M 649 340.5 L 503 303.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="join" data-to="score" d="M 365 248.5 L 335 201.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="join" data-to="mix" d="M 495 248.5 L 570 219 L 570 130 L 568 122" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="score" data-to="mix" d="M 335 146.5 L 505 122" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 538 86 L 538 61" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<g class="node" id="x"><rect x="329" y="517.5" width="136" height="55" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="397" y="540.5" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Node contents</text>
+<text class="box" x="397" y="559.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Per node type</text>
+</g>
+<g class="node" id="edges"><rect x="677.5" y="447" width="189" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="772" y="470" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Relation edge lists</text>
+</g>
+<g class="node" id="enc"><rect x="278.5" y="436.5" width="237" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="397" y="459.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Concatenate content</text>
+<text class="box" x="397" y="478.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Bidirectional LSTM → mean</text>
+</g>
+<g class="node" id="center"><rect x="116.5" y="350" width="189" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="211" y="373" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Select center nodes</text>
+</g>
+<g class="node" id="lstm"><rect x="521.5" y="340.5" width="255" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="649" y="363.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Group neighbors by relation</text>
+<text class="box" x="649" y="382.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Bidirectional LSTM → mean</text>
+</g>
+<g class="node" id="join"><rect x="293" y="248.5" width="274" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="430" y="271.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Pair with center and stack</text>
+<text class="box" x="430" y="290.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Three relations + the center</text>
+</g>
+<g class="node" id="score"><rect x="216" y="146.5" width="238" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="335" y="169.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Linear → LeakyReLU</text>
+<text class="box" x="335" y="188.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Softmax over four sources</text>
+</g>
+<g class="node" id="mix"><rect x="474.5" y="86" width="127" height="36" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="538" y="109" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Weighted sum</text>
+</g>
+<g class="node" id="out"><rect x="439" y="25" width="198" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="538" y="48" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Output per node type</text>
+</g>
+<text class="edge x--enc" x="403" y="512" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">N×S×D</text>
+<text class="edge enc--center" x="295" y="412" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">N×D</text>
+<text class="edge enc--lstm" x="519" y="427" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">N×D</text>
+<text class="edge edges--lstm" x="750" y="423" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">2×E</text>
+<text class="edge center--join" x="299" y="336" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">M×D</text>
+<text class="edge lstm--join" x="582" y="320" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">M×3×D</text>
+<text class="edge join--score" x="359" y="230" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">M×4×2D</text>
+<text class="edge join--mix" x="576" y="179" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">M×4×D</text>
+<text class="edge score--mix" x="420" y="125" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">M×4</text>
+<text class="edge mix--out" x="544" y="78" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">M×D</text>
+</svg>

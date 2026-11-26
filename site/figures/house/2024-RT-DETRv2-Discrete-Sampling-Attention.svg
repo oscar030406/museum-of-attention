@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="q" data-to="wt" d="M 265 533 L 179 456.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="q" data-to="loc" d="M 333 533 L 409 456.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="ref" data-to="loc" d="M 564 533 L 554 456.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="x" data-to="proj" d="M 814 533 L 782 456.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="loc" data-to="grid" d="M 483 401.5 L 482 364" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="grid" data-to="gather" d="M 482 290 L 549 251.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="proj" data-to="gather" d="M 782 401.5 L 793 343 L 793 273 L 713 251.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="gather" data-to="sum" d="M 630 196.5 L 513 153.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="wt" data-to="sum" d="M 179 401.5 L 179 214 L 331 153.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="sum" data-to="out" d="M 425 98.5 L 425 65" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<g class="node" id="q"><rect x="235.5" y="533" width="127" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="299" y="556" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Query tokens</text>
+</g>
+<g class="node" id="ref"><rect x="443" y="533" width="242" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="564" y="556" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Reference points or boxes</text>
+</g>
+<g class="node" id="x"><rect x="697" y="533" width="234" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="814" y="556" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Multi-level value tokens</text>
+</g>
+<g class="node" id="wt"><rect x="62" y="401.5" width="234" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="179" y="424.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Linear weights → Softmax</text>
+<text class="box" x="179" y="443.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Across all sampled points</text>
+</g>
+<g class="node" id="loc"><rect x="352" y="401.5" width="262" height="55" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="483" y="424.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Linear offsets + reference</text>
+<text class="box" x="483" y="443.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Scale by grid size or box size</text>
+</g>
+<g class="node" id="proj"><rect x="665" y="401.5" width="234" height="55" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="782" y="424.5" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Linear and optional mask</text>
+<text class="box" x="782" y="443.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Split heads and levels</text>
+</g>
+<g class="node" id="grid"><rect x="329.5" y="290" width="305" height="74" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="482" y="313" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Map coordinates to pixel indices</text>
+<text class="box" x="482" y="332" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Scale → add 0.5 → integer</text>
+<text class="box" x="482" y="351" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Clamp both axes to [0, Hₗ − 1]</text>
+</g>
+<g class="node" id="gather"><rect x="498.5" y="196.5" width="263" height="55" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="630" y="219.5" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Gather at each integer index</text>
+<text class="box" x="630" y="238.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Repeat across feature levels</text>
+</g>
+<g class="node" id="sum"><rect x="276.5" y="98.5" width="297" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="425" y="121.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Concatenate and weight samples</text>
+<text class="box" x="425" y="140.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Sum over all points</text>
+</g>
+<g class="node" id="out"><rect x="308" y="29" width="234" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="425" y="52" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Linear output projection</text>
+</g>
+<text class="edge q--wt" x="231" y="493" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×Q×C</text>
+<text class="edge ref--loc" x="566" y="499" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×Q×levels×(2 or 4)</text>
+<text class="edge x--proj" x="807" y="499" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×S×C</text>
+<text class="edge loc--grid" x="489" y="383" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×Q×h×P×2</text>
+<text class="edge grid--gather" x="529" y="282" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Integer (x, y)</text>
+<text class="edge proj--gather" x="767" y="262" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">(B·h)×d×Hₗ×Wₗ</text>
+<text class="edge gather--sum" x="578" y="175" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">(B·h)×d×Q×P</text>
+<text class="edge wt--sum" x="185" y="313" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×Q×h×P</text>
+<text class="edge sum--out" x="431" y="85" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×Q×C</text>
+</svg>

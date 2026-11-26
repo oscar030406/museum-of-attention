@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="edge" data-to="self" d="M 235 532 L 235 476.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="self" data-to="score" d="M 235 421.5 L 355 372.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="score" data-to="soft" d="M 355 317.5 L 355 266" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="x" data-to="norm" d="M 600 532 L 520 467" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="norm" data-to="score" d="M 520 431 L 417 372.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="soft" data-to="sum" d="M 355 230 L 477 178.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="x" data-to="sum" d="M 667 532 L 757 504 L 757 201 L 578 178.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="sum" data-to="out" d="M 513 123.5 L 513 69" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<g class="node" id="edge"><rect x="162.5" y="532" width="145" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="235" y="555" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Directed edges</text>
+</g>
+<g class="node" id="x"><rect x="548" y="532" width="154" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="625" y="555" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Node features X</text>
+</g>
+<g class="node" id="self"><rect x="140.5" y="421.5" width="189" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="235" y="444.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Optional self-loops</text>
+<text class="box" x="235" y="463.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Replace existing loops</text>
+</g>
+<g class="node" id="norm"><rect x="430" y="431" width="180" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="520" y="454" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">L2-normalize nodes</text>
+</g>
+<g class="node" id="score"><rect x="205" y="317.5" width="300" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="355" y="340.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Scaled cosine on each edge</text>
+<text class="box" x="355" y="359.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">β × cosine(Xᵢ, Xⱼ)</text>
+</g>
+<g class="node" id="soft"><rect x="247" y="230" width="216" height="36" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="355" y="253" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Softmax by destination</text>
+</g>
+<g class="node" id="sum"><rect x="405.5" y="123.5" width="215" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="513" y="146.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Weight source features</text>
+<text class="box" x="513" y="165.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Sum by destination</text>
+</g>
+<g class="node" id="out"><rect x="445" y="33" width="136" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="513" y="56" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Updated nodes</text>
+</g>
+<text class="edge edge--self" x="241" y="509" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">2×E</text>
+<text class="edge self--score" x="305" y="406" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">2×E′</text>
+<text class="edge score--soft" x="361" y="296" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">E′ scores</text>
+<text class="edge x--norm" x="570" y="504" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">N×C</text>
+<text class="edge norm--score" x="453" y="387" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">N×C</text>
+<text class="edge soft--sum" x="428" y="213" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">E′ weights</text>
+<text class="edge x--sum" x="763" y="358" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Source Xⱼ</text>
+<text class="edge sum--out" x="519" y="101" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">N×C</text>
+</svg>

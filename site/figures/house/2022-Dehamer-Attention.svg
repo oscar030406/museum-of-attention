@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="img" data-to="dark" d="M 216 532 L 216 493.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="dark" data-to="pos" d="M 216 438.5 L 252 409.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="pos" data-to="merge" d="M 252 354.5 L 484 324" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="merge" data-to="window" d="M 484 288 L 480 262.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="window" data-to="score" d="M 480 207.5 L 458 192" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="score" data-to="out" d="M 458 118 L 480 87.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="x" data-to="merge" d="M 603 532 L 622 492 L 622 351 L 562 324" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<g class="node" id="img"><rect x="143.5" y="532" width="145" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="216" y="555" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Hazy RGB image</text>
+</g>
+<g class="node" id="x"><rect x="504" y="532" width="198" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="603" y="555" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Embedded feature map</text>
+</g>
+<g class="node" id="dark"><rect x="53.5" y="438.5" width="325" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="216" y="461.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Dark channel</text>
+<text class="box" x="216" y="480.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Channel min → patch min → bicubic resize</text>
+</g>
+<g class="node" id="pos"><rect x="102" y="354.5" width="300" height="55" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="252" y="377.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Sine and cosine position code</text>
+<text class="box" x="252" y="396.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Image x, y and dark-channel depth</text>
+</g>
+<g class="node" id="merge"><rect x="345" y="288" width="278" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="484" y="311" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Add position code and flatten</text>
+</g>
+<g class="node" id="window"><rect x="320.5" y="207.5" width="319" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="480" y="230.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Pre-norm, pad and split windows</text>
+<text class="box" x="480" y="249.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Alternate regular and shifted windows</text>
+</g>
+<g class="node" id="score"><rect x="278" y="118" width="360" height="74" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="458" y="141" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Project Q, K and V</text>
+<text class="box" x="458" y="160" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Scaled QKᵀ + relative bias, mask → Softmax</text>
+<text class="box" x="458" y="179" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Weight V and project</text>
+</g>
+<g class="node" id="out"><rect x="287" y="32.5" width="386" height="55" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="480" y="55.5" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Restore grid and feature map</text>
+<text class="box" x="480" y="74.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Undo shift, crop, add bypass and residual MLP</text>
+</g>
+<text class="edge img--dark" x="222" y="517" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×3×Hᵢ×Wᵢ</text>
+<text class="edge dark--pos" x="245" y="434" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×1×H×W</text>
+<text class="edge pos--merge" x="404" y="349" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×C×H×W</text>
+<text class="edge merge--window" x="489" y="280" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×(H·W)×C</text>
+<text class="edge window--score" x="477" y="203.75" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">(B·nW)×M×C</text>
+<text class="edge score--out" x="477" y="105" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">(B·nW)×M×C</text>
+<text class="edge x--merge" x="628" y="427" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×C×H×W</text>
+<text class="note" x="765" y="66" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Output: B×C×H×W</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="probe" data-to="q" d="M 251 532 L 251 461" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="tokens" data-to="kv" d="M 654 532 L 654 461" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="q" data-to="score" d="M 251 425 L 345 364.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="kv" data-to="score" d="M 591 425 L 474 364.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="kv" data-to="mix" d="M 717 425 L 740 386 L 740 265 L 625 241" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="score" data-to="mix" d="M 409 309.5 L 455 241" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="mix" data-to="mlp" d="M 495 205 L 495 141" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 606 205 L 748 180 L 748 82 L 624 63" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="mlp" data-to="out" d="M 475 105 L 475 63" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<g class="node" id="probe"><rect x="147.5" y="532" width="207" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="251" y="555" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Learned pooling query</text>
+</g>
+<g class="node" id="tokens"><rect x="590.5" y="532" width="127" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="654" y="555" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Image tokens</text>
+</g>
+<g class="node" id="q"><rect x="134" y="425" width="234" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="251" y="448" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Expand and project query</text>
+</g>
+<g class="node" id="kv"><rect x="541.5" y="425" width="225" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="654" y="448" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Project keys and values</text>
+</g>
+<g class="node" id="score"><rect x="270.5" y="309.5" width="277" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="409" y="332.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Scaled query–key dot product</text>
+<text class="box" x="409" y="351.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Softmax over image tokens</text>
+</g>
+<g class="node" id="mix"><rect x="384.5" y="205" width="301" height="36" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="535" y="228" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Weight V, merge heads → Linear</text>
+</g>
+<g class="node" id="mlp"><rect x="398" y="105" width="274" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="535" y="128" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">LayerNorm → MLP with GELU</text>
+</g>
+<g class="node" id="out"><rect x="373" y="27" width="324" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="535" y="50" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Add pooled skip, take image vector</text>
+</g>
+<text class="edge probe--q" x="257" y="501" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">1×1×C</text>
+<text class="edge tokens--kv" x="660" y="501" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×N×C</text>
+<text class="edge q--score" x="305" y="402" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×h×1×d</text>
+<text class="edge kv--score" x="544" y="392" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">K: B×h×N×d</text>
+<text class="edge kv--mix" x="746" y="331" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">V: B×h×N×d</text>
+<text class="edge score--mix" x="438" y="280" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×h×1×N</text>
+<text class="edge mix--mlp" x="501" y="176" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×1×C</text>
+<text class="edge mix--out" x="687" y="207" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">Pooled bypass</text>
+<text class="edge mlp--out" x="481" y="88" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×1×C</text>
+<text class="note" x="777" y="51" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Output: B×C</text>
+</svg>

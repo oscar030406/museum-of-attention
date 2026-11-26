@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="prep" d="M 259 531 L 259 494" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="prep" data-to="fft" d="M 199 458 L 150 402" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="prep" data-to="mask" d="M 319 458 L 432 411.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="fft" data-to="band" d="M 150 366 L 226 327.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="mask" data-to="band" d="M 432 356.5 L 386 327.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="band" data-to="mine" d="M 306 272.5 L 438 240.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="y" data-to="mine" d="M 749 531 L 739 491 L 739 252 L 580 240.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="mine" data-to="gates" d="M 511 185.5 L 418 173" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="gates" data-to="final" d="M 481 99 L 537 82.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="y" data-to="final" d="M 842 531 L 872 493 L 872 113 L 750 82.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<g class="node" id="x"><rect x="200" y="531" width="118" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="259" y="554" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Input image</text>
+</g>
+<g class="node" id="y"><rect x="699" y="531" width="180" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="789" y="554" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Decoder features Y</text>
+</g>
+<g class="node" id="prep"><rect x="133.5" y="458" width="251" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="259" y="481" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Resize to Y, then Conv 3×3</text>
+</g>
+<g class="node" id="fft"><rect x="30" y="366" width="240" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="150" y="389" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">FFT2 and center spectrum</text>
+</g>
+<g class="node" id="mask"><rect x="306.5" y="356.5" width="251" height="55" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="432" y="379.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">GAP → MLP → Sigmoid</text>
+<text class="box" x="432" y="398.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Build central frequency mask M</text>
+</g>
+<g class="node" id="band"><rect x="162" y="272.5" width="288" height="55" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="306" y="295.5" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Split low (M) and high (1 − M)</text>
+<text class="box" x="306" y="314.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Undo shift, IFFT2, magnitude</text>
+</g>
+<g class="node" id="mine"><rect x="373" y="185.5" width="276" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="511" y="208.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Each band queries Y</text>
+<text class="box" x="511" y="227.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Channel QKᵀ → Softmax → mix V</text>
+</g>
+<g class="node" id="gates"><rect x="211.5" y="99" width="305" height="74" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="364" y="122" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">High → spatial Sigmoid → gate low</text>
+<text class="box" x="364" y="141" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Low → channel Sigmoid → gate high</text>
+<text class="box" x="364" y="160" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Add bands → Conv 1×1</text>
+</g>
+<g class="node" id="final"><rect x="495.5" y="27.5" width="283" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="637" y="50.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Y queries fused bands</text>
+<text class="box" x="637" y="69.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Scale attention output and Y, then add</text>
+</g>
+<text class="edge x--prep" x="265" y="516" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×Cᵢ×Hᵢ×Wᵢ</text>
+<text class="edge prep--fft" x="181" y="435" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×C×H×W</text>
+<text class="edge fft--band" x="218" y="350" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Complex spectrum</text>
+<text class="edge mask--band" x="423" y="342" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Mask M</text>
+<text class="edge band--mine" x="385" y="266" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Two B×C×H×W maps</text>
+<text class="edge y--mine" x="745" y="369" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">K, V from Y</text>
+<text class="edge mine--gates" x="518" y="181" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">Low and high</text>
+<text class="edge gates--final" x="417" y="88" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Fused K, V</text>
+<text class="edge y--final" x="747" y="308" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Y as Q and bypass</text>
+</svg>

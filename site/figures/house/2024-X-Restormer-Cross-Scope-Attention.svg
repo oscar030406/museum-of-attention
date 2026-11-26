@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="ch" d="M 483 534 L 408 511" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="ch" data-to="cadd" d="M 483 437 L 428 413" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="x" data-to="cadd" d="M 431 534 L 163 527 L 163 426 L 374 413" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="cadd" data-to="proj" d="M 423 377 L 423 349" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="proj" data-to="q" d="M 413 313 L 307 279.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="proj" data-to="kv" d="M 553 313 L 647 279.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="q" data-to="score" d="M 307 224.5 L 305 187.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="kv" data-to="score" d="M 584 224.5 L 458 187.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="kv" data-to="mix" d="M 711 224.5 L 717 213 L 717 132 L 634 112" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="score" data-to="mix" d="M 377 132.5 L 477 112" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 558 76 L 558 61" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="cadd" data-to="out" d="M 604 377 L 823 367 L 823 83 L 684 61" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<g class="node" id="x"><rect x="397.5" y="534" width="171" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="483" y="557" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Input feature map</text>
+</g>
+<g class="node" id="ch"><rect x="287" y="437" width="392" height="74" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="483" y="460" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Channel attention</text>
+<text class="box" x="483" y="479" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Norm → pointwise and depthwise QKV</text>
+<text class="box" x="483" y="498" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Normalize Q, K over pixels → Softmax → mix V</text>
+</g>
+<g class="node" id="cadd"><rect x="318" y="377" width="330" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="483" y="400" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Add input and residual channel FFN</text>
+</g>
+<g class="node" id="proj"><rect x="340" y="313" width="286" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="483" y="336" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">LayerNorm → Conv 1×1 for QKV</text>
+</g>
+<g class="node" id="q"><rect x="190" y="224.5" width="234" height="55" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="307" y="247.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Partition Q into windows</text>
+<text class="box" x="307" y="266.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Window side w</text>
+</g>
+<g class="node" id="kv"><rect x="513.5" y="224.5" width="267" height="55" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="647" y="247.5" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Unfold overlapping K and V</text>
+<text class="box" x="647" y="266.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Wider side w′, stride w</text>
+</g>
+<g class="node" id="score"><rect x="222.5" y="132.5" width="309" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="377" y="155.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Spatial scores</text>
+<text class="box" x="377" y="174.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Scaled QKᵀ + relative logits → Softmax</text>
+</g>
+<g class="node" id="mix"><rect x="417" y="76" width="282" height="36" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="558" y="99" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Mix V, restore grid and project</text>
+</g>
+<g class="node" id="out"><rect x="389" y="25" width="338" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="558" y="48" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Add bypass and residual spatial FFN</text>
+</g>
+<text class="edge x--ch" x="467" y="527" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×C×H×W</text>
+<text class="edge x--cadd" x="298" y="524" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Input bypass</text>
+<text class="edge cadd--proj" x="429" y="367" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×C×H×W</text>
+<text class="edge proj--q" x="370" y="294" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Q</text>
+<text class="edge proj--kv" x="609" y="309" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">K and V</text>
+<text class="edge q--score" x="312" y="210" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Q: G×w²×d</text>
+<text class="edge kv--score" x="532" y="204" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">K: G×w′²×d</text>
+<text class="edge kv--mix" x="700" y="119" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">V: G×w′²×d</text>
+<text class="edge score--mix" x="463" y="129" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">G×w²×w′²</text>
+<text class="edge mix--out" x="566" y="72.5" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×C×H×W</text>
+<text class="edge cadd--out" x="726" y="210" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Spatial bypass</text>
+<text class="note" x="216" y="76" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">G = batch × windows × heads</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 475 532 L 475 487" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="p" data-to="h" d="M 395 451 L 280 401" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="p" data-to="v" d="M 555 451 L 673 401" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="h" data-to="ah" d="M 280 327 L 280 275.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="v" data-to="av" d="M 673 327 L 673 275.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="ah" data-to="merge" d="M 280 220.5 L 386 160" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="av" data-to="merge" d="M 673 220.5 L 564 160" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="merge" data-to="out" d="M 475 124 L 510 68" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="x" data-to="out" d="M 431 532 L 76 510 L 76 96 L 373 68" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<g class="node" id="x"><rect x="402.5" y="532" width="145" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="475" y="555" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Input features</text>
+</g>
+<g class="node" id="p"><rect x="311" y="451" width="328" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="475" y="474" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">LayerNorm, Conv and split channels</text>
+</g>
+<g class="node" id="h"><rect x="143" y="327" width="274" height="74" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="280" y="350" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Horizontal Q, K and V</text>
+<text class="box" x="280" y="369" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Intra: group row pixels → Linear</text>
+<text class="box" x="280" y="388" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Inter: Conv → group whole rows</text>
+</g>
+<g class="node" id="v"><rect x="536" y="327" width="274" height="74" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="673" y="350" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Vertical Q, K and V</text>
+<text class="box" x="673" y="369" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Intra: group column pixels → Linear</text>
+<text class="box" x="673" y="388" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Inter: Conv → group whole columns</text>
+</g>
+<g class="node" id="ah"><rect x="139" y="220.5" width="282" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="280" y="243.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Attend within or across rows</text>
+<text class="box" x="280" y="262.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Scaled QKᵀ → Softmax → mix V</text>
+</g>
+<g class="node" id="av"><rect x="532" y="220.5" width="282" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="673" y="243.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Attend within or across columns</text>
+<text class="box" x="673" y="262.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Scaled QKᵀ → Softmax → mix V</text>
+</g>
+<g class="node" id="merge"><rect x="316" y="124" width="318" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="475" y="147" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Restore grid, concatenate and fuse</text>
+</g>
+<g class="node" id="out"><rect x="340.5" y="32" width="269" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="475" y="55" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Add input, residual FFN, PEG</text>
+</g>
+<text class="edge x--p" x="481" y="514" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×C×H×W</text>
+<text class="edge p--h" x="349" y="422" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×(C/2)×H×W</text>
+<text class="edge p--v" x="632" y="430" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×(C/2)×H×W</text>
+<text class="edge h--ah" x="286" y="306" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">(B·H)×W×C/2 or B×H×(W·C/2)</text>
+<text class="edge v--av" x="679" y="306" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">(B·W)×H×C/2 or B×W×(H·C/2)</text>
+<text class="edge ah--merge" x="342" y="197" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">Horizontal</text>
+<text class="edge av--merge" x="631" y="193" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">Vertical</text>
+<text class="edge merge--out" x="502" y="100" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×C×H×W</text>
+<text class="edge x--out" x="82" y="308" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Input bypass</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 477 532 L 477 476.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="p" data-to="q" d="M 416 421.5 L 330 364" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="p" data-to="v" d="M 538 421.5 L 676 364" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="q" data-to="score" d="M 330 328 L 330 262.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="score" data-to="mix" d="M 330 207.5 L 417 147" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="v" data-to="mix" d="M 676 328 L 676 201 L 537 147" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 477 111 L 477 65" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<g class="node" id="x"><rect x="373.5" y="532" width="207" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="477" y="555" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Pre-normalized tokens</text>
+</g>
+<g class="node" id="p"><rect x="369" y="421.5" width="216" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="477" y="444.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Linear input projection</text>
+<text class="box" x="477" y="463.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Keep Q and V</text>
+</g>
+<g class="node" id="q"><rect x="226.5" y="328" width="207" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="330" y="351" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Group queries by head</text>
+</g>
+<g class="node" id="v"><rect x="577" y="328" width="198" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="676" y="351" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Group values by head</text>
+</g>
+<g class="node" id="score"><rect x="211.5" y="207.5" width="237" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="330" y="230.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Compare Q with Qᵀ</text>
+<text class="box" x="330" y="249.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Scale by 1/√d → Softmax</text>
+</g>
+<g class="node" id="mix"><rect x="360" y="111" width="234" height="36" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="477" y="134" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Weight V and merge heads</text>
+</g>
+<g class="node" id="out"><rect x="373.5" y="29" width="207" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="477" y="52" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Project output tokens</text>
+</g>
+<text class="edge x--p" x="483" y="509" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">N×B×C</text>
+<text class="edge p--q" x="381" y="395" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">N×B×C</text>
+<text class="edge p--v" x="612" y="406" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">N×B×C</text>
+<text class="edge q--score" x="336" y="299" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">(B·h)×N×d</text>
+<text class="edge score--mix" x="382" y="190" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">(B·h)×N×N</text>
+<text class="edge v--mix" x="621" y="176" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">(B·h)×N×d</text>
+<text class="edge mix--out" x="483" y="92" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">N×B×C</text>
+</svg>

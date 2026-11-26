@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="pts" data-to="dist" d="M 275 532 L 177 476.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="pts" data-to="angle" d="M 335 532 L 451 476.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="dist" data-to="geo" d="M 177 421.5 L 245 371.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="angle" data-to="geo" d="M 451 421.5 L 384 371.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="x" data-to="proj" d="M 747 532 L 747 362" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="geo" data-to="score" d="M 314 316.5 L 362 271" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="proj" data-to="score" d="M 710 326 L 528 271" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="proj" data-to="mix" d="M 782 326 L 782 250 L 782 165 L 671 143" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="score" data-to="mix" d="M 446 197 L 527 143" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 593 107 L 593 63" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<g class="node" id="pts"><rect x="219.5" y="532" width="171" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="305" y="555" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Point coordinates</text>
+</g>
+<g class="node" id="x"><rect x="674.5" y="532" width="145" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="747" y="555" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Point features</text>
+</g>
+<g class="node" id="dist"><rect x="59.5" y="421.5" width="235" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="177" y="444.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Pairwise distance</text>
+<text class="box" x="177" y="463.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Scale, sinusoidal code, Linear</text>
+</g>
+<g class="node" id="angle"><rect x="313" y="421.5" width="276" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="451" y="444.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Angles to k nearest neighbors</text>
+<text class="box" x="451" y="463.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Sinusoidal code, Linear, max or mean</text>
+</g>
+<g class="node" id="geo"><rect x="176.5" y="316.5" width="275" height="55" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="314" y="339.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Add distance and angle codes</text>
+<text class="box" x="314" y="358.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Project positional feature P</text>
+</g>
+<g class="node" id="proj"><rect x="661.5" y="326" width="171" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="747" y="349" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Linear Q, K and V</text>
+</g>
+<g class="node" id="score"><rect x="283" y="197" width="326" height="74" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="446" y="220" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Add content and geometric scores</text>
+<text class="box" x="446" y="239" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">(qᵢ·kⱼ + qᵢ·pᵢⱼ) / √d</text>
+<text class="box" x="446" y="258" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Optional mask → Softmax</text>
+</g>
+<g class="node" id="mix"><rect x="467.5" y="107" width="251" height="36" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="593" y="130" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Weight V, then merge heads</text>
+</g>
+<g class="node" id="out"><rect x="485" y="27" width="216" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="593" y="50" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Updated point features</text>
+</g>
+<text class="edge pts--dist" x="237" y="506" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×N×3</text>
+<text class="edge dist--geo" x="225" y="406" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×N×N×C</text>
+<text class="edge angle--geo" x="431" y="398" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×N×N×C</text>
+<text class="edge x--proj" x="753" y="452" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×N×C</text>
+<text class="edge geo--score" x="348" y="304" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×h×N×N×d</text>
+<text class="edge proj--score" x="636" y="301" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Q, K: B×h×N×d</text>
+<text class="edge proj--mix" x="733" y="149" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">V: B×h×N×d</text>
+<text class="edge score--mix" x="503" y="178" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×h×N×N</text>
+<text class="edge mix--out" x="599" y="89" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×N×C</text>
+</svg>

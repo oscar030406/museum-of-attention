@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="self" d="M 416 533 L 214 468.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="x" data-to="mut" d="M 540 533 L 654 468.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="self" data-to="score" d="M 214 413.5 L 214 354" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="mut" data-to="m1" d="M 579 413.5 L 505 354" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="mut" data-to="m2" d="M 729 413.5 L 794 354" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="m1" data-to="time" d="M 505 280 L 590 225" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="m2" data-to="time" d="M 794 280 L 718 225" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="time" data-to="mix" d="M 654 189 L 550 150.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="score" data-to="mix" d="M 214 280 L 214 223 L 406 150.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 478 95.5 L 478 64" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<g class="node" id="x"><rect x="351.5" y="533" width="253" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="478" y="556" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Two-frame window tokens</text>
+</g>
+<g class="node" id="self"><rect x="106" y="413.5" width="216" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="214" y="436.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Linear self Q, K and V</text>
+<text class="box" x="214" y="455.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Use all 2M tokens</text>
+</g>
+<g class="node" id="mut"><rect x="519" y="413.5" width="270" height="55" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="654" y="436.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Add sine position codes</text>
+<text class="box" x="654" y="455.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Linear QKV, split frame 1 and 2</text>
+</g>
+<g class="node" id="score"><rect x="91" y="280" width="246" height="74" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="214" y="303" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Joint self-attention</text>
+<text class="box" x="214" y="322" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Scaled QKᵀ + 3D relative bias</text>
+<text class="box" x="214" y="341" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Mask → Softmax → mix V</text>
+</g>
+<g class="node" id="m1"><rect x="385" y="280" width="240" height="74" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="505" y="303" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Frame 2 reads frame 1</text>
+<text class="box" x="505" y="322" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Scaled Q₂K₁ᵀ → masked Softmax</text>
+<text class="box" x="505" y="341" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Mix V₁</text>
+</g>
+<g class="node" id="m2"><rect x="676" y="280" width="236" height="74" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="794" y="303" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Frame 1 reads frame 2</text>
+<text class="box" x="794" y="322" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Scaled Q₁K₂ᵀ → masked Softmax</text>
+<text class="box" x="794" y="341" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Mix V₂</text>
+</g>
+<g class="node" id="time"><rect x="541.5" y="189" width="225" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="654" y="212" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Concatenate across time</text>
+</g>
+<g class="node" id="mix"><rect x="379" y="95.5" width="198" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="478" y="118.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Concatenate channels</text>
+<text class="box" x="478" y="137.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Linear projection</text>
+</g>
+<g class="node" id="out"><rect x="379" y="28" width="198" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="478" y="51" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Output window tokens</text>
+</g>
+<text class="edge x--self" x="323" y="498" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Bᵥ×2M×C</text>
+<text class="edge x--mut" x="608" y="507" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Bᵥ×2M×C</text>
+<text class="edge self--score" x="220" y="388" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Bᵥ×h×2M×d per tensor</text>
+<text class="edge mut--m1" x="557" y="387" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Q₂, K₁, V₁</text>
+<text class="edge mut--m2" x="775" y="391" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Q₁, K₂, V₂</text>
+<text class="edge m1--time" x="554" y="261" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">Bᵥ×M×C</text>
+<text class="edge m2--time" x="771" y="255" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">Bᵥ×M×C</text>
+<text class="edge time--mix" x="611" y="168" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Bᵥ×2M×C</text>
+<text class="edge score--mix" x="317" y="199" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">Bᵥ×2M×C</text>
+<text class="edge mix--out" x="484" y="83" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Bᵥ×2M×C</text>
+</svg>

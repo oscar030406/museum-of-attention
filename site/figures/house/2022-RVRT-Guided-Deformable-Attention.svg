@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="q" data-to="pq" d="M 164 533 L 145 439" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="q" data-to="offset" d="M 223 533 L 346 458" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="flow" data-to="offset" d="M 474 533 L 484 458" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="kv" data-to="pkv" d="M 758 533 L 758 439" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="offset" data-to="sample" d="M 490 384 L 515 331.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="pkv" data-to="sample" d="M 758 403 L 713 331.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="pq" data-to="score" d="M 145 403 L 145 277 L 280 237.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="sample" data-to="score" d="M 531 276.5 L 411 237.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="sample" data-to="mix" d="M 695 276.5 L 695 217 L 695 159 L 607 140" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="score" data-to="mix" d="M 348 182.5 L 504 140" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 548 104 L 548 67" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<g class="node" id="q"><rect x="127.5" y="533" width="127" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="191" y="556" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Query clip Q</text>
+</g>
+<g class="node" id="flow"><rect x="353" y="533" width="242" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="474" y="556" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Warped features and flows</text>
+</g>
+<g class="node" id="kv"><rect x="659" y="533" width="198" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="758" y="556" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Source clips K and V</text>
+</g>
+<g class="node" id="pq"><rect x="91" y="403" width="108" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="145" y="426" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Linear Q</text>
+</g>
+<g class="node" id="offset"><rect x="275" y="384" width="310" height="74" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="430" y="407" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Predict offsets</text>
+<text class="box" x="430" y="426" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Concat Q, warped features and flows</text>
+<text class="box" x="430" y="445" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Conv3D → tanh bound → add flow</text>
+</g>
+<g class="node" id="pkv"><rect x="632" y="403" width="252" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="758" y="426" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Linear K and V, concatenate</text>
+</g>
+<g class="node" id="sample"><rect x="450" y="276.5" width="328" height="55" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="614" y="299.5" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Bilinear sample K and V</text>
+<text class="box" x="614" y="318.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Flow-adjusted grid in each source frame</text>
+</g>
+<g class="node" id="score"><rect x="225" y="182.5" width="246" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="348" y="205.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Scaled QKᵀ → Softmax</text>
+<text class="box" x="348" y="224.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Over frames and sample sites</text>
+</g>
+<g class="node" id="mix"><rect x="458" y="104" width="180" height="36" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="548" y="127" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Mix sampled values</text>
+</g>
+<g class="node" id="out"><rect x="435.5" y="31" width="225" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="548" y="54" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Linear and residual MLP</text>
+</g>
+<text class="edge q--pq" x="161" y="491" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×T×C×H×W</text>
+<text class="edge kv--pkv" x="764" y="490" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×F×C×H×W</text>
+<text class="edge offset--sample" x="511" y="362" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Per-frame offsets</text>
+<text class="edge pkv--sample" x="742" y="372" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×F×4C×H×W</text>
+<text class="edge pq--score" x="225" y="268" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Projected Q</text>
+<text class="edge sample--score" x="481" y="256" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Sampled K</text>
+<text class="edge sample--mix" x="664" y="146" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Sampled V</text>
+<text class="edge score--mix" x="437" y="172" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">BT×h×HW×1×S</text>
+<text class="edge mix--out" x="554" y="89" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×T×2C×H×W</text>
+</svg>

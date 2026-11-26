@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="split" d="M 465 533 L 465 517.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="split" data-to="intra" d="M 465 462.5 L 465 443" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="intra" data-to="add1" d="M 465 369 L 465 339" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="add1" data-to="inter" d="M 465 303 L 465 262" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="inter" data-to="add2" d="M 465 188 L 465 161" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="add2" data-to="over" d="M 465 125 L 465 81.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="split" data-to="add1" d="M 355 462.5 L 200 454 L 200 355 L 355 339" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="add1" data-to="add2" d="M 595 303 L 721 299 L 721 175 L 593 161" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<g class="node" id="x"><rect x="388" y="533" width="154" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="465" y="556" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Speech sequence</text>
+</g>
+<g class="node" id="split"><rect x="312.5" y="462.5" width="305" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="465" y="485.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Pad and split overlapping chunks</text>
+<text class="box" x="465" y="504.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Length K, hop K/2</text>
+</g>
+<g class="node" id="intra"><rect x="265" y="369" width="400" height="74" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="465" y="392" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Attend across K frames in each chunk</text>
+<text class="box" x="465" y="411" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Position encoding + pre-norm Transformer</text>
+<text class="box" x="465" y="430" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Softmax(QKᵀ / √d), mix V, residual FFN</text>
+</g>
+<g class="node" id="add1"><rect x="290.5" y="303" width="349" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="465" y="326" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Restore axes, LayerNorm and add chunk</text>
+</g>
+<g class="node" id="inter"><rect x="262.5" y="188" width="405" height="74" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="465" y="211" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Attend across S chunks at each offset</text>
+<text class="box" x="465" y="230" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Position encoding + pre-norm Transformer</text>
+<text class="box" x="465" y="249" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Softmax(QKᵀ / √d), mix V, residual FFN</text>
+</g>
+<g class="node" id="add2"><rect x="290.5" y="125" width="349" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="465" y="148" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Restore axes, LayerNorm and add input</text>
+</g>
+<g class="node" id="over"><rect x="315" y="26.5" width="300" height="55" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="465" y="49.5" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Overlap-add, trim and transpose</text>
+<text class="box" x="465" y="68.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Output sequence</text>
+</g>
+<text class="edge x--split" x="473" y="529.25" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×T×C</text>
+<text class="edge split--intra" x="471" y="457" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">(B·S)×K×C after reshape</text>
+<text class="edge add1--inter" x="471" y="287" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">(B·K)×S×C after reshape</text>
+<text class="edge add2--over" x="471" y="117" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×C×K×S</text>
+<text class="edge split--add1" x="280" y="361" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Chunk bypass</text>
+<text class="edge add1--add2" x="672" y="163" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Intra-chunk bypass</text>
+<text class="note" x="674" y="60" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Output: B×T×C</text>
+</svg>

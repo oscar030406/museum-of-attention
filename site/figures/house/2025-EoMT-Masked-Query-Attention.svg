@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="t" data-to="join" d="M 289 533 L 408 488" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="q" data-to="join" d="M 634 533 L 488 488" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="join" data-to="pred" d="M 406 452 L 275 406.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="join" data-to="qkv" d="M 490 452 L 651 406.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="pred" data-to="mask" d="M 275 351.5 L 276 317" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="mask" data-to="score" d="M 276 243 L 466 206.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="qkv" data-to="score" d="M 591 351.5 L 633 310 L 604 206.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="score" data-to="res" d="M 509 151.5 L 509 120" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="res" data-to="out" d="M 539 84 L 539 61" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="join" data-to="res" d="M 509 452 L 865 443 L 865 136 L 652 120" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<g class="node" id="t"><rect x="178.5" y="533" width="221" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="289" y="556" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Patch and prefix tokens</text>
+</g>
+<g class="node" id="q"><rect x="535" y="533" width="198" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="634" y="556" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Learned mask queries</text>
+</g>
+<g class="node" id="join"><rect x="371" y="452" width="154" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="448" y="475" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Prepend queries</text>
+</g>
+<g class="node" id="pred"><rect x="125" y="351.5" width="300" height="55" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="275" y="374.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Predict mask logits</text>
+<text class="box" x="275" y="393.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Query projection · upscaled patch map</text>
+</g>
+<g class="node" id="qkv"><rect x="498.5" y="351.5" width="305" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="651" y="374.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Pre-norm → Linear Q, K, V</text>
+<text class="box" x="651" y="393.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Apply the backbone’s position terms</text>
+</g>
+<g class="node" id="mask"><rect x="119" y="243" width="314" height="74" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="276" y="266" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Resize logits to patch grid</text>
+<text class="box" x="276" y="285" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Keep positive query-to-patch entries</text>
+<text class="box" x="276" y="304" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Optionally reopen whole query rows</text>
+</g>
+<g class="node" id="score"><rect x="398" y="151.5" width="282" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="539" y="174.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Mask query-to-patch scores</text>
+<text class="box" x="539" y="193.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Scaled QKᵀ → Softmax → mix V</text>
+</g>
+<g class="node" id="res"><rect x="402" y="84" width="274" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="539" y="107" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Project, residual add and MLP</text>
+</g>
+<g class="node" id="out"><rect x="376.5" y="25" width="325" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="539" y="48" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Updated queries and image tokens</text>
+</g>
+<text class="edge t--join" x="358" y="521" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×(P+R)×C</text>
+<text class="edge q--join" x="566" y="506" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×Q×C</text>
+<text class="edge join--pred" x="344" y="425" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×N×C</text>
+<text class="edge join--qkv" x="580" y="439" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×N×C</text>
+<text class="edge pred--mask" x="282" y="337" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×Q×Hₘ×Wₘ</text>
+<text class="edge mask--score" x="386" y="236" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×N×N</text>
+<text class="edge qkv--score" x="625" y="263" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Q, K and V: B×h×N×d</text>
+<text class="edge res--out" x="545" y="76" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×N×C</text>
+<text class="edge join--res" x="695" y="465" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Input bypass</text>
+<text class="note" x="212" y="99" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">N = queries + prefix + patches</text>
+</svg>

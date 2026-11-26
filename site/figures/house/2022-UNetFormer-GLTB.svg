@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="bn" d="M 485 534 L 485 508" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="bn" data-to="local" d="M 455 472 L 221 411.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="bn" data-to="qkv" d="M 515 472 L 606 443.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="qkv" data-to="score" d="M 536 388.5 L 533 357.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="qkv" data-to="mix" d="M 678 388.5 L 741 365 L 741 281 L 700 267" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="score" data-to="mix" d="M 566 302.5 L 539 267" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="mix" data-to="pool" d="M 606 231 L 606 201.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="pool" data-to="merge" d="M 606 146.5 L 548 114" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="local" data-to="merge" d="M 221 356.5 L 221 148 L 400 114" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="merge" data-to="out" d="M 480 78 L 480 61" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="x" data-to="out" d="M 422 534 L 48 520 L 48 122 L 302 67 L 361 61" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<g class="node" id="x"><rect x="399.5" y="534" width="171" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="485" y="557" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Input feature map</text>
+</g>
+<g class="node" id="bn"><rect x="431" y="472" width="108" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="485" y="495" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">BatchNorm</text>
+</g>
+<g class="node" id="local"><rect x="71" y="356.5" width="300" height="55" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="221" y="379.5" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Local convolution sum</text>
+<text class="box" x="221" y="398.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Conv 3×3 + Conv 1×1, each with BN</text>
+</g>
+<g class="node" id="qkv"><rect x="466.5" y="388.5" width="279" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="606" y="411.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Reflect pad and project Q, K, V</text>
+<text class="box" x="606" y="430.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Split into windows</text>
+</g>
+<g class="node" id="score"><rect x="434.5" y="302.5" width="263" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="566" y="325.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Scaled QKᵀ</text>
+<text class="box" x="566" y="344.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Optional relative bias → Softmax</text>
+</g>
+<g class="node" id="mix"><rect x="446" y="231" width="320" height="36" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="606" y="254" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Weight V, merge windows and crop</text>
+</g>
+<g class="node" id="pool"><rect x="456.5" y="146.5" width="299" height="55" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="606" y="169.5" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Directional average pooling</text>
+<text class="box" x="606" y="188.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Add the H-axis and W-axis outputs</text>
+</g>
+<g class="node" id="merge"><rect x="318.5" y="78" width="323" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="480" y="101" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Add local path, separable Conv, crop</text>
+</g>
+<g class="node" id="out"><rect x="351" y="25" width="258" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="480" y="48" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Add input and residual MLP</text>
+</g>
+<text class="edge x--bn" x="491" y="526" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×C×H×W</text>
+<text class="edge bn--local" x="348" y="439" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×C×H×W</text>
+<text class="edge qkv--score" x="541" y="376" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Q, K: (B·nW)×h×M×d</text>
+<text class="edge qkv--mix" x="747" y="328" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">V</text>
+<text class="edge score--mix" x="561" y="289" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">(B·nW)×h×M×M</text>
+<text class="edge mix--pool" x="612" y="215" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×C×H×W</text>
+<text class="edge pool--merge" x="589" y="128" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×C×H×W</text>
+<text class="edge local--merge" x="227" y="257" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×C×H×W</text>
+<text class="edge x--out" x="54" y="326" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Input bypass</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="win" d="M 481 534 L 481 496" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="win" data-to="wscore" d="M 481 460 L 481 433" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="wscore" data-to="join" d="M 481 359 L 481 334.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="join" data-to="global" d="M 481 279.5 L 481 247" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="global" data-to="add" d="M 481 173 L 481 141.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="add" data-to="out" d="M 481 86.5 L 481 63" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="x" data-to="join" d="M 436 534 L 213 512 L 213 347 L 403 334.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="join" data-to="add" d="M 559 279.5 L 740 270 L 740 163 L 555 141.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<g class="node" id="x"><rect x="400" y="534" width="162" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="481" y="557" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Input patch grid</text>
+</g>
+<g class="node" id="win"><rect x="342" y="460" width="278" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="481" y="483" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">LayerNorm → pad and partition</text>
+</g>
+<g class="node" id="wscore"><rect x="313" y="359" width="336" height="74" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="481" y="382" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Within each window</text>
+<text class="box" x="481" y="401" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Linear QKV → scaled QKᵀ + relative bias</text>
+<text class="box" x="481" y="420" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Softmax → mix V → Linear</text>
+</g>
+<g class="node" id="join"><rect x="357" y="279.5" width="248" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="481" y="302.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Rejoin windows and crop</text>
+<text class="box" x="481" y="321.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Add input, residual MLP</text>
+</g>
+<g class="node" id="global"><rect x="306.5" y="173" width="349" height="74" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="481" y="196" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Across the entire grid</text>
+<text class="box" x="481" y="215" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">LayerNorm → QKV → scaled QKᵀ + bias</text>
+<text class="box" x="481" y="234" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Softmax → mix V → Linear</text>
+</g>
+<g class="node" id="add"><rect x="373" y="86.5" width="216" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="481" y="109.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Add global-block input</text>
+<text class="box" x="481" y="128.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Residual MLP</text>
+</g>
+<g class="node" id="out"><rect x="395.5" y="27" width="171" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="481" y="50" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Output patch grid</text>
+</g>
+<text class="edge x--win" x="487" y="519" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×H×W×C</text>
+<text class="edge win--wscore" x="487" y="451" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">(B·nW)×M×M×C</text>
+<text class="edge wscore--join" x="487" y="351" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">(B·nW)×M×M×C</text>
+<text class="edge join--global" x="487" y="267" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×H×W×C</text>
+<text class="edge global--add" x="487" y="161" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×H×W×C</text>
+<text class="edge add--out" x="487" y="79" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×H×W×C</text>
+<text class="edge x--join" x="342" y="518" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Window-block bypass</text>
+<text class="edge join--add" x="659" y="148" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Global-block bypass</text>
+</svg>

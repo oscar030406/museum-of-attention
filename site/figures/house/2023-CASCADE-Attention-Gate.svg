@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="g" data-to="pg" d="M 260 521 L 260 455" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="x" data-to="px" d="M 680 521 L 680 455" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="pg" data-to="join" d="M 260 419 L 352 355" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="px" data-to="join" d="M 625 419 L 449 355" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="join" data-to="score" d="M 400 319 L 400 261.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="score" data-to="mix" d="M 400 206.5 L 485 144" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="x" data-to="mix" d="M 731 521 L 828 479 L 828 172 L 587 144" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 525 108 L 525 65" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<g class="node" id="g"><rect x="187.5" y="521" width="145" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="260" y="544" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Decoder gate G</text>
+</g>
+<g class="node" id="x"><rect x="603" y="521" width="154" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="680" y="544" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Skip features X</text>
+</g>
+<g class="node" id="pg"><rect x="152" y="419" width="216" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="260" y="442" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Conv 1×1 and BatchNorm</text>
+</g>
+<g class="node" id="px"><rect x="572" y="419" width="216" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="680" y="442" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Conv 1×1 and BatchNorm</text>
+</g>
+<g class="node" id="join"><rect x="292" y="319" width="216" height="36" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="400" y="342" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Add projections → ReLU</text>
+</g>
+<g class="node" id="score"><rect x="243.5" y="206.5" width="313" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="400" y="229.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Conv 1×1 → BatchNorm → Sigmoid</text>
+<text class="box" x="400" y="248.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">One weight per location</text>
+</g>
+<g class="node" id="mix"><rect x="435" y="108" width="180" height="36" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="525" y="131" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Broadcast mask ⊗ X</text>
+</g>
+<g class="node" id="out"><rect x="430.5" y="29" width="189" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="525" y="52" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Gated skip features</text>
+</g>
+<text class="edge g--pg" x="266" y="492" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×Cɢ×H×W</text>
+<text class="edge x--px" x="686" y="492" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×Cₓ×H×W</text>
+<text class="edge pg--join" x="315" y="400" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×Cᵢ×H×W</text>
+<text class="edge px--join" x="541" y="384" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×Cᵢ×H×W</text>
+<text class="edge join--score" x="406" y="294" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×Cᵢ×H×W</text>
+<text class="edge score--mix" x="451" y="188" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×1×H×W</text>
+<text class="edge x--mix" x="834" y="331" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">Original X</text>
+<text class="edge mix--out" x="531" y="91" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×Cₓ×H×W</text>
+</svg>

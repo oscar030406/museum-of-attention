@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="p" d="M 480 534 L 480 489.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="p" data-to="numer" d="M 380 434.5 L 228 355.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="p" data-to="read" d="M 450 434.5 L 468 407 L 468 282 L 343 248.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="p" data-to="denom" d="M 580 434.5 L 699 355.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="numer" data-to="read" d="M 233 300.5 L 233 248.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="read" data-to="mix" d="M 278 193.5 L 422 153.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path class="flow" data-from="denom" data-to="mix" d="M 699 300.5 L 540 153.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 480 98.5 L 480 69" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<g class="node" id="x"><rect x="407.5" y="534" width="145" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="480" y="557" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Input features</text>
+</g>
+<g class="node" id="p"><rect x="300" y="434.5" width="360" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="480" y="457.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Conv 1×1 for Q, K and V</text>
+<text class="box" x="480" y="476.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Flatten N = H×W, L2-normalize Q and K</text>
+</g>
+<g class="node" id="numer"><rect x="109.5" y="300.5" width="337" height="55" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="278" y="323.5" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Pool values and key–value products</text>
+<text class="box" x="278" y="342.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Σⱼvⱼ and Σⱼkⱼvⱼᵀ</text>
+</g>
+<g class="node" id="denom"><rect x="548" y="300.5" width="302" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="699" y="323.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Compute per-query normalizer</text>
+<text class="box" x="699" y="342.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">1 / [N + qᵢ · (Σⱼkⱼ + ε)]</text>
+</g>
+<g class="node" id="read"><rect x="148" y="193.5" width="260" height="55" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="278" y="216.5" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Read pooled values</text>
+<text class="box" x="278" y="235.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Σⱼvⱼ + qᵢᵀ(Σⱼkⱼvⱼᵀ)</text>
+</g>
+<g class="node" id="mix"><rect x="363.5" y="98.5" width="233" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="480" y="121.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Apply normalizer</text>
+<text class="box" x="480" y="140.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Multiply each pixel response</text>
+</g>
+<g class="node" id="out"><rect x="372" y="33" width="216" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="480" y="56" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Reshape and scale by γ</text>
+</g>
+<text class="edge x--p" x="486" y="516" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×C×H×W</text>
+<text class="edge p--numer" x="314" y="394" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">K, V</text>
+<text class="edge p--read" x="418" y="263" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Q: B×N×D</text>
+<text class="edge p--denom" x="646" y="406" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Q, K</text>
+<text class="edge numer--read" x="239" y="279" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×C and B×D×C</text>
+<text class="edge read--mix" x="356" y="185" text-anchor="start" font-size="14" font-weight="400" fill="#1f3c73">B×C×N</text>
+<text class="edge denom--mix" x="630" y="233" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×N</text>
+<text class="edge mix--out" x="486" y="88" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×C×N</text>
+<text class="note" x="702" y="57" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Output: B×C×H×W</text>
+</svg>

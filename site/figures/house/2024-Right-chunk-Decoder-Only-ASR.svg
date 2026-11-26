@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-i" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-r" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-g" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="length" data-to="extent" d="M 420 528 L 420 470.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="length" data-to="pos" d="M 348 528 L 166 470.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="length" data-to="vis" d="M 505 528 L 558 500 L 558 391 L 635 378" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="chunks" data-to="vis" d="M 772 528 L 799 378" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path class="flow" data-from="extent" data-to="causal" d="M 420 415.5 L 420 368.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="causal" data-to="combine" d="M 420 313.5 L 494 167" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="vis" data-to="combine" d="M 717 304 L 641 167" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<path class="flow" data-from="pos" data-to="ids" d="M 166 415.5 L 166 257.5" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="ids" data-to="op" d="M 166 202.5 L 166 69" fill="none" stroke="#17140f" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-i)"/>
+<path class="flow" data-from="combine" data-to="om" d="M 553 131 L 553 69" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-r)"/>
+<g class="node" id="length"><rect x="307.5" y="528" width="225" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="420" y="551" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Speech and text lengths</text>
+</g>
+<g class="node" id="chunks"><rect x="695" y="528" width="154" height="36" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text class="box" x="772" y="551" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Token chunk IDs</text>
+</g>
+<g class="node" id="extent"><rect x="304" y="415.5" width="232" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="420" y="438.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Set batch width L</text>
+<text class="box" x="420" y="457.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Max speech plus text length</text>
+</g>
+<g class="node" id="pos"><rect x="45" y="415.5" width="242" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="166" y="438.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Mark valid text positions</text>
+<text class="box" x="166" y="457.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Zero out speech positions</text>
+</g>
+<g class="node" id="vis"><rect x="576" y="304" width="282" height="74" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="717" y="327" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Limit keys for each text row</text>
+<text class="box" x="717" y="346" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Keep key chunk ≤ query chunk</text>
+<text class="box" x="717" y="365" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Clear padded query rows</text>
+</g>
+<g class="node" id="causal"><rect x="315" y="313.5" width="210" height="55" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="420" y="336.5" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">Lower-triangular mask</text>
+<text class="box" x="420" y="355.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Include each token itself</text>
+</g>
+<g class="node" id="ids"><rect x="32.5" y="202.5" width="267" height="55" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text class="box" x="166" y="225.5" text-anchor="middle" font-size="16" font-weight="600" fill="#17140f">Cumulative count − 1</text>
+<text class="box" x="166" y="244.5" text-anchor="middle" font-size="14" font-weight="400" fill="#17140f">Clamp negative positions to zero</text>
+</g>
+<g class="node" id="combine"><rect x="409.5" y="131" width="287" height="36" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text class="box" x="553" y="154" text-anchor="middle" font-size="16" font-weight="600" fill="#7d1a2b">AND visibility with causal mask</text>
+</g>
+<g class="node" id="om"><rect x="440.5" y="33" width="225" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="553" y="56" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Decoder visibility mask</text>
+</g>
+<g class="node" id="op"><rect x="102.5" y="33" width="127" height="36" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text class="box" x="166" y="56" text-anchor="middle" font-size="16" font-weight="600" fill="#1f3c73">Position IDs</text>
+</g>
+<text class="edge length--extent" x="356" y="502" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B lengths</text>
+<text class="edge length--vis" x="537" y="530" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">Speech/text boundaries</text>
+<text class="edge chunks--vis" x="789" y="465" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×L</text>
+<text class="edge extent--causal" x="406" y="397" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">L</text>
+<text class="edge causal--combine" x="364" y="296" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×1×L×L</text>
+<text class="edge vis--combine" x="585" y="181" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×1×L×L</text>
+<text class="edge pos--ids" x="172" y="342" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×L</text>
+<text class="edge ids--op" x="172" y="101" text-anchor="start" font-size="14" font-weight="400" fill="#17140f">B×L</text>
+<text class="edge combine--om" x="490" y="104" text-anchor="start" font-size="14" font-weight="400" fill="#7d1a2b">B×1×L×L</text>
+</svg>
