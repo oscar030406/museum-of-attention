@@ -117,7 +117,7 @@ GUO_EN = {"通道": "channel", "空间": "spatial", "时间": "temporal", "分�
 YEAR_SOURCE_EN = {"队列": "the collection queue", "README": "the README", "INDEX": "the library index",
                   "arXiv 编号": "the arXiv ID", "代码文件名": "the code file name"}
 VER_SOURCE_EN = {"README": "the README", "验证记录.md": "the verification log", "队列-论文复现.md": "the rewrite queue"}
-VENUE_EN = {"技术报告": "Technical report"}
+VENUE_EN = {"技术报告": "Technical report", "arXiv 技术报告": "arXiv technical report", "作者项目": "Author project"}
 LICENSE_EN = {"未见明确许可证": "No clear license found", "通义千问协议": "Tongyi Qianwen License",
               "EPFL 非商业许可": "EPFL non-commercial license"}
 MECH_SOURCE_CURATOR = "馆长依据摘要撰写"

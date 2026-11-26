@@ -857,3 +857,47 @@ html:root .plate .fig.big, html:root .room-thumbs .fig.thumb { border-image: non
 
 /* ---------- 展签上的论文图：不用镶嵌边带，只留两道细线（2026-11-25 用户嫌边带丑） ---------- */
 html:root .obj-fig .fig.big { border: 2px solid var(--frame-line); border-image: none !important; outline: 1px solid var(--orn); outline-offset: -8px; --mat-pad: 26px; }
+
+/* ---------- 动效（motion.js 配套）。系统设了「减少动态效果」时这一节不生效 ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* 玫瑰窗点亮：每片玻璃的延迟由脚本按离中心的远近给 */
+  .rose-dark path:not(.stone) { opacity: 0; }
+  .rose-lighting path:not(.stone) { opacity: 0; animation: pane-lit .7s cubic-bezier(.2, .7, .2, 1) forwards; }
+  .rose-lighting path.stone { animation: stone-in .9s ease-out both; }
+  @keyframes pane-lit { from { opacity: 0; } 60% { opacity: 1; filter: brightness(1.7) saturate(1.2); } to { opacity: 1; filter: none; } }
+  @keyframes stone-in { from { opacity: 0; } to { opacity: 1; } }
+
+  /* 展墙文字和展品随滚动浮现 */
+  .will-rise { opacity: 0; transform: translateY(22px); transition: opacity .8s cubic-bezier(.2, .7, .2, 1), transform .8s cubic-bezier(.2, .7, .2, 1); }
+  .will-rise.is-in { opacity: 1; transform: none; }
+
+  /* 展室的罗马数字和标题进场 */
+  .room-num { animation: num-in .9s cubic-bezier(.2, .7, .2, 1) both; }
+  @keyframes num-in { from { opacity: 0; transform: translateY(26px) scale(.94); letter-spacing: .12em; } to { opacity: 1; transform: none; } }
+
+  /* 换页：默认是短的交叠 */
+  ::view-transition-old(root) { animation: vt-out .22s ease-in both; }
+  ::view-transition-new(root) { animation: vt-in .34s ease-out both; }
+  @keyframes vt-out { to { opacity: 0; } }
+  @keyframes vt-in { from { opacity: 0; transform: translateY(8px); } }
+
+  /* 穿过花窗进展室：旧页面朝点中的花瓣放大并淡出，新页面从略小处落定 */
+  :root[data-vt="window"]::view-transition-old(root) { transform-origin: var(--vt-x, 50%) var(--vt-y, 50%); animation: vt-through .62s cubic-bezier(.6, 0, .9, .4) both; }
+  :root[data-vt="window"]::view-transition-new(root) { animation: vt-arrive .7s cubic-bezier(.2, .7, .2, 1) .28s both; }
+  @keyframes vt-through { to { transform: scale(5.5); opacity: 0; filter: brightness(1.5); } }
+  @keyframes vt-arrive { from { opacity: 0; transform: scale(.965); } }
+
+  /* 论文图从展墙飞到展签 */
+  :root[data-vt="figure"]::view-transition-old(root), :root[data-vt="figure"]::view-transition-new(root) { animation-duration: .3s; }
+  ::view-transition-group(lifted-figure) { animation-duration: .52s; animation-timing-function: cubic-bezier(.3, .8, .2, 1); }
+  ::view-transition-old(lifted-figure), ::view-transition-new(lifted-figure) { height: 100%; object-fit: contain; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* 标题逐字升起：外层裁切，里层从下面升上来 */
+  .rise-clip { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .08em; margin-bottom: -.08em; }
+  .rise-clip > span { display: inline-block; animation: rise-in .5s cubic-bezier(.16, 1, .3, 1) both; }
+  @keyframes rise-in { from { transform: translateY(105%); } to { transform: none; } }
+  /* 展签滑出：落定时有一次很小的回弹，像卡片放到桌上 */
+  .drawer { animation: slide-settle .46s linear(0, .22 8%, .58 20%, .86 34%, 1.012 50%, 1.02 60%, 1.008 76%, 1) both; }
+  @keyframes slide-settle { from { transform: translateX(72px); opacity: .4; } to { transform: none; opacity: 1; } }
+}

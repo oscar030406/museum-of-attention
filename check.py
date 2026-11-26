@@ -228,7 +228,7 @@ def main() -> int:
 
     # 8. index.html 引用的本地文件都存在
     html = (SITE / "index.html").read_text(encoding="utf-8")
-    refs = re.findall(r'(?:src|href)="(assets/[^"#?]+)', html) + ["data/museum.json", "data/code.json", "assets/vendor/graph3d.min.js", "assets/rose.svg", "assets/overview.js", "assets/overview.css", "assets/frame-light.svg", "assets/frame-dark.svg"]
+    refs = re.findall(r'(?:src|href)="(assets/[^"#?]+)', html) + ["data/museum.json", "data/code.json", "assets/vendor/graph3d.min.js", "assets/rose.svg", "assets/motion.js", "assets/overview.js", "assets/overview.css", "assets/frame-light.svg", "assets/frame-dark.svg"]
     check("引用的本地文件都存在", [p for p in refs if not (SITE / p).exists()])
 
     # 9. 中英文案的键一致：切换语言时不出现空白

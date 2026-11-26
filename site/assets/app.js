@@ -286,13 +286,14 @@ async function mountRose(cs) {
   slot.querySelectorAll("g.lancet").forEach(g => {
     const i = +g.dataset.i, c = cs[i];
     if (!c) return;
-    const go = () => { location.hash = `#/tour/${encodeURIComponent(c.id)}`; };
+    const go = () => { if (window.Motion) Motion.throughWindow(g); location.hash = `#/tour/${encodeURIComponent(c.id)}`; };
     g.setAttribute("role", "link"); g.setAttribute("tabindex", "0");
     g.setAttribute("aria-label", `${t("room", i + 1)} ${sx(c, "title")}`);
     g.insertAdjacentHTML("beforeend", `<title>${esc(sx(c, "title"))} · ${esc(roomYears(c))}</title><text class="rose-n" x="${g.dataset.x}" y="${g.dataset.y}">${ROMAN[i] || i + 1}</text>`);
     g.addEventListener("click", go);
     g.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); go(); } });
   });
+  if (window.Motion) Motion.rose(slot);
 }
 function renderFoyer() {
   // 首页只做两件事：馆长的开场白，和八个展室的入口。统计数字在「统计」页。
@@ -765,12 +766,15 @@ function route(force) {
   if (path.startsWith("x/")) {
     const id = decodeURIComponent(path.slice(2));
     if (lastBase === null) renderBase(baseRoute);
-    openObject(id);
+    if (window.Motion) Motion.liftFigure(id, () => openObject(id)); else openObject(id);
     return;
   }
-  $("#drawer-root").innerHTML = "";
   const full = path + (params.toString() ? "?" + params : "");
-  if (force || full !== lastBase) { baseRoute = full; renderBase(full); }
+  const change = () => {
+    $("#drawer-root").innerHTML = "";
+    if (force || full !== lastBase) { baseRoute = full; renderBase(full); }
+  };
+  if (window.Motion && !force && full !== lastBase) Motion.swap(change, Motion.takeKind()); else change();
 }
 function renderBase(full) {
   lastBase = full;
@@ -796,6 +800,7 @@ function renderBase(full) {
   const q = $("#q"); if (q && document.activeElement !== q && params.has("q")) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); }
   const titles = { tour: t("nav.tour"), timeline: t("nav.timeline"), gallery: t("nav.gallery"), lineage: t("nav.lineage"), graph: t("nav.graph"), census: t("nav.census"), about: t("nav.about") };
   document.title = (titles[name] ? titles[name] + " · " : "") + t("brand");
+  if (window.Motion) Motion.reveal();
 }
 
 // ------------------------------------------------------------------ 语言和主题
