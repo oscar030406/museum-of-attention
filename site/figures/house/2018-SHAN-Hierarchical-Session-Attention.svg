@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="items" data-to="past" d="M 405 524 L 377 489.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="items" data-to="pool" d="M 470 524 L 605 489 L 605 413 L 513 389" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="items" data-to="recent" d="M 530 524 L 821 481" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="user" data-to="past" d="M 130 524 L 282 489.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="user" data-to="score" d="M 94 524 L 94 270 L 270 229.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="past" data-to="pool" d="M 370 416.5 L 446 389" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="pool" data-to="cat" d="M 486 333 L 650 306" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="recent" data-to="cat" d="M 821 425 L 730 306" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="cat" data-to="score" d="M 575 250 L 407 229.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="cat" data-to="mix" d="M 695 250 L 695 178 L 609 127" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="score" data-to="mix" d="M 368 156.5 L 510 127" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 545 85 L 545 60" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="items"><rect x="374" y="524" width="172" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="460" y="550.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Item embeddings</text>
+</g>
+<g class="node" id="user"><rect x="40" y="524" width="144" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="112" y="550.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">User embedding</text>
+</g>
+<g class="node" id="past"><rect x="258" y="416.5" width="224" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="370" y="440.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Score full history</text>
+<text x="370" y="458.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear + ReLU, dot with user</text>
+<text x="370" y="476.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Mask padding + Softmax</text>
+</g>
+<g class="node" id="recent"><rect x="736" y="425" width="170" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="821" y="449.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Slice recent items</text>
+<text x="821" y="467.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Keep their padding mask</text>
+</g>
+<g class="node" id="pool"><rect x="405" y="333" width="162" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="486" y="357.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Weighted sum</text>
+<text x="486" y="375.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Keep time axis</text>
+</g>
+<g class="node" id="cat"><rect x="531" y="250" width="238" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="650" y="274.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Prepend history summary</text>
+<text x="650" y="292.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Mark summary as unmasked</text>
+</g>
+<g class="node" id="score"><rect x="254" y="156.5" width="228" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="368" y="180.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Score joined sequence</text>
+<text x="368" y="198.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear + ReLU, dot with user</text>
+<text x="368" y="216.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Mask padding + Softmax</text>
+</g>
+<g class="node" id="mix"><rect x="463" y="85" width="164" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="545" y="111.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Weighted sum</text>
+</g>
+<g class="node" id="out"><rect x="469" y="26" width="152" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="545" y="48.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Session vector</text>
+</g>
+<text x="401.0" y="511.75" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge items--past">B×T×D</text>
+<text x="216.0" y="511.75" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge user--past">B×D</text>
+<text x="104.0" y="402.0" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge user--score">B×D</text>
+<text x="418.0" y="407.75" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge past--pool">B×T</text>
+<text x="578.0" y="324.5" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge pool--cat">B×1×D</text>
+<text x="785.5" y="370.5" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge recent--cat">B×R×D</text>
+<text x="501.0" y="244.75" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge cat--score">B×(R+1)×D</text>
+<text x="449.0" y="146.75" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge score--mix">B×(R+1)</text>
+<text x="555.0" y="77.5" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge mix--out">B×D</text>
+</svg>

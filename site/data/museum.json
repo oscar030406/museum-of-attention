@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26T21:55:20+09:00",
+ "generated": "2026-11-26T21:59:21+09:00",
  "sources": [
   "INDEX.md",
   "工具与模板/模块收集/队列.md",
@@ -20688,7 +20688,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "文档里两个文本块隔多远、谁在谁上方，普通自注意力只能从绝对位置去猜。LayoutLMv2 按词序差和框坐标的横纵差分桶，查出可学习的偏置，直接加到注意力分数上。",
    "formula": null,
    "copies": [
     {
@@ -20715,7 +20715,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": "Apache-2.0",
    "license_note": "Apache-2.0。目录附原许可证",
@@ -20724,12 +20724,12 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "repo"
    ],
    "id": "2021-LayoutLMv2-Spatial-Aware-Self-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2021-LayoutLMv2-Spatial-Aware-Self-Attention.webp",
     "fig_no": "Figure 1",
@@ -20741,6 +20741,7 @@
     "title": "LayoutLMv2: Multi-modal Pre-training for Visually-rich Document Understanding",
     "venue": "ACL",
     "authors": "Yang Xu, Yiheng Xu, Tengchao Lv, Lei Cui, Furu Wei, Guoxin Wang, Yijuan Lu, Dinei Florencio, Cha Zhang, Wanxiang Che, Min Zhang, Lidong Zhou",
+    "mechanism": "LayoutLMv2 adds learned relative-position biases to its attention scores: one for reading order, and two for the horizontal and vertical offsets between text boxes on the page.",
     "license": "Apache-2.0",
     "module_type": "Attention",
     "domain": "Document understanding",
@@ -28350,7 +28351,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "BROS 不看图像，只靠文字和它们在页面上的位置抽取关键信息。打分时，它把两个文本框四个角的相对位移编成正弦向量，让查询和这个向量相乘，结果加到普通的查询键点积上。",
    "formula": null,
    "copies": [
     {
@@ -28376,7 +28377,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -28385,13 +28386,13 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "license",
     "repo"
    ],
    "id": "2022-BROS-Relative-Spatial-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2022-BROS-Relative-Spatial-Attention.webp",
     "fig_no": "Figure 1",
@@ -28403,6 +28404,7 @@
     "title": "BROS: A Pre-trained Language Model Focusing on Text and Layout for Better Key Information Extraction from Documents",
     "venue": "AAAI",
     "authors": "Teakgyu Hong, Donghyun Kim, Mingi Ji, Wonseok Hwang, Daehyun Nam, Sungrae Park",
+    "mechanism": "BROS reads documents from text and layout alone. Its attention logit adds a second term in which the query meets a sinusoidal encoding of the offsets between all four corners of two text boxes.",
     "module_type": "Attention",
     "domain": "Document information extraction",
     "year_source": "the README"
@@ -32656,7 +32658,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "LayoutLMv3 让文本词和图像块进同一个 Transformer。自注意力沿用 LayoutLMv2 的做法，按词序距离和二维坐标差分桶取偏置，加到注意力分数上，模型就能分清谁挨着谁。",
    "formula": null,
    "copies": [
     {
@@ -32683,7 +32685,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": "Apache-2.0",
    "license_note": "Apache-2.0。目录附原许可证",
@@ -32692,12 +32694,12 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "repo"
    ],
    "id": "2022-LayoutLMv3-Spatial-Bias-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2022-LayoutLMv3-Spatial-Bias-Attention.webp",
     "fig_no": "Figure 2",
@@ -32709,6 +32711,7 @@
     "title": "LayoutLMv3: Pre-training for Document AI with Unified Text and Image Masking",
     "venue": "ACM MM",
     "authors": "Yupan Huang, Tengchao Lv, Lei Cui, Yutong Lu, Furu Wei",
+    "mechanism": "LayoutLMv3 puts text words and image patches into one Transformer. Following LayoutLMv2, its self-attention adds bucketed biases for reading order and two-dimensional position to the attention scores.",
     "license": "Apache-2.0",
     "module_type": "Attention",
     "domain": "Document understanding",
@@ -32919,7 +32922,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "版面结构换一种语言也差不多，LiLT 因此把版面和文字分成两路 Transformer。两路在同一层同一头里把各自的注意力分数相加后共用，预训练时版面一路收到的文字分数不回传梯度。",
    "formula": null,
    "copies": [
     {
@@ -32945,7 +32948,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -32954,13 +32957,13 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "license",
     "repo"
    ],
    "id": "2022-LiLT-Layout-Text-Bi-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2022-LiLT-Layout-Text-Bi-Attention.webp",
     "fig_no": "Figure 1",
@@ -32972,6 +32975,7 @@
     "title": "LiLT: A Simple yet Effective Language-Independent Layout Transformer for Structured Document Understanding",
     "venue": "ACL",
     "authors": "Jiapeng Wang, Lianwen Jin, Kai Ding",
+    "mechanism": "LiLT runs layout and text in two parallel Transformer streams, so the layout stream can be paired with text models in other languages. In each head the streams add up their attention scores, with the text scores detached during pre-training.",
     "module_type": "Attention",
     "domain": "Document understanding",
     "year_source": "the README"
@@ -44570,7 +44574,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "抽取文本块之间的关系时，几何位置很关键，以往模型只隐式地学它。GeoLayoutLM 先用双线性层粗估每对文本块是否相连，再把判为相连的配对送进轻量 Transformer 编码，解码器拿这份记忆给所有配对重算关系分数。",
    "formula": null,
    "copies": [
     {
@@ -44596,7 +44600,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -44605,13 +44609,13 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "license",
     "repo"
    ],
    "id": "2023-GeoLayoutLM-Geometric-Relation",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2023-GeoLayoutLM-Geometric-Relation.webp",
     "fig_no": "Figure 2",
@@ -44623,6 +44627,7 @@
     "title": "GeoLayoutLM: Geometric Pre-training for Visual Information Extraction",
     "venue": "CVPR",
     "authors": "Chuwei Luo, Changxu Cheng, Qi Zheng, Cong Yao",
+    "mechanism": "GeoLayoutLM first scores every pair of text segments with a bilinear head. Pairs judged as linked pass through a small Transformer encoder, and a decoder uses that memory to rescore all pairs.",
     "module_type": "Attention",
     "domain": "Document-level relation extraction",
     "year_source": "the README"
@@ -46275,7 +46280,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "图生视频要让每一帧都留住输入图的内容。I2VGen-XL 在去噪网络里把输入图的潜变量按空间位置拆开，每个位置沿帧排成一条序列，做一遍自注意力和前馈。",
    "formula": null,
    "copies": [
     {
@@ -46299,11 +46304,12 @@
      "en": {
       "name": "I2VGen-XL Temporal Attention",
       "license": "Apache-2.0",
+      "verification": "With the same weights, the GELU path of the official configuration was compared with the GEGLU path that the original class uses by default. The maximum absolute difference was 0.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "author",
    "license": "Apache-2.0",
    "license_note": "Apache-2.0。 Apache-2.0",
@@ -46312,10 +46318,10 @@
    "repo_url": "https://github.com/huggingface/diffusers",
    "verification": "同权重对照正式配置的 GELU 路径和原类默认的 GEGLU 路径。 最大绝对差 0。",
    "missing": [
-    "mechanism",
     "formula"
    ],
    "id": "2023-I2VGen-XL-Temporal-Attention",
+   "mechanism_basis": "readme",
    "figure": {
     "file": "figures/2023-I2VGen-XL-Temporal-Attention.webp",
     "fig_no": "Figure 2",
@@ -46327,6 +46333,8 @@
     "title": "I2VGen-XL: High-Quality Image-to-Video Synthesis via Cascaded Diffusion Models",
     "venue": "arXiv",
     "authors": "Shiwei Zhang, Jiayu Wang, Yingya Zhang, Kang Zhao, Hangjie Yuan, Zhiwu Qin, Xiang Wang, Deli Zhao, Jingren Zhou",
+    "mechanism": "I2VGen-XL keeps the input image in view while it generates video. Inside the denoising network, this encoder treats each spatial location of the image latent as a sequence over frames and runs self-attention and a feed-forward layer along it.",
+    "verification": "With the same weights, the GELU path of the official configuration was compared with the GEGLU path that the original class uses by default. The maximum absolute difference was 0.",
     "license": "Apache-2.0",
     "module_type": "Attention",
     "domain": "Video generation",
@@ -50009,7 +50017,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "直接把参考图交给模型，它容易学成复制粘贴。Paint-by-Example 只取参考图 CLIP 特征的池化向量，过几层映射变成一个条件令牌，再让图像特征对它做交叉注意力。",
    "formula": null,
    "copies": [
     {
@@ -50033,11 +50041,12 @@
      "en": {
       "name": "Paint-by-Example Exemplar Cross-Attention",
       "license": "CreativeML Open RAIL-M",
+      "verification": "For the comparison with the original FrozenCLIPImageEmbedder.forward, the same pre-generated pooled features served as the external encoder output. The comparison covered the mapping, the single exemplar token and masked multi-token cross-attention.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "author",
    "license": "其他",
    "license_note": "CreativeML Open RAIL-M。 CreativeML Open RAIL-M",
@@ -50046,10 +50055,10 @@
    "repo_url": "https://github.com/Fantasy-Studio/Paint-by-Example",
    "verification": "对照原 FrozenCLIPImageEmbedder.forward 时，用同一份预先生成的池化特征作为外部编码器输出。对照映射、单参考图令牌和带掩码的多令牌交叉注意力。",
    "missing": [
-    "mechanism",
     "formula"
    ],
    "id": "2023-Paint-by-Example-Exemplar-Cross-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2023-Paint-by-Example-Exemplar-Cross-Attention.webp",
     "fig_no": "Figure 3",
@@ -50061,6 +50070,8 @@
     "title": "Paint by Example: Exemplar-based Image Editing with Diffusion Models",
     "venue": "CVPR",
     "authors": "Binxin Yang, Shuyang Gu, Bo Zhang, Ting Zhang, Xuejin Chen, Xiaoyan Sun, Dong Chen, Fang Wen",
+    "mechanism": "Paint by Example squeezes the exemplar into a single token to keep the model from simply pasting it in. A mapper turns the pooled CLIP image feature into that token, and the image features attend to it through cross-attention.",
+    "verification": "For the comparison with the original FrozenCLIPImageEmbedder.forward, the same pre-generated pooled features served as the external encoder output. The comparison covered the mapping, the single exemplar token and masked multi-token cross-attention.",
     "license": "CreativeML Open RAIL-M",
     "module_type": "Attention",
     "domain": "Image editing",
@@ -53438,7 +53449,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "一句提示里有好几个物体时，颜色等属性常常安错对象。Structured Diffusion 把提示拆成名词短语分别编码，注意力图仍由整句的键算出，再分别乘上各短语的值并取平均。",
    "formula": null,
    "copies": [
     {
@@ -53461,11 +53472,12 @@
      "in_index": true,
      "en": {
       "name": "Structured Diffusion Guidance",
+      "verification": "No numerical comparison was performed on the whole file. The original class from the pinned commit was loaded in isolation, and the same state_dict was used to compare plain masking, plain classifier-free guidance, two pairs of structured keys and values, and one shared key with several sets of values.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -53474,12 +53486,12 @@
    "repo_url": null,
    "verification": "整文件未做数值对照。隔离加载固定提交原类，使用同一份 state_dict 对照普通掩码、普通无分类器指导、两对结构化键值和一组共享键配多组值。",
    "missing": [
-    "mechanism",
     "formula",
     "license",
     "repo"
    ],
    "id": "2023-Structured-Diffusion-Guidance",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2023-Structured-Diffusion-Guidance.webp",
     "fig_no": "Figure 3",
@@ -53491,6 +53503,8 @@
     "title": "Training-Free Structured Diffusion Guidance for Compositional Text-to-Image Synthesis",
     "venue": "ICLR",
     "authors": "Weixi Feng, Xuehai He, Tsu-Jui Fu, Varun Jampani, Arjun Akula, Pradyumna Narayana, Sugato Basu, Xin Eric Wang, William Yang Wang",
+    "mechanism": "Prompts with several objects often get their attributes mixed up. Structured Diffusion encodes each noun phrase separately, computes the attention map from the full-prompt keys, applies it to each phrase's values and averages the results.",
+    "verification": "No numerical comparison was performed on the whole file. The original class from the pinned commit was loaded in isolation, and the same state_dict was used to compare plain masking, plain classifier-free guidance, two pairs of structured keys and values, and one shared key with several sets of values.",
     "module_type": "Attention",
     "domain": "Text-to-image generation",
     "year_source": "the library index"
@@ -54558,7 +54572,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "UDOP 把每个文本词的嵌入和它所在图像块的特征相加，让文字、图像和版面落在同一种表示里。编码器的自注意力再加上按一维顺序和横纵坐标算出的相对偏置。",
    "formula": null,
    "copies": [
     {
@@ -54584,7 +54598,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -54593,13 +54607,13 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "license",
     "repo"
    ],
    "id": "2023-UDOP-Vision-Text-Layout-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2023-UDOP-Vision-Text-Layout-Attention.webp",
     "fig_no": "Figure 2",
@@ -54611,6 +54625,7 @@
     "title": "Unifying Vision, Text, and Layout for Universal Document Processing",
     "venue": "CVPR",
     "authors": "Zineng Tang, Ziyi Yang, Guoxin Wang, Yuwei Fang, Yang Liu, Chenguang Zhu, Michael Zeng, Cha Zhang, Mohit Bansal",
+    "mechanism": "UDOP adds each word's embedding to the feature of the image patch it sits in, so text, image and layout share one representation. Its encoder self-attention adds relative biases for reading order and for horizontal and vertical position.",
     "module_type": "Attention",
     "domain": "Document understanding",
     "year_source": "the README"
@@ -54961,7 +54976,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "视频生成难在帧与帧之间保持一致。VideoComposer 在去噪网络里插入时间 Transformer，先用卷积投影特征，再让每个空间位置沿帧做自注意力，结果以残差加回。",
    "formula": null,
    "copies": [
     {
@@ -54985,11 +55000,12 @@
      "en": {
       "name": "VideoComposer Temporal Attention",
       "license": "MIT",
+      "verification": "No numerical comparison was performed (official xFormers kernel). After nonzero weights were loaded into the zero-initialized output projection, the full temporal block and the cross-attention core were compared.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "author",
    "license": "MIT",
    "license_note": "MIT。 MIT",
@@ -54998,10 +55014,10 @@
    "repo_url": "https://github.com/ali-vilab/videocomposer",
    "verification": "未做数值对照（官方 xFormers 原内核）。为零初始化的输出投影载入非零权重后，对照完整时间块和交叉注意力核心。",
    "missing": [
-    "mechanism",
     "formula"
    ],
    "id": "2023-VideoComposer-Temporal-Attention",
+   "mechanism_basis": "readme",
    "figure": {
     "file": "figures/2023-VideoComposer-Temporal-Attention.webp",
     "fig_no": "Figure 2",
@@ -55013,6 +55029,8 @@
     "title": "VideoComposer: Compositional Video Synthesis with Motion Controllability",
     "venue": "NeurIPS",
     "authors": "Xiang Wang, Hangjie Yuan, Shiwei Zhang, Dayou Chen, Jiuniu Wang, Yingya Zhang, Yujun Shen, Deli Zhao, Jingren Zhou",
+    "mechanism": "Generated video needs consistency from frame to frame. VideoComposer's temporal Transformer projects features with a convolution, lets each spatial location attend across frames and adds the result back as a residual.",
+    "verification": "No numerical comparison was performed (official xFormers kernel). After nonzero weights were loaded into the zero-initialized output projection, the full temporal block and the cross-attention core were compared.",
     "license": "MIT",
     "module_type": "Attention",
     "domain": "Video generation",
@@ -61038,7 +61056,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "Florence-2 把检测、描述、分割都写成看图生成一段文字。图像令牌和任务提示拼起来进编码器，解码器每生成一个词，就用交叉注意力回头查这份编码结果。",
    "formula": null,
    "copies": [
     {
@@ -61061,11 +61079,12 @@
      "in_index": true,
      "en": {
       "name": "Florence-2 Spatial Cross-Attention",
+      "verification": "The model file and configuration were imported directly from Microsoft's pinned commit, and the same state_dict was used to compare the two original classes. The maximum absolute difference was 0, with a threshold of 1e-5.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -61074,12 +61093,12 @@
    "repo_url": null,
    "verification": "直接导入微软固定提交的模型文件及配置，使用同一份 state_dict 对照两个原类。 最大绝对差 0，阈值 1e-5。",
    "missing": [
-    "mechanism",
     "formula",
     "license",
     "repo"
    ],
    "id": "2024-Florence-2-Spatial-Cross-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2024-Florence-2-Spatial-Cross-Attention.webp",
     "fig_no": "Figure 2",
@@ -61091,6 +61110,8 @@
     "title": "Florence-2: Advancing a Unified Representation for a Variety of Vision Tasks",
     "venue": "CVPR",
     "authors": "Bin Xiao, Haiping Wu, Weijian Xu, Xiyang Dai, Houdong Hu, Yumao Lu, Michael Zeng, Ce Liu, Lu Yuan",
+    "mechanism": "Florence-2 casts detection, captioning and segmentation as text generation. Image tokens and the task prompt are encoded together, and the decoder consults that encoding through cross-attention at every step.",
+    "verification": "The model file and configuration were imported directly from Microsoft's pinned commit, and the same state_dict was used to compare the two original classes. The maximum absolute difference was 0, with a threshold of 1e-5.",
     "module_type": "Attention",
     "domain": "Visual grounding and document parsing",
     "year_source": "the library index"
@@ -63451,7 +63472,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "只给一张人脸照片，也要生成同一个人。InstantID 把人脸识别模型给出的身份嵌入映射成 16 个令牌，配上单独的键值投影做交叉注意力，结果加到文本交叉注意力的输出上。",
    "formula": null,
    "copies": [
     {
@@ -63475,11 +63496,12 @@
      "en": {
       "name": "InstantID Identity Attention",
       "license": "Apache-2.0",
+      "verification": "With the same weights, the token projection, cross-attention and region mask were compared. The maximum absolute difference was 0.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "author",
    "license": "Apache-2.0",
    "license_note": "Apache-2.0。 Apache-2.0",
@@ -63488,10 +63510,10 @@
    "repo_url": "https://github.com/instantX-research/InstantID",
    "verification": "同权重对照令牌投影、交叉注意力和区域掩码。 最大绝对差 0。",
    "missing": [
-    "mechanism",
     "formula"
    ],
    "id": "2024-InstantID-Identity-Attention",
+   "mechanism_basis": "readme",
    "figure": {
     "file": "figures/2024-InstantID-Identity-Attention.webp",
     "fig_no": "Figure 2",
@@ -63503,6 +63525,8 @@
     "title": "InstantID: Zero-shot Identity-Preserving Generation in Seconds",
     "venue": "arXiv",
     "authors": "Qixun Wang, Xu Bai, Haofan Wang, Zekui Qin, Anthony Chen, Huaxia Li, Xu Tang, Yao Hu",
+    "mechanism": "InstantID preserves a face from a single photo. It turns a face-recognition embedding into sixteen tokens with their own key and value projections in cross-attention, and adds the result to the text cross-attention output.",
+    "verification": "With the same weights, the token projection, cross-attention and region mask were compared. The maximum absolute difference was 0.",
     "license": "Apache-2.0",
     "module_type": "Attention",
     "domain": "Image generation",
@@ -63803,7 +63827,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "JetMoE 让注意力层也做稀疏专家。路由器为每个令牌挑出几个专家，各专家自带查询和输出投影，键和值的投影由全体专家共用。",
    "formula": null,
    "copies": [
     {
@@ -63830,7 +63854,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": "Apache-2.0",
    "license_note": "Apache-2.0。目录附原许可证",
@@ -63839,12 +63863,12 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "repo"
    ],
    "id": "2024-JetMoE-Head-Sharing-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2024-JetMoE-Head-Sharing-Attention.webp",
     "fig_no": "Figure 1",
@@ -63856,6 +63880,7 @@
     "title": "JetMoE: Reaching Llama2 Performance with 0.1M Dollars",
     "venue": "arXiv",
     "authors": "Yikang Shen, Zhen Guo, Tianle Cai, Zengyi Qin",
+    "mechanism": "JetMoE turns attention into a sparse mixture of experts, with a router picking a few experts for each token. Each expert owns its query and output projections, while the key and value projections are shared.",
     "license": "Apache-2.0",
     "module_type": "Attention",
     "domain": "Language models",
@@ -64247,7 +64272,7 @@
      "note": null
     }
    ],
-   "mechanism": "用洛伦兹不变的内积和多向量表示构造粒子注意力。正式出处按 NeurIPS 文集改为 2024 NeurIPS。",
+   "mechanism": "粒子物理的规律在洛伦兹变换下不变。L-GATr 把粒子写成时空几何代数里的多向量，打分前按洛伦兹度量给各分量配上正负号，再和标量通道拼接做点积注意力。",
    "formula": null,
    "copies": [
     {
@@ -64274,7 +64299,7 @@
      }
     }
    ],
-   "mechanism_source": "队列备注",
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "author",
    "license": "MIT",
    "license_note": "MIT 与 Qualcomm BSD-3-Clause 变体。本地许可全文 · 上游许可",
@@ -64287,6 +64312,7 @@
     "verification"
    ],
    "id": "2024-L-GATr-Lorentz-Equivariant-Attention",
+   "mechanism_basis": "readme",
    "figure": {
     "file": "figures/2024-L-GATr-Lorentz-Equivariant-Attention.webp",
     "fig_no": "Figure 1",
@@ -64298,6 +64324,7 @@
     "title": "Lorentz-Equivariant Geometric Algebra Transformers for High-Energy Physics",
     "venue": "NeurIPS",
     "authors": "Jonas Spinner, Victor Bresó, Pim de Haan, Tilman Plehn, Jesse Thaler, Johann Brehmer",
+    "mechanism": "L-GATr represents particles as multivectors in the geometric algebra of space-time. Before the dot product it signs each component by the Lorentz metric and appends scalar channels, so the attention scores are unchanged by Lorentz transformations.",
     "license": "MIT",
     "module_type": "Attention",
     "domain": "High-energy physics",
@@ -65302,7 +65329,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "LTX-Video 先用视频 VAE 把一大块时空像素压成一个令牌，序列短了，Transformer 就能让所有令牌跨时空一起做自注意力。位置用旋转编码给出，文本条件另走交叉注意力。",
    "formula": null,
    "copies": [
     {
@@ -65326,11 +65353,12 @@
      "en": {
       "name": "LTX-Video Space-Time Attention",
       "license": "Apache-2.0",
+      "verification": "With the same weights, the rotary frequencies, space-time self-attention, skip-layer value branch and masked cross-attention were compared. The maximum absolute difference was 0.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "author",
    "license": "Apache-2.0",
    "license_note": "Apache-2.0。 Apache-2.0",
@@ -65339,10 +65367,10 @@
    "repo_url": "https://github.com/Lightricks/LTX-Video",
    "verification": "同权重对照旋转频率、时空自注意力、跳层值分支和带掩码的交叉注意力。 最大绝对差 0。",
    "missing": [
-    "mechanism",
     "formula"
    ],
    "id": "2024-LTX-Video-Space-Time-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2024-LTX-Video-Space-Time-Attention.webp",
     "fig_no": "Figure 6",
@@ -65354,6 +65382,8 @@
     "title": "LTX-Video: Realtime Video Latent Diffusion",
     "venue": "arXiv",
     "authors": "Yoav HaCohen, Nisan Chiprut, Benny Brazowski, Daniel Shalem, Dudu Moshe, Eitan Richardson, Eran Levin, Guy Shiran, Nir Zabari, Ori Gordon, Poriya Panet, Sapir Weissbuch, Victor Kulikov, Yaki Bitterman, Zeev Melumian, Ofir Bibi",
+    "mechanism": "LTX-Video compresses video so heavily that each token covers a large block of pixels across space and time. The shorter sequence lets every token attend to every other with rotary positions, while text enters through cross-attention.",
+    "verification": "With the same weights, the rotary frequencies, space-time self-attention, skip-layer value branch and masked cross-attention were compared. The maximum absolute difference was 0.",
     "license": "Apache-2.0",
     "module_type": "Attention",
     "domain": "Video generation",
@@ -67490,7 +67520,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "三维全注意力太贵，空间和时间分开算又连不全。Open-Sora Plan 的 Skiparse 按步长 k 抽出令牌组成短序列做注意力，下一层改为把相邻 k 个令牌当一组再跳着抽，两种分法逐层交替。",
    "formula": null,
    "copies": [
     {
@@ -67514,11 +67544,12 @@
      "en": {
       "name": "Open-Sora Plan Video Attention",
       "license": "MIT",
+      "verification": "The two sparse groupings with masking and padding were compared, along with the dense branch, and each path was checked for both self-attention and cross-attention. The maximum absolute difference was 0.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "author",
    "license": "MIT",
    "license_note": "MIT。 MIT",
@@ -67527,10 +67558,10 @@
    "repo_url": "https://github.com/PKU-YuanGroup/Open-Sora-Plan",
    "verification": "对照带掩码及填充的两种稀疏分组与稠密分支，每条路径均比较自注意力和交叉注意力。 最大绝对差 0。",
    "missing": [
-    "mechanism",
     "formula"
    ],
    "id": "2024-Open-Sora-Plan-Video-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2024-Open-Sora-Plan-Video-Attention.webp",
     "fig_no": "Figure 1",
@@ -67542,6 +67573,8 @@
     "title": "Open-Sora Plan: Open-Source Large Video Generation Model",
     "venue": "arXiv",
     "authors": "Bin Lin, Yunyang Ge, Xinhua Cheng, Zongjian Li, Bin Zhu, Shaodong Wang, Xianyi He, Yang Ye, Shenghai Yuan, Liuhan Chen, Tanghui Jia, Junwu Zhang, Zhenyu Tang, Yatian Pang, Bin She, Cen Yan, Zhiheng Hu, Xiaoyi Dong, Lin Chen, Zhang Pan, Xing Zhou, Shaoling Dong, Yonghong Tian, Li Yuan",
+    "mechanism": "Full 3D attention over video is costly. Open-Sora Plan's Skiparse attention alternates two ways of splitting the tokens into k shorter sequences: taking every k-th token, or taking every k-th group of k adjacent tokens.",
+    "verification": "The two sparse groupings with masking and padding were compared, along with the dense branch, and each path was checked for both self-attention and cross-attention. The maximum absolute difference was 0.",
     "license": "MIT",
     "module_type": "Attention",
     "domain": "Video generation",
@@ -77998,7 +78031,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "高分辨率页面切出的令牌太多，全局注意力的显存吃不消。DeepEncoder 先让 SAM 用窗口注意力处理大量令牌，经卷积压缩 16 倍后，再交给 CLIP 做全局注意力。",
    "formula": null,
    "copies": [
     {
@@ -78024,7 +78057,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -78033,13 +78066,13 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "license",
     "repo"
    ],
    "id": "2025-DeepSeek-OCR-DeepEncoder-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2025-DeepSeek-OCR-DeepEncoder-Attention.webp",
     "fig_no": "Figure 3",
@@ -78051,6 +78084,7 @@
     "title": "DeepSeek-OCR: Contexts Optical Compression",
     "venue": "arXiv",
     "authors": "Haoran Wei, Yaofeng Sun, Yukun Li",
+    "mechanism": "A high-resolution page yields too many tokens for global attention. DeepEncoder first runs SAM's window attention over all of them, compresses the tokens sixteenfold with convolutions, then hands the rest to CLIP for global attention.",
     "module_type": "Attention",
     "domain": "Optical character recognition",
     "year_source": "the README"
@@ -78833,7 +78867,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "固定的稀疏模式不随内容变，按内容挑键的办法又常卡住梯度。DMA 让每个头从值向量算出各位置的分数，只留分数最高的若干个键做注意力，其余位置跳过不算。",
    "formula": null,
    "copies": [
     {
@@ -78860,7 +78894,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": "Apache-2.0",
    "license_note": "Apache-2.0。目录附原许可证",
@@ -78869,12 +78903,12 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "repo"
    ],
    "id": "2025-Doge-Dynamic-Mask-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2025-Doge-Dynamic-Mask-Attention.webp",
     "fig_no": "Figure 2",
@@ -78886,6 +78920,7 @@
     "title": "Trainable Dynamic Mask Sparse Attention",
     "venue": "arXiv",
     "authors": "Jingze Shi, Yifan Wu, Yiran Peng, Bingheng Wu, Liangdong Wang, Guang Liu, Yuyu Luo",
+    "mechanism": "Dynamic Mask Attention derives a score for each past position from the value vectors, separately for every head. Only the top-scoring keys enter attention, and the skipped positions receive no gradient.",
     "license": "Apache-2.0",
     "module_type": "Attention",
     "domain": "Language models",
@@ -80985,7 +81020,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "SE 只用平均值描述一个通道。Fuse-SE 给每个通道算均值、标准差和低频、高频幅度四个统计量，逐通道加权合成后过两层全连接，再按全图标准差调温度，用 sigmoid 得出通道权重。",
    "formula": null,
    "copies": [
     {
@@ -81011,7 +81046,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "third",
    "license": null,
    "license_note": null,
@@ -81022,7 +81057,6 @@
    "missing": [
     "title",
     "venue",
-    "mechanism",
     "formula",
     "verification",
     "license",
@@ -81030,7 +81064,7 @@
     "paper_link"
    ],
    "id": "2025-Fuse-SE",
-   "mechanism_basis": "none",
+   "mechanism_basis": "readme",
    "figure": {
     "file": "figures/house/2025-Fuse-SE.svg",
     "fig_no": null,
@@ -81041,6 +81075,7 @@
     "house": true
    },
    "en": {
+    "mechanism": "Fuse-SE describes each channel by its mean, standard deviation and low- and high-frequency spectral energy. A per-channel blend of these feeds an SE-style bottleneck, whose sigmoid gate is sharpened or softened by a temperature set from the average standard deviation.",
     "module_type": "Attention",
     "domain": "General",
     "year_source": "the library index"
@@ -81834,7 +81869,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "有时一个查询不该看任何令牌，softmax 却总要把权重分完。gpt-oss 给每个头加一个可学习的汇聚项，只进 softmax 的分母，各层还在 128 个令牌的带状窗口和全局注意力之间交替。",
    "formula": null,
    "copies": [
     {
@@ -81861,7 +81896,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": "Apache-2.0",
    "license_note": "Apache-2.0。目录附原许可证",
@@ -81870,16 +81905,17 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "repo"
    ],
    "id": "2025-GPT-OSS-Attention-Sinks",
+   "mechanism_basis": "readme",
    "en": {
     "title": "gpt-oss-120b & gpt-oss-20b Model Card",
     "venue": "OpenAI",
     "authors": "OpenAI",
+    "mechanism": "Softmax always has to spread its weight somewhere. gpt-oss gives each head a learned sink term in the softmax denominator, so a query can attend to almost nothing, and its layers alternate between 128-token banded windows and dense attention.",
     "license": "Apache-2.0",
     "module_type": "Attention",
     "domain": "Language models",
@@ -83575,7 +83611,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "视频的时空令牌太多，放在一起做注意力很贵。Latte 把空间块和时间块交替堆叠：空间块在每帧内部做注意力，时间块让同一位置跨帧做注意力，中间靠两次张量重排切换。",
    "formula": null,
    "copies": [
     {
@@ -83599,11 +83635,12 @@
      "en": {
       "name": "Latte Factorized Latent Video Attention",
       "license": "Apache-2.0",
+      "verification": "A forward hook on the original class recorded the inputs, conditions and outputs of the first pair of blocks, and the same inputs were then used to compare the extracted version. The maximum absolute difference was 0.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "author",
    "license": "Apache-2.0",
    "license_note": "Apache-2.0。 Apache-2.0",
@@ -83612,10 +83649,10 @@
    "repo_url": "https://github.com/Vchitect/Latte",
    "verification": "用原类前向钩子记录首对块的输入、条件和输出，再用相同输入对照收录版。 最大绝对差 0。",
    "missing": [
-    "mechanism",
     "formula"
    ],
    "id": "2025-Latte-Factorized-Latent-Video-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2025-Latte-Factorized-Latent-Video-Attention.webp",
     "fig_no": "Figure 2",
@@ -83627,6 +83664,8 @@
     "title": "Latte: Latent Diffusion Transformer for Video Generation",
     "venue": "TMLR",
     "authors": "Xin Ma, Yaohui Wang, Xinyuan Chen, Gengyun Jia, Ziwei Liu, Yuan-Fang Li, Cunjian Chen, Yu Qiao",
+    "mechanism": "Latte splits video attention into alternating blocks. A spatial block attends within each frame, the next block attends across frames at each location, and the tokens are rearranged between the two.",
+    "verification": "A forward hook on the original class recorded the inputs, conditions and outputs of the first pair of blocks, and the same inputs were then used to compare the extracted version. The maximum absolute difference was 0.",
     "license": "Apache-2.0",
     "module_type": "Attention",
     "domain": "Video generation",
@@ -85539,7 +85578,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "因果线性注意力要做累加，训练时快不起来。Lightning Attention 把序列切块，块内照常算带掩码的查询键乘积，块与块之间用递推的键值状态衔接，总开销随长度线性增长。",
    "formula": null,
    "copies": [
     {
@@ -85562,11 +85601,12 @@
      "in_index": true,
      "en": {
       "name": "MiniMax-01 Lightning Attention",
+      "verification": "No numerical comparison was performed on the full official file. For both stages, the maximum absolute difference of the outputs and the recurrent state was 0, with a threshold of 1e-5.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -85575,12 +85615,12 @@
    "repo_url": null,
    "verification": "完整官方文件未做数值对照。两阶段的输出和递推状态最大绝对差均为 0，阈值为 1e-5。",
    "missing": [
-    "mechanism",
     "formula",
     "license",
     "repo"
    ],
    "id": "2025-MiniMax-01-Lightning-Attention",
+   "mechanism_basis": "readme",
    "figure": {
     "file": "figures/2025-MiniMax-01-Lightning-Attention.webp",
     "fig_no": "Figure 5",
@@ -85590,6 +85630,8 @@
    },
    "en": {
     "venue": "arXiv",
+    "mechanism": "Causal linear attention is slowed down by its running sum. Lightning Attention splits the sequence into blocks, computes masked query-key products inside each block and passes a recurrent key-value state between blocks, so cost grows linearly with length.",
+    "verification": "No numerical comparison was performed on the full official file. For both stages, the maximum absolute difference of the outputs and the recurrent state was 0, with a threshold of 1e-5.",
     "module_type": "Attention",
     "domain": "Language modeling",
     "year_source": "the library index"
@@ -85617,7 +85659,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "长推理要读写上百万个令牌。MiniMax-M1 每七层闪电线性注意力之后接一层 softmax 全量注意力，线性层带着递推状态往下读，全量层照常逐对打分。",
    "formula": null,
    "copies": [
     {
@@ -85640,11 +85682,12 @@
      "in_index": true,
      "en": {
       "name": "MiniMax-M1 Hybrid Attention",
+      "verification": "No numerical comparison was performed on the full official file or the FlashAttention kernel. The maximum absolute difference of the outputs, attention weights or recurrent states was 0 in every case, with a threshold of 1e-5.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -85653,14 +85696,16 @@
    "repo_url": null,
    "verification": "完整官方文件和 FlashAttention 内核未做数值对照。输出、注意力权重或递推状态的最大绝对差均为 0，阈值为 1e-5。",
    "missing": [
-    "mechanism",
     "formula",
     "license",
     "repo"
    ],
    "id": "2025-MiniMax-M1-Hybrid-Attention",
+   "mechanism_basis": "abstract",
    "en": {
     "venue": "arXiv",
+    "mechanism": "MiniMax-M1 mixes two kinds of attention layer for million-token contexts. Every seven lightning linear-attention layers, which carry a recurrent state, are followed by one full softmax attention layer.",
+    "verification": "No numerical comparison was performed on the full official file or the FlashAttention kernel. The maximum absolute difference of the outputs, attention weights or recurrent states was 0 in every case, with a threshold of 1e-5.",
     "module_type": "Attention",
     "domain": "Long-context inference",
     "year_source": "the library index"
@@ -85933,7 +85978,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "编码器要处理 8192 长的序列，层层都做全局注意力太费。ModernBERT 每三层放一层全局注意力，其余层只看 128 个令牌的滑动窗口，两种层的 RoPE 基数也不同。",
    "formula": null,
    "copies": [
     {
@@ -85956,11 +86001,12 @@
      "in_index": true,
      "en": {
       "name": "ModernBERT Alternating Local Attention",
+      "verification": "For both the global and local layers, the maximum absolute difference of the outputs and attention weights was 0, with a threshold of 1e-5.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -85969,14 +86015,16 @@
    "repo_url": null,
    "verification": "全局和局部的输出与注意力权重最大绝对差均为 0，阈值为 1e-5。",
    "missing": [
-    "mechanism",
     "formula",
     "license",
     "repo"
    ],
    "id": "2025-ModernBERT-Alternating-Local-Attention",
+   "mechanism_basis": "readme",
    "en": {
     "venue": "ACL",
+    "mechanism": "ModernBERT handles long inputs by making only every third layer global. The other layers attend within a 128-token sliding window, and the two layer types use different RoPE bases.",
+    "verification": "For both the global and local layers, the maximum absolute difference of the outputs and attention weights was 0, with a threshold of 1e-5.",
     "module_type": "Attention",
     "domain": "Text encoding",
     "year_source": "the library index"
@@ -86102,7 +86150,7 @@
      "note": null
     }
    ],
-   "mechanism": "用注意力读出上下文数据，再把读出的向量解码为小型分类器的参数。论文已于 ICLR 2025 正式发表。",
+   "mechanism": "MotherNet 读一整张训练表，一次前向就产出一个小型分类网络。它用可学习的查询对上下文样本做注意力，把整表汇成一个向量，再解码成这个子网络各层的权重和偏置。",
    "formula": null,
    "copies": [
     {
@@ -86126,11 +86174,12 @@
      "en": {
       "name": "MotherNet Attention Readout",
       "license": "Apache-2.0",
+      "verification": "The same state_dict, context embeddings and labels were passed to both classes. The maximum absolute difference across the four parameter tensors was 0.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": "队列备注",
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "author",
    "license": "Apache-2.0",
    "license_note": "Apache-2.0 · 署名声明",
@@ -86142,6 +86191,7 @@
     "formula"
    ],
    "id": "2025-MotherNet-Attention-Readout",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2025-MotherNet-Attention-Readout.webp",
     "fig_no": "Figure 1",
@@ -86153,6 +86203,8 @@
     "title": "MotherNet: Fast Training and Inference via Hyper-Network Transformers",
     "venue": "ICLR",
     "authors": "Andreas C. Müller, Carlo Curino, Raghu Ramakrishnan",
+    "mechanism": "MotherNet reads a whole training table and writes out a small classifier in one forward pass. Learned queries attend over the in-context samples to summarize the table, and a decoder turns that summary into the child network's weights and biases.",
+    "verification": "The same state_dict, context embeddings and labels were passed to both classes. The maximum absolute difference across the four parameter tensors was 0.",
     "license": "Apache-2.0",
     "module_type": "Attention",
     "domain": "Tabular data learning",
@@ -87142,7 +87194,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "序列一长，每层都做全局注意力就太贵。OLMo 3 让每四层中的三层只看前面 4096 个令牌，剩下一层看全部上文，最后一层固定用全局注意力。",
    "formula": null,
    "copies": [
     {
@@ -87169,7 +87221,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": "Apache-2.0",
    "license_note": "Apache-2.0。目录附原许可证",
@@ -87178,12 +87230,12 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "repo"
    ],
    "id": "2025-OLMo-3-Hybrid-Attention",
+   "mechanism_basis": "readme",
    "figure": {
     "file": "figures/2025-OLMo-3-Hybrid-Attention.webp",
     "fig_no": "Figure 1",
@@ -87195,6 +87247,7 @@
     "title": "Olmo 3",
     "venue": "arXiv",
     "authors": "Olmo Team. Allyson Ettinger, Amanda Bertsch, Bailey Kuehl, David Graham, David Heineman, Dirk Groeneveld, Faeze Brahman, Finbarr Timbers, Hamish Ivison, Jacob Morrison, Jake Poznanski, Kyle Lo, Luca Soldaini, Matt Jordan, Mayee Chen, Michael Noukhovitch, Nathan Lambert, Pete Walsh, Pradeep Dasigi, Robert Berry, Saumya Malik, Saurabh Shah, Scott Geng, Shane Arora, Shashank Gupta, Taira Anderson, Teng Xiao, Tyler Murray, Tyler Romero, Victoria Graf, Akari Asai, Akshita Bhagia, Alexander Wettig, Alisa Liu, Aman Rangapur, Chloe Anastasiades, Costa Huang, Dustin Schwenk, Harsh Trivedi, Ian Magnusson, Jaron Lochner, Jiacheng Liu, Lester James V. Miranda, Maarten Sap, Malia Morgan, Michael Schmitz, Michal Guerquin, Michael Wilson, Regan Huff, Ronan Le Bras, Rui Xin, Rulin Shao, Sam Skjonsberg, Shannon Zejiang Shen, Shuyue Stella Li, Tucker Wilde, Valentina Pyatkin, Will Merrill, Yapei Chang, Yuling Gu, Zhiyuan Zeng, Ashish Sabharwal, Luke Zettlemoyer, Pang Wei Koh, Ali Farhadi, Noah A. Smith, Hannaneh Hajishirzi",
+    "mechanism": "OLMo 3 keeps long-context cost in check with a layer pattern. Three of every four layers use a 4096-token sliding window over earlier tokens, the rest use full attention, and the last layer is always full.",
     "license": "Apache-2.0",
     "module_type": "Attention",
     "domain": "Language models",
@@ -87223,7 +87276,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "PaddleOCR-VL 按原分辨率给文档图切块，图多大，令牌就有多少。几张图的令牌打包成一条序列，注意力按各图的边界分段计算，图与图互不相看。",
    "formula": null,
    "copies": [
     {
@@ -87246,11 +87299,12 @@
      "in_index": true,
      "en": {
       "name": "PaddleOCR-VL Dynamic Resolution Attention",
+      "verification": "No numerical comparison was performed on the whole file. After the state_dict was synchronized, the eager and SDPA outputs and the explicit weights were compared.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -87259,12 +87313,12 @@
    "repo_url": null,
    "verification": "整文件未做数值对照。同步 state_dict 后对照 eager 和 SDPA 的输出及显式权重。",
    "missing": [
-    "mechanism",
     "formula",
     "license",
     "repo"
    ],
    "id": "2025-PaddleOCR-VL-Dynamic-Resolution-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2025-PaddleOCR-VL-Dynamic-Resolution-Attention.webp",
     "fig_no": "Figure 2",
@@ -87276,6 +87330,8 @@
     "title": "PaddleOCR-VL: Boosting Multilingual Document Parsing via a 0.9B Ultra-Compact Vision-Language Model",
     "venue": "arXiv",
     "authors": "Cheng Cui, Ting Sun, Suyin Liang, Tingquan Gao, Zelun Zhang, Jiaxuan Liu, Xueqing Wang, Changda Zhou, Hongen Liu, Manhui Lin, Yue Zhang, Yubo Zhang, Handong Zheng, Jing Zhang, Jun Zhang, Yi Liu, Dianhai Yu, Yanjun Ma",
+    "mechanism": "PaddleOCR-VL encodes each document image at its native resolution. Tokens from several images are packed into one sequence, and attention runs within each image's segment, so the images never see one another.",
+    "verification": "No numerical comparison was performed on the whole file. After the state_dict was synchronized, the eager and SDPA outputs and the explicit weights were compared.",
     "module_type": "Attention",
     "domain": "Document parsing",
     "year_source": "the library index"
@@ -87565,7 +87621,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "Phi-4-Multimodal 的语音编码器由 Conformer 块组成。其中的注意力把音频帧按块划分，按块定出每帧能参考的左侧范围，再给每个相对距离加一个逐头学习的偏置。",
    "formula": null,
    "copies": [
     {
@@ -87591,7 +87647,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -87600,13 +87656,13 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "license",
     "repo"
    ],
    "id": "2025-Phi-4-Multimodal-Audio-Attention",
+   "mechanism_basis": "readme",
    "figure": {
     "file": "figures/2025-Phi-4-Multimodal-Audio-Attention.webp",
     "fig_no": "Figure 1",
@@ -87618,6 +87674,7 @@
     "title": "Phi-4-Mini Technical Report: Compact yet Powerful Multimodal Language Models via Mixture-of-LoRAs",
     "venue": "arXiv",
     "authors": "Microsoft",
+    "mechanism": "Phi-4-Multimodal's speech encoder is built from Conformer blocks. Their attention groups audio frames into chunks that bound how far back each frame can look, and adds a learned per-head bias for each relative distance.",
     "module_type": "Attention",
     "domain": "Speech and text modeling",
     "year_source": "the README"
@@ -87871,7 +87928,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "原分辨率的大图切出的图块很多，视觉编码器每层都做全局注意力负担太重。Qwen2.5-VL 大多数层只在 8×8 图块的窗口里算，只有四层看全图。视频的时间位置编号按真实秒数对齐。",
    "formula": null,
    "copies": [
     {
@@ -87897,7 +87954,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -87906,13 +87963,13 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "license",
     "repo"
    ],
    "id": "2025-Qwen2-5-VL-Window-and-Temporal-M-RoPE",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2025-Qwen2-5-VL-Window-and-Temporal-M-RoPE.webp",
     "fig_no": "Figure 1",
@@ -87924,6 +87981,7 @@
     "title": "Qwen2.5-VL Technical Report",
     "venue": "arXiv",
     "authors": "Qwen Team, Alibaba Group",
+    "mechanism": "Qwen2.5-VL's vision encoder attends within windows of 8 by 8 patches in most layers and over the whole image in only four. For video, the M-RoPE time positions follow absolute time.",
     "module_type": "Attention",
     "domain": "Image and video language modeling",
     "year_source": "the README"
@@ -88041,7 +88099,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "把旋转编码的频段整块分给时间、高、宽三个轴，各轴拿到的频率就不均衡，长视频尤其吃亏。Qwen3-VL 把三个轴交错铺满高低频段，再交给文本注意力。",
    "formula": null,
    "copies": [
     {
@@ -88067,7 +88125,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -88076,13 +88134,13 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "license",
     "repo"
    ],
    "id": "2025-Qwen3-VL-Interleaved-MRoPE",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2025-Qwen3-VL-Interleaved-MRoPE.webp",
     "fig_no": "Figure 1",
@@ -88094,6 +88152,7 @@
     "title": "Qwen3-VL Technical Report",
     "venue": "arXiv",
     "authors": "Qwen Team",
+    "mechanism": "Earlier M-RoPE gave time, height and width separate blocks of rotary frequencies, leaving each axis an uneven share. Qwen3-VL interleaves the three axes across the low and high frequency bands.",
     "module_type": "Attention",
     "domain": "Image and video language modeling",
     "year_source": "the README"
@@ -94881,7 +94940,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "只用平均池化描述一个通道会丢掉信息。CGILA 对每个通道同时取平均、最大、最小和求和四种全局池化，相加后过一层 1×1 卷积和 sigmoid，得到通道权重再乘回特征图。",
    "formula": null,
    "copies": [
     {
@@ -94907,7 +94966,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "third",
    "license": null,
    "license_note": null,
@@ -94917,7 +94976,6 @@
    "verification": null,
    "missing": [
     "title",
-    "mechanism",
     "formula",
     "verification",
     "license",
@@ -94925,7 +94983,7 @@
     "paper_link"
    ],
    "id": "2026-CGILA",
-   "mechanism_basis": "none",
+   "mechanism_basis": "readme",
    "figure": {
     "file": "figures/house/2026-CGILA.svg",
     "fig_no": null,
@@ -94937,6 +94995,7 @@
    },
    "en": {
     "venue": "CVPR",
+    "mechanism": "CGILA summarizes each channel with four global poolings: average, maximum, minimum and sum. Their total passes through a 1×1 convolution and a sigmoid to give channel weights that rescale the feature map.",
     "module_type": "Attention",
     "domain": "General",
     "year_source": "the library index"
@@ -96268,7 +96327,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "按光栅顺序把视觉令牌送进语言模型，复杂版面的阅读顺序会乱。DeepEncoder V2 让视觉令牌互相双向可见，后接一串可学习查询，每个查询看全部视觉令牌和它前面的查询，只把查询的输出交给解码器。",
    "formula": null,
    "copies": [
     {
@@ -96291,11 +96350,12 @@
      "in_index": true,
      "en": {
       "name": "DeepSeek-OCR 2 Causal Flow Attention",
+      "verification": "The same state_dict was used to compare the eager and SDPA outputs, each with and without a padding mask. Reference: the pinned commit of the older Qwen2 code. The maximum absolute difference was 0, with a threshold of 1e-5.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -96304,12 +96364,12 @@
    "repo_url": null,
    "verification": "以同一份 state_dict 对照 eager、SDPA 及各自有无填充掩码的输出。 旧版 Qwen2 固定提交 最大绝对差 0，阈值 1e-5。",
    "missing": [
-    "mechanism",
     "formula",
     "license",
     "repo"
    ],
    "id": "2026-DeepSeek-OCR-2-Causal-Flow-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2026-DeepSeek-OCR-2-Causal-Flow-Attention.webp",
     "fig_no": "Figure 3",
@@ -96321,6 +96381,8 @@
     "title": "DeepSeek-OCR 2: Visual Causal Flow",
     "venue": "arXiv",
     "authors": "Haoran Wei, Yaofeng Sun, Yukun Li",
+    "mechanism": "Raster order is a poor reading order for complex pages, so DeepEncoder V2 appends causal learnable queries that see all visual tokens and earlier queries, while the visual tokens see each other freely. Only the query outputs reach the decoder.",
+    "verification": "The same state_dict was used to compare the eager and SDPA outputs, each with and without a padding mask. Reference: the pinned commit of the older Qwen2 code. The maximum absolute difference was 0, with a threshold of 1e-5.",
     "module_type": "Attention",
     "domain": "Document OCR",
     "year_source": "the library index"
@@ -98417,7 +98479,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "MM-DiT 里没有单独的交叉注意力图可改，文字编辑容易对不上语义。HeadRouter 比较重建和编辑两路中每个头的输出，按余弦相似度算出归一化的差异分数，再据此调节各头，突出对编辑语义敏感的头。",
    "formula": null,
    "copies": [
     {
@@ -98440,11 +98502,12 @@
      "in_index": true,
      "en": {
       "name": "HeadRouter Adaptive Head Routing",
+      "verification": "No numerical comparison was performed on the whole file. After the state_dict was synchronized, the joint stream and the single stream were compared with rotary position embeddings applied.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -98453,12 +98516,12 @@
    "repo_url": null,
    "verification": "整文件未做数值对照。同步 state_dict 后对照带旋转位置编码的联合流和单流。",
    "missing": [
-    "mechanism",
     "formula",
     "license",
     "repo"
    ],
    "id": "2026-HeadRouter-Adaptive-Head-Routing",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2026-HeadRouter-Adaptive-Head-Routing.webp",
     "fig_no": "Figure 4",
@@ -98470,6 +98533,8 @@
     "title": "HeadRouter: A Training-free Image Editing Framework for MM-DiTs by Adaptively Routing Attention Heads",
     "venue": "ACM TOG",
     "authors": "Yu Xu, Fan Tang, Juan Cao, Xiaoyu Kong, Yuxin Zhang, Jintao Li, Oliver Deussen, Tong-Yee Lee",
+    "mechanism": "MM-DiTs lack separate cross-attention maps to edit. Without training, HeadRouter compares each head's output in the reconstruction and editing branches, turns the cosine similarities into normalized dissimilarity scores and reweights the heads toward those sensitive to the edit.",
+    "verification": "No numerical comparison was performed on the whole file. After the state_dict was synchronized, the joint stream and the single stream were compared with rotary position embeddings applied.",
     "module_type": "Attention",
     "domain": "Text-guided image editing",
     "year_source": "the library index"
@@ -99128,7 +99193,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "上百万个令牌时，连给每个键打分挑子集都太贵。LSA 把键投到学到的低维空间里分层聚类，查询沿层级逐级给簇打分，只对选中的键做注意力。",
    "formula": null,
    "copies": [
     {
@@ -99155,7 +99220,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": "Apache-2.0",
    "license_note": "Apache-2.0。目录附原许可证",
@@ -99164,12 +99229,12 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "repo"
    ],
    "id": "2026-Latent-Sparse-Attention-Low-Dimensional-Retrieval",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2026-Latent-Sparse-Attention-Low-Dimensional-Retrieval.webp",
     "fig_no": "Figure 6",
@@ -99181,6 +99246,7 @@
     "title": "Latent Sparse Attention: Towards Subquadratic Ultra-Long Context Attention",
     "venue": "arXiv",
     "authors": "Ales Kubicek, Andrea Caciolai, Liangzu Peng, Sukrit Sumant, Benjamin Hoover, Fraser Greenlee, Ruairidh M. Battleday, Radim Urban, Torsten Hoefler, James C.R. Whittington",
+    "mechanism": "At millions of tokens, even scoring every key to pick a sparse set costs too much. Latent Sparse Attention clusters keys hierarchically in a learned low-dimensional space, and queries search that hierarchy before attending to the keys it selects.",
     "license": "Apache-2.0",
     "module_type": "Attention",
     "domain": "Long-context language models",
@@ -104548,7 +104614,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "SGILA 沿通道方向对每个像素取平均、最大、最小和求和四个值，相加成一张图，再过 7×7 卷积和 sigmoid 得到空间注意力图，逐像素乘回输入。",
    "formula": null,
    "copies": [
     {
@@ -104574,7 +104640,7 @@
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "third",
    "license": null,
    "license_note": null,
@@ -104583,7 +104649,6 @@
    "repo_url": null,
    "verification": null,
    "missing": [
-    "mechanism",
     "formula",
     "verification",
     "license",
@@ -104591,7 +104656,7 @@
     "paper_link"
    ],
    "id": "2026-SGILA",
-   "mechanism_basis": "none",
+   "mechanism_basis": "readme",
    "figure": {
     "file": "figures/house/2026-SGILA.svg",
     "fig_no": null,
@@ -104603,6 +104668,7 @@
    },
    "en": {
     "venue": "arXiv",
+    "mechanism": "SGILA collapses the channels at every pixel by average, maximum, minimum and sum. The four maps are added and passed through a 7×7 convolution and a sigmoid, and the resulting spatial map rescales the input.",
     "module_type": "Attention",
     "domain": "General",
     "year_source": "the library index"
@@ -105528,7 +105594,7 @@
    "direction": null,
    "status": "collected",
    "queue": [],
-   "mechanism": null,
+   "mechanism": "用了 MLA 之后，解码注意力的瓶颈从读显存变成了计算，而对同一个键，并非每个查询头都用得上。TileSparse 先选出重要的键值页，关键页给全部查询头算，普通页只给部分头算，省下的算力用来多读一些页。",
    "formula": null,
    "copies": [
     {
@@ -105551,11 +105617,12 @@
      "in_index": true,
      "en": {
       "name": "TileSparse Decode Attention",
+      "verification": "The comparison used the same random queries, paged keys and values, and page table. With score truncation turned off and with the truncation cap set to 4, the maximum absolute difference of the outputs was 0 in both cases, with a threshold of 1e-5.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": null,
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "unknown",
    "license": null,
    "license_note": null,
@@ -105564,15 +105631,17 @@
    "repo_url": null,
    "verification": "对照使用相同随机查询、分页键值与页表。关闭分数截断和把截断上限设为 4 时，输出的最大绝对差均为 0，阈值为 1e-5。",
    "missing": [
-    "mechanism",
     "formula",
     "license",
     "repo",
     "paper_link"
    ],
    "id": "2026-TileSparse-Decode-Attention",
+   "mechanism_basis": "abstract",
    "en": {
     "venue": "ICML",
+    "mechanism": "With MLA, decoding attention becomes compute-bound, and not every query head needs every key. TileSparse computes all heads only on its most important key pages and a subset of heads on the rest, spending the saved compute on retrieving more pages.",
+    "verification": "The comparison used the same random queries, paged keys and values, and page table. With score truncation turned off and with the truncation cap set to 4, the maximum absolute difference of the outputs was 0 in both cases, with a threshold of 1e-5.",
     "module_type": "Attention",
     "domain": "Long-context inference",
     "year_source": "the library index"
@@ -106782,7 +106851,7 @@
      "note": null
     }
    ],
-   "mechanism": "用低分辨率图像编码出的视觉语义条件为超分辨率特征提供键和值。原队列名为 VOSR Condition Structure Enhancement Attention。",
+   "mechanism": "生成式超分辨率多半借文生图模型和它的文本条件。VOSR 改用预训练视觉编码器从低分辨率图里提取语义特征，让去噪特征当查询，对这些特征做交叉注意力。",
    "formula": null,
    "copies": [
     {
@@ -106806,11 +106875,12 @@
      "en": {
       "name": "VOSR Vision Semantic Cross-Attention",
       "license": "License file",
+      "verification": "The unmodified attention and normalization classes from two pinned original files were compared in isolation. The maximum absolute difference across the 4 output tensors was 0, with a threshold of 1e-5.",
       "verification_source": "the README"
      }
     }
    ],
-   "mechanism_source": "队列备注",
+   "mechanism_source": "馆长依据摘要撰写",
    "source_type": "author",
    "license": "其他",
    "license_note": "许可证文件",
@@ -106822,6 +106892,7 @@
     "formula"
    ],
    "id": "2026-VOSR-Vision-Semantic-Cross-Attention",
+   "mechanism_basis": "abstract",
    "figure": {
     "file": "figures/2026-VOSR-Vision-Semantic-Cross-Attention.webp",
     "fig_no": "Figure 2",
@@ -106832,6 +106903,8 @@
    "en": {
     "title": "VOSR: A Vision-Only Generative Model for Image Super-Resolution",
     "venue": "CVPR",
+    "mechanism": "VOSR conditions super-resolution on vision alone. A pretrained vision encoder extracts semantic features from the low-resolution input, and the denoiser's features query them through cross-attention.",
+    "verification": "The unmodified attention and normalization classes from two pinned original files were compared in isolation. The maximum absolute difference across the 4 output tensors was 0, with a threshold of 1e-5.",
     "license": "License file",
     "module_type": "Attention",
     "domain": "Image super-resolution",

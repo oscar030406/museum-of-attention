@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="qk" d="M 380 526 L 214 489" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="v" d="M 432 526 L 432 489" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="mlp" d="M 493 526 L 659 476 L 659 308" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="qk" data-to="score" d="M 214 433 L 214 395" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="v" data-to="merge" d="M 432 433 L 408 308" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="score" data-to="merge" d="M 214 339 L 305 308" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="merge" data-to="vec" d="M 370 252 L 370 224" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="mlp" data-to="bit" d="M 659 252 L 659 224" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="vec" data-to="sum" d="M 370 182 L 466 149" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="bit" data-to="sum" d="M 659 182 L 544 149" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="sum" data-to="out" d="M 505 107 L 560 72" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="x" data-to="out" d="M 523 526 L 863 480 L 863 114 L 720 72" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="357" y="526" width="176" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="445" y="552.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Field embeddings</text>
+</g>
+<g class="node" id="qk"><rect x="136.5" y="433" width="155" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="214" y="457.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Project Q and K</text>
+<text x="214" y="475.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split into heads</text>
+</g>
+<g class="node" id="v"><rect x="356" y="433" width="152" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="432" y="457.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Project V</text>
+<text x="432" y="475.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split into heads</text>
+</g>
+<g class="node" id="score"><rect x="127" y="339" width="174" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="214" y="363.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Field weights</text>
+<text x="214" y="381.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax(QKᵀ / √d)</text>
+</g>
+<g class="node" id="merge"><rect x="251" y="252" width="238" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="370" y="276.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Weight V + merge heads</text>
+<text x="370" y="294.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Optional projected skip, then ReLU</text>
+</g>
+<g class="node" id="mlp"><rect x="569.5" y="252" width="179" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="659" y="276.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Flatten + DNN</text>
+<text x="659" y="294.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear layers + activation</text>
+</g>
+<g class="node" id="vec"><rect x="284" y="182" width="172" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="370" y="208.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Flatten + m_vec</text>
+</g>
+<g class="node" id="bit"><rect x="575.5" y="182" width="167" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="659" y="208.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Linear m_bit</text>
+</g>
+<g class="node" id="sum"><rect x="428" y="107" width="154" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="505" y="133.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Add field factors</text>
+</g>
+<g class="node" id="out"><rect x="485" y="26" width="270" height="46" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="620" y="45.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Reweight original embeddings</text>
+<text x="620" y="63.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Broadcast factors over channels</text>
+</g>
+<text x="307.0" y="512.5" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--qk">B×F×D</text>
+<text x="224.0" y="419.0" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge qk--score">H×B×F×d</text>
+<text x="430.0" y="375.5" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge v--merge">H×B×F×d</text>
+<text x="269.5" y="328.5" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge score--merge">H×B×F×F</text>
+<text x="380.0" y="243.0" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge merge--vec">B×F×Hd</text>
+<text x="428.0" y="170.5" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge vec--sum">B×F</text>
+<text x="611.5" y="170.5" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge bit--sum">B×F</text>
+<text x="542.5" y="94.5" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sum--out">B×F</text>
+<text x="703.0" y="508.0" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--out">Original: B×F×D</text>
+<text x="775" y="48" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="note">Output: B×F×D</text>
+</svg>
