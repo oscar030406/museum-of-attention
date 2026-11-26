@@ -160,6 +160,13 @@
   "source_url": "https://arxiv.org/html/1706.03762",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2017-NARM-Session-Attention": {
+  "file": "figures/2017-NARM-Session-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "The general framework and dataflow of the encoder-decoder-based NARM.",
+  "source_url": "https://arxiv.org/html/1711.04725",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2017-RAN": {
   "file": "figures/2017-RAN.webp",
   "fig_no": "Figure 2",
@@ -468,6 +475,13 @@
   "source_url": "https://arxiv.org/html/1907.13426",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2019-Fi-GNN-Field-Graph-Attention": {
+  "file": "figures/2019-Fi-GNN-Field-Graph-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Overview of our proposed method. The input raw multi-field feature vector is first converted to field embedding vectors via an embedding layer and represented as a feature graph, which is then feed into Fi-GNN to model feature interactions. An attention layer is applied on the output of Fi-GNN to predict the click through rate $\\hat{y}$. Details of embedding layer and Fi-GNN are illustrated in Figure 2 and Figure 3 respectively.",
+  "source_url": "https://arxiv.org/html/1910.05552",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2019-GCNet": {
   "file": "figures/2019-GCNet.webp",
   "fig_no": "Figure 4",
@@ -545,6 +559,13 @@
   "source_url": "https://arxiv.org/html/1906.05218",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2019-MIND-Label-Aware-Attention": {
+  "file": "figures/2019-MIND-Label-Aware-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Overview of MIND. MIND takes user behaviors with user profile features as inputs, and outputs user representation vectors for item retrieval in the matching stage of recommendation. Id features from input layer are transformed into embeddings through the embedding layer, and embeddings of each item are further averaged by a pooling layer. User behavior embeddings are fed into the multi-interest extractor layer, which produces interest capsules. By concatenating interest capsules with user profile embedding and transforming the concatenated capsules by several ReLU layers, user representation vectors are obtained. During training, an extra label-aware attention layer is introduced to guide the training process. At serving, the multiple user representation vectors are used to retrieve items through an approximate nearest neighbor lookup approach.",
+  "source_url": "https://arxiv.org/html/1904.08030",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2019-MUSE": {
   "file": "figures/2019-MUSE.webp",
   "fig_no": "Figure 2",
@@ -571,6 +592,13 @@
   "fig_no": "Figure 1",
   "caption": "WIRGAT. The intermediate representations for node $i$ (left red rectangle) are combined with the intermediate representations for nodes in its neighborhood (blue rectangles) under each relation $r$, to form each logit $E_{i,j}^{(r)}$. A softmax is taken over each logit matrix for each relation type to form the attention coefficients $\\alpha_{i,j}^{(r)}$. These attention coefficients construct a weighted sum over the nodes in the neighborhood for each relation (black rectangle). These are then aggregated and passed through a nonlinearity to produce the updated representation for node $i$ (right red rectangle).",
   "source_url": "https://arxiv.org/html/1904.05811",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2019-RepeatNet-Repeat-Explore-Attention": {
+  "file": "figures/2019-RepeatNet-Repeat-Explore-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Overview of RepeatNet.",
+  "source_url": "https://arxiv.org/html/1812.02646",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2019-SAGAN": {
@@ -606,6 +634,13 @@
   "fig_no": "Figure 1",
   "caption": "Comparing neighbor attention and shortest path attention. Conventional approaches focus on aggregating information from first-order neighbors within each layer, shown on the left, and often rely on stacking multiple layers to reach higher-order neighbors. The proposed SPAGAN shown on the right, on the other hand, explicitly conducts shortest-path-based attention that aggregates information from distant neighbors and explores the graph topology, all in a single shot.",
   "source_url": "https://arxiv.org/html/2101.03464",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2019-SR-GNN-Session-Readout-Attention": {
+  "file": "figures/2019-SR-GNN-Session-Readout-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "The workflow of the proposed SR-GNN method. We model all session sequences as session graphs. Then, each session graph is proceeded one by one and the resulting node vectors can be obtained through a gated graph neural network. After that, each session is represented as the combination of the global preference and current interests of this session using an attention net. Finally, we predict the probability of each item that will appear to be the next-click one for each session.",
+  "source_url": "https://arxiv.org/html/1811.00855",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2019-SRM": {
@@ -692,6 +727,13 @@
   "source_url": "https://arxiv.org/html/2007.14062",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2020-ComiRec-Multi-Interest-Self-Attention": {
+  "file": "figures/2020-ComiRec-Multi-Interest-Self-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "A motivating example of our proposed framework. An e-commerce platform user, Emma, has multiple interests including jewelry, handbags, and make-ups. Our multi-interest extraction module can capture these three interests from her click sequence. Each interest retrieves items from the large-scale item pool based on the interest embedding independently. An aggregation module combines items from different interests and outputs the overall top-N recommended items for Emma.",
+  "source_url": "https://arxiv.org/html/2005.09347",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2020-CompressiveTransformer": {
   "file": "figures/2020-CompressiveTransformer.webp",
   "fig_no": "Figure 1",
@@ -774,6 +816,13 @@
   "fig_no": "Figure 1",
   "caption": "High-level visualization of the proposed Funnel-Transformer.",
   "source_url": "https://arxiv.org/html/2006.03236",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2020-GCE-GNN-Global-Context-Attention": {
+  "file": "figures/2020-GCE-GNN-Global-Context-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "An overview of the proposed framework. Firstly, a global graph is constructed based on all training session sequences. Then for each session, a global feature encoder and local feature encoder will be used to extract node feature with global context and local context. Then the model incorporates position information to learn the contribution of each item to the next predicted item. Finally, candidate items will be scored.",
+  "source_url": "https://arxiv.org/html/2106.05081",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2020-GCT": {
@@ -944,6 +993,13 @@
   "source_url": "https://arxiv.org/html/2005.10463",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2020-TAGNN-Target-Aware-Readout": {
+  "file": "figures/2020-TAGNN-Target-Aware-Readout.webp",
+  "fig_no": "Figure 1",
+  "caption": "An overview of the proposed TAGNN method. Session graphs are constructed based on sessions at first. Then, graph neural networks capture rich item transitions in sessions. Last, from one session embedding vector, target-aware attention adaptively activates different user interests concerning varied target items to be predicted.",
+  "source_url": "https://arxiv.org/html/2005.02844",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2020-TEA": {
   "file": "figures/2020-TEA.webp",
   "fig_no": "Figure 2",
@@ -957,6 +1013,13 @@
   "caption": "Overview of our TURL framework.",
   "source_url": "https://arxiv.org/html/2006.14806",
   "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+ },
+ "2020-TaBERT-Vertical-Attention": {
+  "file": "figures/2020-TaBERT-Vertical-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Overview of TaBert for learning representations of utterances and table schemas with an example from WikiTableQuestions 4 4 4 Example adapted from stanford.io/38iZ8Pf. (A) A content snapshot of the table is created based on the input NL utterance. (B) Each row in the snapshot is encoded by a Transformer (only $R_{2}$ is shown), producing row-wise encodings for utterance tokens and cells. (C) All row-wise encodings are aligned and processed by $V$ vertical self-attention layers, generating utterance and column representations.",
+  "source_url": "https://arxiv.org/html/2005.08314",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2020-TabTransformer-Contextual-Embedding": {
   "file": "figures/2020-TabTransformer-Contextual-Embedding.webp",
@@ -1104,6 +1167,13 @@
   "caption": "The pipeline of the proposed CvT architecture. (a) Overall architecture, showing the hierarchical multi-stage structure facilitated by the Convolutional Token Embedding layer. (b) Details of the Convolutional Transformer Block, which contains the convolution projection as the first layer.",
   "source_url": "https://arxiv.org/html/2103.15808",
   "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2021-DESTINE-Disentangled-Field-Attention": {
+  "file": "figures/2021-DESTINE-Disentangled-Field-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Our proposed disentangled self-attentive networks for CTR prediction that decouple the learning of the pairwise term and the unary term.",
+  "source_url": "https://arxiv.org/html/2101.03654",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2021-DETR3D-Projective-Cross-Attention": {
   "file": "figures/2021-DETR3D-Projective-Cross-Attention.webp",
@@ -1385,6 +1455,13 @@
   "source_url": "https://arxiv.org/html/2111.12419",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2021-NPT-Inter-Datapoint-Attention": {
+  "file": "figures/2021-NPT-Inter-Datapoint-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "Demonstrating NPT’s ability to predict from Attention Between Datapoints (ABD). (a) We append to the original data with masked targets [?] a copy of the same data with all masked values revealed, such that perfect prediction via lookup is possible. (b) Attention weights indicate that the ideal lookup behavior is learned by NPT. Shown are actual values learned by NPT at head $0$ and depth $4$ for the first $3$ datapoints. (c) NPT predictions closely match the ideal values. (d) Additionally, we intervene on the values of individual targets, (e) finding that NPT predictions adjust accordingly.",
+  "source_url": "https://arxiv.org/html/2106.02584",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2021-Nystr-mformer": {
   "file": "figures/2021-Nystr-mformer.webp",
   "fig_no": "Figure 4",
@@ -1497,6 +1574,13 @@
   "source_url": "https://arxiv.org/html/2106.03893",
   "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
  },
+ "2021-SINE-Sparse-Interest-Attention": {
+  "file": "figures/2021-SINE-Sparse-Interest-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "The architecture of SINE (better viewed in color). Given a user’s behavior sequence as input, sparse-interest module aims to adaptively activate his/her interests from the large interest group pool as well as output multi-interest embeddings. Then, the interest aggregation module helps to select the most preferred interest for next-item recommendation by actively predicting user’s next intention. SINE offers the ability to cluster items and infer user’s sparse set of interests in an end-to-end fashion.",
+  "source_url": "https://arxiv.org/html/2102.09267",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2021-SMCA-Spatial-Modulation": {
   "file": "figures/2021-SMCA-Spatial-Modulation.webp",
   "fig_no": "Figure 2",
@@ -1560,6 +1644,13 @@
   "source_url": "https://arxiv.org/html/2108.04444",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2021-SpecTr-Sparse-Spectral-Attention": {
+  "file": "figures/2021-SpecTr-Sparse-Spectral-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "The architecture of SpecTr. Follow the u-shape architecture, our SpecTr employs 2D convolutional kernel, spectral norm, and transformers with the sparsity constraint in the encoder. The decoder and skip connections are the same as 3D U-Net.",
+  "source_url": "https://arxiv.org/html/2103.03604",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2021-SuperGAT": {
   "file": "figures/2021-SuperGAT.webp",
   "fig_no": "Figure 1",
@@ -1593,6 +1684,13 @@
   "fig_no": "Figure 3",
   "caption": "Illustration of T2T process. The tokens $T_{i}$ are re-structurized as an image $I_{i}$ after transformation and reshaping; then $I_{i}$ is split with overlapping to tokens $T_{i+1}$ again. Specifically, as shown in the pink panel, the four tokens (1,2,4,5) of the input $I_{i}$ are concatenated to form one token in $T_{i+1}$. The T2T transformer can be a normal Transformer layer [37] or other efficient transformers like Performer layer [34] at limited GPU memory.",
   "source_url": "https://arxiv.org/html/2101.11986",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2021-TABBIE-Row-Column-Attention": {
+  "file": "figures/2021-TABBIE-Row-Column-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "tabbie ’s computations at one layer. For a given table, the row Transformer contextualizes the representations of the cells in each row, while the column Transformer similarly contextualizes cells in each column. The final cell representation is an average of the row and column embeddings, which is passed as input to the next layer. [cls] tokens are prepended to each row and column to facilitate downstream tasks operating on table substructures.",
+  "source_url": "https://arxiv.org/html/2105.02584",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2021-TAM": {
@@ -1882,6 +1980,13 @@
   "source_url": "https://arxiv.org/html/2203.04845",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2022-ChangeFormer-Spatial-Reduction-Attention": {
+  "file": "figures/2022-ChangeFormer-Spatial-Reduction-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "The proposed ChangeFormer network for CD.",
+  "source_url": "https://arxiv.org/html/2201.01293",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2022-CoCa-Attentional-Pooler": {
   "file": "figures/2022-CoCa-Attentional-Pooler.webp",
   "fig_no": "Figure 2",
@@ -2001,6 +2106,13 @@
   "source_url": "https://arxiv.org/html/2112.04702",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2022-FastFold-Parallel-MSA-Attention": {
+  "file": "figures/2022-FastFold-Parallel-MSA-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "The architecture of AlphaFold model. The amino acid sequence is encoded into MSA and pair representation after Embedding layer, then feeding into Evoformer and Structure Module. In Evoformer, MSA and pair representation were processed by MSA stack and pair stack, respectively. The number of residues in the input is denoted as $N_{r}$, while the number of sequences processed in the MSA stack is denoted as $N_{s}$. The hidden dimensions for MSA and pair representation are set to ( $N_{m}=256$ ) and ( $N_{z}=128$ ), respectively.",
+  "source_url": "https://arxiv.org/html/2203.00854",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2022-Flamingo-Gated-Cross-Attention": {
   "file": "figures/2022-Flamingo-Gated-Cross-Attention.webp",
   "fig_no": "Figure 4",
@@ -2078,6 +2190,13 @@
   "source_url": "https://arxiv.org/html/2202.00874",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2022-HUMUS-Net-Multiscale-Attention": {
+  "file": "figures/2022-HUMUS-Net-Multiscale-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Overview of the HUMUS-Block architecture. First, we extract high-resolution features $\\bm{F_{H}}$ from the input noisy image through a convolution layer $f_{H}$. Then, we apply a convolutional feature extractor $f_{L}$ to obtain low-resolution features and process them using a Transformer-convolutional hybrid multi-scale feature extractor. The shallow, high-resolution and deep, low-resolution features are then synthesized into the final high-resolution denoised image.",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2203.08213",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2022-HiLo": {
   "file": "figures/2022-HiLo.webp",
   "fig_no": "Figure 1",
@@ -2090,6 +2209,13 @@
   "fig_no": "Figure 1",
   "caption": "Hydra Attention. Standard attention [32] scales with the square of the number of tokens $T$. Using a decomposable kernel, we can rearrange the order of operations as in [16] such that attention scales with the square of features $D$ instead. Our Hydra attention goes one step further by maximizing the number of attention heads $H$, resulting in an $O(TD)$ operation in both space and time.",
   "source_url": "https://arxiv.org/html/2209.07484",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2022-HyperTransformer-Textural-Transfer-Cross-Attention": {
+  "file": "figures/2022-HyperTransformer-Textural-Transfer-Cross-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "How our HyperTransformer differs from existing pansharpening architectures. Traditional pansharpening methods simply concatenate PAN ( $\\mathbf{p}$ ) and LR-HSI ( $\\mathbf{y}$ ) in (a) image domain [58, 22] or (b) feature domain [14, 41, 45] to learn the mapping function from LR-HSI to pansharpened HSI ( $\\mathbf{x}$ ). In contrast, (c) our HyperTransformer utilizes feature representations of LR-HSI, PAN $\\downarrow\\uparrow$, and PAN as Queries (Q), Keys (K), and Values (V) in an attention mechanism to transfer most relevant HR textural features to spectral features of LR-HSI from a backbone network. The output of HyperTransformer is an enhanced version of the feature representation of $\\mathbf{y}$. $\\uparrow$ and $\\downarrow$ denote bicubic upsampling and down-sampling, respectively.",
+  "source_url": "https://arxiv.org/html/2203.02503",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2022-KERPLE": {
@@ -2302,6 +2428,13 @@
   "source_url": "https://arxiv.org/html/2203.05625",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2022-PHTrans-Parallel-3D-Window-Attention": {
+  "file": "figures/2022-PHTrans-Parallel-3D-Window-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "(a) The architecture of PHTrans; (b) Parallel hybird block consisting of Transformer and convolution (Trans&Conv block).",
+  "source_url": "https://arxiv.org/html/2203.04568",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2022-PVT-Relative-Point-Attention": {
   "file": "figures/2022-PVT-Relative-Point-Attention.webp",
   "fig_no": "Figure 1",
@@ -2323,12 +2456,26 @@
   "source_url": "https://ar5iv.labs.arxiv.org/html/2110.05069",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2022-PanFormer-Panchromatic-Cross-Attention": {
+  "file": "figures/2022-PanFormer-Panchromatic-Cross-Attention.webp",
+  "fig_no": "Fig. 2",
+  "caption": "Four different ways to implement the feature fusion module.",
+  "source_url": "https://arxiv.org/html/2203.02916",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2022-ParNet": {
   "file": "figures/2022-ParNet.webp",
   "fig_no": "Figure 2",
   "caption": "Schematic representation of ParNet and the ParNet block. ParNet has depth 12 and is composed of parallel substructures. The width of each block in (a) is proportional to the number of output channels in ParNet-M and the height reflects output resolution. The ParNet block consists of three parallel branches: 1 $\\times$ 1 convolution, 3 $\\times$ 3 convolution and Skip-Squeeze-and-Excitation (SSE). Once the training is done, the 1 $\\times$ 1 and 3 $\\times$ 3 convolutions can be fused together for faster inference. The SSE branch increases receptive field while not affecting depth.",
   "source_url": "https://arxiv.org/html/2110.07641",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2022-PerAct-Language-Voxel-Cross-Attention": {
+  "file": "figures/2022-PerAct-Language-Voxel-Cross-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "PerAct Overview. PerAct is a language-conditioned behavior-cloning agent trained with supervised learning to detect actions. PerAct takes as input a language goal and a voxel grid reconstructed from RGB-D sensors. The voxels are split into 3D patches, and the language goal is encoded with a pre-trained language model. These language and voxel features are appended together as a sequence and encoded with a Perceiver transformer [1]. Despite the extremely long input sequence, Perceiver uses a small set of latent vectors to encode the input (see Appendix Figure 6 for an illustration). These encodings are upsampled back to the original voxel dimensions with a decoder and reshaped with linear layers to predict a discretized translation, rotation, gripper open, and collision avoidance action. This action is executed with a motion-planner after which the new observation is used to predict the next discrete action in an observe-act loop until termination.",
+  "source_url": "https://arxiv.org/html/2209.05451",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2022-Perceiver-AR": {
   "file": "figures/2022-Perceiver-AR.webp",
@@ -2463,6 +2610,13 @@
   "source_url": "https://arxiv.org/html/2203.14508",
   "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
  },
+ "2022-Stripformer-Strip-Attention": {
+  "file": "figures/2022-Stripformer-Strip-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Architecture of Stripformer. We utilize shallow convolution embedding with intra- and inter-strip attention blocks for image deblurring.",
+  "source_url": "https://arxiv.org/html/2204.04627",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2022-Swin2SR": {
   "file": "figures/2022-Swin2SR.webp",
   "fig_no": "Figure 1",
@@ -2475,6 +2629,20 @@
   "fig_no": "Figure 1",
   "caption": "To better scale up model capacity and window resolution, several adaptions are made on the original Swin Transformer architecture (V1): 1) A res-post-norm to replace the previous pre-norm configuration; 2) A scaled cosine attention to replace the original dot product attention ; 3) A log-spaced continuous relative position bias approach to replace the previous parameterized approach. Adaptions 1) and 2) make it easier for the model to scale up capacity. Adaption 3) makes the model to be transferred more effectively across window resolutions. The adapted architecture is named Swin Transformer V2.",
   "source_url": "https://arxiv.org/html/2111.09883",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2022-TTVSR-Trajectory-Aware-Attention": {
+  "file": "figures/2022-TTVSR-Trajectory-Aware-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "The overview of TTVSR based on location maps. $\\mathcal{Q}$, $\\mathcal{K}$ and $\\mathcal{V}$ are tokens from video frames extracted by embedding networks $\\phi(\\cdot)$ and $\\varphi(\\cdot)$, respectively. $\\tau_{i}$ indicates a trajectory of $\\mathcal{T}$. $\\mathcal{L}$ is the set of location map generated by the motion estimation network H. The dotted lines indicates the indexing operation from $\\mathcal{K}$ and $\\mathcal{V}$ by location maps $\\mathcal{L}$ and hard index $h$. $\\text{R}(\\cdot)$ represents the reconstruction network followed by a pixel-shuffle layer to resize feature maps to the desired size. $\\text{U}(\\cdot)$ represents the bicubic upsampling operation. $\\odot$ and $\\oplus$ indicate multiplication and element-wise addition, respectively.",
+  "source_url": "https://arxiv.org/html/2204.04216",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2022-TableFormer-Structural-Bias-Attention": {
+  "file": "figures/2022-TableFormer-Structural-Bias-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "TableFormer input and attention biases in the self attention module. This example corresponds to table (a) in Figure 1 and its paired question “query”. Different colors in the attention bias matrix denote different types of task independent biases derived based on the table structure and the associated text.",
+  "source_url": "https://arxiv.org/html/2203.00274",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2022-TadTR-Temporal-Deformable-Attention": {
@@ -2518,6 +2686,13 @@
   "caption": "Architecture overview of the proposed TransNormer. In the early stages, we leverage DiagAttention, where attention is only calculated inside the blocks to enforce neighbouring focus. In late stages, NormAttention assists to obtain a more stable gradients in linear complexity.",
   "source_url": "https://arxiv.org/html/2210.10340",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2022-TransTab-Gated-Feature-Attention": {
+  "file": "figures/2022-TransTab-Gated-Feature-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "The demonstration of ML modeling on different tabular data settings. Previous tabular methods only do vanilla supervised training or pretraining on the same table due to they only accept fixed-column tables. By contrast, TransTab covers more new tasks (1) to (4) as it accepts variable-column tables. Details are presented in § 2.1.",
+  "source_url": "https://arxiv.org/html/2205.09328",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2022-TransWeather-Weather-Queries": {
   "file": "figures/2022-TransWeather-Weather-Queries.webp",
@@ -2631,6 +2806,13 @@
   "source_url": "https://arxiv.org/html/2301.04545",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2023-AtmoRep-Variable-Cross-Attention": {
+  "file": "figures/2023-AtmoRep-Variable-Cross-Attention.webp",
+  "fig_no": "Figure 5",
+  "caption": "Overview of the AtmoRep neural network architecture. Its core (right, bluish) consists of a stack of encoder-decoder transformers with one per physical field and coupled through cross-attention. UNet-like connections (dark blue) between encoder and decoder are used to facilitate that a multi-resolution representation is learned. The external conditions $\\alpha$ are encoded using a linear layer and appended to the network input. The embedding network is a linear layer and it is preceded by a local positional encoding (not shown) based on the sine/cosine one from the original transformer work but extended to the four-dimensional domain considered in AtmoRep. The members of the ensemble of prediction heads consist each of a linear layer. A different random initialization of each linear layer and training with our novel ensemble loss is sufficient to prevent mode collapse. Further details on the network architecture can be found in the supplementary material.",
+  "source_url": "https://arxiv.org/html/2308.13280",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2023-Attend-and-Excite": {
   "file": "figures/2023-Attend-and-Excite.webp",
   "fig_no": "Figure 3",
@@ -2679,6 +2861,13 @@
   "caption": "(a) – (d) are four categories of current Two-Tower vision-language models; (e) gives a brief illustration of the BridgeTower architecture. VE, TE, and CE are short for the Visual Encoder, Textual Encoder, and Cross-modal Encoder, respectively. The height of each rectangle represents its relative computational cost. $\\text{VE}=\\text{TE}$ indicates that the visual encoder and the textual encoder have the same or a similar number of parameters or computational costs. Illustration inspired by ViLT.",
   "source_url": "https://arxiv.org/html/2206.08657",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2023-CTformer-Dilated-Token-Attention": {
+  "file": "figures/2023-CTformer-Dilated-Token-Attention.webp",
+  "fig_no": "Fig. 2",
+  "caption": "The CTformer consists of the residual encoder-decoder structure with tokenization/detokenization blocks, four CTformer modules with different sizes of feature maps, and an intermediate transformer block. Tokenization block unfolds image patches into sequential tokens, while detokenization block converts tokens back to the image. Each encoder CTformer module includes a transformer block (TB) and a Token2Token dilation block (T2TD), while each decoder CTformer module consists of an inverse Token2Token dilation block (IT2TD) and a TB, symmetrically.",
+  "source_url": "https://arxiv.org/html/2202.13517",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2023-ClimaX-Variable-Aggregation-Attention": {
   "file": "figures/2023-ClimaX-Variable-Aggregation-Attention.webp",
@@ -2756,6 +2945,13 @@
   "caption": "The Diffusion Transformer (DiT) architecture. Left: We train conditional latent DiT models. The input latent is decomposed into patches and processed by several DiT blocks. Right: Details of our DiT blocks. We experiment with variants of standard transformer blocks that incorporate conditioning via adaptive layer norm, cross-attention and extra input tokens. Adaptive layer norm works best.",
   "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748",
   "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2023-Diffusion-Policy-Observation-Conditioned-Attention": {
+  "file": "figures/2023-Diffusion-Policy-Observation-Conditioned-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Diffusion Policy Overview a) General formulation. At time step $t$, the policy takes the latest $T_{o}$ steps of observation data $O_{t}$ as input and outputs $T_{a}$ steps of actions $A_{t}$. b) In the CNN-based Diffusion Policy, FiLM (Feature-wise Linear Modulation) [Perez et al. (2018)] conditioning of the observation feature $O_{t}$ is applied to every convolution layer, channel-wise. Starting from $\\mathbf{A}^{K}_{t}$ drawn from Gaussian noise, the output of noise-prediction network $\\epsilon_{\\theta}$ is subtracted, repeating $K$ times to get $\\mathbf{A}^{0}_{t}$, the denoised action sequence. c) In the Transformer-based [Vaswani et al. (2017)] Diffusion Policy, the embedding of observation $\\mathbf{O}_{t}$ is passed into a multi-head cross-attention layer of each transformer decoder block. Each action embedding is constrained to only attend to itself and previous action embeddings (causal attention) using the attention mask illustrated.",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2303.04137",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2023-DilateFormer": {
   "file": "figures/2023-DilateFormer.webp",
@@ -2855,6 +3051,13 @@
   "source_url": "https://arxiv.org/html/2307.03170",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2023-GATr-Multivector-Attention": {
+  "file": "figures/2023-GATr-Multivector-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Overview over the GATr architecture. Boxes with solid lines are learnable components, those with dashed lines are fixed.",
+  "source_url": "https://arxiv.org/html/2305.18415",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2023-GLIGEN-Gated-Grounding-Attention": {
   "file": "figures/2023-GLIGEN-Gated-Grounding-Attention.webp",
   "fig_no": "Figure 3",
@@ -2946,6 +3149,13 @@
   "source_url": "https://arxiv.org/html/2302.11329",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2023-HSDT-Guided-Spectral-Self-Attention": {
+  "file": "figures/2023-HSDT-Guided-Spectral-Self-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "Our HSDT architecture. We adopt a hierarchical multiscale encoder-decoder (a) with each building transformer block stacks (d) a Spectral-Spatial Separable Convolution, (b) a Guided Spectral Self-Attention, and (c) a Self-Modulated Feed-Forward Network sequentially. We append batch normalization after each convolution and predict the residual image.",
+  "source_url": "https://arxiv.org/html/2303.09040",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2023-HiFormer-DLF": {
   "file": "figures/2023-HiFormer-DLF.webp",
   "fig_no": "Figure 1",
@@ -2995,6 +3205,13 @@
   "source_url": "https://arxiv.org/html/2211.05778",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2023-LG-BPN-Dilated-Attention": {
+  "file": "figures/2023-LG-BPN-Dilated-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "The overall architecture of LG-BPN. Our method is composed of two branches, aiming at extracting local textures and global interactions, respectively. For each branch, the input first goes through a DSPMC module, then further processed for the deep feature. Finally, the output of two branches is fused for the denoised result. 2 2 2 We use ‘global’ to differentiate from our ‘local’ branch. Though a more accurate term is ‘non-local’, we follow the usage of ‘global’ as [35].",
+  "source_url": "https://arxiv.org/html/2304.00534",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2023-LLFormer-Axis-based-Attention": {
   "file": "figures/2023-LLFormer-Axis-based-Attention.webp",
   "fig_no": "Figure 2",
@@ -3037,6 +3254,13 @@
   "source_url": "https://arxiv.org/html/2212.05199",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2023-MB-TaylorFormer-Taylor-Attention": {
+  "file": "figures/2023-MB-TaylorFormer-Taylor-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Architecture of MB-TaylorFormer. (a) MB-TaylorFormer consists of a multi-branch hierarchical design based on multi-scale patch embedding. (b) Multi-scale patch embedding embeds coarse-to-fine patches. (c) TaylorFormer with linear computational complexity. (d) MSAR module compensates for errors in Taylor expansion.",
+  "source_url": "https://arxiv.org/html/2308.14036",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2023-MHRSA": {
   "file": "figures/2023-MHRSA.webp",
   "fig_no": "Figure 3",
@@ -3057,6 +3281,13 @@
   "caption": "The overall structure of the proposed MISSFormer. (a) The proposed MISSFormer framework. (b) The structure of Enhanced Transformer Block.",
   "source_url": "https://arxiv.org/html/2109.07162",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2023-MISSRec-Interest-Token-Attention": {
+  "file": "figures/2023-MISSRec-Interest-Token-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "Convert item tokens to interest tokens via the multi-modal interest discovery (MID) module. An item can be converted to different interests according to multiple modalities.",
+  "source_url": "https://arxiv.org/html/2308.11175",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2023-MasaCtrl": {
   "file": "figures/2023-MasaCtrl.webp",
@@ -3128,6 +3359,13 @@
   "source_url": "https://arxiv.org/html/2206.04910",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2023-NGswin-N-Gram-Window-Attention": {
+  "file": "figures/2023-NGswin-N-Gram-Window-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "Overall architecture of NGswin and NSTB (N-Gram Swin Transformer Block). (a) We adopt an asymmetric U-Net architecture. SCDP Bottleneck (pixel-Shuffle, Concatenation, Depth-wise convolution, and Point-wise projection), a variant of the U-Net bottleneck, takes multi-scale outputs of encoder stages, including the shallow module. (b) Our proposed N-Gram method is implemented in NSTB. We also employ scaled-cosine attention and post-normalization. (c) $k$, $s$, $p$, and $M$ are kernel size, stride, padding, and local window size, respectively. The dimensionality reduction through uni-Gram embedding makes sliding-WSA efficient. The bi-directional contexts share sliding-WSA weights. For window-wise sum, a value in $z_{ng}$ is equally added to $M^{2}$ pixels in one local window at the same position.",
+  "source_url": "https://arxiv.org/html/2211.11436",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2023-OFormer-Linear-Cross-Attention": {
   "file": "figures/2023-OFormer-Linear-Cross-Attention.webp",
   "fig_no": "Figure 1",
@@ -3182,6 +3420,13 @@
   "fig_no": "Figure 4",
   "caption": "Illustration of our proposed Pixel Adaptive Deep Unfolding Transformer (PADUT) for HSI reconstruction. Top: the overall architecture that consists of $K$ stages, each of which consists of a data module and a prior module. (a) Pixel-adaptive data module (b) Prior module (c) Stage fusion module",
   "source_url": "https://arxiv.org/html/2308.10820",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2023-PIP-Prior-Prompt-Interaction": {
+  "file": "figures/2023-PIP-Prior-Prompt-Interaction.webp",
+  "fig_no": "Figure 2",
+  "caption": "The architecture of PIP, which is developed as a lightweight, plug-and-play module on the skip connection to enhance current task-specific networks for universal restoration. PIP first learns degradation-aware prompt $\\bm{d}$ and basic restoration prompt $\\bm{B}$, and then generates the universal restoration prompt $\\bm{U}$ by prompt-to-prompt (P2P) interaction. Lastly, features $\\bm{Z}$ are modulated via selective prompt-to-feature (P2F) interaction, focusing on the most relevant features denoted by the prompt.",
+  "source_url": "https://arxiv.org/html/2312.05038",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2023-PagedAttention": {
@@ -3261,11 +3506,25 @@
   "source_url": "https://arxiv.org/html/2211.06891",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2023-RT-1-Observation-Action-Attention": {
+  "file": "figures/2023-RT-1-Observation-Action-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "The architecture diagram of RT-1. The instruction is transformed into a USE embedding and used to condition a pre-trained EfficientNet via FiLM layers. The resulting vision-language tokens are reduced by the TokenLearner and fed into a decoder-only Transformer, which outputs tokenized actions.",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2212.06817",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2023-RVSA": {
   "file": "figures/2023-RVSA.webp",
   "fig_no": "Fig. 4",
   "caption": "The pipeline of the proposed RVSA method in the $i$ -th attention head. $w_{*}^{{}^{\\prime}}$ denotes the predicted windows for sampling key and value tokens.",
   "source_url": "https://arxiv.org/html/2208.03987",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2023-RVT-Cross-View-Attention": {
+  "file": "figures/2023-RVT-Cross-View-Attention.webp",
+  "fig_no": "Figure 5",
+  "caption": "Overview of the transformer used in RVT. The input to the transformer is a language description of the task and virtual images of the scene point cloud. The text is converted into token embeddings using the pretrained CLIP [57] model, while the virtual images are converted into token embeddings via patchify and projection operations. For each virtual image, tokens belonging to the same image are processed via four attention layers. Finally, the processed image tokens as well as the language tokens are jointly processed using four attention layers. The 3D action is inferred using the resulting image tokens.",
+  "source_url": "https://arxiv.org/html/2306.14896",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2023-RVT-MHSA": {
@@ -3331,12 +3590,26 @@
   "source_url": "https://arxiv.org/html/2203.13278",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2023-SERT-Spectral-Enhanced-Rectangle-Attention": {
+  "file": "figures/2023-SERT-Spectral-Enhanced-Rectangle-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Overall framework of SERT. (a) SERT mainly includes two essential components, i.e., SE for non-local spatial similarity and SE for global low-rank property. (b) spatial rectangle self-attention (RA) and (c) spectral enhancement (SE) module.",
+  "source_url": "https://arxiv.org/html/2304.00844",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2023-SGFormer": {
   "file": "figures/2023-SGFormer.webp",
   "fig_no": "Figure 1",
   "caption": "Illustration of the proposed model SGFormer and its data flow. The input graph data entails node features $\\mathbf{X}$ and graph adjacency $\\mathbf{A}$. For large graphs, we need to use mini-batch sampling that randomly partitions the input graph into mini-batches with smaller sizes. Each mini-batch is composed of the features of the nodes within this mini-batch $\\mathbf{X}_{m}$ and the local graph adjacency $\\mathbf{A}_{m}$ (one can also use neighbor sampling as an alternative). The mini-batch data $(\\mathbf{X}_{m},\\mathbf{A}_{m})$ (for large graphs) or the whole graph data $(\\mathbf{X},\\mathbf{A})$ (for small graphs) will be fed into the SGFormer model that is implemented with a one-layer global attention and a GNN network. The model outputs the node representations for final prediction.",
   "source_url": "https://arxiv.org/html/2306.10759",
   "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2023-STORM-Latent-World-Model-Attention": {
+  "file": "figures/2023-STORM-Latent-World-Model-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Structure and imagination process of STORM. The symbols used in the figure are explained in Sections 3.1 and 3.2. The Transformer blocks depict the sequence model $f_{\\phi}$ in Equation ( 2 ). The Agent block, represented by a neural network, corresponds to $\\pi_{\\theta}(a_{t}|s_{t})$ in Equation ( 6 ).",
+  "source_url": "https://arxiv.org/html/2310.09615",
+  "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
  },
  "2023-STViT": {
   "file": "figures/2023-STViT.webp",
@@ -3520,6 +3793,20 @@
   "source_url": "https://arxiv.org/html/2109.03201",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2024-3D-SAM-Adapter-Depth-Aware-Attention": {
+  "file": "figures/2024-3D-SAM-Adapter-Depth-Aware-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Overview of our proposed method for 3DSAM-adapter. The original ViT is modified to support volumetric inputs. The prompt encoder is redesigned to support 3D point prompt, and the mask decoder is updated to 3D CNN with multi-layer aggregation to generate 3D segmentation.",
+  "source_url": "https://arxiv.org/html/2306.13465",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2024-AIFS-Graph-Transformer-Attention": {
+  "file": "figures/2024-AIFS-Graph-Transformer-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "AIFS encoder / decoder and processor block schematics: GNN block (left), processor block (right). The GNN block uses a multi-head graph transformer convolution operation to update the nodes and the edges of the processor, whereas the pre-norm transformer block relies on multi-head self-attention ( [Vaswani et al. (2017)] ).",
+  "source_url": "https://arxiv.org/html/2406.01465",
+  "license": "http://creativecommons.org/licenses/by-sa/4.0/"
+ },
  "2024-AMAGO-Trajectory-Encoder": {
   "file": "figures/2024-AMAGO-Trajectory-Encoder.webp",
   "fig_no": "Figure 18",
@@ -3589,6 +3876,13 @@
   "caption": "The overall workflow for a CANConv module. CANConv consists of two sub-modules: Similarity Relationship Partition (SRP) and Partition-Wise Adaptive Convolution (PWAC). In SRP, the input feature map is unfolded and reduced to obtain samples for clustering. PWAC is applied separately for each cluster distinguished by SRP. The figure demonstrates how PWAC adaptively generates convolution kernels and bias for a single cluster in the feature map.",
   "source_url": "https://arxiv.org/html/2404.07543",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2024-CARTE-Edge-Aware-Table-Attention": {
+  "file": "figures/2024-CARTE-Edge-Aware-Table-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "CARTE architecture The inputs of CARTE are graphs that contain node ( $X$ ) and edge ( $E$ ) features, both used in self-attention layers (shown in grey). The attention layers update node features using the context embodied with the edge information; the graph structure of the input is reflected by attention masks. The Aggregate & Readout layer consists of the attention layer (without the edge update) followed by feature extraction on the center node. The outputs are then processed for the contrastive loss.",
+  "source_url": "https://arxiv.org/html/2402.16785",
+  "license": "http://creativecommons.org/licenses/by-sa/4.0/"
  },
  "2024-CAS": {
   "file": "figures/2024-CAS.webp",
@@ -3667,6 +3961,13 @@
   "source_url": "https://arxiv.org/html/2405.01102",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2024-CoDA-NO-Codomain-Attention": {
+  "file": "figures/2024-CoDA-NO-Codomain-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "CoDA-NO adapts seamlessly to new multi-physics systems. Pre-trained on fluid dynamics data (Navier-Stokes equation with $u_{x},u_{y}$, and $p$ ) using the masked-reconstruction objective, CoDA-NO easily adapts to multi-physics fluid-solid interaction systems (new $d_{x}$ and $d_{y}$ variables) without any architectural changes.",
+  "source_url": "https://arxiv.org/html/2403.12553",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2024-CoTracker-Proxy-Token-Attention": {
   "file": "figures/2024-CoTracker-Proxy-Token-Attention.webp",
   "fig_no": "Figure 3",
@@ -3708,6 +4009,13 @@
   "caption": "Overall architecture of RAMiT. (a) The size indicates dimension of output from each component. The operation of $I_{LQ}+I_{res}$ is omitted for super-resolution tasks. $I_{RC}$ equals to $I_{res}\\in\\mathbb{R}^{3\\times rH\\times rW}$ ( $r$ : an upscale factor). (b) The different multi-heads ( $L_{sp},L_{ch}$ ) are assigned to each self-attention (SA) module. Being multiplied to value of each counterpart, both SAs help each other (white arrows, optional depending on tasks). The bi-dimensional attentions are mixed by our MobileNet variant, MobiVari ${}^{{\\color[rgb]{1,0,0}\\text{1}}}$. (c) H-RAMi mixes the hierarchical attentions resulting from the last blocks of each stage. Before MobiVari enhances and mixes the attentions, this module upsamples and concatenates multi-scale attentions. (d) Our bottleneck adopts the SCDP bottleneck of NGswin [10].",
   "source_url": "https://arxiv.org/html/2305.11474",
   "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2024-DA-TransUNet-Dual-Skip-Attention": {
+  "file": "figures/2024-DA-TransUNet-Dual-Skip-Attention.webp",
+  "fig_no": "Figure 4",
+  "caption": "Architecture of Channel Attention Mechanism(CAM).",
+  "source_url": "https://arxiv.org/html/2310.12570",
+  "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
  },
  "2024-DFormer-RGB-D-Attention": {
   "file": "figures/2024-DFormer-RGB-D-Attention.webp",
@@ -3898,6 +4206,13 @@
   "source_url": "https://arxiv.org/html/2402.17152",
   "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
  },
+ "2024-HiT-SR-Spatial-Channel-Correlation": {
+  "file": "figures/2024-HiT-SR-Spatial-Channel-Correlation.webp",
+  "fig_no": "Figure 3",
+  "caption": "Block-Level design in HiT-SR. Hierarchical windows are applied to different transformer layers (TLs) to aggregate features with expanding receptive fields.",
+  "source_url": "https://arxiv.org/html/2407.05878",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2024-Honeybee": {
   "file": "figures/2024-Honeybee.webp",
   "fig_no": "Figure 4",
@@ -4059,6 +4374,13 @@
   "source_url": "https://arxiv.org/html/2406.18583",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2024-MA-SAM-3D-Attention-Adapter": {
+  "file": "figures/2024-MA-SAM-3D-Attention-Adapter.webp",
+  "fig_no": "Fig. 1",
+  "caption": "The overview of our proposed modality-agnostic SAM adaptation framework (MA-SAM) for medical image segmentation. The image encoder is updated through a parameter-efficient fine-tuning strategy with FacT. The volumetric or temporal information is effectively incorporated via a set of 3D adapters. The mask decoder is fully fine-tuned and modified to recover the prediction resolution. Reshape operations are used to make 3D operations compatible with the 2D backbone.",
+  "source_url": "https://arxiv.org/html/2309.08842",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2024-MCTF": {
   "file": "figures/2024-MCTF.webp",
   "fig_no": "Figure 3",
@@ -4150,12 +4472,26 @@
   "source_url": "https://arxiv.org/html/2312.11825",
   "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
  },
+ "2024-MotherNet-Attention-Readout": {
+  "file": "figures/2024-MotherNet-Attention-Readout.webp",
+  "fig_no": "Figure 1",
+  "caption": "MotherNet architecture. Given training data $(x_{1},y_{1}),\\dots,(x_{r},y_{r})$, the transformer produces a vector $\\phi$, which is reshaped to weight matrices of an MLP with low-rank weight structure. Green blocks are individual data points and their activations, orange layers are activations created during in-context learning or in the forward-pass during meta-learning, and light blue layers are learned during meta-training.",
+  "source_url": "https://arxiv.org/html/2312.08598",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2024-MotionAGFormer-Adaptive-Graph-Transformer-Fusion": {
   "file": "figures/2024-MotionAGFormer-Adaptive-Graph-Transformer-Fusion.webp",
   "fig_no": "Figure 2",
   "caption": "(a) MotionAGFormer is a novel architecture featuring $N$ dual-stream spatio-temporal blocks, wherein one stream employs Transformers and the other leverages GCNFormers. (b) Spatial MetaFormer. Each input token represents an individual joint of the human body. (c) Temporal MetaFormer. Input tokens are frames of pose sequence.",
   "source_url": "https://arxiv.org/html/2310.16288",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2024-Octo-Blockwise-Attention": {
+  "file": "figures/2024-Octo-Blockwise-Attention.webp",
+  "fig_no": "Fig. 1",
+  "caption": "Model architecture. Left : Octo tokenizes task descriptions (green) and input observations (blue) using a pretrained language model and a lightweight CNN, respectively. Top : The transformer backbone processes the sequence of task and observation tokens and produces readout tokens (purple) that get passed to output heads to produce actions. Bottom : The block-wise attention structure of the transformer allows us to add or remove inputs and outputs during finetuning: for example, we can add new observations (blue, dashed) or action spaces (purple, dashed) without modifying any pretrained parameters.",
+  "source_url": "https://arxiv.org/html/2405.12213",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2024-PaliGemma-Prefix-Attention": {
   "file": "figures/2024-PaliGemma-Prefix-Attention.webp",
@@ -4227,6 +4563,13 @@
   "source_url": "https://arxiv.org/html/2405.19101",
   "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
  },
+ "2024-Prithvi-WxC-Local-Global-Attention": {
+  "file": "figures/2024-Prithvi-WxC-Local-Global-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Prithvi WxC core architecture elements and masking scheme. For simplicity the figure ignores elements such as embedding and output layers as well as position encodings.",
+  "source_url": "https://arxiv.org/html/2409.13598",
+  "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+ },
  "2024-ProxyCLIP-Proxy-Attention": {
   "file": "figures/2024-ProxyCLIP-Proxy-Attention.webp",
   "fig_no": "Figure 3",
@@ -4254,6 +4597,13 @@
   "caption": "Qwen2-VL capabilities: Multilingual image text understanding, code/math reasoning, video analysis, live chat, agent potential, and more. See Appendix for details.",
   "source_url": "https://arxiv.org/html/2409.12191",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2024-RAT-Retrieval-Augmented-Attention": {
+  "file": "figures/2024-RAT-Retrieval-Augmented-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "The overview framework of RAT.",
+  "source_url": "https://arxiv.org/html/2404.02249",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2024-RCM": {
   "file": "figures/2024-RCM.webp",
@@ -4283,6 +4633,13 @@
   "source_url": "https://arxiv.org/html/2404.05892",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2024-ReconFormer-Recurrent-Attention": {
+  "file": "figures/2024-ReconFormer-Recurrent-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Comparisons of different transformer architectures. (a) Recent high-level vision Transformer [16, 31] use a pyramid structure to model multi-scale contexts. (b) Previous low-level vision transformers [3, 14] and ViT [4] follow a simple columnar design, which preserves better information but fails to model at scales. (c) ReconFormer incorporates the pyramid structure inside a transformer layer. The local pyramid enables scale processing at each unit while the globally columnar structure maintains high-resolution information. FFN refers to feed-forward network in transformer layers.",
+  "source_url": "https://arxiv.org/html/2201.09376",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2024-Relation-DETR-Position-Bias": {
   "file": "figures/2024-Relation-DETR-Position-Bias.webp",
   "fig_no": "Figure 3",
@@ -4303,6 +4660,13 @@
   "caption": "Implementation of Rotary Position Embedding(RoPE).",
   "source_url": "https://arxiv.org/html/2104.09864",
   "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+ },
+ "2024-SAM-Med3D-Three-Dimensional-Prompt-Attention": {
+  "file": "figures/2024-SAM-Med3D-Three-Dimensional-Prompt-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "The fully 3D architecture of our SAM-Med3D, encompassing a 3D image encoder, 3D prompt encoder, and 3D mask decoder. 3D positional encoding (PE) and 3D layers like convolution and layer normalization are employed to construct it.",
+  "source_url": "https://arxiv.org/html/2310.15161",
+  "license": "http://creativecommons.org/licenses/by-sa/4.0/"
  },
  "2024-SAMUS-CNN-Transformer-Interaction": {
   "file": "figures/2024-SAMUS-CNN-Transformer-Interaction.webp",
@@ -4344,6 +4708,13 @@
   "fig_no": "Figure 2",
   "caption": "The architecture overview of Salience DETR. We design a hierarchical query filtering for selecting layer-wise and level-wise queries ( Section 3.2 ) under salience-guided supervision ( Section 3.1 ) to mitigate the scale bias in Figure 1. The semantic misalignment among queries is mitigated by query refinement modules ( Section 3.3 ).",
   "source_url": "https://arxiv.org/html/2403.16131",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2024-ScratchFormer-Shuffled-Sparse-Attention": {
+  "file": "figures/2024-ScratchFormer-Shuffled-Sparse-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "Overall architecture of our ScratchFormer framework for Change Detection. Our ScratchFormer takes two inputs, pre- and post-change images, and predicts a binary semantic change map for the corresponding image pair. ScratchFormer consists of a Siamese-based hierarchical encoder having four different stages, a change-enhanced feature fusion (CEFF) module, and a decoder for predicting binary change map. The focus of our design is the introduction of a shuffled sparse attention (SSA) layer (Sec. 3.3 ) in the encoder and a change-enhanced feature fusion (CEFF) module (Sec. 3.4 ). The SSA layer comprises shuffled sparse attention (SSA) and a MLP, as shown in (a). SSA performs token-mixing over a sparse data-dependent subset of features at each stage. Our ScratchFormer approach computes SSA features from the two streams $\\hat{F}^{i}_{pre}$ and $\\hat{F}^{i}_{post}$ at different scales $i$. The outputs of these stages are fused utilizing the CEFF module, as shown in (b). The CEFF module enhances the semantic changes between the features of the two streams by performing a per-channel re-weighting at each scale and outputs enhanced features $\\hat{F}^{i}_{enh}$. These enhanced features are then input to the decoder for predicting the final semantic binary change map $\\bm{M}$.",
+  "source_url": "https://arxiv.org/html/2304.06710",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2024-SeerAttention": {
@@ -4444,6 +4815,13 @@
   "source_url": "https://arxiv.org/html/2408.03440",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2024-TMT-Channel-and-Spatiotemporal-Attention": {
+  "file": "figures/2024-TMT-Channel-and-Spatiotemporal-Attention.webp",
+  "fig_no": "Fig. 3",
+  "caption": "The architecture of the transformer block. It consists of the channel-temporal joint attention (CTJA) module followed by a gated feed-forward network. As shown in the dashed box, we designed two variants (a) and (b) of the CTJA block for $\\text{TMT}_{a}$ and $\\text{TMT}_{b}$, respectively. The only difference between those two is the channel shuffle operation.",
+  "source_url": "https://arxiv.org/html/2207.06465",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2024-TabR-Retrieval-Attention": {
   "file": "figures/2024-TabR-Retrieval-Attention.webp",
   "fig_no": "Figure 4",
@@ -4500,6 +4878,13 @@
   "source_url": "https://arxiv.org/html/2212.04497",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2024-UPT-Latent-Query-Physics-Attention": {
+  "file": "figures/2024-UPT-Latent-Query-Physics-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Qualitative exploration of scaling limits. Starting from 32K input points (scale 1), we train a 68M parameter model for a few steps with batchsize $1$ and measure the required GPU memory. Models without a compressed latent space (GNN, Transformer) quickly reach their limits while models with a compressed latent space (GINO, UPT) scale much better with the number of inputs. However, as GINO compresses the latent space onto a regular grid, the scaling benefits are largely voided on 3D problems. The efficient latent space compression of UPTs can fit up to 4.2M points (scale 128). We use a linear attention transformer [90] for this study. “Disc. Conv.” denotes “Discretization Convergent”. Appendix D.7 outlines implementation details and complexities.",
+  "source_url": "https://arxiv.org/html/2402.12365",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2024-Uni-Mol2-Pair-Update-Attention": {
   "file": "figures/2024-Uni-Mol2-Pair-Update-Attention.webp",
   "fig_no": "Figure 2",
@@ -4542,6 +4927,13 @@
   "source_url": "https://ar5iv.labs.arxiv.org/html/2401.09417",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
+ "2024-ViSNet-Vector-Scalar-Attention": {
+  "file": "figures/2024-ViSNet-Vector-Scalar-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "The overall architecture of ViSNet. (a) Model sketch of ViSNet. ViSNet embeds the 3D structures of molecules and extracts the geometric information through a series of ViSNet blocks and outputs the molecule properties such as energy, forces, and HOMO-LUMO gap through an output block. (b) Flowchart of one ViSNet Block. One ViSNet block consists of two modules: i) Scalar2Vec, responsible for attaching scalar embeddings to vectors.; ii) Vec2Scalar, renovates scalar embeddings built on RGC strategy. The inputs of Scalar2Vec are the node embedding $h_{i}$, edge embedding $f_{ij}$, direction unit $\\vec{v}_{i}$ and the relative positions between two atoms. The edge-fusion graph attention module (serves as $\\phi_{m}^{s}$ ) takes as input $h_{i}$ and the output of the dense layer following $f_{ij}$, and outputs scalar messages. Before aggregation, each scalar message is transformed through a dense layer, then fused with the unit of the relative position $\\vec{u}_{ij}$ and its own direction unit $\\vec{v}_{j}$. We further compute the vector messages and aggregate them all among the neighborhood. Through a gated residual connection, the final residual $\\Delta\\vec{v}_{i}$ is produced. In Vec2Scalar module, by Hadamard production of aggregated scalar messages and the output of RGC-Angle calculation and adding a gated residual connection, the final $\\Delta h_{i}$ is figured out. Likewise, combining the projected $f_{ij}$ and the output of RGC-Dihedral calculation, the final $\\Delta f_{ij}$ is determined.",
+  "source_url": "https://arxiv.org/html/2210.16518",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2024-Video-P2P-Decoupled-Attention": {
   "file": "figures/2024-Video-P2P-Decoupled-Attention.webp",
   "fig_no": "Figure 4",
@@ -4555,6 +4947,13 @@
   "caption": "Speech editing with VoiceCraft. Human listeners prefer VoiceCraft edited speech over the original real recording 48% of the time in side-by-side naturalness comparison (details in § 5.3 )",
   "source_url": "https://arxiv.org/html/2403.16973",
   "license": "http://creativecommons.org/licenses/by-sa/4.0/"
+ },
+ "2024-X-Restormer-Cross-Scope-Attention": {
+  "file": "figures/2024-X-Restormer-Cross-Scope-Attention.webp",
+  "fig_no": "Figure 5",
+  "caption": "The network structure of X-Restormer. To enhance the spatial mapping ability of Restormer and create a more general network, we replace half of the transposed self-attention blocks in Restormer with spatial self-attention blocks. For TSA, we retain the preliminary multi-Dconv head transposed attention (MDTA) used in Restormer. For SSA, we adopt the overlapping cross-attention (OCA) in HAT [8].",
+  "source_url": "https://arxiv.org/html/2310.11881",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2024-YOCO": {
   "file": "figures/2024-YOCO.webp",
@@ -4633,6 +5032,13 @@
   "source_url": "https://arxiv.org/html/2405.04517",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2025-AB-UPT-Anchored-Branched-Attention": {
+  "file": "figures/2025-AB-UPT-Anchored-Branched-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "Overview AB-UPT ( AB-UPT ).",
+  "source_url": "https://arxiv.org/html/2502.09692",
+  "license": "http://creativecommons.org/licenses/by-sa/4.0/"
+ },
  "2025-Activation-Beacon": {
   "file": "figures/2025-Activation-Beacon.webp",
   "fig_no": "Figure 1",
@@ -4646,6 +5052,13 @@
   "caption": "From Uniform to Adaptive Budget Allocation ( This example includes $5$ KV cache elements with corresponding attention weights. Adaptive budget allocation, reallocating budgets from the Head2/3 with sparse concentrations to the dispersed Head1, increases the aggregated weights of retained cache elements from 2.26 to 2.48 compared to uniform allocation. This closely correlates with a reduced eviction loss in Section 3.3.)",
   "source_url": "https://ar5iv.labs.arxiv.org/html/2407.11550",
   "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2025-AdaIR-Frequency-Mining-Attention": {
+  "file": "figures/2025-AdaIR-Frequency-Mining-Attention.webp",
+  "fig_no": "Figure 3",
+  "caption": "(a) The overall pipeline of the proposed AdaIR framework. It is a Transformer-based encoder-decoder architecture, employing novel Adaptive Frequency Learning Blocks (AFLB). Each AFLB contains (b) Frequency Mining Module (FMiM) that extracts different frequency components from input features guided by the adaptively decoupled spectra of the degraded input image, and (c) Frequency Modulation Module (FMoM) that exchanges the complementary information between different frequency features. (d) Cross Attention (CA). (e) Mask Generation Block (MGB) that yields a learnable frequency boundary for spectra decomposition. (f) H-L unit delivers high-frequency attention maps to enrich Low-frequency features. (g) L-H unit enhances high-frequency features by complementing it with low-frequency features. FFT and IFFT denote the Fast Fourier Transform and its inverse operator, respectively.",
+  "source_url": "https://arxiv.org/html/2403.14614",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2025-AnchorAttention": {
   "file": "figures/2025-AnchorAttention.webp",
@@ -4729,6 +5142,13 @@
   "fig_no": "Figure 2",
   "caption": "Overview of D-FINE with FDR. The probability distributions that act as a more fine-grained intermediate representation are iteratively refined by the decoder layers in a residual manner. Non-uniform weighting functions are applied to allow for finer localization.",
   "source_url": "https://arxiv.org/html/2410.13842",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2025-DINO-WM-Block-Causal-Patch-Attention": {
+  "file": "figures/2025-DINO-WM-Block-Causal-Patch-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Architecture of DINO-WM. Given observations $o_{t-k:t}$, we optimize the sequence of actions $a_{t:T-1}$ to minimize the predicted loss to the desired goal $o_{g}$. All forward computation is done in the latent space $z$. Here $p_{\\theta}$ indicates DINO-WM ’s dynamics model, which is used for making future predictions.",
+  "source_url": "https://arxiv.org/html/2411.04983",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2025-DSA": {
@@ -4934,6 +5354,13 @@
   "source_url": "https://arxiv.org/html/2411.13676",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2025-HyperSIGMA-Sparse-Sampling-Attention": {
+  "file": "figures/2025-HyperSIGMA-Sparse-Sampling-Attention.webp",
+  "fig_no": "Fig. 6",
+  "caption": "The HyperSIGMA model consists of two subnetworks tailored for spatial and spectral feature extraction (Sec. IV-A ). Initially, spatial patches or spectral channels are tokenized and processed through multiple transformer blocks, where some SAs are substituted with the proposed Sparse Sampling Attention (SSA) (Sec. IV-B2 ). Spatial and spectral features are then generated and fused by the Spatial-Spectral Fusion Module (SEM) (Sec. IV-B3 ). These fusion features (or spatial features) are fed into task-specific heads for various high-level and low-level HSI tasks.",
+  "source_url": "https://arxiv.org/html/2406.11519",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
  "2025-InfiniteHiP": {
   "file": "figures/2025-InfiniteHiP.webp",
   "fig_no": "Figure 1",
@@ -4947,6 +5374,13 @@
   "caption": "Framework of Infinity. Infinity introduces bitwise modeling, which incorporates a bitwise multi-scale visual tokenizer, Infinite-Vocabulary Classifier (IVC), and Bitwise Self-Correction. When predicting $\\bm{R}_{k}$, the sequence $(\\bm{R}_{1},{\\bm{R}}_{2},...,\\bm{R}_{k-1})$ serves as the prefixed context and the text condition guides the prediction through a cross attention mechanism. Different from VAR, Infinity performs next-scale prediction with bit labels.",
   "source_url": "https://arxiv.org/html/2412.04431",
   "license": "http://creativecommons.org/publicdomain/zero/1.0/"
+ },
+ "2025-L-GATr-Lorentz-Equivariant-Attention": {
+  "file": "figures/2025-L-GATr-Lorentz-Equivariant-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "Schematic view of the data-analysis workflow in high-energy physics. Measurements (top) are processed in parallel with simulated data (bottom); their comparison is ultimately the basis for most scientific conclusions. In orange, we show how the three applications of L-GATr we experiment with in this paper fit into this workflow. The architecture is also applicable in several other stages, including reconstruction and inference.",
+  "source_url": "https://arxiv.org/html/2405.14806",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2025-LION": {
   "file": "figures/2025-LION.webp",
@@ -4983,6 +5417,13 @@
   "source_url": "https://arxiv.org/html/2410.17242",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2025-LYT-Net-Luminance-Denoising-Attention": {
+  "file": "figures/2025-LYT-Net-Luminance-Denoising-Attention.webp",
+  "fig_no": "Fig. 2",
+  "caption": "Overall framework of LYT-Net. The architecture consists of several detachable blocks like Channel-wise Denoiser (CWD), Multi-headed Self-Attention (MHSA), Multi-stage Squeeze and Excite Fusion (MSEF).",
+  "source_url": "https://arxiv.org/html/2401.15204",
+  "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+ },
  "2025-LieRE": {
   "file": "figures/2025-LieRE.webp",
   "fig_no": "Figure 2",
@@ -4995,6 +5436,13 @@
   "fig_no": "Figure 1",
   "caption": "LoLCATs framework. We linearize LLMs by (1) training attention analogs to approximate softmax attentions (attention transfer), before swapping attentions and (2) minimally adjusting (with LoRA).",
   "source_url": "https://arxiv.org/html/2410.10254",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2025-MB-TaylorFormer-V2-Linear-Attention": {
+  "file": "figures/2025-MB-TaylorFormer-V2-Linear-Attention.webp",
+  "fig_no": "Fig. 2",
+  "caption": "Architecture of MB-TaylorFormer V2. (a) MB-TaylorFormer V2 consists of the multi-branch hierarchical design based on multi-scale patch embedding. (b) Multi-scale patch embedding embeds coarse-to-fine patches. (c) T-MSA++ with linear computational complexity.",
+  "source_url": "https://arxiv.org/html/2501.04486",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2025-MCANet-MIR2025-Cross-Axis-Attention": {
@@ -5072,6 +5520,13 @@
   "fig_no": "Figure 3",
   "caption": "Overview of NoPoSplat. We directly predict Gaussians in a canonical space from a feed-forward network to represent the underlying 3D scene from the unposed sparse images. For simplicity, we use a two-view setup as an example, and the RGB shortcut is omitted from the figure.",
   "source_url": "https://ar5iv.labs.arxiv.org/html/2410.24207",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2025-PDE-Transformer-Shifted-Space-Channel-Attention": {
+  "file": "figures/2025-PDE-Transformer-Shifted-Space-Channel-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Architecture overview of PDE-Transformer. The multi-scale architecture combines up- and downsampling of tokens with skip connections between transformer stages of the same resolution. The attention operation is restricted to a local window of tokens. The window is shifted between two adjacent transformer blocks. Conditionings are embedded and used to scale and shift the intermediate token representations. The mixed channel (MC) version embeds different physical channels within the same token. The separate channel (SC) version embeds different physical channels independently. Tokens of different physical channels only interact via axial self-attention over the channel dimension. The types of channel (velocity, density, etc.) are part of the conditioning, which is distinct for each channel.",
+  "source_url": "https://arxiv.org/html/2505.24717",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2025-Palu": {
@@ -5298,12 +5753,26 @@
   "source_url": "https://ar5iv.labs.arxiv.org/html/2407.04620",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2025-TWISTER-Relative-Attention-with-Memory": {
+  "file": "figures/2025-TWISTER-Relative-Attention-with-Memory.webp",
+  "fig_no": "Figure 3",
+  "caption": "Transformer-based world model with contrastive representations. The world model learns temporal feature representations by maximizing the mutual information between model states $s_{t}$ and future stochastic states $z^{\\prime}_{t:t+K}$ obtained from augmented views of image observations. The encoder network converts image observations into stochastic states $z_{t}$, from which a decoder network learns to reconstruct images while the masked attention Transformer network predicts next episode continuations, rewards and stochastic states conditioned on selected actions.",
+  "source_url": "https://arxiv.org/html/2503.04416",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2025-TabICL-Row-Embedding-Attention": {
   "file": "figures/2025-TabICL-Row-Embedding-Attention.webp",
   "fig_no": "Figure 2",
   "caption": "The distribution-aware column-wise embedding block in TabICL. The overall structure (right) relies on the induced self-attention block (middle) that employs two multi-head attention blocks (left) to process incoming embeddings.",
   "source_url": "https://arxiv.org/html/2502.05564",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2025-TabSTAR-Target-Aware-Feature-Attention": {
+  "file": "figures/2025-TabSTAR-Target-Aware-Feature-Attention.webp",
+  "fig_no": "Figure 1",
+  "caption": "The TabSTAR architecture illustrated with our toy dataset. The model processes numerical features, textual features, and all possible target values for classification.",
+  "source_url": "https://arxiv.org/html/2505.18125",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2025-ThinK": {
   "file": "figures/2025-ThinK.webp",
@@ -5424,6 +5893,13 @@
   "source_url": "https://arxiv.org/html/2503.13427",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2026-AB-GATr-Geometric-Anchor-Attention": {
+  "file": "figures/2026-AB-GATr-Geometric-Anchor-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "AB - GATr is a transformer-based $E(3)$ -equivariant neural field that jointly models volumetric and surface quantities. Volume and surface nodes are embedded using geometric algebra multivectors $X^{MV}$ alongside sine-cosine encoded scalar features $X^{S}$. Sparse surface and volume anchors are uniformly sampled and serve as keys and values for geometric anchor attention throughout the network. At inference, additional query tokens are concatenated to the query set, while keys and values remain restricted to anchors. In the shared body, branch-specific geometric anchor attention is interleaved with a KV-exchange variant, in which key and value tokens are taken from opposite branches. Branch-specific decoders are applied at the output stage, where target quantities are extracted from the resulting multivectors.",
+  "source_url": "https://arxiv.org/html/2605.18816",
+  "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+ },
  "2026-AB-Sparse": {
   "file": "figures/2026-AB-Sparse.webp",
   "fig_no": "Figure 5",
@@ -5443,6 +5919,13 @@
   "fig_no": "Figure 3",
   "caption": "Architecture and training pipeline of AutoGaze. (Left & Middle) Given a video, AutoGaze processes each frame and autoregressively decodes indices of multi-scale patches based on the history of frames and selected patches. Once it believes the previously-gazed patches are sufficient to reconstruct the current frame, it automatically stops gazing and moves to the next frame. (Right) AutoGaze is trained in two stages: next-token-prediction pre-training on collected gazing sequences, and RL post-training with reconstruction reward.",
   "source_url": "https://arxiv.org/html/2603.12254",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2026-BRAU-Net-Skip-Connection-Attention": {
+  "file": "figures/2026-BRAU-Net-Skip-Connection-Attention.webp",
+  "fig_no": "Fig. 1",
+  "caption": "Motivation. Due to the intrinsic locality of convolution operation as well as the high computation complexity of vanilla transformer, we consider incorporating sparse attention into U-shaped architecture, which can capture long-range dependency and reduce the computation cost to efficiently perform the medical image segmentation task. In practice, the main goal of using sparse attention mechanism is to ensure each query just attends to some most relevant key-value tokens. Since the tokens selected by static sparse attention are query-agnostic, we consider using query-aware, dynamic sparse attention mechanism in this work. Meanwhile, we consider restructuring skip connection with channel-spatial attention, which is implemented by convolution operation, aiming to amplify global dimension-interaction of multi-scale features.",
+  "source_url": "https://arxiv.org/html/2401.00722",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2026-BSGA": {
@@ -5471,6 +5954,13 @@
   "fig_no": "Figure 2",
   "caption": "Illustration of CTCal. CTCal is dedicated to leverage the reliable text-image alignment established at smaller timesteps ( $t_{\\text{tea}}$ ) to calibrate the learning process at larger timesteps ( $t_{\\text{stu}}$ ). This approach provides explicit supervision for the modeling of text-image correspondence, thereby enhancing the overall performance of text-to-image generation. Notably, the two diffusion models share identical parameters, which is solely for the convenience of presentation.",
   "source_url": "https://arxiv.org/html/2603.20741",
+  "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+ },
+ "2026-CTR-Sink-Behavior-Level-Attention-Sink": {
+  "file": "figures/2026-CTR-Sink-Behavior-Level-Attention-Sink.webp",
+  "fig_no": "Figure 5",
+  "caption": "Attention proportion between [ SINK ] tokens across layers after adding sink-specific attention enhancement mechanism.",
+  "source_url": "https://arxiv.org/html/2508.03668",
   "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
  },
  "2026-CyFA": {
@@ -5704,6 +6194,13 @@
   "source_url": "https://arxiv.org/html/2511.10289",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
+ "2026-PDEformer-2-Equation-Graph-Attention": {
+  "file": "figures/2026-PDEformer-2-Equation-Graph-Attention.webp",
+  "fig_no": "Figure S2",
+  "caption": "INR decoder architecture of PDEformer-2.",
+  "source_url": "https://arxiv.org/html/2507.15409",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
  "2026-PEARL-Procrustes-Attention": {
   "file": "figures/2026-PEARL-Procrustes-Attention.webp",
   "fig_no": "Figure 2",
@@ -5898,6 +6395,13 @@
   "fig_no": "Figure 2",
   "caption": "Overview of our Video Monarch Attention. (a) We represent the $N\\times N$ full attention matrix via two alternatingly optimized smaller Monarch factors $\\bm{L}$ and $\\bm{R}$ with spatial-temporal structure factorization. (b) We introduce a Recomputation Strategy to address quality degradation caused by excessively large temperature term $\\bm{c}_{\\bm{R}}$ for the first frame. (c) We propose an Online-Entropy algorithm integrated with FlashAttention to accelerate the iterative computation of Monarch matrices further.",
   "source_url": "https://arxiv.org/html/2601.22275",
+  "license": "http://creativecommons.org/licenses/by/4.0/"
+ },
+ "2026-VOSR-Condition-Structure-Enhancement-Attention": {
+  "file": "figures/2026-VOSR-Condition-Structure-Enhancement-Attention.webp",
+  "fig_no": "Figure 2",
+  "caption": "Overview of VOSR. (a) Framework overview. Given an LR image, VOSR builds two complementary conditions from the input: a spatially aligned structural condition in the VAE latent space and a high-level visual semantic condition extracted by a pretrained vision encoder. These conditions are injected into a diffusion transformer to predict the denoising velocity for HR reconstruction. (b) Condition and guidance design. Compared with prior vision-only SR that mainly relies on structural-only conditioning, VOSR introduces an additional visual semantic condition to reduce semantic ambiguity in restoration. Moreover, instead of using a fully unconditional branch as in standard classifier-free guidance, VOSR adopts a restoration-oriented guidance and removes semantic guidance while retaining weakened LR structural cues, making the guidance input-anchored and more suitable for restoration.",
+  "source_url": "https://arxiv.org/html/2604.03225",
   "license": "http://creativecommons.org/licenses/by/4.0/"
  },
  "2026-VecAttention": {
