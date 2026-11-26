@@ -22,7 +22,7 @@ import build_data as bd  # noqa: E402
 
 # 不进公开仓库的东西：派工的工单、只供馆长参考的调研、原型、生成的数据（下面另行生成公开版）
 SKIP = [
-    r"^curation/工单", r"^docs/暗色哥特气质", r"^docs/screenshots/", r"^prototypes/", r"^site/figures/",
+    r"^curation/工单", r"^docs/暗色哥特气质", r"^docs/动画拆解", r"^docs/screenshots/", r"^prototypes/", r"^site/figures/",
     r"^site/data/", r"^HANDOFF\.md$", r"^dist/",
 ]
 # 公开的文件里不该出现的字样：本机路径和用户名
