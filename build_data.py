@@ -252,6 +252,8 @@ def parse_venue(s: str | None) -> tuple[int | None, str | None]:
     y = YEAR_RE.search(s)
     year = int(y.group(1)) if y else None
     venue = YEAR_RE.sub("", s).strip(" ，,()（）") or None
+    if venue and re.search(r"\s·\s", venue):      # 「CVPR 2022 · arXiv 2203.11192 · 会议论文」只留会议名
+        venue = re.split(r"\s+·\s+", venue)[0].strip() or None
     return year, venue
 
 

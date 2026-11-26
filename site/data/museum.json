@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26T22:15:40+09:00",
+ "generated": "2026-11-26T22:24:13+09:00",
  "sources": [
   "INDEX.md",
   "工具与模板/模块收集/队列.md",
@@ -24383,7 +24383,7 @@
    "name_zh": "跟踪时空交叉注意力",
    "title": "Learning Spatio-Temporal Transformer for Visual Tracking",
    "year": 2021,
-   "venue": "ICCV  · arXiv 2103.17154 · 会议论文",
+   "venue": "ICCV",
    "year_source": "README",
    "authors": "Bin Yan、Houwen Peng、Jianlong Fu、Dong Wang、Huchuan Lu",
    "arxiv": "2103.17154",
@@ -24443,9 +24443,11 @@
    "id": "2021-STARK-Spatio-Temporal-Cross-Attention",
    "en": {
     "title": "Learning Spatio-Temporal Transformer for Visual Tracking",
+    "venue": "ICCV",
     "authors": "Bin Yan, Houwen Peng, Jianlong Fu, Dong Wang, Huchuan Lu",
     "license": "MIT",
     "module_type": "Attention",
+    "domain": "Object tracking",
     "year_source": "the README"
    }
   },
@@ -26039,7 +26041,7 @@
    "name_zh": "孪生跟踪特征融合注意力",
    "title": "Transformer Tracking",
    "year": 2021,
-   "venue": "CVPR  · arXiv 2103.15436",
+   "venue": "CVPR",
    "year_source": "README",
    "authors": "Xin Chen、Bin Yan、Jiawen Zhu、Dong Wang、Xiaoyun Yang、Huchuan Lu",
    "arxiv": "2103.15436",
@@ -26099,10 +26101,11 @@
    "id": "2021-TransT-Siamese-Feature-Fusion-Attention",
    "en": {
     "title": "Transformer Tracking",
-    "venue": "CVPR  · arXiv 2103.15436",
+    "venue": "CVPR",
     "authors": "Xin Chen, Bin Yan, Jiawen Zhu, Dong Wang, Xiaoyun Yang, Huchuan Lu",
     "license": "GPL-3.0",
     "module_type": "Attention",
+    "domain": "Object tracking",
     "year_source": "the README"
    }
   },
@@ -27847,6 +27850,79 @@
     "module_type": "Attention",
     "domain": "Generic object detection",
     "year_source": "the collection queue"
+   }
+  },
+  {
+   "name_en": "AiATrack Attention-in-Attention",
+   "name_zh": "相关矩阵内层注意力",
+   "title": "AiATrack: Attention in Attention for Transformer Visual Tracking",
+   "year": 2022,
+   "venue": "ECCV",
+   "year_source": "README",
+   "authors": "Shenyuan Gao、Chunluan Zhou、Chao Ma、Xinggang Wang、Junsong Yuan",
+   "arxiv": "2207.09603",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "目标跟踪",
+   "halls": [
+    {
+     "field": "计算机视觉",
+     "task": "视频与动作理解"
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/计算机视觉/视频与动作理解/相关矩阵内层注意力（AiATrack Attention-in-Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "Little-Podi/AiATrack",
+     "repo_url": "https://github.com/Little-Podi/AiATrack",
+     "commit": "cdb3a4ef08964e591ee519009c00b3b90ac1a046",
+     "source_file_url": "https://github.com/Little-Podi/AiATrack/blob/cdb3a4ef08964e591ee519009c00b3b90ac1a046/lib/models/aiatrack/attention.py",
+     "license": "MIT 仓库许可文本",
+     "verification": "与官方 AiAModule 对照输出和平均注意力权重。 同一份 state_dict 和同一随机输入下，最大绝对差为 0。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "计算机视觉",
+     "task": "视频与动作理解",
+     "name_zh": "相关矩阵内层注意力",
+     "name_en": "AiATrack Attention-in-Attention",
+     "in_index": true,
+     "en": {
+      "name": "AiATrack Attention-in-Attention",
+      "license": "MIT",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "MIT",
+   "license_note": "MIT 仓库许可文本",
+   "guo": null,
+   "repo": "Little-Podi/AiATrack",
+   "repo_url": "https://github.com/Little-Podi/AiATrack",
+   "verification": "与官方 AiAModule 对照输出和平均注意力权重。 同一份 state_dict 和同一随机输入下，最大绝对差为 0。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2022-AiATrack-Attention-in-Attention",
+   "en": {
+    "title": "AiATrack: Attention in Attention for Transformer Visual Tracking",
+    "venue": "ECCV",
+    "authors": "Shenyuan Gao, Chunluan Zhou, Chao Ma, Xinggang Wang, Junsong Yuan",
+    "license": "MIT",
+    "module_type": "Attention",
+    "domain": "Object tracking",
+    "year_source": "the README"
    }
   },
   {
@@ -34638,6 +34714,79 @@
    }
   },
   {
+   "name_en": "MOTR Temporal Aggregation Attention",
+   "name_zh": "跟踪查询时序聚合注意力",
+   "title": "MOTR: End-to-End Multiple-Object Tracking with Transformer",
+   "year": 2022,
+   "venue": "ECCV",
+   "year_source": "README",
+   "authors": "Fangao Zeng、Bin Dong、Yuang Zhang、Tiancai Wang、Xiangyu Zhang、Yichen Wei",
+   "arxiv": "2105.03247",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "多目标跟踪",
+   "halls": [
+    {
+     "field": "计算机视觉",
+     "task": "视频与动作理解"
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/计算机视觉/视频与动作理解/跟踪查询时序聚合注意力（MOTR Temporal Aggregation Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "megvii-research/MOTR",
+     "repo_url": "https://github.com/megvii-research/MOTR",
+     "commit": "8690da3392159635ca37c31975126acf40220724",
+     "source_file_url": "https://github.com/megvii-research/MOTR/blob/8690da3392159635ca37c31975126acf40220724/models/qim.py",
+     "license": "MIT 仓库许可文本",
+     "verification": "与官方 QueryInteractionModule 对照轨迹字段，覆盖推理和带随机丢弃及误检插入的训练分支。 同一份 state_dict 和同一随机输入下，最大绝对差为 0。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "计算机视觉",
+     "task": "视频与动作理解",
+     "name_zh": "跟踪查询时序聚合注意力",
+     "name_en": "MOTR Temporal Aggregation Attention",
+     "in_index": true,
+     "en": {
+      "name": "MOTR Temporal Aggregation Attention",
+      "license": "MIT",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "MIT",
+   "license_note": "MIT 仓库许可文本",
+   "guo": null,
+   "repo": "megvii-research/MOTR",
+   "repo_url": "https://github.com/megvii-research/MOTR",
+   "verification": "与官方 QueryInteractionModule 对照轨迹字段，覆盖推理和带随机丢弃及误检插入的训练分支。 同一份 state_dict 和同一随机输入下，最大绝对差为 0。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2022-MOTR-Temporal-Aggregation-Attention",
+   "en": {
+    "title": "MOTR: End-to-End Multiple-Object Tracking with Transformer",
+    "venue": "ECCV",
+    "authors": "Fangao Zeng, Bin Dong, Yuang Zhang, Tiancai Wang, Xiangyu Zhang, Yichen Wei",
+    "license": "MIT",
+    "module_type": "Attention",
+    "domain": "Multi-object tracking",
+    "year_source": "the README"
+   }
+  },
+  {
    "name_en": "mPLUG",
    "name_zh": "跨模态跳接融合编码器",
    "title": "mPLUG: Effective and Efficient Vision-Language Learning by Cross-modal Skip-connections",
@@ -35735,7 +35884,7 @@
    "name_zh": "模板与搜索区域联合注意力",
    "title": "Joint Feature Learning and Relation Modeling for Tracking: A One-Stream Framework",
    "year": 2022,
-   "venue": "ECCV  · arXiv 2203.11991v4",
+   "venue": "ECCV",
    "year_source": "README",
    "authors": "Botao Ye、Hong Chang、Bingpeng Ma、Shiguang Shan、Xilin Chen",
    "arxiv": "2203.11991",
@@ -35795,10 +35944,11 @@
    "id": "2022-OSTrack-Template-Search-Joint-Attention",
    "en": {
     "title": "Joint Feature Learning and Relation Modeling for Tracking: A One-Stream Framework",
-    "venue": "ECCV  · arXiv 2203.11991v4",
+    "venue": "ECCV",
     "authors": "Botao Ye, Hong Chang, Bingpeng Ma, Shiguang Shan, Xilin Chen",
     "license": "MIT",
     "module_type": "Attention",
+    "domain": "Object tracking",
     "year_source": "the README"
    }
   },
@@ -39171,7 +39321,7 @@
    "name_zh": "跟踪目标模型预测注意力",
    "title": "Transforming Model Prediction for Tracking",
    "year": 2022,
-   "venue": "CVPR  · arXiv 2203.11192 · 会议论文",
+   "venue": "CVPR",
    "year_source": "README",
    "authors": "Christoph Mayer、Martin Danelljan、Goutam Bhat、Matthieu Paul、Danda Pani Paudel、Fisher Yu、Luc Van Gool",
    "arxiv": "2203.11192",
@@ -39231,9 +39381,11 @@
    "id": "2022-ToMP-Target-Model-Attention",
    "en": {
     "title": "Transforming Model Prediction for Tracking",
+    "venue": "CVPR",
     "authors": "Christoph Mayer, Martin Danelljan, Goutam Bhat, Matthieu Paul, Danda Pani Paudel, Fisher Yu, Luc Van Gool",
     "license": "GPL-3.0",
     "module_type": "Attention",
+    "domain": "Object tracking",
     "year_source": "the README"
    }
   },
@@ -39326,6 +39478,79 @@
     "module_type": "Attention",
     "domain": "Molecular modeling",
     "year_source": "the collection queue"
+   }
+  },
+  {
+   "name_en": "TrackFormer Track Query Attention",
+   "name_zh": "轨迹查询可变形注意力",
+   "title": "TrackFormer: Multi-Object Tracking with Transformers",
+   "year": 2022,
+   "venue": "CVPR",
+   "year_source": "README",
+   "authors": "Tim Meinhardt、Alexander Kirillov、Laura Leal-Taixé、Christoph Feichtenhofer",
+   "arxiv": "2101.02702",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "多目标跟踪",
+   "halls": [
+    {
+     "field": "计算机视觉",
+     "task": "视频与动作理解"
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/计算机视觉/视频与动作理解/轨迹查询可变形注意力（TrackFormer Track Query Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "timmeinhardt/trackformer",
+     "repo_url": "https://github.com/timmeinhardt/trackformer",
+     "commit": "e468bf156b029869f6de1be358bc11cd1f517f3c",
+     "source_file_url": "https://github.com/timmeinhardt/trackformer/blob/e468bf156b029869f6de1be358bc11cd1f517f3c/src/trackformer/models/deformable_transformer.py",
+     "license": "Apache-2.0 仓库许可文本",
+     "verification": "未做数值对照（官方原类）。 同一份 state_dict 和同一随机输入下，最大绝对差为 9.53674316e-07。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "计算机视觉",
+     "task": "视频与动作理解",
+     "name_zh": "轨迹查询可变形注意力",
+     "name_en": "TrackFormer Track Query Attention",
+     "in_index": true,
+     "en": {
+      "name": "TrackFormer Track Query Attention",
+      "license": "Apache-2.0",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "Apache-2.0",
+   "license_note": "Apache-2.0 仓库许可文本",
+   "guo": null,
+   "repo": "timmeinhardt/trackformer",
+   "repo_url": "https://github.com/timmeinhardt/trackformer",
+   "verification": "未做数值对照（官方原类）。 同一份 state_dict 和同一随机输入下，最大绝对差为 9.53674316e-07。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2022-TrackFormer-Track-Query-Attention",
+   "en": {
+    "title": "TrackFormer: Multi-Object Tracking with Transformers",
+    "venue": "CVPR",
+    "authors": "Tim Meinhardt, Alexander Kirillov, Laura Leal-Taixé, Christoph Feichtenhofer",
+    "license": "Apache-2.0",
+    "module_type": "Attention",
+    "domain": "Multi-object tracking",
+    "year_source": "the README"
    }
   },
   {
@@ -48338,6 +48563,79 @@
    }
   },
   {
+   "name_en": "MeMOTR Long-Term Track Memory Attention",
+   "name_zh": "长期轨迹记忆注意力",
+   "title": "MeMOTR: Long-Term Memory-Augmented Transformer for Multi-Object Tracking",
+   "year": 2023,
+   "venue": "ICCV",
+   "year_source": "README",
+   "authors": "Ruopeng Gao、Limin Wang",
+   "arxiv": "2307.15700",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "多目标跟踪",
+   "halls": [
+    {
+     "field": "计算机视觉",
+     "task": "视频与动作理解"
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/计算机视觉/视频与动作理解/长期轨迹记忆注意力（MeMOTR Long-Term Track Memory Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "MCG-NJU/MeMOTR",
+     "repo_url": "https://github.com/MCG-NJU/MeMOTR",
+     "commit": "eb7a177b9cbcb89742ec69b2545ab3af2ea31a80",
+     "source_file_url": "https://github.com/MCG-NJU/MeMOTR/blob/eb7a177b9cbcb89742ec69b2545ab3af2ea31a80/models/query_updater.py",
+     "license": "MIT 仓库许可文本",
+     "verification": "与官方 QueryUpdater 对照轨迹输出全部字段，包含查询、长期记忆、上次输出和参考点。 同一份 state_dict 和同一随机输入下，最大绝对差为 0。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "计算机视觉",
+     "task": "视频与动作理解",
+     "name_zh": "长期轨迹记忆注意力",
+     "name_en": "MeMOTR Long-Term Track Memory Attention",
+     "in_index": true,
+     "en": {
+      "name": "MeMOTR Long-Term Track Memory Attention",
+      "license": "MIT",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "MIT",
+   "license_note": "MIT 仓库许可文本",
+   "guo": null,
+   "repo": "MCG-NJU/MeMOTR",
+   "repo_url": "https://github.com/MCG-NJU/MeMOTR",
+   "verification": "与官方 QueryUpdater 对照轨迹输出全部字段，包含查询、长期记忆、上次输出和参考点。 同一份 state_dict 和同一随机输入下，最大绝对差为 0。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2023-MeMOTR-Long-Term-Track-Memory-Attention",
+   "en": {
+    "title": "MeMOTR: Long-Term Memory-Augmented Transformer for Multi-Object Tracking",
+    "venue": "ICCV",
+    "authors": "Ruopeng Gao, Limin Wang",
+    "license": "MIT",
+    "module_type": "Attention",
+    "domain": "Multi-object tracking",
+    "year_source": "the README"
+   }
+  },
+  {
    "name_en": "MeViS Language-Guided Motion Attention",
    "name_zh": "语言引导运动注意力",
    "title": "MeViS: A Large-scale Benchmark for Video Segmentation with Motion Expressions",
@@ -48816,6 +49114,79 @@
     "module_type": "Attention",
     "domain": "Language modeling",
     "year_source": "the collection queue"
+   }
+  },
+  {
+   "name_en": "MixFormerV2 Track Prediction Attention",
+   "name_zh": "跟踪预测令牌混合注意力",
+   "title": "MixFormerV2: Efficient Fully Transformer Tracking",
+   "year": 2023,
+   "venue": "NeurIPS",
+   "year_source": "README",
+   "authors": "Yutao Cui、Tianhui Song、Gangshan Wu、Limin Wang",
+   "arxiv": "2305.15896",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "目标跟踪",
+   "halls": [
+    {
+     "field": "计算机视觉",
+     "task": "视频与动作理解"
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/计算机视觉/视频与动作理解/跟踪预测令牌混合注意力（MixFormerV2 Track Prediction Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "MCG-NJU/MixFormerV2",
+     "repo_url": "https://github.com/MCG-NJU/MixFormerV2",
+     "commit": "10414383d20de5587b74ffcc07f4b5cc2bec2449",
+     "source_file_url": "https://github.com/MCG-NJU/MixFormerV2/blob/10414383d20de5587b74ffcc07f4b5cc2bec2449/lib/models/mixformer2_vit/mixformer2_vit.py",
+     "license": "MIT 仓库许可文本",
+     "verification": "与官方 Attention 对照完整前向、模板缓存及仅搜索帧的前向。 同一份 state_dict 和同一随机输入下，最大绝对差为 0。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "计算机视觉",
+     "task": "视频与动作理解",
+     "name_zh": "跟踪预测令牌混合注意力",
+     "name_en": "MixFormerV2 Track Prediction Attention",
+     "in_index": true,
+     "en": {
+      "name": "MixFormerV2 Track Prediction Attention",
+      "license": "MIT",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "MIT",
+   "license_note": "MIT 仓库许可文本",
+   "guo": null,
+   "repo": "MCG-NJU/MixFormerV2",
+   "repo_url": "https://github.com/MCG-NJU/MixFormerV2",
+   "verification": "与官方 Attention 对照完整前向、模板缓存及仅搜索帧的前向。 同一份 state_dict 和同一随机输入下，最大绝对差为 0。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2023-MixFormerV2-Track-Prediction-Attention",
+   "en": {
+    "title": "MixFormerV2: Efficient Fully Transformer Tracking",
+    "venue": "NeurIPS",
+    "authors": "Yutao Cui, Tianhui Song, Gangshan Wu, Limin Wang",
+    "license": "MIT",
+    "module_type": "Attention",
+    "domain": "Object tracking",
+    "year_source": "the README"
    }
   },
   {
@@ -53074,7 +53445,7 @@
    "name_zh": "自回归跟踪解码注意力",
    "title": "SeqTrack: Sequence to Sequence Learning for Visual Object Tracking",
    "year": 2023,
-   "venue": "CVPR  · arXiv 2304.14394v1 · 会议论文",
+   "venue": "CVPR",
    "year_source": "README",
    "authors": "Xin Chen、Houwen Peng、Dong Wang、Huchuan Lu、Han Hu",
    "arxiv": "2304.14394",
@@ -53134,9 +53505,11 @@
    "id": "2023-SeqTrack-Autoregressive-Tracking-Attention",
    "en": {
     "title": "SeqTrack: Sequence to Sequence Learning for Visual Object Tracking",
+    "venue": "CVPR",
     "authors": "Xin Chen, Houwen Peng, Dong Wang, Huchuan Lu, Han Hu",
     "license": "MIT",
     "module_type": "Attention",
+    "domain": "Object tracking",
     "year_source": "the README"
    }
   },
@@ -62707,6 +63080,79 @@
     "module_type": "Gated recurrent network",
     "domain": "General",
     "year_source": "the collection queue"
+   }
+  },
+  {
+   "name_en": "HIPTrack Historical Prompt Attention",
+   "name_zh": "历史提示记忆注意力",
+   "title": "HIPTrack: Visual Tracking with Historical Prompts",
+   "year": 2024,
+   "venue": "CVPR",
+   "year_source": "README",
+   "authors": "Wenrui Cai、Qingjie Liu、Yunhong Wang",
+   "arxiv": "2311.02072",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "目标跟踪",
+   "halls": [
+    {
+     "field": "计算机视觉",
+     "task": "视频与动作理解"
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/计算机视觉/视频与动作理解/历史提示记忆注意力（HIPTrack Historical Prompt Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "WenRuiCai/HIPTrack",
+     "repo_url": "https://github.com/WenRuiCai/HIPTrack",
+     "commit": "371b75302720589c0d6fe214331f6827bc86f544",
+     "source_file_url": "https://github.com/WenRuiCai/HIPTrack/blob/371b75302720589c0d6fe214331f6827bc86f544/lib/models/hip/HistoricalPromptNetwork.py",
+     "license": "Apache-2.0 仓库许可文本",
+     "verification": "与官方 HistoricalPromptDecoder 的 get_affinity 和 readout 对照，覆盖五维历史和已展平的缓存。 同一份 state_dict 和同一随机输入下，最大绝对差为 0。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "计算机视觉",
+     "task": "视频与动作理解",
+     "name_zh": "历史提示记忆注意力",
+     "name_en": "HIPTrack Historical Prompt Attention",
+     "in_index": true,
+     "en": {
+      "name": "HIPTrack Historical Prompt Attention",
+      "license": "Apache-2.0",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "Apache-2.0",
+   "license_note": "Apache-2.0 仓库许可文本",
+   "guo": null,
+   "repo": "WenRuiCai/HIPTrack",
+   "repo_url": "https://github.com/WenRuiCai/HIPTrack",
+   "verification": "与官方 HistoricalPromptDecoder 的 get_affinity 和 readout 对照，覆盖五维历史和已展平的缓存。 同一份 state_dict 和同一随机输入下，最大绝对差为 0。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2024-HIPTrack-Historical-Prompt-Attention",
+   "en": {
+    "title": "HIPTrack: Visual Tracking with Historical Prompts",
+    "venue": "CVPR",
+    "authors": "Wenrui Cai, Qingjie Liu, Yunhong Wang",
+    "license": "Apache-2.0",
+    "module_type": "Attention",
+    "domain": "Object tracking",
+    "year_source": "the README"
    }
   },
   {
@@ -86731,6 +87177,79 @@
    }
   },
   {
+   "name_en": "MOTIP Identity Decoder Attention",
+   "name_zh": "轨迹身份解码注意力",
+   "title": "Multiple Object Tracking as ID Prediction",
+   "year": 2025,
+   "venue": "CVPR",
+   "year_source": "README",
+   "authors": "Ruopeng Gao、Ji Qi、Limin Wang",
+   "arxiv": "2403.16848",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "多目标跟踪",
+   "halls": [
+    {
+     "field": "计算机视觉",
+     "task": "视频与动作理解"
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/计算机视觉/视频与动作理解/轨迹身份解码注意力（MOTIP Identity Decoder Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "MCG-NJU/MOTIP",
+     "repo_url": "https://github.com/MCG-NJU/MOTIP",
+     "commit": "ffc0e905ac196a603027eca8d18fb0dff48c8bcc",
+     "source_file_url": "https://github.com/MCG-NJU/MOTIP/blob/ffc0e905ac196a603027eca8d18fb0dff48c8bcc/models/motip/id_decoder.py",
+     "license": "Apache-2.0 仓库许可文本",
+     "verification": "与官方 IDDecoder 对照身份分数和掩码。 同一份 state_dict 和同一随机输入下，最大绝对差为 0。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "计算机视觉",
+     "task": "视频与动作理解",
+     "name_zh": "轨迹身份解码注意力",
+     "name_en": "MOTIP Identity Decoder Attention",
+     "in_index": true,
+     "en": {
+      "name": "MOTIP Identity Decoder Attention",
+      "license": "Apache-2.0",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "Apache-2.0",
+   "license_note": "Apache-2.0 仓库许可文本",
+   "guo": null,
+   "repo": "MCG-NJU/MOTIP",
+   "repo_url": "https://github.com/MCG-NJU/MOTIP",
+   "verification": "与官方 IDDecoder 对照身份分数和掩码。 同一份 state_dict 和同一随机输入下，最大绝对差为 0。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2025-MOTIP-Identity-Decoder-Attention",
+   "en": {
+    "title": "Multiple Object Tracking as ID Prediction",
+    "venue": "CVPR",
+    "authors": "Ruopeng Gao, Ji Qi, Limin Wang",
+    "license": "Apache-2.0",
+    "module_type": "Attention",
+    "domain": "Multi-object tracking",
+    "year_source": "the README"
+   }
+  },
+  {
    "name_en": "mPLUG-Owl3",
    "name_zh": "图文超注意力",
    "title": "mPLUG-Owl3: Towards Long Image-Sequence Understanding in Multi-Modal Large Language Models",
@@ -92222,6 +92741,79 @@
     "module_type": "Attention",
     "domain": "LLM inference",
     "year_source": "the collection queue"
+   }
+  },
+  {
+   "name_en": "Time-MoE Sparse Expert Forecasting Attention",
+   "name_zh": "稀疏专家时序预测注意力",
+   "title": "Time-MoE: Billion-Scale Time Series Foundation Models with Mixture of Experts",
+   "year": 2025,
+   "venue": "ICLR",
+   "year_source": "README",
+   "authors": "Xiaoming Shi、Shiyu Wang、Yuqi Nie、Dianqi Li、Zhou Ye、Qingsong Wen、Ming Jin",
+   "arxiv": "2409.16040",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "时序预测",
+   "halls": [
+    {
+     "field": "时间序列与时空数据",
+     "task": null
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/时间序列与时空数据/稀疏专家时序预测注意力（Time-MoE Sparse Expert Forecasting Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "Time-MoE/Time-MoE",
+     "repo_url": "https://github.com/Time-MoE/Time-MoE",
+     "commit": "915bfda4c78a544d62a2bec6ab22948423059236",
+     "source_file_url": "https://github.com/Time-MoE/Time-MoE/blob/915bfda4c78a544d62a2bec6ab22948423059236/time_moe/models/modeling_time_moe.py",
+     "license": "Apache-2.0 仓库许可文本",
+     "verification": "对照官方 eager 解码层的输出、因果注意力权重和专家路由分数。 同一份 state_dict 和同一随机输入下，最大绝对差为 0。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "时间序列与时空数据",
+     "task": null,
+     "name_zh": "稀疏专家时序预测注意力",
+     "name_en": "Time-MoE Sparse Expert Forecasting Attention",
+     "in_index": true,
+     "en": {
+      "name": "Time-MoE Sparse Expert Forecasting Attention",
+      "license": "Apache-2.0",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "Apache-2.0",
+   "license_note": "Apache-2.0 仓库许可文本",
+   "guo": null,
+   "repo": "Time-MoE/Time-MoE",
+   "repo_url": "https://github.com/Time-MoE/Time-MoE",
+   "verification": "对照官方 eager 解码层的输出、因果注意力权重和专家路由分数。 同一份 state_dict 和同一随机输入下，最大绝对差为 0。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2025-Time-MoE-Sparse-Expert-Forecasting-Attention",
+   "en": {
+    "title": "Time-MoE: Billion-Scale Time Series Foundation Models with Mixture of Experts",
+    "venue": "ICLR",
+    "authors": "Xiaoming Shi, Shiyu Wang, Yuqi Nie, Dianqi Li, Zhou Ye, Qingsong Wen, Ming Jin",
+    "license": "Apache-2.0",
+    "module_type": "Attention",
+    "domain": "Time-series forecasting",
+    "year_source": "the README"
    }
   },
   {
@@ -105940,7 +106532,7 @@
    "name_zh": "视频语义稀疏注意力",
    "title": "Attention Sparsity is Input-Stable: Training-Free Sparse Attention for Video Generation via Offline Sparsity Profiling and Online QK Co-Clustering",
    "year": 2026,
-   "venue": "ICML  · PMLR 306，arXiv 2603.18636",
+   "venue": "ICML",
    "year_source": "README",
    "authors": "Jiayi Luo、Jiayu Chen、Jiankun Wang、Cong Wang、Hanxin Zhu、Qingyun Sun、Chen Gao、Zhibo Chen、Jianxin Li",
    "arxiv": "2603.18636",
@@ -106000,6 +106592,7 @@
    "id": "2026-SVOO-Semantic-Video-Sparse-Attention",
    "en": {
     "title": "Attention Sparsity is Input-Stable: Training-Free Sparse Attention for Video Generation via Offline Sparsity Profiling and Online QK Co-Clustering",
+    "venue": "ICML",
     "authors": "Jiayi Luo, Jiayu Chen, Jiankun Wang, Cong Wang, Hanxin Zhu, Qingyun Sun, Chen Gao, Zhibo Chen, Jianxin Li",
     "license": "Apache-2.0",
     "module_type": "Attention",
@@ -106186,7 +106779,7 @@
    "name_zh": "文本生成视频时间注意力引导",
    "title": "TempoControl: Temporal Attention Guidance for Text-to-Video Models",
    "year": 2026,
-   "venue": "CVPR  · arXiv 2510.02226v3",
+   "venue": "CVPR",
    "year_source": "README",
    "authors": "Shira Schiber、Ofir Lindenbaum、Idan Schwartz",
    "arxiv": "2510.02226",
@@ -106246,10 +106839,11 @@
    "id": "2026-TempoControl-Temporal-Attention-Guidance",
    "en": {
     "title": "TempoControl: Temporal Attention Guidance for Text-to-Video Models",
-    "venue": "CVPR  · arXiv 2510.02226v3",
+    "venue": "CVPR",
     "authors": "Shira Schiber, Ofir Lindenbaum, Idan Schwartz",
     "license": "Apache-2.0",
     "module_type": "Attention",
+    "domain": "Text-to-video generation",
     "year_source": "the README"
    }
   },
@@ -108570,7 +109164,7 @@
    {
     "field": "计算机视觉",
     "en": "Computer Vision",
-    "count": 683,
+    "count": 690,
     "tasks": [
      {
       "task": "视觉骨干与通用模块",
@@ -108605,7 +109199,7 @@
      {
       "task": "视频与动作理解",
       "en": "Video & Action",
-      "count": 44
+      "count": 51
      },
      {
       "task": "图像分类与识别",
@@ -108647,7 +109241,7 @@
    {
     "field": "时间序列与时空数据",
     "en": "Time Series & Spatio-temporal",
-    "count": 33,
+    "count": 34,
     "tasks": []
    }
   ],
@@ -110536,7 +111130,7 @@
   ],
   "fields": {
    "计算机视觉": {
-    "collected": 625,
+    "collected": 632,
     "skipped": 48,
     "pending": 4,
     "candidate": 6
@@ -110563,7 +111157,7 @@
     "candidate": 2
    },
    "时间序列与时空数据": {
-    "collected": 31,
+    "collected": 32,
     "skipped": 2
    },
    "图学习": {
@@ -121822,12 +122416,6 @@
     "year": 2026
    },
    {
-    "id": "venue:ICML  · PMLR 306，arXiv 2603.18636",
-    "kind": "venue",
-    "label": "ICML  · PMLR 306，arXiv 2603.18636",
-    "label_en": "ICML  · PMLR 306，arXiv 2603.18636"
-   },
-   {
     "id": "2026-TempoControl-Temporal-Attention-Guidance",
     "kind": "exhibit",
     "label": "TempoControl Temporal Attention Guidance",
@@ -121835,12 +122423,6 @@
     "status": "collected",
     "src": "author",
     "year": 2026
-   },
-   {
-    "id": "venue:CVPR  · arXiv 2510.02226v3",
-    "kind": "venue",
-    "label": "CVPR  · arXiv 2510.02226v3",
-    "label_en": "CVPR  · arXiv 2510.02226v3"
    },
    {
     "id": "2021-STARK-Spatio-Temporal-Cross-Attention",
@@ -121852,12 +122434,6 @@
     "year": 2021
    },
    {
-    "id": "venue:ICCV  · arXiv 2103.17154 · 会议论文",
-    "kind": "venue",
-    "label": "ICCV  · arXiv 2103.17154 · 会议论文",
-    "label_en": "ICCV  · arXiv 2103.17154 · 会议论文"
-   },
-   {
     "id": "2021-TransT-Siamese-Feature-Fusion-Attention",
     "kind": "exhibit",
     "label": "TransT Siamese Feature Fusion Attention",
@@ -121865,12 +122441,6 @@
     "status": "collected",
     "src": "author",
     "year": 2021
-   },
-   {
-    "id": "venue:CVPR  · arXiv 2103.15436",
-    "kind": "venue",
-    "label": "CVPR  · arXiv 2103.15436",
-    "label_en": "CVPR  · arXiv 2103.15436"
    },
    {
     "id": "2022-ToMP-Target-Model-Attention",
@@ -121882,12 +122452,6 @@
     "year": 2022
    },
    {
-    "id": "venue:CVPR  · arXiv 2203.11192 · 会议论文",
-    "kind": "venue",
-    "label": "CVPR  · arXiv 2203.11192 · 会议论文",
-    "label_en": "CVPR  · arXiv 2203.11192 · 会议论文"
-   },
-   {
     "id": "2022-OSTrack-Template-Search-Joint-Attention",
     "kind": "exhibit",
     "label": "OSTrack Template-Search Joint Attention",
@@ -121895,12 +122459,6 @@
     "status": "collected",
     "src": "author",
     "year": 2022
-   },
-   {
-    "id": "venue:ECCV  · arXiv 2203.11991v4",
-    "kind": "venue",
-    "label": "ECCV  · arXiv 2203.11991v4",
-    "label_en": "ECCV  · arXiv 2203.11991v4"
    },
    {
     "id": "2023-SeqTrack-Autoregressive-Tracking-Attention",
@@ -121912,10 +122470,76 @@
     "year": 2023
    },
    {
-    "id": "venue:CVPR  · arXiv 2304.14394v1 · 会议论文",
-    "kind": "venue",
-    "label": "CVPR  · arXiv 2304.14394v1 · 会议论文",
-    "label_en": "CVPR  · arXiv 2304.14394v1 · 会议论文"
+    "id": "2024-HIPTrack-Historical-Prompt-Attention",
+    "kind": "exhibit",
+    "label": "HIPTrack Historical Prompt Attention",
+    "label_zh": "历史提示记忆注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2024
+   },
+   {
+    "id": "2022-AiATrack-Attention-in-Attention",
+    "kind": "exhibit",
+    "label": "AiATrack Attention-in-Attention",
+    "label_zh": "相关矩阵内层注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2022
+   },
+   {
+    "id": "2022-TrackFormer-Track-Query-Attention",
+    "kind": "exhibit",
+    "label": "TrackFormer Track Query Attention",
+    "label_zh": "轨迹查询可变形注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2022
+   },
+   {
+    "id": "2022-MOTR-Temporal-Aggregation-Attention",
+    "kind": "exhibit",
+    "label": "MOTR Temporal Aggregation Attention",
+    "label_zh": "跟踪查询时序聚合注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2022
+   },
+   {
+    "id": "2023-MeMOTR-Long-Term-Track-Memory-Attention",
+    "kind": "exhibit",
+    "label": "MeMOTR Long-Term Track Memory Attention",
+    "label_zh": "长期轨迹记忆注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2023
+   },
+   {
+    "id": "2025-MOTIP-Identity-Decoder-Attention",
+    "kind": "exhibit",
+    "label": "MOTIP Identity Decoder Attention",
+    "label_zh": "轨迹身份解码注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2025
+   },
+   {
+    "id": "2023-MixFormerV2-Track-Prediction-Attention",
+    "kind": "exhibit",
+    "label": "MixFormerV2 Track Prediction Attention",
+    "label_zh": "跟踪预测令牌混合注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2023
+   },
+   {
+    "id": "2025-Time-MoE-Sparse-Expert-Forecasting-Attention",
+    "kind": "exhibit",
+    "label": "Time-MoE Sparse Expert Forecasting Attention",
+    "label_zh": "稀疏专家时序预测注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2025
    },
    {
     "id": "2024-CANConv",
@@ -143399,7 +144023,7 @@
    },
    {
     "source": "2026-SVOO-Semantic-Video-Sparse-Attention",
-    "target": "venue:ICML  · PMLR 306，arXiv 2603.18636",
+    "target": "venue:ICML",
     "kind": "venue"
    },
    {
@@ -143414,7 +144038,7 @@
    },
    {
     "source": "2026-TempoControl-Temporal-Attention-Guidance",
-    "target": "venue:CVPR  · arXiv 2510.02226v3",
+    "target": "venue:CVPR",
     "kind": "venue"
    },
    {
@@ -143429,7 +144053,7 @@
    },
    {
     "source": "2021-STARK-Spatio-Temporal-Cross-Attention",
-    "target": "venue:ICCV  · arXiv 2103.17154 · 会议论文",
+    "target": "venue:ICCV",
     "kind": "venue"
    },
    {
@@ -143444,7 +144068,7 @@
    },
    {
     "source": "2021-TransT-Siamese-Feature-Fusion-Attention",
-    "target": "venue:CVPR  · arXiv 2103.15436",
+    "target": "venue:CVPR",
     "kind": "venue"
    },
    {
@@ -143459,7 +144083,7 @@
    },
    {
     "source": "2022-ToMP-Target-Model-Attention",
-    "target": "venue:CVPR  · arXiv 2203.11192 · 会议论文",
+    "target": "venue:CVPR",
     "kind": "venue"
    },
    {
@@ -143474,7 +144098,7 @@
    },
    {
     "source": "2022-OSTrack-Template-Search-Joint-Attention",
-    "target": "venue:ECCV  · arXiv 2203.11991v4",
+    "target": "venue:ECCV",
     "kind": "venue"
    },
    {
@@ -143489,12 +144113,132 @@
    },
    {
     "source": "2023-SeqTrack-Autoregressive-Tracking-Attention",
-    "target": "venue:CVPR  · arXiv 2304.14394v1 · 会议论文",
+    "target": "venue:CVPR",
     "kind": "venue"
    },
    {
     "source": "2023-SeqTrack-Autoregressive-Tracking-Attention",
     "target": "year:2023",
+    "kind": "year"
+   },
+   {
+    "source": "2024-HIPTrack-Historical-Prompt-Attention",
+    "target": "hall:计算机视觉/视频与动作理解",
+    "kind": "hall"
+   },
+   {
+    "source": "2024-HIPTrack-Historical-Prompt-Attention",
+    "target": "venue:CVPR",
+    "kind": "venue"
+   },
+   {
+    "source": "2024-HIPTrack-Historical-Prompt-Attention",
+    "target": "year:2024",
+    "kind": "year"
+   },
+   {
+    "source": "2022-AiATrack-Attention-in-Attention",
+    "target": "hall:计算机视觉/视频与动作理解",
+    "kind": "hall"
+   },
+   {
+    "source": "2022-AiATrack-Attention-in-Attention",
+    "target": "venue:ECCV",
+    "kind": "venue"
+   },
+   {
+    "source": "2022-AiATrack-Attention-in-Attention",
+    "target": "year:2022",
+    "kind": "year"
+   },
+   {
+    "source": "2022-TrackFormer-Track-Query-Attention",
+    "target": "hall:计算机视觉/视频与动作理解",
+    "kind": "hall"
+   },
+   {
+    "source": "2022-TrackFormer-Track-Query-Attention",
+    "target": "venue:CVPR",
+    "kind": "venue"
+   },
+   {
+    "source": "2022-TrackFormer-Track-Query-Attention",
+    "target": "year:2022",
+    "kind": "year"
+   },
+   {
+    "source": "2022-MOTR-Temporal-Aggregation-Attention",
+    "target": "hall:计算机视觉/视频与动作理解",
+    "kind": "hall"
+   },
+   {
+    "source": "2022-MOTR-Temporal-Aggregation-Attention",
+    "target": "venue:ECCV",
+    "kind": "venue"
+   },
+   {
+    "source": "2022-MOTR-Temporal-Aggregation-Attention",
+    "target": "year:2022",
+    "kind": "year"
+   },
+   {
+    "source": "2023-MeMOTR-Long-Term-Track-Memory-Attention",
+    "target": "hall:计算机视觉/视频与动作理解",
+    "kind": "hall"
+   },
+   {
+    "source": "2023-MeMOTR-Long-Term-Track-Memory-Attention",
+    "target": "venue:ICCV",
+    "kind": "venue"
+   },
+   {
+    "source": "2023-MeMOTR-Long-Term-Track-Memory-Attention",
+    "target": "year:2023",
+    "kind": "year"
+   },
+   {
+    "source": "2025-MOTIP-Identity-Decoder-Attention",
+    "target": "hall:计算机视觉/视频与动作理解",
+    "kind": "hall"
+   },
+   {
+    "source": "2025-MOTIP-Identity-Decoder-Attention",
+    "target": "venue:CVPR",
+    "kind": "venue"
+   },
+   {
+    "source": "2025-MOTIP-Identity-Decoder-Attention",
+    "target": "year:2025",
+    "kind": "year"
+   },
+   {
+    "source": "2023-MixFormerV2-Track-Prediction-Attention",
+    "target": "hall:计算机视觉/视频与动作理解",
+    "kind": "hall"
+   },
+   {
+    "source": "2023-MixFormerV2-Track-Prediction-Attention",
+    "target": "venue:NeurIPS",
+    "kind": "venue"
+   },
+   {
+    "source": "2023-MixFormerV2-Track-Prediction-Attention",
+    "target": "year:2023",
+    "kind": "year"
+   },
+   {
+    "source": "2025-Time-MoE-Sparse-Expert-Forecasting-Attention",
+    "target": "hall:时间序列与时空数据",
+    "kind": "hall"
+   },
+   {
+    "source": "2025-Time-MoE-Sparse-Expert-Forecasting-Attention",
+    "target": "venue:ICLR",
+    "kind": "venue"
+   },
+   {
+    "source": "2025-Time-MoE-Sparse-Expert-Forecasting-Attention",
+    "target": "year:2025",
     "kind": "year"
    },
    {
@@ -160020,6 +160764,14 @@
    "2022-ToMP-Target-Model-Attention": "unresolved",
    "2022-OSTrack-Template-Search-Joint-Attention": "unresolved",
    "2023-SeqTrack-Autoregressive-Tracking-Attention": "unresolved",
+   "2024-HIPTrack-Historical-Prompt-Attention": "unresolved",
+   "2022-AiATrack-Attention-in-Attention": "unresolved",
+   "2022-TrackFormer-Track-Query-Attention": "unresolved",
+   "2022-MOTR-Temporal-Aggregation-Attention": "unresolved",
+   "2023-MeMOTR-Long-Term-Track-Memory-Attention": "unresolved",
+   "2025-MOTIP-Identity-Decoder-Attention": "unresolved",
+   "2023-MixFormerV2-Track-Prediction-Attention": "unresolved",
+   "2025-Time-MoE-Sparse-Expert-Forecasting-Attention": "unresolved",
    "2024-CANConv": "unresolved",
    "2024-FlashAttention-3": "unresolved",
    "2024-MInference": "unresolved",
