@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="kv" data-to="split" d="M 481 527 L 500 494" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="cal" data-to="split" d="M 799 516 L 593 494" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="split" data-to="sink" d="M 407 438 L 238 397" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="split" data-to="dense" d="M 500 438 L 496 404" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="split" data-to="sparse" d="M 593 438 L 759 404" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="sink" data-to="recon" d="M 238 355 L 394 314.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="dense" data-to="recon" d="M 496 348 L 499 314.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="sparse" data-to="recon" d="M 759 348 L 607 314.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="recon" data-to="rope" d="M 414 241.5 L 388 213" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="rope" d="M 158 258 L 295 213" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="rope" data-to="score" d="M 353 157 L 354 131" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="recon" data-to="out" d="M 558 241.5 L 678 195 L 649 60" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="score" data-to="out" d="M 354 75 L 472 60" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<g class="node" id="kv"><rect x="370" y="527" width="222" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="481" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Unrotated keys and values</text>
+</g>
+<g class="node" id="cal"><rect x="689" y="516" width="220" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="799" y="540.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Offline calibration</text>
+<text x="799" y="558.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Fit ranges and codebooks</text>
+</g>
+<g class="node" id="split"><rect x="365.5" y="438" width="269" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="500" y="462.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Separate optional first token</text>
+<text x="500" y="480.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">K bounds per channel, V per token</text>
+</g>
+<g class="node" id="sink"><rect x="165" y="355" width="146" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="238" y="381.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">FP16 first token</text>
+</g>
+<g class="node" id="dense"><rect x="384" y="348" width="224" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="496" y="372.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Normalize and pack inliers</text>
+<text x="496" y="390.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Nearest 2-, 3-, or 4-bit code</text>
+</g>
+<g class="node" id="sparse"><rect x="659" y="348" width="200" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="759" y="372.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Store sparse outliers</text>
+<text x="759" y="390.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Flat index and FP16 value</text>
+</g>
+<g class="node" id="recon"><rect x="349" y="241.5" width="300" height="73" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="499" y="265.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Reconstruct K and V</text>
+<text x="499" y="283.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Unpack, look up codes, undo affine map</text>
+<text x="499" y="301.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Restore outliers and prepend first token</text>
+</g>
+<g class="node" id="q"><rect x="31" y="258" width="154" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="108" y="284.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Projected queries</text>
+</g>
+<g class="node" id="rope"><rect x="258.5" y="157" width="189" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="353" y="181.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">RoPE on Q and K</text>
+<text x="353" y="199.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Expand KV head groups</text>
+</g>
+<g class="node" id="score"><rect x="239.5" y="75" width="229" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="354" y="99.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Causal attention weights</text>
+<text x="354" y="117.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Position mask + Softmax</text>
+</g>
+<g class="node" id="out"><rect x="437.5" y="26" width="245" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="560" y="48.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Mix V → Attention output</text>
+</g>
+<text x="500" y="517" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge kv--split">B×T×hkv×d</text>
+<text x="706" y="500" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge cal--split">Key ranges + codebooks</text>
+<text x="505" y="425" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge split--dense">B×T′×(hkvd)</text>
+<text x="322" y="345" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge sink--recon">B×1×hkv×d</text>
+<text x="503" y="343" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge dense--recon">Packed codes + affine terms</text>
+<text x="700" y="332" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge sparse--recon">Outlier indices + values</text>
+<text x="412" y="233" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge recon--rope">K: B×T×hkv×d</text>
+<text x="237" y="246" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--rope">Q: B×U×hq×d</text>
+<text x="360" y="149" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge rope--score">Rotated Q, K</text>
+<text x="630" y="233" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge recon--out">V: B×hq×T×d after expansion</text>
+<text x="367" y="60" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge score--out">B×hq×U×T</text>
+<text x="699" y="50" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="note">Output: B×U×hq×d</text>
+</svg>

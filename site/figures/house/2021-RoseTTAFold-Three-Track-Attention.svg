@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="msa" data-to="row" d="M 350 528 L 350 504.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="row" data-to="col" d="M 315 431.5 L 309 406.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="row" data-to="fuse" d="M 445 431.5 L 707 383 L 707 257 L 755 237" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="col" data-to="collapse" d="M 398 333.5 L 489 318.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="col" data-to="feedback" d="M 287 333.5 L 335 311 L 335 188 L 390 171.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="collapse" data-to="fuse" d="M 592 245.5 L 633 237" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="pair" data-to="fuse" d="M 819 445 L 831 377 L 831 251 L 784 237" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="fuse" data-to="feedback" d="M 640 181 L 572 171.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="fuse" data-to="outpair" d="M 756 181 L 781 64.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="geometry" data-to="mask" d="M 204 195 L 190 163" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="mask" data-to="outmsa" d="M 260 107 L 292 72" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="feedback" data-to="outmsa" d="M 420 98.5 L 424 72" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="msa"><rect x="261" y="528" width="178" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="350" y="554.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Alignment features</text>
+</g>
+<g class="node" id="row"><rect x="205.5" y="431.5" width="289" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="350" y="455.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Tied attention across positions</text>
+<text x="350" y="473.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Weight Q across sequences, sum QKᵀ</text>
+<text x="350" y="491.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax over positions, mix V</text>
+</g>
+<g class="node" id="col"><rect x="169" y="333.5" width="280" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="309" y="357.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Attention across sequences</text>
+<text x="309" y="375.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax(QKᵀ / √d) × V</text>
+<text x="309" y="393.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Residuals and FFN on both axes</text>
+</g>
+<g class="node" id="pair"><rect x="711" y="445" width="200" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="811" y="471.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Pair features</text>
+</g>
+<g class="node" id="collapse"><rect x="392.5" y="245.5" width="303" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="544" y="269.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Sequence-weighted pair statistics</text>
+<text x="544" y="287.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Project alignment and weight by query row</text>
+<text x="544" y="305.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Outer products + tiled row summaries</text>
+</g>
+<g class="node" id="fuse"><rect x="585" y="181" width="220" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="695" y="205.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Concat + residual Conv2D</text>
+<text x="695" y="223.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Pair, statistics, attention map</text>
+</g>
+<g class="node" id="feedback"><rect x="348.5" y="98.5" width="263" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="480" y="122.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Pair-guided alignment update</text>
+<text x="480" y="140.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Symmetrize pair, Linear + Softmax</text>
+<text x="480" y="158.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Mix alignment V, residuals + FFN</text>
+</g>
+<g class="node" id="geometry"><rect x="74.5" y="195" width="259" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="204" y="221.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Structure states and coordinates</text>
+</g>
+<g class="node" id="mask"><rect x="66" y="107" width="248" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="190" y="131.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Distance mask + state Q, K</text>
+<text x="190" y="149.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">One distance limit per head</text>
+</g>
+<g class="node" id="outmsa"><rect x="196.5" y="26" width="331" height="46" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="362" y="45.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Masked Softmax(QKᵀ / √d) × alignment V</text>
+<text x="362" y="63.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Residuals + FFN → Updated alignment</text>
+</g>
+<g class="node" id="outpair"><rect x="689" y="29.5" width="184" height="35" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="781" y="52.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Updated pair features</text>
+</g>
+<text x="356" y="521" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge msa--row">B×N×L×D</text>
+<text x="320" y="424" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge row--col">B×N×L×D</text>
+<text x="596" y="417" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge row--fuse">Symmetric map: B×L×L×h</text>
+<text x="449" y="339" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge col--collapse">B×N×L×D</text>
+<text x="322" y="330" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge col--feedback">B×N×L×D</text>
+<text x="832" y="417" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge pair--fuse">B×L×L×C</text>
+<text x="613" y="168" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge fuse--feedback">B×L×L×C</text>
+<text x="777" y="116" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge fuse--outpair">B×L×L×C</text>
+<text x="203" y="176" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge geometry--mask">B×L×S, B×L×3×3</text>
+<text x="288" y="92" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mask--outmsa">B×h×L×L mask</text>
+<text x="429" y="90" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge feedback--outmsa">B×N×L×D</text>
+</svg>

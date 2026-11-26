@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="q" data-to="split" d="M 211 525 L 290 433" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="cache" data-to="retrieve" d="M 538 525 L 571 505" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="pages" data-to="retrieve" d="M 807 525 L 714 505" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="retrieve" data-to="split" d="M 569 449 L 468 433" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="retrieve" data-to="out" d="M 724 449 L 780 401 L 780 94 L 677 59" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="split" data-to="estimate" d="M 304 377 L 272 358.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="split" data-to="exact" d="M 450 377 L 480 263" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="estimate" data-to="rank" d="M 222 285.5 L 222 273" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="rank" data-to="keep" d="M 222 217 L 222 196" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="keep" data-to="weights" d="M 222 140 L 347 130" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="exact" data-to="weights" d="M 533 207 L 479 130" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="weights" data-to="out" d="M 493 74 L 522 59" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<g class="node" id="q"><rect x="122" y="525" width="178" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="211" y="551.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">One query per head</text>
+</g>
+<g class="node" id="cache"><rect x="447" y="525" width="182" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="538" y="551.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Paged K and V buffers</text>
+</g>
+<g class="node" id="pages"><rect x="709.5" y="525" width="195" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="807" y="551.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Page table + lengths</text>
+</g>
+<g class="node" id="retrieve"><rect x="506" y="449" width="256" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="634" y="473.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Gather valid keys and values</text>
+<text x="634" y="491.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Read cache in logical token order</text>
+</g>
+<g class="node" id="split"><rect x="241" y="377" width="270" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="376" y="401.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Split content and position parts</text>
+<text x="376" y="419.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">For compressed MLA head widths</text>
+</g>
+<g class="node" id="estimate"><rect x="81" y="285.5" width="282" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="222" y="309.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Estimate scores per head and page</text>
+<text x="222" y="327.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Key midrange ± mean absolute deviation</text>
+<text x="222" y="345.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Choose endpoint per query sign</text>
+</g>
+<g class="node" id="rank"><rect x="68.5" y="217" width="307" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="222" y="241.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Select pages by summed head scores</text>
+<text x="222" y="259.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Keep first and last two, rank the rest</text>
+</g>
+<g class="node" id="keep"><rect x="60.5" y="140" width="323" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="222" y="164.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">All heads on fixed or critical pages</text>
+<text x="222" y="182.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Keep top heads on other selected pages</text>
+</g>
+<g class="node" id="exact"><rect x="392.5" y="207" width="281" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="533" y="231.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Exact grouped-query dot products</text>
+<text x="533" y="249.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Content + position, scale, optional cap</text>
+</g>
+<g class="node" id="weights"><rect x="276" y="74" width="276" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="414" y="98.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Optional sparse mask + Softmax</text>
+<text x="414" y="116.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Normalize valid tokens per head</text>
+</g>
+<g class="node" id="out"><rect x="491" y="25" width="216" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="599" y="47.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Weighted sum of cached V</text>
+</g>
+<text x="264" y="475" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--split">B×h×d</text>
+<text x="570" y="519" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge cache--retrieve">Paged K, V</text>
+<text x="770" y="508" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge pages--retrieve">B×Pmax and B</text>
+<text x="529" y="434" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge retrieve--split">K: per sample T×hkv×d</text>
+<text x="763" y="434" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge retrieve--out">V: per sample T×hkv×dv</text>
+<text x="232.0" y="284.25" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge estimate--rank">h×P</text>
+<text x="228" y="209" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge rank--keep">Page IDs</text>
+<text x="207" y="128" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge keep--weights">Mask: h×T</text>
+<text x="512" y="169" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge exact--weights">B×h×Tmax</text>
+<text x="420" y="70" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge weights--out">B×h×Tmax</text>
+<text x="736" y="46" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="note">Output: B×h×dv</text>
+</svg>

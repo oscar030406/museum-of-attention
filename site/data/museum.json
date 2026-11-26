@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26T21:59:21+09:00",
+ "generated": "2026-11-26T22:15:40+09:00",
  "sources": [
   "INDEX.md",
   "工具与模板/模块收集/队列.md",
@@ -5714,6 +5714,15 @@
    ],
    "id": "2018-SHAN-Hierarchical-Session-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2018-SHAN-Hierarchical-Session-Attention.svg",
+    "fig_no": null,
+    "caption": "User-conditioned weights pool the entire history, then pool that summary together with recent items to produce one session vector.",
+    "caption_zh": "用户向量先给整段历史加权，再给历史摘要和最近物品加权，得到会话向量。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Sequential Recommender System based on Hierarchical Attention Networks",
     "venue": "IJCAI",
@@ -7645,6 +7654,15 @@
    ],
    "id": "2019-FDSA-Item-Feature-Dual-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2019-FDSA-Item-Feature-Dual-Attention.svg",
+    "fig_no": null,
+    "caption": "Pool each item's attributes, encode items and pooled attributes in separate causal streams, then fuse their last valid states.",
+    "caption_zh": "先对每件物品的属性加权，再分别编码物品和属性序列，融合两路最后一个非填充位置。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Feature-level Deeper Self-Attention Network for Sequential Recommendation",
     "venue": "IJCAI",
@@ -7882,6 +7900,15 @@
    ],
    "id": "2019-GCSAN-Graph-Contextualized-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2019-GCSAN-Graph-Contextualized-Attention.svg",
+    "fig_no": null,
+    "caption": "Graph message passing builds the session sequence, then causal self-attention refines it and the two last valid states are blended.",
+    "caption_zh": "图消息传递先生成会话序列，因果自注意力再更新序列，最后混合两路的末尾非填充状态。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Graph Contextualized Self-Attention Network for Session-based Recommendation",
     "venue": "IJCAI",
@@ -11734,6 +11761,15 @@
    ],
    "id": "2020-DIFM-Field-Wise-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2020-DIFM-Field-Wise-Attention.svg",
+    "fig_no": null,
+    "caption": "Field self-attention and a dense network each predict field factors, which are added and multiplied into the original embeddings.",
+    "caption_zh": "字段自注意力和全连接网络各自估计字段权重，再把两组权重相加并乘回原嵌入。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "A Dual Input-aware Factorization Machine for CTR Prediction",
     "venue": "IJCAI",
@@ -13313,6 +13349,15 @@
    ],
    "id": "2020-InterHAt-Hierarchical-Feature-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2020-InterHAt-Hierarchical-Feature-Attention.svg",
+    "fig_no": null,
+    "caption": "Three attention pools summarize progressively reweighted fields, then a second Softmax weights those three summaries into one vector.",
+    "caption_zh": "三次注意力池化依次汇总重标定的字段，再给三个汇总向量加权，得到一个向量。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Interpretable Click-Through Rate Prediction through Hierarchical Attention",
     "venue": "WSDM",
@@ -13472,6 +13517,15 @@
    ],
    "id": "2020-LESSR-Shortcut-Graph-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2020-LESSR-Shortcut-Graph-Attention.svg",
+    "fig_no": null,
+    "caption": "Directed shortcut edges score source queries against destination keys, then normalize incoming weights and sum the corresponding source values.",
+    "caption_zh": "捷径边用起点查询和终点键打分，按终点归一化入边权重，再求起点值的加权和。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Handling Information Loss of Graph Neural Networks for Session-based Recommendation",
     "venue": "KDD",
@@ -15201,6 +15255,15 @@
    ],
    "id": "2020-STANet-Pyramid-Spatiotemporal-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2020-STANet-Pyramid-Spatiotemporal-Attention.svg",
+    "fig_no": null,
+    "caption": "Within corresponding windows from two times, attention mixes both feature maps before the pyramid outputs are concatenated and projected.",
+    "caption_zh": "注意力在两个时相的对应窗口内混合特征，再拼接各尺度结果并投影。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "A Spatial-Temporal Attention-Based Method and a New Dataset for Remote Sensing Image Change Detection",
     "venue": "Remote Sensing",
@@ -22962,6 +23025,15 @@
    ],
    "id": "2021-RoseTTAFold-Three-Track-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2021-RoseTTAFold-Three-Track-Attention.svg",
+    "fig_no": null,
+    "caption": "Alignment attention informs pair features, which then guide alignment updates alongside attention constrained by residue distances.",
+    "caption_zh": "多序列比对的注意力图参与更新成对特征，成对特征和残基距离再引导比对更新。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Accurate prediction of protein structures and interactions using a three-track neural network",
     "venue": "Science",
@@ -24304,6 +24376,77 @@
     "module_type": "Attention",
     "domain": "Action recognition",
     "year_source": "the collection queue"
+   }
+  },
+  {
+   "name_en": "STARK Spatio-Temporal Cross-Attention",
+   "name_zh": "跟踪时空交叉注意力",
+   "title": "Learning Spatio-Temporal Transformer for Visual Tracking",
+   "year": 2021,
+   "venue": "ICCV  · arXiv 2103.17154 · 会议论文",
+   "year_source": "README",
+   "authors": "Bin Yan、Houwen Peng、Jianlong Fu、Dong Wang、Huchuan Lu",
+   "arxiv": "2103.17154",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "目标跟踪",
+   "halls": [
+    {
+     "field": "计算机视觉",
+     "task": "视频与动作理解"
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/计算机视觉/视频与动作理解/跟踪时空交叉注意力（STARK Spatio-Temporal Cross-Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "researchmm/Stark",
+     "repo_url": "https://github.com/researchmm/Stark",
+     "commit": "162e1d37a38f92251cb380e90ccdb59608f2df3c",
+     "source_file_url": "https://github.com/researchmm/Stark/blob/162e1d37a38f92251cb380e90ccdb59608f2df3c/lib/models/stark/transformer.py",
+     "license": "MIT。 仓库许可文本",
+     "verification": "最大绝对差 0。 对照阈值为 1e-5。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "计算机视觉",
+     "task": "视频与动作理解",
+     "name_zh": "跟踪时空交叉注意力",
+     "name_en": "STARK Spatio-Temporal Cross-Attention",
+     "in_index": true,
+     "en": {
+      "name": "STARK Spatio-Temporal Cross-Attention",
+      "license": "MIT",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "MIT",
+   "license_note": "MIT。 仓库许可文本",
+   "guo": null,
+   "repo": "researchmm/Stark",
+   "repo_url": "https://github.com/researchmm/Stark",
+   "verification": "最大绝对差 0。 对照阈值为 1e-5。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2021-STARK-Spatio-Temporal-Cross-Attention",
+   "en": {
+    "title": "Learning Spatio-Temporal Transformer for Visual Tracking",
+    "authors": "Bin Yan, Houwen Peng, Jianlong Fu, Dong Wang, Huchuan Lu",
+    "license": "MIT",
+    "module_type": "Attention",
+    "year_source": "the README"
    }
   },
   {
@@ -25889,6 +26032,78 @@
     "module_type": "Attention",
     "domain": "Image generation",
     "year_source": "the collection queue"
+   }
+  },
+  {
+   "name_en": "TransT Siamese Feature Fusion Attention",
+   "name_zh": "孪生跟踪特征融合注意力",
+   "title": "Transformer Tracking",
+   "year": 2021,
+   "venue": "CVPR  · arXiv 2103.15436",
+   "year_source": "README",
+   "authors": "Xin Chen、Bin Yan、Jiawen Zhu、Dong Wang、Xiaoyun Yang、Huchuan Lu",
+   "arxiv": "2103.15436",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "目标跟踪",
+   "halls": [
+    {
+     "field": "计算机视觉",
+     "task": "视频与动作理解"
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/计算机视觉/视频与动作理解/孪生跟踪特征融合注意力（TransT Siamese Feature Fusion Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "chenxin-dlut/TransT",
+     "repo_url": "https://github.com/chenxin-dlut/TransT",
+     "commit": "2793ef31f83222280b4c421f7ae15a61ba7871f1",
+     "source_file_url": "https://github.com/chenxin-dlut/TransT/blob/2793ef31f83222280b4c421f7ae15a61ba7871f1/ltr/models/neck/featurefusion_network.py",
+     "license": "GPL-3.0。保留原文件中的 Facebook 版权声明，随附 DETR 的 Apache-2.0 许可证及其来源。 仓库许可文本",
+     "verification": "最大绝对差 0。 对照阈值为 1e-5。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "计算机视觉",
+     "task": "视频与动作理解",
+     "name_zh": "孪生跟踪特征融合注意力",
+     "name_en": "TransT Siamese Feature Fusion Attention",
+     "in_index": true,
+     "en": {
+      "name": "TransT Siamese Feature Fusion Attention",
+      "license": "GPL-3.0",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "GPL-3.0",
+   "license_note": "GPL-3.0。保留原文件中的 Facebook 版权声明，随附 DETR 的 Apache-2.0 许可证及其来源。 仓库许可文本",
+   "guo": null,
+   "repo": "chenxin-dlut/TransT",
+   "repo_url": "https://github.com/chenxin-dlut/TransT",
+   "verification": "最大绝对差 0。 对照阈值为 1e-5。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2021-TransT-Siamese-Feature-Fusion-Attention",
+   "en": {
+    "title": "Transformer Tracking",
+    "venue": "CVPR  · arXiv 2103.15436",
+    "authors": "Xin Chen, Bin Yan, Jiawen Zhu, Dong Wang, Xiaoyun Yang, Huchuan Lu",
+    "license": "GPL-3.0",
+    "module_type": "Attention",
+    "year_source": "the README"
    }
   },
   {
@@ -29485,6 +29700,15 @@
    ],
    "id": "2022-DC-Swin-Shared-Spatial-and-Channel-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2022-DC-Swin-Shared-Spatial-and-Channel-Attention.svg",
+    "fig_no": null,
+    "caption": "Spatial and channel branches use different linear contractions to reweight features, then each returns a scaled residual at its own resolution.",
+    "caption_zh": "空间和通道注意力沿不同的轴计算线性加权，再把缩放后的结果加回各自的输入。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "A Novel Transformer Based Semantic Segmentation Scheme for Fine-Resolution Remote Sensing Images",
     "venue": "IEEE GRSL",
@@ -33886,6 +34110,15 @@
    ],
    "id": "2022-MedFormer-Bidirectional-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2022-MedFormer-Bidirectional-Attention.svg",
+    "fig_no": null,
+    "caption": "Voxel and semantic-map queries share one score matrix, whose two Softmax axes let each side aggregate values from the other.",
+    "caption_zh": "体素和语义图共用一张打分矩阵，沿两个轴分别归一化，再各自汇集对方的值。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "A Data-scalable Transformer for Medical Image Segmentation: Architecture, Model Efficiency, and Benchmark",
     "venue": "arXiv",
@@ -35495,6 +35728,78 @@
     "module_type": "Attention",
     "domain": "Action recognition",
     "year_source": "the collection queue"
+   }
+  },
+  {
+   "name_en": "OSTrack Template-Search Joint Attention",
+   "name_zh": "模板与搜索区域联合注意力",
+   "title": "Joint Feature Learning and Relation Modeling for Tracking: A One-Stream Framework",
+   "year": 2022,
+   "venue": "ECCV  · arXiv 2203.11991v4",
+   "year_source": "README",
+   "authors": "Botao Ye、Hong Chang、Bingpeng Ma、Shiguang Shan、Xilin Chen",
+   "arxiv": "2203.11991",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "目标跟踪",
+   "halls": [
+    {
+     "field": "计算机视觉",
+     "task": "视频与动作理解"
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/计算机视觉/视频与动作理解/模板与搜索区域联合注意力（OSTrack Template-Search Joint Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "botaoye/OSTrack",
+     "repo_url": "https://github.com/botaoye/OSTrack",
+     "commit": "33b5e12586216b7fd0e95d255bd01ba44cbec759",
+     "source_file_url": "https://github.com/botaoye/OSTrack/blob/33b5e12586216b7fd0e95d255bd01ba44cbec759/lib/models/layers/attn_blocks.py",
+     "license": "MIT。运行使用原实现的 timm MLP、随机深度和初始化函数。 仓库许可文本",
+     "verification": "最大绝对差 0。 对照阈值为 1e-5。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "计算机视觉",
+     "task": "视频与动作理解",
+     "name_zh": "模板与搜索区域联合注意力",
+     "name_en": "OSTrack Template-Search Joint Attention",
+     "in_index": true,
+     "en": {
+      "name": "OSTrack Template-Search Joint Attention",
+      "license": "MIT",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "MIT",
+   "license_note": "MIT。运行使用原实现的 timm MLP、随机深度和初始化函数。 仓库许可文本",
+   "guo": null,
+   "repo": "botaoye/OSTrack",
+   "repo_url": "https://github.com/botaoye/OSTrack",
+   "verification": "最大绝对差 0。 对照阈值为 1e-5。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2022-OSTrack-Template-Search-Joint-Attention",
+   "en": {
+    "title": "Joint Feature Learning and Relation Modeling for Tracking: A One-Stream Framework",
+    "venue": "ECCV  · arXiv 2203.11991v4",
+    "authors": "Botao Ye, Hong Chang, Bingpeng Ma, Shiguang Shan, Xilin Chen",
+    "license": "MIT",
+    "module_type": "Attention",
+    "year_source": "the README"
    }
   },
   {
@@ -38859,6 +39164,77 @@
     "module_type": "Attention",
     "domain": "Graph learning",
     "year_source": "the collection queue"
+   }
+  },
+  {
+   "name_en": "ToMP Target Model Attention",
+   "name_zh": "跟踪目标模型预测注意力",
+   "title": "Transforming Model Prediction for Tracking",
+   "year": 2022,
+   "venue": "CVPR  · arXiv 2203.11192 · 会议论文",
+   "year_source": "README",
+   "authors": "Christoph Mayer、Martin Danelljan、Goutam Bhat、Matthieu Paul、Danda Pani Paudel、Fisher Yu、Luc Van Gool",
+   "arxiv": "2203.11192",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "目标跟踪",
+   "halls": [
+    {
+     "field": "计算机视觉",
+     "task": "视频与动作理解"
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/计算机视觉/视频与动作理解/跟踪目标模型预测注意力（ToMP Target Model Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "visionml/pytracking",
+     "repo_url": "https://github.com/visionml/pytracking",
+     "commit": "7eb9e74bd3d40e29dbcec444902237da13de247b",
+     "source_file_url": "https://github.com/visionml/pytracking/blob/7eb9e74bd3d40e29dbcec444902237da13de247b/ltr/models/transformer/filter_predictor.py",
+     "license": "GPL-3.0。保留原文件对 DETR 的署名，随附 DETR 的 Apache-2.0 许可证及其来源。 仓库许可文本",
+     "verification": "最大绝对差 0。 对照阈值为 1e-5。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "计算机视觉",
+     "task": "视频与动作理解",
+     "name_zh": "跟踪目标模型预测注意力",
+     "name_en": "ToMP Target Model Attention",
+     "in_index": true,
+     "en": {
+      "name": "ToMP Target Model Attention",
+      "license": "GPL-3.0",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "GPL-3.0",
+   "license_note": "GPL-3.0。保留原文件对 DETR 的署名，随附 DETR 的 Apache-2.0 许可证及其来源。 仓库许可文本",
+   "guo": null,
+   "repo": "visionml/pytracking",
+   "repo_url": "https://github.com/visionml/pytracking",
+   "verification": "最大绝对差 0。 对照阈值为 1e-5。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2022-ToMP-Target-Model-Attention",
+   "en": {
+    "title": "Transforming Model Prediction for Tracking",
+    "authors": "Christoph Mayer, Martin Danelljan, Goutam Bhat, Matthieu Paul, Danda Pani Paudel, Fisher Yu, Luc Van Gool",
+    "license": "GPL-3.0",
+    "module_type": "Attention",
+    "year_source": "the README"
    }
   },
   {
@@ -43596,6 +43972,15 @@
    ],
    "id": "2023-ESMFold-Pair-Biased-Sequence-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2023-ESMFold-Pair-Biased-Sequence-Attention.svg",
+    "fig_no": null,
+    "caption": "Pair features bias masked sequence attention, then gated sequence updates supply products and differences that refine the pair features.",
+    "caption_zh": "成对特征给带掩码的序列注意力加偏置，更新后的序列再用乘积和差值更新成对特征。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Evolutionary-scale prediction of atomic-level protein structure with a language model",
     "venue": "Science",
@@ -51621,6 +52006,15 @@
    ],
    "id": "2023-RoseTTAFold2-MSA-Pair-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2023-RoseTTAFold2-MSA-Pair-Attention.svg",
+    "fig_no": null,
+    "caption": "Pair and distance features bias row attention, column attention mixes alignment sequences, and averaged outer products update the pair features.",
+    "caption_zh": "成对和距离特征给行注意力加偏置，列注意力混合比对序列，平均外积回写成对特征。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "Efficient and accurate prediction of protein structure using RoseTTAFold2",
     "venue": "bioRxiv",
@@ -52673,6 +53067,77 @@
     "mechanism": "SegCLIP gives a CLIP-based model learnable region centers. Patches are scored against those centers and gathered into groups that can be turned into segmentation masks.",
     "license": "No clear license found",
     "year_source": "the collection queue"
+   }
+  },
+  {
+   "name_en": "SeqTrack Autoregressive Tracking Attention",
+   "name_zh": "自回归跟踪解码注意力",
+   "title": "SeqTrack: Sequence to Sequence Learning for Visual Object Tracking",
+   "year": 2023,
+   "venue": "CVPR  · arXiv 2304.14394v1 · 会议论文",
+   "year_source": "README",
+   "authors": "Xin Chen、Houwen Peng、Dong Wang、Huchuan Lu、Han Hu",
+   "arxiv": "2304.14394",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "目标跟踪",
+   "halls": [
+    {
+     "field": "计算机视觉",
+     "task": "视频与动作理解"
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/计算机视觉/视频与动作理解/自回归跟踪解码注意力（SeqTrack Autoregressive Tracking Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "microsoft/VideoX",
+     "repo_url": "https://github.com/microsoft/VideoX",
+     "commit": "1744b2159c3d11694f94dab4fcde8660c685e79a",
+     "source_file_url": "https://github.com/microsoft/VideoX/blob/1744b2159c3d11694f94dab4fcde8660c685e79a/SeqTrack/lib/models/seqtrack/decoder.py",
+     "license": "MIT。同一提交的根 README 将包括 SeqTrack 在内的 VideoX 集合标为 MIT。根 LICENSE 的标题来自 2D-TAN。保留 Facebook 版权声明，随附 DETR 的 Apache-2.0 许可证及其来源。 仓库许可文本",
+     "verification": "最大绝对差 0。另改动末尾坐标令牌，验证之前位置的输出保持一致。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "计算机视觉",
+     "task": "视频与动作理解",
+     "name_zh": "自回归跟踪解码注意力",
+     "name_en": "SeqTrack Autoregressive Tracking Attention",
+     "in_index": true,
+     "en": {
+      "name": "SeqTrack Autoregressive Tracking Attention",
+      "license": "MIT",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "MIT",
+   "license_note": "MIT。同一提交的根 README 将包括 SeqTrack 在内的 VideoX 集合标为 MIT。根 LICENSE 的标题来自 2D-TAN。保留 Facebook 版权声明，随附 DETR 的 Apache-2.0 许可证及其来源。 仓库许可文本",
+   "guo": null,
+   "repo": "microsoft/VideoX",
+   "repo_url": "https://github.com/microsoft/VideoX",
+   "verification": "最大绝对差 0。另改动末尾坐标令牌，验证之前位置的输出保持一致。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2023-SeqTrack-Autoregressive-Tracking-Attention",
+   "en": {
+    "title": "SeqTrack: Sequence to Sequence Learning for Visual Object Tracking",
+    "authors": "Xin Chen, Houwen Peng, Dong Wang, Huchuan Lu, Han Hu",
+    "license": "MIT",
+    "module_type": "Attention",
+    "year_source": "the README"
    }
   },
   {
@@ -56319,6 +56784,15 @@
    ],
    "id": "2024-BiFA-Bitemporal-Interaction-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2024-BiFA-Bitemporal-Interaction-Attention.svg",
+    "fig_no": null,
+    "caption": "Queries from the first time score channels from the second time, whose values are mixed and projected back into the first stream.",
+    "caption_zh": "第一个时相的查询给第二个时相的通道打分，混合其值，再投影回第一个时相。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "BiFA: Remote Sensing Image Change Detection With Bitemporal Feature Alignment",
     "venue": "IEEE TGRS",
@@ -64232,6 +64706,15 @@
    ],
    "id": "2024-KVQuant",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2024-KVQuant.svg",
+    "fig_no": null,
+    "caption": "The cache packs inliers, stores outliers and the first token separately, then reconstructs keys and values for rotary causal attention.",
+    "caption_zh": "缓存打包范围内的值，另存异常值和首词元，再重建键和值以计算旋转位置编码下的因果注意力。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization",
     "venue": "NeurIPS",
@@ -75416,6 +75899,15 @@
    ],
    "id": "2025-ACL-Restoration-Linear-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2025-ACL-Restoration-Linear-Attention.svg",
+    "fig_no": null,
+    "caption": "Positive query and key maps mix image tokens through a compact key-value product, while depthwise position terms and a SiLU gate shape the output.",
+    "caption_zh": "正值查询和键通过紧凑的键值乘积混合图像词元，深度卷积位置项和 SiLU 门共同调节输出。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "ACL: Activating Capability of Linear Attention for Image Restoration",
     "venue": "CVPR",
@@ -81911,6 +82403,15 @@
    ],
    "id": "2025-GPT-OSS-Attention-Sinks",
    "mechanism_basis": "readme",
+   "figure": {
+    "file": "figures/house/2025-GPT-OSS-Attention-Sinks.svg",
+    "fig_no": null,
+    "caption": "Each head adds a learned logit to the masked Softmax, drops that probability, and mixes only the real token values.",
+    "caption_zh": "每个头在带掩码的 Softmax 中加入一个学习得到的分数，舍去对应权重，再混合实际词元的值。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "gpt-oss-120b & gpt-oss-20b Model Card",
     "venue": "OpenAI",
@@ -85702,6 +86203,15 @@
    ],
    "id": "2025-MiniMax-M1-Hybrid-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2025-MiniMax-M1-Hybrid-Attention.svg",
+    "fig_no": null,
+    "caption": "A decayed linear layer mixes and gates token values, then a full-attention layer applies rotary grouped-query attention to the result.",
+    "caption_zh": "线性注意力用衰减状态混合值并加门控，下一层对所得词元执行带旋转位置编码的分组查询注意力。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "venue": "arXiv",
     "mechanism": "MiniMax-M1 mixes two kinds of attention layer for million-token contexts. Every seven lightning linear-attention layers, which carry a recurrent state, are followed by one full softmax attention layer.",
@@ -86021,6 +86531,15 @@
    ],
    "id": "2025-ModernBERT-Alternating-Local-Attention",
    "mechanism_basis": "readme",
+   "figure": {
+    "file": "figures/house/2025-ModernBERT-Alternating-Local-Attention.svg",
+    "fig_no": null,
+    "caption": "Each layer uses its own rotary settings and a global or sliding-window bidirectional mask before mixing token values.",
+    "caption_zh": "各层按类型选择旋转位置编码和双向掩码，再用全局或滑窗注意力混合词元的值。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "venue": "ACL",
     "mechanism": "ModernBERT handles long inputs by making only every third layer global. The other layers attend within a 128-token sliding window, and the two layer types use different RoPE bases.",
@@ -91148,6 +91667,15 @@
    ],
    "id": "2025-TabDPT-In-Context-Row-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2025-TabDPT-In-Context-Row-Attention.svg",
+    "fig_no": null,
+    "caption": "All rows query the context prefix, whose values also carry target embeddings, and gated attention returns a residual with SwiGLU.",
+    "caption_zh": "所有行都查询上下文行，上下文的值还含目标嵌入，经门控注意力和 SwiGLU 得到残差。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "TabDPT: Scaling Tabular Foundation Models on Real Data",
     "venue": "NeurIPS",
@@ -101291,6 +101819,15 @@
    ],
    "id": "2026-MSPT-Ball-Tree-Multiscale-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2026-MSPT-Ball-Tree-Multiscale-Attention.svg",
+    "fig_no": null,
+    "caption": "Ball-tree chunks share pooled tokens during local self-attention, then point outputs return to their original order and shared tokens are averaged.",
+    "caption_zh": "球树分块在各块的自注意力中共享池化词元，再恢复点的原顺序，并对共享词元取均值。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "title": "MSPT: Efficient Large-Scale Physical Modeling via Parallelized Multi-Scale Attention",
     "venue": "CVPR",
@@ -105399,6 +105936,78 @@
    }
   },
   {
+   "name_en": "SVOO Semantic Video Sparse Attention",
+   "name_zh": "视频语义稀疏注意力",
+   "title": "Attention Sparsity is Input-Stable: Training-Free Sparse Attention for Video Generation via Offline Sparsity Profiling and Online QK Co-Clustering",
+   "year": 2026,
+   "venue": "ICML  · PMLR 306，arXiv 2603.18636",
+   "year_source": "README",
+   "authors": "Jiayi Luo、Jiayu Chen、Jiankun Wang、Cong Wang、Hanxin Zhu、Qingyun Sun、Chen Gao、Zhibo Chen、Jianxin Li",
+   "arxiv": "2603.18636",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "视频生成",
+   "halls": [
+    {
+     "field": "计算机视觉",
+     "task": "图像生成与编辑"
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/计算机视觉/图像生成与编辑/视频语义稀疏注意力（SVOO Semantic Video Sparse Attention）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "Mutual-Luo/SVOO",
+     "repo_url": "https://github.com/Mutual-Luo/SVOO",
+     "commit": "e4ae67b579766bcbe820bda7d34e104ff4c82d5f",
+     "source_file_url": "https://github.com/Mutual-Luo/SVOO/blob/e4ae67b579766bcbe820bda7d34e104ff4c82d5f/svoo/models/wan/attention.py",
+     "license": "Apache-2.0。保留原文件中的 SVG-EAR 来源说明。 仓库许可文本",
+     "verification": "未做数值对照（官方原类）。最大绝对差 2.98023224e-7。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "计算机视觉",
+     "task": "图像生成与编辑",
+     "name_zh": "视频语义稀疏注意力",
+     "name_en": "SVOO Semantic Video Sparse Attention",
+     "in_index": true,
+     "en": {
+      "name": "SVOO Semantic Video Sparse Attention",
+      "license": "Apache-2.0",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "Apache-2.0",
+   "license_note": "Apache-2.0。保留原文件中的 SVG-EAR 来源说明。 仓库许可文本",
+   "guo": null,
+   "repo": "Mutual-Luo/SVOO",
+   "repo_url": "https://github.com/Mutual-Luo/SVOO",
+   "verification": "未做数值对照（官方原类）。最大绝对差 2.98023224e-7。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2026-SVOO-Semantic-Video-Sparse-Attention",
+   "en": {
+    "title": "Attention Sparsity is Input-Stable: Training-Free Sparse Attention for Video Generation via Offline Sparsity Profiling and Online QK Co-Clustering",
+    "authors": "Jiayi Luo, Jiayu Chen, Jiankun Wang, Cong Wang, Hanxin Zhu, Qingyun Sun, Chen Gao, Zhibo Chen, Jianxin Li",
+    "license": "Apache-2.0",
+    "module_type": "Attention",
+    "domain": "Video generation",
+    "year_source": "the README"
+   }
+  },
+  {
    "name_en": "TabICLv2 Scalable Softmax Attention",
    "name_zh": "表格长度自适应注意力",
    "title": "TabICLv2: A Better, Faster, Scalable, and Open Tabular Foundation Model",
@@ -105573,6 +106182,78 @@
    }
   },
   {
+   "name_en": "TempoControl Temporal Attention Guidance",
+   "name_zh": "文本生成视频时间注意力引导",
+   "title": "TempoControl: Temporal Attention Guidance for Text-to-Video Models",
+   "year": 2026,
+   "venue": "CVPR  · arXiv 2510.02226v3",
+   "year_source": "README",
+   "authors": "Shira Schiber、Ofir Lindenbaum、Idan Schwartz",
+   "arxiv": "2510.02226",
+   "doi": null,
+   "paper_url": null,
+   "module_type": "注意力",
+   "domain": "文本生成视频",
+   "halls": [
+    {
+     "field": "计算机视觉",
+     "task": "图像生成与编辑"
+    }
+   ],
+   "direction": null,
+   "status": "collected",
+   "queue": [],
+   "mechanism": null,
+   "formula": null,
+   "copies": [
+    {
+     "path": "论文复现/计算机视觉/图像生成与编辑/文本生成视频时间注意力引导（TempoControl Temporal Attention Guidance）",
+     "source_type": "author",
+     "readme": true,
+     "repo": "Shira-Schiber/TempoControl",
+     "repo_url": "https://github.com/Shira-Schiber/TempoControl",
+     "commit": "ac28c443ec112e0da6f9f5cbca26a2218d8d12dc",
+     "source_file_url": "https://github.com/Shira-Schiber/TempoControl/blob/ac28c443ec112e0da6f9f5cbca26a2218d8d12dc/wan/text2video.py",
+     "license": "Apache-2.0。保留 Alibaba Wan Team 的版权声明。 仓库许可文本",
+     "verification": "未做数值对照（官方原类）。另隔离加载官方七个引导方法与两条损失公式，在原网格上用相同输入比较单概念及双概念的损失、相关系数和输入梯度。",
+     "verification_source": "README",
+     "index_source": null,
+     "has_pdf": "有",
+     "field": "计算机视觉",
+     "task": "图像生成与编辑",
+     "name_zh": "文本生成视频时间注意力引导",
+     "name_en": "TempoControl Temporal Attention Guidance",
+     "in_index": true,
+     "en": {
+      "name": "TempoControl Temporal Attention Guidance",
+      "license": "Apache-2.0",
+      "verification_source": "the README"
+     }
+    }
+   ],
+   "mechanism_source": null,
+   "source_type": "author",
+   "license": "Apache-2.0",
+   "license_note": "Apache-2.0。保留 Alibaba Wan Team 的版权声明。 仓库许可文本",
+   "guo": null,
+   "repo": "Shira-Schiber/TempoControl",
+   "repo_url": "https://github.com/Shira-Schiber/TempoControl",
+   "verification": "未做数值对照（官方原类）。另隔离加载官方七个引导方法与两条损失公式，在原网格上用相同输入比较单概念及双概念的损失、相关系数和输入梯度。",
+   "missing": [
+    "mechanism",
+    "formula"
+   ],
+   "id": "2026-TempoControl-Temporal-Attention-Guidance",
+   "en": {
+    "title": "TempoControl: Temporal Attention Guidance for Text-to-Video Models",
+    "venue": "CVPR  · arXiv 2510.02226v3",
+    "authors": "Shira Schiber, Ofir Lindenbaum, Idan Schwartz",
+    "license": "Apache-2.0",
+    "module_type": "Attention",
+    "year_source": "the README"
+   }
+  },
+  {
    "name_en": "TileSparse Decode Attention",
    "name_zh": "双维分块稀疏解码注意力",
    "title": "TileSparse: Arithmetic-Intensity-Aware Sparse Attention for Compute-Bound LLM Decoding。ICML 2026。PMLR 306",
@@ -105638,6 +106319,15 @@
    ],
    "id": "2026-TileSparse-Decode-Attention",
    "mechanism_basis": "abstract",
+   "figure": {
+    "file": "figures/house/2026-TileSparse-Decode-Attention.svg",
+    "fig_no": null,
+    "caption": "Page estimates select keys and query heads, then masked dot products and Softmax weight the values for each decoding query.",
+    "caption_zh": "页分数决定保留哪些键页和查询头，再对加掩码的点积做 Softmax，并汇总对应的值。",
+    "source_url": null,
+    "license": null,
+    "house": true
+   },
    "en": {
     "venue": "ICML",
     "mechanism": "With MLA, decoding attention becomes compute-bound, and not every query head needs every key. TileSparse computes all heads only on its most important key pages and a subset of heads on the rest, spending the saved compute on retrieving more pages.",
@@ -107880,7 +108570,7 @@
    {
     "field": "计算机视觉",
     "en": "Computer Vision",
-    "count": 676,
+    "count": 683,
     "tasks": [
      {
       "task": "视觉骨干与通用模块",
@@ -107900,7 +108590,7 @@
      {
       "task": "图像生成与编辑",
       "en": "Generation & Editing",
-      "count": 84
+      "count": 86
      },
      {
       "task": "三维视觉与自动驾驶",
@@ -107915,7 +108605,7 @@
      {
       "task": "视频与动作理解",
       "en": "Video & Action",
-      "count": 39
+      "count": 44
      },
      {
       "task": "图像分类与识别",
@@ -109846,7 +110536,7 @@
   ],
   "fields": {
    "计算机视觉": {
-    "collected": 618,
+    "collected": 625,
     "skipped": 48,
     "pending": 4,
     "candidate": 6
@@ -121121,6 +121811,111 @@
     "status": "collected",
     "src": "author",
     "year": 2025
+   },
+   {
+    "id": "2026-SVOO-Semantic-Video-Sparse-Attention",
+    "kind": "exhibit",
+    "label": "SVOO Semantic Video Sparse Attention",
+    "label_zh": "视频语义稀疏注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2026
+   },
+   {
+    "id": "venue:ICML  · PMLR 306，arXiv 2603.18636",
+    "kind": "venue",
+    "label": "ICML  · PMLR 306，arXiv 2603.18636",
+    "label_en": "ICML  · PMLR 306，arXiv 2603.18636"
+   },
+   {
+    "id": "2026-TempoControl-Temporal-Attention-Guidance",
+    "kind": "exhibit",
+    "label": "TempoControl Temporal Attention Guidance",
+    "label_zh": "文本生成视频时间注意力引导",
+    "status": "collected",
+    "src": "author",
+    "year": 2026
+   },
+   {
+    "id": "venue:CVPR  · arXiv 2510.02226v3",
+    "kind": "venue",
+    "label": "CVPR  · arXiv 2510.02226v3",
+    "label_en": "CVPR  · arXiv 2510.02226v3"
+   },
+   {
+    "id": "2021-STARK-Spatio-Temporal-Cross-Attention",
+    "kind": "exhibit",
+    "label": "STARK Spatio-Temporal Cross-Attention",
+    "label_zh": "跟踪时空交叉注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2021
+   },
+   {
+    "id": "venue:ICCV  · arXiv 2103.17154 · 会议论文",
+    "kind": "venue",
+    "label": "ICCV  · arXiv 2103.17154 · 会议论文",
+    "label_en": "ICCV  · arXiv 2103.17154 · 会议论文"
+   },
+   {
+    "id": "2021-TransT-Siamese-Feature-Fusion-Attention",
+    "kind": "exhibit",
+    "label": "TransT Siamese Feature Fusion Attention",
+    "label_zh": "孪生跟踪特征融合注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2021
+   },
+   {
+    "id": "venue:CVPR  · arXiv 2103.15436",
+    "kind": "venue",
+    "label": "CVPR  · arXiv 2103.15436",
+    "label_en": "CVPR  · arXiv 2103.15436"
+   },
+   {
+    "id": "2022-ToMP-Target-Model-Attention",
+    "kind": "exhibit",
+    "label": "ToMP Target Model Attention",
+    "label_zh": "跟踪目标模型预测注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2022
+   },
+   {
+    "id": "venue:CVPR  · arXiv 2203.11192 · 会议论文",
+    "kind": "venue",
+    "label": "CVPR  · arXiv 2203.11192 · 会议论文",
+    "label_en": "CVPR  · arXiv 2203.11192 · 会议论文"
+   },
+   {
+    "id": "2022-OSTrack-Template-Search-Joint-Attention",
+    "kind": "exhibit",
+    "label": "OSTrack Template-Search Joint Attention",
+    "label_zh": "模板与搜索区域联合注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2022
+   },
+   {
+    "id": "venue:ECCV  · arXiv 2203.11991v4",
+    "kind": "venue",
+    "label": "ECCV  · arXiv 2203.11991v4",
+    "label_en": "ECCV  · arXiv 2203.11991v4"
+   },
+   {
+    "id": "2023-SeqTrack-Autoregressive-Tracking-Attention",
+    "kind": "exhibit",
+    "label": "SeqTrack Autoregressive Tracking Attention",
+    "label_zh": "自回归跟踪解码注意力",
+    "status": "collected",
+    "src": "author",
+    "year": 2023
+   },
+   {
+    "id": "venue:CVPR  · arXiv 2304.14394v1 · 会议论文",
+    "kind": "venue",
+    "label": "CVPR  · arXiv 2304.14394v1 · 会议论文",
+    "label_en": "CVPR  · arXiv 2304.14394v1 · 会议论文"
    },
    {
     "id": "2024-CANConv",
@@ -142598,6 +143393,111 @@
     "kind": "year"
    },
    {
+    "source": "2026-SVOO-Semantic-Video-Sparse-Attention",
+    "target": "hall:计算机视觉/图像生成与编辑",
+    "kind": "hall"
+   },
+   {
+    "source": "2026-SVOO-Semantic-Video-Sparse-Attention",
+    "target": "venue:ICML  · PMLR 306，arXiv 2603.18636",
+    "kind": "venue"
+   },
+   {
+    "source": "2026-SVOO-Semantic-Video-Sparse-Attention",
+    "target": "year:2026",
+    "kind": "year"
+   },
+   {
+    "source": "2026-TempoControl-Temporal-Attention-Guidance",
+    "target": "hall:计算机视觉/图像生成与编辑",
+    "kind": "hall"
+   },
+   {
+    "source": "2026-TempoControl-Temporal-Attention-Guidance",
+    "target": "venue:CVPR  · arXiv 2510.02226v3",
+    "kind": "venue"
+   },
+   {
+    "source": "2026-TempoControl-Temporal-Attention-Guidance",
+    "target": "year:2026",
+    "kind": "year"
+   },
+   {
+    "source": "2021-STARK-Spatio-Temporal-Cross-Attention",
+    "target": "hall:计算机视觉/视频与动作理解",
+    "kind": "hall"
+   },
+   {
+    "source": "2021-STARK-Spatio-Temporal-Cross-Attention",
+    "target": "venue:ICCV  · arXiv 2103.17154 · 会议论文",
+    "kind": "venue"
+   },
+   {
+    "source": "2021-STARK-Spatio-Temporal-Cross-Attention",
+    "target": "year:2021",
+    "kind": "year"
+   },
+   {
+    "source": "2021-TransT-Siamese-Feature-Fusion-Attention",
+    "target": "hall:计算机视觉/视频与动作理解",
+    "kind": "hall"
+   },
+   {
+    "source": "2021-TransT-Siamese-Feature-Fusion-Attention",
+    "target": "venue:CVPR  · arXiv 2103.15436",
+    "kind": "venue"
+   },
+   {
+    "source": "2021-TransT-Siamese-Feature-Fusion-Attention",
+    "target": "year:2021",
+    "kind": "year"
+   },
+   {
+    "source": "2022-ToMP-Target-Model-Attention",
+    "target": "hall:计算机视觉/视频与动作理解",
+    "kind": "hall"
+   },
+   {
+    "source": "2022-ToMP-Target-Model-Attention",
+    "target": "venue:CVPR  · arXiv 2203.11192 · 会议论文",
+    "kind": "venue"
+   },
+   {
+    "source": "2022-ToMP-Target-Model-Attention",
+    "target": "year:2022",
+    "kind": "year"
+   },
+   {
+    "source": "2022-OSTrack-Template-Search-Joint-Attention",
+    "target": "hall:计算机视觉/视频与动作理解",
+    "kind": "hall"
+   },
+   {
+    "source": "2022-OSTrack-Template-Search-Joint-Attention",
+    "target": "venue:ECCV  · arXiv 2203.11991v4",
+    "kind": "venue"
+   },
+   {
+    "source": "2022-OSTrack-Template-Search-Joint-Attention",
+    "target": "year:2022",
+    "kind": "year"
+   },
+   {
+    "source": "2023-SeqTrack-Autoregressive-Tracking-Attention",
+    "target": "hall:计算机视觉/视频与动作理解",
+    "kind": "hall"
+   },
+   {
+    "source": "2023-SeqTrack-Autoregressive-Tracking-Attention",
+    "target": "venue:CVPR  · arXiv 2304.14394v1 · 会议论文",
+    "kind": "venue"
+   },
+   {
+    "source": "2023-SeqTrack-Autoregressive-Tracking-Attention",
+    "target": "year:2023",
+    "kind": "year"
+   },
+   {
     "source": "2024-CANConv",
     "target": "hall:计算机视觉/图像复原与增强",
     "kind": "hall"
@@ -159113,6 +160013,13 @@
    "2024-Open-Sora-Plan-Video-Attention": "unresolved",
    "2024-LTX-Video-Space-Time-Attention": "unresolved",
    "2025-Latte-Factorized-Latent-Video-Attention": "unresolved",
+   "2026-SVOO-Semantic-Video-Sparse-Attention": "unresolved",
+   "2026-TempoControl-Temporal-Attention-Guidance": "unresolved",
+   "2021-STARK-Spatio-Temporal-Cross-Attention": "unresolved",
+   "2021-TransT-Siamese-Feature-Fusion-Attention": "unresolved",
+   "2022-ToMP-Target-Model-Attention": "unresolved",
+   "2022-OSTrack-Template-Search-Joint-Attention": "unresolved",
+   "2023-SeqTrack-Autoregressive-Tracking-Attention": "unresolved",
    "2024-CANConv": "unresolved",
    "2024-FlashAttention-3": "unresolved",
    "2024-MInference": "unresolved",

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="ins" data-to="projs" d="M 275 523 L 275 475" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="projs" data-to="dens" d="M 219 419 L 208 353" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="projs" data-to="nums" d="M 331 419 L 353 353" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="dens" data-to="muls" d="M 178 297 L 215 227" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="nums" data-to="muls" d="M 387 297 L 335 227" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="muls" data-to="outs" d="M 275 171 L 275 100" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="inc" data-to="projc" d="M 686 523 L 686 475" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="projc" data-to="denc" d="M 630 419 L 619 353" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="projc" data-to="numc" d="M 742 419 L 764 353" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="denc" data-to="mulc" d="M 589 297 L 626 227" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="numc" data-to="mulc" d="M 798 297 L 746 227" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="mulc" data-to="outc" d="M 686 171 L 686 100" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="ins" data-to="outs" d="M 202 523 L 48 506 L 48 128 L 185 100" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="inc" data-to="outc" d="M 761 523 L 920 500 L 920 130 L 776 100" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="ins"><rect x="183.5" y="523" width="183" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="275" y="549.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Spatial input</text>
+</g>
+<g class="node" id="projs"><rect x="135.5" y="419" width="279" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="275" y="443.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Conv 1×1 → Q, K, V</text>
+<text x="275" y="461.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Flatten positions, L2-normalize Q and K</text>
+</g>
+<g class="node" id="dens"><rect x="84" y="297" width="188" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="178" y="321.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Spatial normalizer</text>
+<text x="178" y="339.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">r = 1 / (N + Q(sum K + ε))</text>
+</g>
+<g class="node" id="nums"><rect x="291" y="297" width="192" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="387" y="321.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Spatial contraction</text>
+<text x="387" y="339.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">S = Σpos V + (Q(KVᵀ))ᵀ</text>
+</g>
+<g class="node" id="muls"><rect x="182.5" y="171" width="185" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="275" y="195.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Normalize per position</text>
+<text x="275" y="213.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">r × S, then reshape</text>
+</g>
+<g class="node" id="outs"><rect x="169.5" y="44" width="211" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="275" y="68.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Residual output</text>
+<text x="275" y="86.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">X + γ × attended features</text>
+</g>
+<g class="node" id="inc"><rect x="594.5" y="523" width="183" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="686" y="549.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Channel input</text>
+</g>
+<g class="node" id="projc"><rect x="546.5" y="419" width="279" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="686" y="443.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Flatten X → Q, K, V</text>
+<text x="686" y="461.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">L2-normalize Q and K</text>
+</g>
+<g class="node" id="denc"><rect x="495" y="297" width="188" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="589" y="321.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Channel normalizer</text>
+<text x="589" y="339.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">r = 1 / (N + Kᵀ(sum Q + ε))</text>
+</g>
+<g class="node" id="numc"><rect x="693" y="297" width="210" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="798" y="321.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Contract over channels</text>
+<text x="798" y="339.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">S = Σch V + (VKᵀ)Q</text>
+</g>
+<g class="node" id="mulc"><rect x="593.5" y="171" width="185" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="686" y="195.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Normalize per channel</text>
+<text x="686" y="213.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">r × S, then reshape</text>
+</g>
+<g class="node" id="outc"><rect x="580.5" y="44" width="211" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="686" y="68.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Residual output</text>
+<text x="686" y="86.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">X + γ × attended features</text>
+</g>
+<text x="281" y="504" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge ins--projs">B×C×H×W</text>
+<text x="221" y="390" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge projs--dens">Q, K</text>
+<text x="350" y="392" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge projs--nums">Q, K, V</text>
+<text x="206" y="268" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge dens--muls">B×N</text>
+<text x="372" y="266" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge nums--muls">B×C×N</text>
+<text x="281" y="141" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge muls--outs">B×C×H×W</text>
+<text x="692" y="504" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge inc--projc">B×C×H×W</text>
+<text x="632" y="390" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge projc--denc">Q, K</text>
+<text x="761" y="392" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge projc--numc">Q, K, V</text>
+<text x="617" y="268" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge denc--mulc">B×C</text>
+<text x="783" y="266" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge numc--mulc">B×C×N</text>
+<text x="692" y="141" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge mulc--outc">B×C×H×W</text>
+<text x="137" y="512" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge ins--outs">Original X</text>
+<text x="857" y="524" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge inc--outc">Original X</text>
+<text x="480" y="40" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="note">N = H × W</text>
+</svg>

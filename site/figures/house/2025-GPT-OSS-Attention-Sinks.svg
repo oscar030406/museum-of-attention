@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="proj" d="M 506 527 L 506 505" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="out" d="M 574 527 L 877 488 L 877 94 L 634 57" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="proj" data-to="rope" d="M 447 449 L 431 420" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="proj" data-to="mix" d="M 592 449 L 710 397 L 710 134 L 565 120" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="rope" data-to="score" d="M 431 378 L 431 347" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="score" data-to="sm" d="M 431 291 L 385 260" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="sink" data-to="sm" d="M 146 291 L 256 260" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="sm" data-to="drop" d="M 322 204 L 322 181" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="drop" data-to="mix" d="M 366 139 L 457 120" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 502 86 L 543 57" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="421.5" y="527" width="169" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="506" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Input tokens X</text>
+</g>
+<g class="node" id="proj"><rect x="387.5" y="449" width="237" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="506" y="473.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">RMSNorm + Linear → Q, K, V</text>
+<text x="506" y="491.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Group query heads by KV head</text>
+</g>
+<g class="node" id="rope"><rect x="354" y="378" width="154" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="431" y="404.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">RoPE on Q and K</text>
+</g>
+<g class="node" id="score"><rect x="306.5" y="291" width="249" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="431" y="315.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Masked dot-product scores</text>
+<text x="431" y="333.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Causal, with a window on even layers</text>
+</g>
+<g class="node" id="sink"><rect x="65" y="291" width="162" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="146" y="315.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Learned sink logits</text>
+<text x="146" y="333.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">One per query head</text>
+</g>
+<g class="node" id="sm"><rect x="193.5" y="204" width="257" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="322" y="228.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Append sink + Softmax</text>
+<text x="322" y="246.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Normalize over T real keys and sink</text>
+</g>
+<g class="node" id="drop"><rect x="227" y="139" width="190" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="322" y="165.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Drop sink probability</text>
+</g>
+<g class="node" id="mix"><rect x="412.5" y="86" width="179" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="502" y="108.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Mix real token values</text>
+</g>
+<g class="node" id="out"><rect x="427.5" y="25" width="231" height="32" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="543" y="46.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear + X → Output tokens</text>
+</g>
+<text x="512" y="518" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--proj">T×C</text>
+<text x="447" y="434" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge proj--rope">Q: T×h×g×d   K: T×h×d</text>
+<text x="663" y="437" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge proj--mix">V: T×h×g×d after broadcast</text>
+<text x="437" y="360" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge rope--score">Rotated Q, K</text>
+<text x="417" y="273" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge score--sm">h×g×T×T</text>
+<text x="212" y="288" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sink--sm">h×g×T×1</text>
+<text x="328" y="194" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sm--drop">h×g×T×(T+1)</text>
+<text x="419" y="141" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge drop--mix">h×g×T×T</text>
+<text x="525" y="82" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge mix--out">T×(hgd)</text>
+<text x="681" y="45" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="note">Output: T×C</text>
+</svg>

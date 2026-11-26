@@ -1313,5 +1313,110 @@
     "file": "figures/house/2026-GRAPE.svg",
     "caption_en": "Token features steer causal attention through cumulative query–key rotations or a distance penalty gated by each key, then heads merge into output tokens.",
     "caption_zh": "用令牌特征控制因果注意力。一路按累积相位旋转查询和键，另一路按键调节距离惩罚，最后合并注意力头。"
+  },
+  "2018-SHAN-Hierarchical-Session-Attention": {
+    "file": "figures/house/2018-SHAN-Hierarchical-Session-Attention.svg",
+    "caption_en": "User-conditioned weights pool the entire history, then pool that summary together with recent items to produce one session vector.",
+    "caption_zh": "用户向量先给整段历史加权，再给历史摘要和最近物品加权，得到会话向量。"
+  },
+  "2019-FDSA-Item-Feature-Dual-Attention": {
+    "file": "figures/house/2019-FDSA-Item-Feature-Dual-Attention.svg",
+    "caption_en": "Pool each item's attributes, encode items and pooled attributes in separate causal streams, then fuse their last valid states.",
+    "caption_zh": "先对每件物品的属性加权，再分别编码物品和属性序列，融合两路最后一个非填充位置。"
+  },
+  "2019-GCSAN-Graph-Contextualized-Attention": {
+    "file": "figures/house/2019-GCSAN-Graph-Contextualized-Attention.svg",
+    "caption_en": "Graph message passing builds the session sequence, then causal self-attention refines it and the two last valid states are blended.",
+    "caption_zh": "图消息传递先生成会话序列，因果自注意力再更新序列，最后混合两路的末尾非填充状态。"
+  },
+  "2020-DIFM-Field-Wise-Attention": {
+    "file": "figures/house/2020-DIFM-Field-Wise-Attention.svg",
+    "caption_en": "Field self-attention and a dense network each predict field factors, which are added and multiplied into the original embeddings.",
+    "caption_zh": "字段自注意力和全连接网络各自估计字段权重，再把两组权重相加并乘回原嵌入。"
+  },
+  "2020-InterHAt-Hierarchical-Feature-Attention": {
+    "file": "figures/house/2020-InterHAt-Hierarchical-Feature-Attention.svg",
+    "caption_en": "Three attention pools summarize progressively reweighted fields, then a second Softmax weights those three summaries into one vector.",
+    "caption_zh": "三次注意力池化依次汇总重标定的字段，再给三个汇总向量加权，得到一个向量。"
+  },
+  "2020-LESSR-Shortcut-Graph-Attention": {
+    "file": "figures/house/2020-LESSR-Shortcut-Graph-Attention.svg",
+    "caption_en": "Directed shortcut edges score source queries against destination keys, then normalize incoming weights and sum the corresponding source values.",
+    "caption_zh": "捷径边用起点查询和终点键打分，按终点归一化入边权重，再求起点值的加权和。"
+  },
+  "2020-STANet-Pyramid-Spatiotemporal-Attention": {
+    "file": "figures/house/2020-STANet-Pyramid-Spatiotemporal-Attention.svg",
+    "caption_en": "Within corresponding windows from two times, attention mixes both feature maps before the pyramid outputs are concatenated and projected.",
+    "caption_zh": "注意力在两个时相的对应窗口内混合特征，再拼接各尺度结果并投影。"
+  },
+  "2021-RoseTTAFold-Three-Track-Attention": {
+    "file": "figures/house/2021-RoseTTAFold-Three-Track-Attention.svg",
+    "caption_en": "Alignment attention informs pair features, which then guide alignment updates alongside attention constrained by residue distances.",
+    "caption_zh": "多序列比对的注意力图参与更新成对特征，成对特征和残基距离再引导比对更新。"
+  },
+  "2022-DC-Swin-Shared-Spatial-and-Channel-Attention": {
+    "file": "figures/house/2022-DC-Swin-Shared-Spatial-and-Channel-Attention.svg",
+    "caption_en": "Spatial and channel branches use different linear contractions to reweight features, then each returns a scaled residual at its own resolution.",
+    "caption_zh": "空间和通道注意力沿不同的轴计算线性加权，再把缩放后的结果加回各自的输入。"
+  },
+  "2022-MedFormer-Bidirectional-Attention": {
+    "file": "figures/house/2022-MedFormer-Bidirectional-Attention.svg",
+    "caption_en": "Voxel and semantic-map queries share one score matrix, whose two Softmax axes let each side aggregate values from the other.",
+    "caption_zh": "体素和语义图共用一张打分矩阵，沿两个轴分别归一化，再各自汇集对方的值。"
+  },
+  "2023-ESMFold-Pair-Biased-Sequence-Attention": {
+    "file": "figures/house/2023-ESMFold-Pair-Biased-Sequence-Attention.svg",
+    "caption_en": "Pair features bias masked sequence attention, then gated sequence updates supply products and differences that refine the pair features.",
+    "caption_zh": "成对特征给带掩码的序列注意力加偏置，更新后的序列再用乘积和差值更新成对特征。"
+  },
+  "2023-RoseTTAFold2-MSA-Pair-Attention": {
+    "file": "figures/house/2023-RoseTTAFold2-MSA-Pair-Attention.svg",
+    "caption_en": "Pair and distance features bias row attention, column attention mixes alignment sequences, and averaged outer products update the pair features.",
+    "caption_zh": "成对和距离特征给行注意力加偏置，列注意力混合比对序列，平均外积回写成对特征。"
+  },
+  "2024-BiFA-Bitemporal-Interaction-Attention": {
+    "file": "figures/house/2024-BiFA-Bitemporal-Interaction-Attention.svg",
+    "caption_en": "Queries from the first time score channels from the second time, whose values are mixed and projected back into the first stream.",
+    "caption_zh": "第一个时相的查询给第二个时相的通道打分，混合其值，再投影回第一个时相。"
+  },
+  "2024-KVQuant": {
+    "file": "figures/house/2024-KVQuant.svg",
+    "caption_en": "The cache packs inliers, stores outliers and the first token separately, then reconstructs keys and values for rotary causal attention.",
+    "caption_zh": "缓存打包范围内的值，另存异常值和首词元，再重建键和值以计算旋转位置编码下的因果注意力。"
+  },
+  "2025-ACL-Restoration-Linear-Attention": {
+    "file": "figures/house/2025-ACL-Restoration-Linear-Attention.svg",
+    "caption_en": "Positive query and key maps mix image tokens through a compact key-value product, while depthwise position terms and a SiLU gate shape the output.",
+    "caption_zh": "正值查询和键通过紧凑的键值乘积混合图像词元，深度卷积位置项和 SiLU 门共同调节输出。"
+  },
+  "2025-GPT-OSS-Attention-Sinks": {
+    "file": "figures/house/2025-GPT-OSS-Attention-Sinks.svg",
+    "caption_en": "Each head adds a learned logit to the masked Softmax, drops that probability, and mixes only the real token values.",
+    "caption_zh": "每个头在带掩码的 Softmax 中加入一个学习得到的分数，舍去对应权重，再混合实际词元的值。"
+  },
+  "2025-MiniMax-M1-Hybrid-Attention": {
+    "file": "figures/house/2025-MiniMax-M1-Hybrid-Attention.svg",
+    "caption_en": "A decayed linear layer mixes and gates token values, then a full-attention layer applies rotary grouped-query attention to the result.",
+    "caption_zh": "线性注意力用衰减状态混合值并加门控，下一层对所得词元执行带旋转位置编码的分组查询注意力。"
+  },
+  "2025-ModernBERT-Alternating-Local-Attention": {
+    "file": "figures/house/2025-ModernBERT-Alternating-Local-Attention.svg",
+    "caption_en": "Each layer uses its own rotary settings and a global or sliding-window bidirectional mask before mixing token values.",
+    "caption_zh": "各层按类型选择旋转位置编码和双向掩码，再用全局或滑窗注意力混合词元的值。"
+  },
+  "2025-TabDPT-In-Context-Row-Attention": {
+    "file": "figures/house/2025-TabDPT-In-Context-Row-Attention.svg",
+    "caption_en": "All rows query the context prefix, whose values also carry target embeddings, and gated attention returns a residual with SwiGLU.",
+    "caption_zh": "所有行都查询上下文行，上下文的值还含目标嵌入，经门控注意力和 SwiGLU 得到残差。"
+  },
+  "2026-MSPT-Ball-Tree-Multiscale-Attention": {
+    "file": "figures/house/2026-MSPT-Ball-Tree-Multiscale-Attention.svg",
+    "caption_en": "Ball-tree chunks share pooled tokens during local self-attention, then point outputs return to their original order and shared tokens are averaged.",
+    "caption_zh": "球树分块在各块的自注意力中共享池化词元，再恢复点的原顺序，并对共享词元取均值。"
+  },
+  "2026-TileSparse-Decode-Attention": {
+    "file": "figures/house/2026-TileSparse-Decode-Attention.svg",
+    "caption_en": "Page estimates select keys and query heads, then masked dot products and Softmax weight the values for each decoding query.",
+    "caption_zh": "页分数决定保留哪些键页和查询头，再对加掩码的点积做 Softmax，并汇总对应的值。"
   }
 }

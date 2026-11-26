@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="x" data-to="q" d="M 222 517 L 222 462" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="y" data-to="kv" d="M 664 517 L 664 462" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="q" data-to="score" d="M 222 406 L 339 352.5" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="kv" data-to="score" d="M 620 406 L 487 352.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="kv" data-to="mix" d="M 718 406 L 647 234" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="score" data-to="mix" d="M 411 279.5 L 515 234" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="mix" data-to="out" d="M 585 178 L 585 113" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="x"><rect x="132.5" y="517" width="179" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="222" y="543.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">First time tokens</text>
+</g>
+<g class="node" id="y"><rect x="567" y="517" width="194" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="664" y="543.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Second time tokens</text>
+</g>
+<g class="node" id="q"><rect x="134" y="406" width="176" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="222" y="430.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Linear → Q</text>
+<text x="222" y="448.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Tokens on the last axis</text>
+</g>
+<g class="node" id="kv"><rect x="565.5" y="406" width="197" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="664" y="430.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear → K and V</text>
+<text x="664" y="448.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Tokens on the last axis</text>
+</g>
+<g class="node" id="score"><rect x="271.5" y="279.5" width="279" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="411" y="303.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Cross-channel weights</text>
+<text x="411" y="321.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax(scale × QKᵀ) over key channels</text>
+<text x="411" y="339.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dropout</text>
+</g>
+<g class="node" id="mix"><rect x="474.5" y="178" width="221" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="585" y="202.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Mix V across channels</text>
+<text x="585" y="220.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Attention × V</text>
+</g>
+<g class="node" id="out"><rect x="437.5" y="57" width="295" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="585" y="81.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Merge heads, transpose, Linear</text>
+<text x="585" y="99.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dropout → Updated first-time tokens</text>
+</g>
+<text x="228" y="495" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--q">B×N×C</text>
+<text x="670" y="495" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge y--kv">B×N×C</text>
+<text x="288" y="388" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge q--score">Q: B×h×d×N</text>
+<text x="565" y="381" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge kv--score">K: B×h×d×N</text>
+<text x="689" y="325" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge kv--mix">V: B×h×d×N</text>
+<text x="472" y="267" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge score--mix">B×h×d×d</text>
+<text x="591" y="151" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge mix--out">B×h×d×N</text>
+<text x="585" y="40" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="note">Output: B×N×C</text>
+</svg>

@@ -20,7 +20,7 @@
 <g class="node" id="items"><rect x="98" y="524" width="160" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
 <text x="178" y="550.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Item embeddings</text>
 </g>
-<g class="node" id="attr"><rect x="609" y="524" width="168" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<g class="node" id="attr"><rect x="600" y="524" width="186" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
 <text x="693" y="550.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Attribute embeddings</text>
 </g>
 <g class="node" id="score"><rect x="516" y="421.5" width="224" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
@@ -28,7 +28,7 @@
 <text x="628" y="463.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear + ReLU + Linear</text>
 <text x="628" y="481.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax over attributes</text>
 </g>
-<g class="node" id="pool"><rect x="639.5" y="350" width="177" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<g class="node" id="pool"><rect x="626.5" y="350" width="203" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
 <text x="728" y="376.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Sum weighted attributes</text>
 </g>
 <g class="node" id="ip"><rect x="71" y="258" width="214" height="56" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
@@ -57,17 +57,17 @@
 <text x="455" y="97.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Gather last valid states</text>
 <text x="455" y="115.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Concat both vectors</text>
 </g>
-<g class="node" id="out"><rect x="277.5" y="25" width="355" height="32" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<g class="node" id="out"><rect x="260" y="25" width="390" height="32" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
 <text x="455" y="46.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Linear + LayerNorm + Dropout → Session vector</text>
 </g>
-<text x="677.5" y="514.25" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge attr--score">B×T×F×D</text>
-<text x="667.0" y="411.75" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge score--pool">B×T×F</text>
-<text x="738.0" y="337.0" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge pool--ap">B×T×D</text>
-<text x="188.0" y="424.0" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge items--ip">B×T×D</text>
-<text x="188.0" y="246.25" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge ip--it">B×T×D</text>
-<text x="738.0" y="246.25" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge ap--ft">B×T×D</text>
-<text x="287.5" y="145.25" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge it--last">B×T×D</text>
-<text x="640.5" y="145.25" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge ft--last">B×T×D</text>
-<text x="465.0" y="70.0" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge last--out">B×2D</text>
+<text x="674" y="515" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge attr--score">B×T×F×D</text>
+<text x="672" y="414" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge score--pool">B×T×F</text>
+<text x="734" y="337" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge pool--ap">B×T×D</text>
+<text x="184" y="424" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge items--ip">B×T×D</text>
+<text x="184" y="246" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge ip--it">B×T×D</text>
+<text x="734" y="246" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge ap--ft">B×T×D</text>
+<text x="302" y="153" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge it--last">B×T×D</text>
+<text x="645" y="138" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge ft--last">B×T×D</text>
+<text x="461" y="70" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge last--out">B×2D</text>
 <text x="655" y="45" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="note">Output: B×D</text>
 </svg>

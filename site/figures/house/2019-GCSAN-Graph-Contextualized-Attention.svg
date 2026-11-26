@@ -26,11 +26,11 @@
 <text x="429" y="468.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear → in/out sums → Concat</text>
 <text x="429" y="486.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Reset and update gates per step</text>
 </g>
-<g class="node" id="seq"><rect x="313.5" y="349" width="231" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<g class="node" id="seq"><rect x="304.5" y="349" width="249" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
 <text x="429" y="373.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Gather nodes in session order</text>
 <text x="429" y="391.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Index by item aliases</text>
 </g>
-<g class="node" id="mask"><rect x="63.5" y="349" width="171" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<g class="node" id="mask"><rect x="57" y="349" width="184" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
 <text x="149" y="373.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Causal padding mask</text>
 <text x="149" y="391.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">From item IDs</text>
 </g>
@@ -52,14 +52,14 @@
 <g class="node" id="out"><rect x="402.5" y="26" width="157" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
 <text x="481" y="48.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Session vector</text>
 </g>
-<text x="318.0" y="517.75" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge nodes--msg">B×N×D</text>
-<text x="563.0" y="517.75" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge adj--msg">B×N×2N</text>
-<text x="439.0" y="420.75" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge msg--seq">B×N×D</text>
-<text x="376.0" y="335.75" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge seq--attn">B×T×D</text>
-<text x="199.0" y="335.75" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mask--attn">B×1×T×T</text>
-<text x="592.5" y="278.0" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge seq--local">B×T×D</text>
-<text x="324.0" y="223.25" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge attn--global">B×T×D</text>
-<text x="380.0" y="147.5" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge global--blend">B×D</text>
-<text x="613.5" y="147.5" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge local--blend">B×D</text>
+<text x="328" y="521" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge nodes--msg">B×N×D</text>
+<text x="570" y="514" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge adj--msg">B×N×2N</text>
+<text x="435" y="421" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge msg--seq">B×N×D</text>
+<text x="375" y="335" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge seq--attn">B×T×D</text>
+<text x="201" y="339" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mask--attn">B×1×T×T</text>
+<text x="591" y="277" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge seq--local">B×T×D</text>
+<text x="320" y="223" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge attn--global">B×T×D</text>
+<text x="387" y="152" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge global--blend">B×D</text>
+<text x="616" y="141" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge local--blend">B×D</text>
 <text x="491.0" y="72.0" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge blend--out">B×D</text>
 </svg>

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="msa" data-to="inject" d="M 215 527 L 233 501" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="state" data-to="inject" d="M 411 527 L 362 501" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="rbf" data-to="bias" d="M 620 527 L 616 464.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="pair" data-to="bias" d="M 776 527 L 758 464.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="pair" data-to="pout" d="M 873 527 L 904 475 L 904 94 L 822 57" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="inject" data-to="qw" d="M 235 445 L 244 416.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="inject" data-to="row" d="M 379 445 L 475 398 L 471 327.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="qw" data-to="row" d="M 318 343.5 L 350 327.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="bias" data-to="row" d="M 604 391.5 L 570 327.5" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="row" data-to="col" d="M 449 254.5 L 449 241.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="col" data-to="ffn" d="M 449 168.5 L 449 160" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="ffn" data-to="pdelta" d="M 522 126 L 574 110" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="ffn" data-to="mout" d="M 388 126 L 281 57" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="pdelta" data-to="pout" d="M 659 64 L 687 57" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="msa"><rect x="127.5" y="527" width="175" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="215" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Alignment features</text>
+</g>
+<g class="node" id="state"><rect x="328.5" y="527" width="165" height="42" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="411" y="553.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Structure states</text>
+</g>
+<g class="node" id="rbf"><rect x="525" y="527" width="190" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="620" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Distance RBF features</text>
+</g>
+<g class="node" id="pair"><rect x="739" y="527" width="160" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="819" y="553.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Pair features</text>
+</g>
+<g class="node" id="inject"><rect x="170" y="445" width="248" height="56" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="294" y="469.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Update first alignment row</text>
+<text x="294" y="487.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">LayerNorm + Linear on state</text>
+</g>
+<g class="node" id="bias"><rect x="553" y="391.5" width="266" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="686" y="415.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Project pair + distance bias</text>
+<text x="686" y="433.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">LayerNorm(pair) + Linear(RBF)</text>
+<text x="686" y="451.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">LayerNorm + Linear to heads</text>
+</g>
+<g class="node" id="qw"><rect x="103.5" y="343.5" width="281" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="244" y="367.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Sequence weights</text>
+<text x="244" y="385.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">First-row Q scores all sequence K</text>
+<text x="244" y="403.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax over sequences at each position</text>
+</g>
+<g class="node" id="row"><rect x="288.5" y="254.5" width="321" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="449" y="278.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Pair-biased attention across positions</text>
+<text x="449" y="296.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Sum weighted QKᵀ across sequences + bias</text>
+<text x="449" y="314.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax, mix V, Sigmoid gate + Linear</text>
+</g>
+<g class="node" id="col"><rect x="297.5" y="168.5" width="303" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="449" y="192.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Attention across sequences</text>
+<text x="449" y="210.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Full or mean-query Softmax, then gate</text>
+<text x="449" y="228.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear and residuals for both axes</text>
+</g>
+<g class="node" id="ffn"><rect x="328" y="126" width="242" height="34" rx="3" fill="#f4efe2" stroke="#17140f" stroke-width="1.8"/>
+<text x="449" y="148.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Residual FFN</text>
+</g>
+<g class="node" id="pdelta"><rect x="537" y="64" width="244" height="46" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="659" y="83.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Outer-product mean</text>
+<text x="659" y="101.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Project both sides, average, Linear</text>
+</g>
+<g class="node" id="mout"><rect x="173.5" y="25" width="215" height="32" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="281" y="46.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Updated alignment</text>
+</g>
+<g class="node" id="pout"><rect x="619" y="25" width="220" height="32" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="729" y="46.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Add original pair features</text>
+</g>
+<text x="234" y="519" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge msa--inject">B×N×L×D</text>
+<text x="398" y="515" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge state--inject">B×L×S</text>
+<text x="624" y="502" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge rbf--bias">B×L×L×R</text>
+<text x="775" y="502" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge pair--bias">B×L×L×P</text>
+<text x="818" y="485" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge pair--pout">Original pair</text>
+<text x="248" y="435" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge inject--qw">B×N×L×D</text>
+<text x="210" y="339" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge qw--row">B×N×L×h×1</text>
+<text x="596" y="366" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge bias--row">B×L×L×h</text>
+<text x="459.0" y="253.0" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge row--col">B×N×L×D</text>
+<text x="570" y="123" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge ffn--pdelta">B×N×L×D</text>
+<text x="345" y="89" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge ffn--mout">B×N×L×D</text>
+</svg>

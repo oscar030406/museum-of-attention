@@ -5,65 +5,61 @@
 <marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
 <marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
 </defs>
-<path class="flow" data-from="x" data-to="a1" d="M 323 528 L 336 508.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
-<path class="flow" data-from="x" data-to="x2" d="M 227 528 L 185 490 L 185 431 L 309 425" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
-<path class="flow" data-from="x" data-to="x3" d="M 174 528 L 130 493 L 130 292 L 314 280" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
-<path class="flow" data-from="a1" data-to="x2" d="M 377 435.5 L 377 425" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
-<path class="flow" data-from="x2" data-to="a2" d="M 377 369 L 377 361.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
-<path class="flow" data-from="x2" data-to="x3" d="M 294 369 L 220 365 L 220 284 L 337 280" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
-<path class="flow" data-from="a2" data-to="x3" d="M 377 288.5 L 377 280" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
-<path class="flow" data-from="x3" data-to="a3" d="M 377 224 L 377 218" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
-<path class="flow" data-from="a1" data-to="stack" d="M 488 435.5 L 897 417 L 897 163 L 846 139" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
-<path class="flow" data-from="a2" data-to="stack" d="M 485 288.5 L 755 261 L 750 139" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
-<path class="flow" data-from="a3" data-to="stack" d="M 484 150 L 673 139" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
-<path class="flow" data-from="stack" data-to="weights" d="M 686 111 L 643 109" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
-<path class="flow" data-from="stack" data-to="out" d="M 818 111 L 835 97 L 834 57" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
-<path class="flow" data-from="weights" data-to="out" d="M 633 65 L 703 57" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="x" data-to="a1" d="M 323 528 L 336 509.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="x2" d="M 227 528 L 185 490 L 185 438 L 309 431" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x" data-to="x3" d="M 174 528 L 130 493 L 130 303 L 314 294" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a1" data-to="x2" d="M 377 444.5 L 377 431" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="x2" data-to="a2" d="M 377 385 L 377 372.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="x2" data-to="x3" d="M 294 385 L 220 378 L 220 306 L 337 294" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a2" data-to="x3" d="M 377 307.5 L 377 294" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="x3" data-to="a3" d="M 377 248 L 377 234.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a1" data-to="stack" d="M 488 444.5 L 897 417 L 897 177 L 846 153" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a2" data-to="stack" d="M 485 307.5 L 755 261 L 750 153" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="a3" data-to="stack" d="M 484 169.5 L 673 153" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="stack" data-to="weights" d="M 686 119 L 643 110" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="stack" data-to="out" d="M 818 119 L 835 97 L 834 57" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="weights" data-to="out" d="M 633 66 L 703 57" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
 <g class="node" id="x"><rect x="144" y="528" width="226" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
 <text x="257" y="554.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Contextual field features X</text>
 </g>
-<g class="node" id="a1"><rect x="243" y="435.5" width="268" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
-<text x="377" y="459.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Pool fields → a₁</text>
-<text x="377" y="477.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear + ReLU, dot with context</text>
-<text x="377" y="495.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax over fields + weighted sum</text>
+<g class="node" id="a1"><rect x="243" y="444.5" width="268" height="65" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="377" y="464.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Pool fields → a₁</text>
+<text x="377" y="482.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Linear + ReLU, dot with context</text>
+<text x="377" y="500.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax over fields + weighted sum</text>
 </g>
-<g class="node" id="x2"><rect x="285" y="369" width="184" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
-<text x="377" y="393.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Second-order features</text>
-<text x="377" y="411.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">X₂ = X × a₁ + X</text>
+<g class="node" id="x2"><rect x="285" y="385" width="184" height="46" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="377" y="404.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Second-order features</text>
+<text x="377" y="422.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">X₂ = X × a₁ + X</text>
 </g>
-<g class="node" id="a2"><rect x="243" y="288.5" width="268" height="73" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
-<text x="377" y="312.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Pool fields → a₂</text>
-<text x="377" y="330.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">New projection and context</text>
-<text x="377" y="348.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax over fields + weighted sum</text>
+<g class="node" id="a2"><rect x="243" y="307.5" width="268" height="65" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="377" y="327.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Pool fields → a₂</text>
+<text x="377" y="345.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">New projection and context</text>
+<text x="377" y="363.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax over fields + weighted sum</text>
 </g>
-<g class="node" id="x3"><rect x="285" y="224" width="184" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
-<text x="377" y="248.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Third-order features</text>
-<text x="377" y="266.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">X₃ = X × a₂ + X₂</text>
+<g class="node" id="x3"><rect x="285" y="248" width="184" height="46" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="377" y="267.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Third-order features</text>
+<text x="377" y="285.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">X₃ = X × a₂ + X₂</text>
 </g>
-<g class="node" id="a3"><rect x="243" y="150" width="268" height="68" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
-<text x="377" y="171.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Pool fields → a₃</text>
-<text x="377" y="189.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">New projection and context</text>
-<text x="377" y="207.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax over fields + weighted sum</text>
+<g class="node" id="a3"><rect x="243" y="169.5" width="268" height="65" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="377" y="189.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Pool fields → a₃</text>
+<text x="377" y="207.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">New projection and context</text>
+<text x="377" y="225.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax over fields + weighted sum</text>
 </g>
-<g class="node" id="stack"><rect x="647" y="111" width="226" height="28" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
-<text x="760" y="130.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Stack three order summaries</text>
+<g class="node" id="stack"><rect x="641.5" y="119" width="237" height="34" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="760" y="141.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Stack three order summaries</text>
 </g>
-<g class="node" id="weights"><rect x="469" y="65" width="212" height="44" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
-<text x="575" y="83.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Score orders: Linear × 2</text>
-<text x="575" y="101.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax over orders</text>
+<g class="node" id="weights"><rect x="469" y="66" width="212" height="44" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="575" y="84.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Score orders: Linear × 2</text>
+<text x="575" y="102.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Softmax over orders</text>
 </g>
 <g class="node" id="out"><rect x="663" y="25" width="238" height="32" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
 <text x="782" y="46.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Weighted sum across orders</text>
 </g>
-<text x="339.5" y="523.25" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--a1">B×F×D</text>
-<text x="387.0" y="435.25" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge a1--x2">B×D</text>
-<text x="387.0" y="370.25" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x2--a2">B×F×D</text>
-<text x="387.0" y="289.25" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge a2--x3">B×D</text>
-<text x="387.0" y="226.0" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x3--a3">B×F×D</text>
-<text x="702.5" y="431.25" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a1--stack">a₁: B×D</text>
-<text x="630.0" y="279.75" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a2--stack">a₂: B×D</text>
-<text x="588.5" y="149.5" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a3--stack">a₃: B×D</text>
-<text x="836.5" y="109.0" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge stack--out">B×3×D</text>
-<text x="678.0" y="66.0" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge weights--out">B×3</text>
-<text x="912" y="45" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="note">B×D</text>
+<text x="339" y="523" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge x--a1">B×F×D</text>
+<text x="695" y="447" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a1--stack">a₁: B×D</text>
+<text x="623" y="299" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a2--stack">a₂: B×D</text>
+<text x="588" y="151" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge a3--stack">a₃: B×D</text>
+<text x="841" y="106" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge stack--out">B×3×D</text>
+<text x="683" y="77" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge weights--out">B×3</text>
+<text x="907" y="45" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="note">B×D</text>
 </svg>

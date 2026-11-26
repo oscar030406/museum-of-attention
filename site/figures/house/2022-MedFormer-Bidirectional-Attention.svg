@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Archivo, Arial, sans-serif">
+<defs>
+<marker id="arrow-ink" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#17140f"/></marker>
+<marker id="arrow-feature" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#1f3c73"/></marker>
+<marker id="arrow-score" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#7d1a2b"/></marker>
+<marker id="arrow-gate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 9 8"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#b8892b"/></marker>
+</defs>
+<path class="flow" data-from="feat" data-to="vq" d="M 220 525 L 220 485.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="map" data-to="mq" d="M 740 525 L 740 485.5" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="vq" data-to="logits" d="M 275 412.5 L 424 375" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="mq" data-to="logits" d="M 685 412.5 L 536 375" fill="none" stroke="#b8892b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-gate)"/>
+<path class="flow" data-from="vq" data-to="am" d="M 157 412.5 L 101 361 L 101 211 L 153 176" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="mq" data-to="af" d="M 806 412.5 L 866 360 L 866 211 L 811 176" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="logits" data-to="sm" d="M 429 319 L 326 283" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="logits" data-to="sf" d="M 531 319 L 634 276" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="sm" data-to="am" d="M 298 227 L 282 176" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="sf" data-to="af" d="M 662 234 L 678 176" fill="none" stroke="#7d1a2b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-score)"/>
+<path class="flow" data-from="am" data-to="om" d="M 220 134 L 220 86" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<path class="flow" data-from="af" data-to="of" d="M 740 134 L 740 86" fill="none" stroke="#1f3c73" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#arrow-feature)"/>
+<g class="node" id="feat"><rect x="142.5" y="525" width="155" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="220" y="551.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Voxel features</text>
+</g>
+<g class="node" id="map"><rect x="661" y="525" width="158" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="740" y="551.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Semantic map</text>
+</g>
+<g class="node" id="vq"><rect x="81" y="412.5" width="278" height="73" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="220" y="436.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Voxel Q and V</text>
+<text x="220" y="454.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Pointwise or depthwise-separable Conv3D</text>
+<text x="220" y="472.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split heads and flatten the volume</text>
+</g>
+<g class="node" id="mq"><rect x="630" y="412.5" width="220" height="73" rx="3" fill="#f4efe2" stroke="#b8892b" stroke-width="1.8"/>
+<text x="740" y="436.0" font-size="16" fill="#17140f" text-anchor="middle" font-weight="600" class="box">Semantic Q and V</text>
+<text x="740" y="454.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Pointwise Conv3D</text>
+<text x="740" y="472.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Split heads and flatten the map</text>
+</g>
+<g class="node" id="logits"><rect x="357" y="319" width="246" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="480" y="343.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Shared cross-scores</text>
+<text x="480" y="361.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Qvoxel × Qmapᵀ / √d</text>
+</g>
+<g class="node" id="sm"><rect x="188.5" y="227" width="219" height="56" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="298" y="251.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Softmax over voxels</text>
+<text x="298" y="269.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Dropout on these weights</text>
+</g>
+<g class="node" id="sf"><rect x="555" y="234" width="214" height="42" rx="3" fill="#dfd7c4" stroke="#7d1a2b" stroke-width="1.8"/>
+<text x="662" y="260.0" font-size="16" fill="#7d1a2b" text-anchor="middle" font-weight="600" class="box">Softmax over map tokens</text>
+</g>
+<g class="node" id="am"><rect x="97.5" y="134" width="245" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="220" y="160.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Mix voxel V for map tokens</text>
+</g>
+<g class="node" id="af"><rect x="632" y="134" width="216" height="42" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="740" y="160.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Mix map V for each voxel</text>
+</g>
+<g class="node" id="om"><rect x="97.5" y="30" width="245" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="220" y="54.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Restore semantic map grid</text>
+<text x="220" y="72.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Optional pointwise Conv3D</text>
+</g>
+<g class="node" id="of"><rect x="607" y="30" width="266" height="56" rx="3" fill="#f4efe2" stroke="#1f3c73" stroke-width="1.8"/>
+<text x="740" y="54.0" font-size="16" fill="#1f3c73" text-anchor="middle" font-weight="600" class="box">Restore voxel grid</text>
+<text x="740" y="72.0" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="box">Conv3D projection + Dropout</text>
+</g>
+<text x="226" y="510" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge feat--vq">B×C×D×H×W</text>
+<text x="746" y="510" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge map--mq">B×Cm×Dm×Hm×Wm</text>
+<text x="364" y="405" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge vq--logits">Q: B×h×N×d</text>
+<text x="624" y="392" font-size="14" fill="#17140f" text-anchor="start" font-weight="400" class="edge mq--logits">Q: B×h×M×d</text>
+<text x="140" y="388" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge vq--am">V: B×h×N×d</text>
+<text x="848" y="395" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge mq--af">V: B×h×M×d</text>
+<text x="385" y="299" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge logits--sm">B×h×N×M</text>
+<text x="590" y="308" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge logits--sf">B×h×N×M</text>
+<text x="299" y="209" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sm--am">Aᵀ</text>
+<text x="678" y="209" font-size="14" fill="#7d1a2b" text-anchor="start" font-weight="400" class="edge sf--af">A</text>
+<text x="226" y="115" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge am--om">B×h×M×d</text>
+<text x="746" y="115" font-size="14" fill="#1f3c73" text-anchor="start" font-weight="400" class="edge af--of">B×h×N×d</text>
+<text x="480" y="59" font-size="14" fill="#17140f" text-anchor="middle" font-weight="400" class="note">N: voxels   M: map tokens</text>
+</svg>
