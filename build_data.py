@@ -317,21 +317,27 @@ def load_extend_log() -> dict:
     repro_ranges: list[tuple[int, int, list[tuple[str, int]]]] = []
     pending: list[str] = []
     for sec in re.split(r"\n(?=## )", text):
-        rng = re.search(r"序号\s*(\d+)[–-](\d+)。论文复现队列追加\s*\d+\s*条候选，序号\s*(\d+)[–-](\d+)", sec)
-        bullets = re.findall(r"^- \*\*([a-k])\. ([^*]+?)\*\*。(.*)$", sec, re.M)
+        rng = re.search(r"追加\s*\d+\s*条待收，序号\s*(\d+)[–-](\d+)", sec)
+        rrng = re.search(r"论文复现队列追加\s*\d+\s*条候选，序号\s*(\d+)[–-](\d+)", sec)
         main_counts, repro_counts = [], []
-        for letter, name, rest in bullets:
-            directions.setdefault(letter, {"zh": name.strip("。 ")})
-            directions[letter]["scanned"] = True
-            directions[letter]["sources"] = [{"label": l, "url": u} for l, u in LINK_RE.findall(rest)]
-            mm = re.search(r"追加\s*(\d+)\s*条待收", rest)
-            rr = re.search(r"(\d+)\s*条候选", rest)
+        # 两种写法：列表项「- **a. 名字**。追加 N 条…」和表格行「| a. 名字 | 待收 | 复现建议（可省）| 来源 |」
+        items = [(l, n, rest, re.search(r"追加\s*(\d+)\s*条", rest), re.search(r"(\d+)\s*条候选", rest))
+                 for l, n, rest in re.findall(r"^- \*\*([a-k])\. ([^*]+?)\*\*。(.*)$", sec, re.M)]
+        items += [(l, n, rest, re.match(r"(\d+)", c), None)
+                  for l, n, c, rest in re.findall(r"^\| ([a-k])\. ([^|]+?) \| *(\d+) *\|(?: *\d+ *\|)?(.*)$", sec, re.M)]
+        for letter, name, rest, mm, rr in items:
+            d = directions.setdefault(letter, {"zh": name.strip("。 ")})
+            d["scanned"] = True
+            d.setdefault("sources", [])
+            for l, u in LINK_RE.findall(rest):
+                if all(x["url"] != u for x in d["sources"]):
+                    d["sources"].append({"label": l, "url": u})
             main_counts.append((letter, int(mm.group(1)) if mm else 0))
             repro_counts.append((letter, int(rr.group(1)) if rr else 0))
         if rng:
-            a, b, c, d = map(int, rng.groups())
-            main_ranges.append((a, b, main_counts))
-            repro_ranges.append((c, d, repro_counts))
+            main_ranges.append((*map(int, rng.groups()), main_counts))
+        if rrng:
+            repro_ranges.append((*map(int, rrng.groups()), repro_counts))
         pm = re.search(r"### 待扫方向\s*\n+(.+)", sec)
         if pm:
             for letter, name in re.findall(r"([a-k])\. ([^，。]+)", pm.group(1)):
@@ -343,6 +349,7 @@ def load_extend_log() -> dict:
         m = {}
         for a, b, counts in ranges:
             if sum(n for _, n in counts) != b - a + 1:
+                print(f"注意：扩队列记录里序号 {a}–{b} 的各方向条数加起来是 {sum(n for _, n in counts)}，对不上，这一轮没有分配方向")
                 continue        # 条数对不上就不分配，宁缺不错
             i = a
             for letter, n in counts:
@@ -354,7 +361,8 @@ def load_extend_log() -> dict:
     for k, v in directions.items():
         v["en"] = DIRECTION_EN.get(k)
     return dict(directions=directions, main_map=assign(main_ranges),
-                repro_map=assign(repro_ranges), pending=pending)
+                repro_map=assign(repro_ranges),
+                pending=[k for k in sorted(directions) if not directions[k].get("scanned")])
 
 
 def load_queue(ext: dict) -> list[dict]:
