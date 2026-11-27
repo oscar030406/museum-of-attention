@@ -1,0 +1,332 @@
+{
+"2015-NAMAS-Soft-Alignment": {
+ "mechanism_zh": "早期的摘要多是从原文里摘句子。NAMAS 逐词生成摘要：拿刚写出的几个摘要词的嵌入，去和原句每个词做点积，softmax 后得到对齐权重，再对原句局部平滑后的嵌入加权求和，作为写下一个词的依据。",
+ "mechanism_en": "NAMAS writes a summary word by word. The embeddings of the last few summary words are scored against each source word, and the softmax weights average a locally smoothed copy of the source to condition the next word.",
+ "check_en": "No numerical comparison was performed. The maximum absolute difference of the double-precision output was 1.11e-16.",
+ "basis": "abstract"
+},
+"2019-GATNE-Edge-Type-Attention": {
+ "mechanism_zh": "同一对节点之间可能连着好几种边，比如点击、收藏和购买。GATNE 先按边的类型分别把邻居特征加起来，得到每类边下的节点表示，再按目标关系给这几份表示算注意力权重，加权合成最终嵌入。",
+ "mechanism_en": "When nodes are linked by several edge types, GATNE sums neighbour features separately for each type, then uses attention with weights specific to the target relation to blend these per-type embeddings into one.",
+ "check_en": "The maximum absolute difference was 0 for both GATNE-T without node attributes and GATNE-I with attributes. The threshold was 1e-5.",
+ "basis": "readme"
+},
+"2020-GROVER-Dynamic-Edge-and-Node-Attention": {
+ "mechanism_zh": "GROVER 把消息传递网络嵌进了 Transformer：查询、键、值不靠线性投影，各由一个消息传递网络在分子图上算出，训练时传递的跳数每次随机抽取。同一个结构既能更新原子，也能更新化学键。",
+ "mechanism_en": "GROVER puts message passing inside a Transformer: queries, keys and values each come from a message-passing network run over the molecular graph, with a randomly drawn number of hops during training. The same block can update atoms or bonds.",
+ "check_en": "Both sides strictly loaded the same state_dict and used the same graph and random features. The maximum absolute difference across the 4 groups was 0.0, with a threshold of 1e-5.",
+ "basis": "readme"
+},
+"2020-TTSR-Hard-and-Soft-Texture-Attention": {
+ "mechanism_zh": "参考图超分要把高清参考图里的纹理搬到低清图上。TTSR 拿低清图的特征作查询、参考图作键，按图块算相关度。硬注意力只取每个位置最相关的那一块纹理，软注意力再用这个最大相关度给搬来的纹理加权。",
+ "mechanism_en": "TTSR treats the low-resolution image as queries and a high-resolution reference as keys. Hard attention copies, for each position, the single most relevant reference patch at three scales; soft attention weights that texture by its relevance score.",
+ "check_en": "The overall maximum absolute difference was 0.0, with a threshold of 1e-5.",
+ "basis": "abstract"
+},
+"2021-FAGCN-Signed-Edge-Gate": {
+ "mechanism_zh": "普通图卷积只做邻居平均，相当于低通滤波，在相邻节点常常不同类的图上会抹掉差别。FAGCN 用两端节点的特征过 tanh 算出边系数，系数可正可负：为正时汇聚邻居的共性，为负时汇聚两者的差异。",
+ "mechanism_en": "Plain graph convolution averages neighbours, a low-pass filter. FAGCN computes each edge coefficient from both endpoints through tanh, so it can be negative: positive edges pass low-frequency signal, negative edges pass high-frequency differences.",
+ "check_en": "No numerical comparison was performed. The maximum absolute difference between the reference output and the library version was 0, with a threshold of 1e-5.",
+ "basis": "abstract"
+},
+"2021-PNS-Net-Normalized-Self-Attention": {
+ "mechanism_zh": "卷积的感受野有限，用不上相邻帧的时空信息。PNS-Net 的自注意力块让每个位置只和前后几帧里附近一块邻域算归一化后的相关，用 softmax 前的权重汇聚邻域特征，再拿 softmax 后的最大值做门控。",
+ "mechanism_en": "PNS-Net's block lets each position compare itself, after normalisation, with a small spatial neighbourhood across nearby frames. Neighbour features are summed with pre-softmax weights and gated by the post-softmax maximum.",
+ "check_en": "No numerical comparison was performed (the official self_cuda_backend requires CUDA). With the same state_dict and a random double-precision video, the maximum absolute difference was 3.89e-15.",
+ "basis": "readme"
+},
+"2021-UTNet-Efficient-Attention": {
+ "mechanism_zh": "医学图像分辨率高，直接做自注意力，代价是像素数的平方。UTNet 的查询保留全分辨率，只把键和值缩到一张小网格上，可以插值缩，也可以最大池化缩，再加上相对位置偏置，计算量随像素数近似线性增长。",
+ "mechanism_en": "UTNet keeps queries at full resolution but shrinks keys and values to a small grid by interpolation or max pooling, and adds a relative position bias. Cost then grows roughly linearly with the number of pixels.",
+ "check_en": "Using the same state_dict and CPU input, the interpolation and max-pooling paths were checked separately. The maximum absolute difference was 0 on both paths.",
+ "basis": "abstract"
+},
+"2022-BuildFormer-Linear-Window-Attention": {
+ "mechanism_zh": "遥感图幅面大，窗口注意力的窗口一放大，开销就跟着窗口面积的平方涨。BuildFormer 在窗口里改用线性注意力：查询和键先做 L2 归一化，先算键和值的乘积再乘查询，于是大窗口也用得起。",
+ "mechanism_en": "BuildFormer swaps softmax for linear attention inside each window: queries and keys are L2-normalised and keys and values are multiplied first, so cost grows linearly with window size and large windows become affordable on big remote-sensing tiles.",
+ "check_en": "For both whole-window input and padded input with QKV bias enabled, the maximum absolute difference was 0.0, with a threshold of 1e-5.",
+ "basis": "abstract"
+},
+"2022-DTFD-MIL-Double-Tier-Attention-Pooling": {
+ "mechanism_zh": "病理切片总数少，一张片却能切出上万个图块。DTFD-MIL 把一张片的图块随机分成几个伪包。第一层用门控注意力给包内图块打分，按分数加权得到每个伪包的代表特征。第二层对这些代表再做门控注意力池化，给整张片分类。",
+ "mechanism_en": "DTFD-MIL splits a slide's patches into random pseudo-bags. Gated attention scores the patches in each pseudo-bag and distils one representative feature from it; a second gated attention pools these representatives to classify the whole slide.",
+ "check_en": "The same state_dict was loaded on CPU and compared on the same inputs. The maximum absolute difference was 0.0 for the normalized and unnormalized first-tier scores and for the second-tier classification output.",
+ "basis": "abstract"
+},
+"2022-Hyperformer-Hypergraph-Joint-Attention": {
+ "mechanism_zh": "两两打分的注意力只看关节对，看不到几个关节一起动的高阶关系。Hyperformer 把关节按身体部位分组，当作超边，自注意力打分时加入各组关节的聚合特征。骨骼上的图距离另作一份位置嵌入。",
+ "mechanism_en": "Pairwise attention misses joints that move together. Hyperformer groups skeleton joints into body-part hyperedges and adds their aggregated features to the attention scores, while a graph-distance embedding keeps the bone structure.",
+ "check_en": "The maximum absolute difference was 0.",
+ "basis": "abstract"
+},
+"2022-MoLFormer-Rotary-Linear-Attention": {
+ "mechanism_zh": "MoLFormer 在十亿级的 SMILES 分子字符串上预训练。它先给查询和键加旋转位置编码，再用随机特征近似 softmax，做线性注意力，先合并键和值再乘查询，开销随序列长度线性增长。",
+ "mechanism_en": "MoLFormer, pretrained on about a billion SMILES strings, applies rotary position embeddings to queries and keys, then runs linear attention with random features, so cost grows linearly with sequence length.",
+ "check_en": "The specified environment lacks pytorch-fast-transformers, so no full-package numerical comparison was performed. The maximum absolute difference across the 4 groups was 0.0, with a threshold of 1e-5.",
+ "basis": "abstract"
+},
+"2022-RSTT-Space-Time-Cross-Attention": {
+ "mechanism_zh": "时空视频超分要同时补帧和补分辨率。RSTT 的编码器把输入的低帧率低清帧编成一本可复用的字典。解码帧先在局部时空窗口里做自注意力，再拿自己的查询去读编码帧的键和值，合成新帧。",
+ "mechanism_en": "RSTT encodes the low-frame-rate, low-resolution input into a reusable dictionary. Decoder frames first run self-attention in local space-time windows, then query the encoder's keys and values to synthesise high-rate, high-resolution frames.",
+ "check_en": "The maximum absolute difference of the output was 0.0, with a threshold of 1e-5.",
+ "basis": "abstract"
+},
+"2022-XMorpher-Window-Cross-Attention": {
+ "mechanism_zh": "配准要在两张图之间找对应，常见的骨干网络却各提各的特征。XMorpher 用两条并行支路，靠交叉注意力交换信息：一张图的小窗口只到另一张图同一位置周围更大的搜索窗口里去找，专看局部形变，也省计算。",
+ "mechanism_en": "XMorpher runs two parallel branches for the fixed and moving images and links them with cross-attention. Each small window in one image attends only to a larger search window around the same place in the other, matching local deformation.",
+ "check_en": "No numerical comparison was performed (importing the full official file requires mmcv, which is missing, and depends on mmaction). A supplementary check that loaded the official cross-attention definition on its own gave a maximum absolute difference of 0.",
+ "basis": "abstract"
+},
+"2023-CMT-3D-Coordinate-Aware-Cross-Attention": {
+ "mechanism_zh": "CMT 不先把图像特征变换到鸟瞰视角。它给相机图像令牌和激光雷达鸟瞰令牌都编上三维坐标，物体查询也按三维位置编码，再用交叉注意力同时读两路令牌，直接输出三维框。",
+ "mechanism_en": "CMT skips explicit view transformation. Camera tokens and LiDAR bird's-eye-view tokens both receive 3D coordinate encodings, and position-encoded object queries cross-attend to the two sets of tokens at once to predict 3D boxes.",
+ "check_en": "No numerical comparison was performed. The authors' coordinate function was checked with the same parameters and the same input from two cameras; the maximum absolute difference in the outputs and token order was 0.",
+ "basis": "abstract"
+},
+"2023-DyGFormer-Patch-Attention": {
+ "mechanism_zh": "DyGFormer 只看两个端点各自的一阶历史交互。它统计每个邻居在两端历史里各出现几次，作为共现编码，再把历史序列切成小块，两端的块拼在一起做自注意力。切块让序列变短，模型就读得了更长的历史。",
+ "mechanism_en": "DyGFormer looks only at the two endpoints' first-hop histories. A co-occurrence encoding counts how often each neighbour appears in both, and the histories are cut into patches that pass jointly through self-attention, so longer histories fit.",
+ "check_en": "The patch outputs before pooling were compared; the maximum absolute difference was 0.",
+ "basis": "abstract"
+},
+"2023-FCT-Convolutional-Attention": {
+ "mechanism_zh": "医学分割在意细节，普通 Transformer 的线性投影只看单个令牌。FCT 把投影换成深度卷积，查询、键、值都从特征图上卷出来，每个令牌进注意力之前就带着周围像素的信息。",
+ "mechanism_en": "FCT replaces the linear projections of self-attention with depthwise convolutions, so queries, keys and values are computed from the feature map and each token already carries its neighbourhood when attention begins.",
+ "check_en": "No numerical comparison was performed (importing the official file directly changes the working directory and reads data). After loading the same state_dict, the maximum absolute difference on the same CPU input was 0.",
+ "basis": "readme"
+},
+"2023-ICON-Operator-Conditioning-Attention": {
+ "mechanism_zh": "ICON 让一个网络在推理时看几组例子就学会新的微分方程算子，不用重新训练。例子里的条件和解作为键和值，待求的位置作为查询，经过多层带掩码的交叉注意力，读出该处的解。",
+ "mechanism_en": "ICON learns a new differential-equation operator from a few prompted examples at inference, with no weight updates. Query locations cross-attend through masked layers to the example conditions and solutions, and read off the answer there.",
+ "check_en": "No numerical comparison was performed.",
+ "basis": "abstract"
+},
+"2023-LightGlue-Adaptive-Matching-Attention": {
+ "mechanism_zh": "LightGlue 重新调整了 SuperGlue 的设计。两幅图的关键点交替做图内自注意力和图间交叉注意力。每层之后它判断匹配是否已有把握，有把握就提前停下，并剪掉明显配不上的点，容易的图对因此算得快。",
+ "mechanism_en": "LightGlue alternates self-attention within each image and cross-attention between the two over keypoint descriptors. After each layer it checks its confidence, stops early when sure and prunes points that cannot match, so easy pairs finish fast.",
+ "check_en": "Both versions strictly loaded the same state_dict and received the same random input. The maximum absolute difference of the floating-point outputs was 0.0e+00, and the discrete outputs matched exactly.",
+ "basis": "abstract"
+},
+"2023-OccFormer-Dual-Path-Window-Attention": {
+ "mechanism_zh": "三维体素直接做全局注意力太重。OccFormer 把它拆成两路：局部一路沿高度切片，每片在水平面上做窗口注意力；全局一路先把高度压成鸟瞰图，再做窗口注意力。最后逐体素用门控把鸟瞰上下文加回各片。",
+ "mechanism_en": "OccFormer splits 3D voxel processing into two paths. The local path runs window attention on each horizontal height slice; the global path first collapses height into a bird's-eye view. A per-voxel gate adds the global context back to the slices.",
+ "check_en": "No numerical comparison was performed. All maximum absolute differences were 0, with a threshold of 1e-5.",
+ "basis": "abstract"
+},
+"2023-SAM-HQ-High-Quality-Mask-Token": {
+ "mechanism_zh": "SAM 切出的掩码碰到结构复杂的物体常常不准。HQ-SAM 往 SAM 的掩码解码器里加一个可学习的高质量输出令牌，和原有令牌一起经双向注意力更新，再和融合了早期与末层 ViT 特征的特征图结合，预测更细的掩码。",
+ "mechanism_en": "HQ-SAM adds one learnable high-quality output token to SAM's mask decoder. It is updated by two-way attention with the existing tokens, then combined with features fused from early and final ViT layers to predict a finer mask.",
+ "check_en": "Both sides strictly loaded the same state_dict and were checked with the same image and two sets of prompts in four settings: single mask, multiple masks, HQ only, and SAM merged with HQ. The maximum absolute difference of the mask and IoU outputs was 0, with a threshold of 1e-5.",
+ "basis": "abstract"
+},
+"2023-StyleTTS-2-Style-Conditioned-Attention": {
+ "mechanism_zh": "StyleTTS 2 的这个注意力层带着一个风格向量。查询输入和上下文先各过一层自适应层归一化，缩放和平移都由风格向量算出。随后查询取自输入，键和值取自上下文，打分时再加上分桶的相对位置偏置。",
+ "mechanism_en": "In this StyleTTS 2 layer, a style vector sets the scale and shift of adaptive layer norms applied to both the input and the context. Queries come from the input, keys and values from the context, with a bucketed relative position bias.",
+ "check_en": "Self-attention and cross-attention with a query length of 16 and a context length of 11 were compared using the same state_dict and random input. The maximum absolute difference was 0.",
+ "basis": "readme"
+},
+"2023-UNesT-Nested-Volumetric-Attention": {
+ "mechanism_zh": "把三维医学图像拉成一维的块序列，块和块的空间关系就丢了。UNesT 把相邻的块编成小组，只在组内做自注意力，然后用卷积和池化把相邻小组合并，下一级在更大的组里接着做，一级套一级。",
+ "mechanism_en": "UNesT groups spatially adjacent 3D patches into blocks and runs self-attention only inside each block. Convolution and pooling then merge neighbouring blocks, and the next level repeats the process on larger blocks, building a nested hierarchy.",
+ "check_en": "No numerical comparison was performed (importing the whole file depends on the repository's model factory and relative packages). Configurations with and without aggregation used the same state_dict and CPU input, and the maximum absolute difference was 0 for both.",
+ "basis": "abstract"
+},
+"2024-3D-Diffuser-Actor-Relative-Geometric-Attention": {
+ "mechanism_zh": "3D Diffuser Actor 给机器人的位姿轨迹去噪。动作令牌和场景令牌都带着三维坐标，交叉注意力用三维旋转位置编码，打分只取决于两者的相对位置。扩散的时间步再经自适应层归一化调制每一层。",
+ "mechanism_en": "3D Diffuser Actor denoises robot pose trajectories. Action and scene tokens both carry 3D coordinates, and cross-attention uses 3D rotary encodings so scores depend only on relative position; the diffusion timestep modulates each layer through adaptive norms.",
+ "check_en": "",
+ "basis": "readme"
+},
+"2024-BAN-Bitemporal-Cross-Attention": {
+ "mechanism_zh": "BAN 想把冻结的基础模型（例如 CLIP）里的通用知识借给变化检测网络。它在两者之间架一座桥：检测支路的特征作查询，冻结模型的特征作键和值，交叉注意力挑出有用的部分注入支路。两个时相各走一次同一座桥。",
+ "mechanism_en": "BAN bridges a frozen foundation model such as CLIP and a change-detection branch. Branch features query the frozen features through cross-attention, and the result is injected back into the branch; the same bridge serves each of the two dates.",
+ "check_en": "The last step of the bridge adds the two branches, so the frozen-branch features must first be projected to the same number of channels as the side branch. The maximum absolute difference was 0.0 for all four output groups, with a threshold of 1e-5.",
+ "basis": "abstract"
+},
+"2024-CosyVoice-2-Chunk-Aware-Attention": {
+ "mechanism_zh": "CosyVoice 2 想让同一个模型既能流式合成，也能整句合成。它的流匹配网络里，注意力带相对位置编码，两种模式之间只换掩码：流式时每块只能看自己和已经到达的左侧块，离线时看整条序列里的全部真实令牌。",
+ "mechanism_en": "CosyVoice 2 serves streaming and offline synthesis with one model. Its flow-matching attention uses relative positions and only switches masks: in streaming mode a chunk sees itself and earlier chunks, offline it sees the whole sequence.",
+ "check_en": "The maximum absolute difference was 0, with a threshold of 1e-5.",
+ "basis": "readme"
+},
+"2024-EfficientSAM-Lightweight-Mask-Cross-Attention": {
+ "mechanism_zh": "EfficientSAM 的掩码解码器沿用双向 Transformer：提示令牌先互相做自注意力，再去读图像令牌，图像令牌又反过来读提示令牌。交叉注意力里先把查询、键、值投到更窄的维度，算完再映射回原宽度。",
+ "mechanism_en": "EfficientSAM's mask decoder lets prompt tokens attend to each other, read the image tokens and then be read by them in turn. Its cross-attention projects queries, keys and values to a narrower width before attending, then maps back.",
+ "check_en": "Two sets of outputs at different depths and attention downsampling rates were checked with the same input. The maximum absolute difference was 0, with a threshold of 1e-5.",
+ "basis": "readme"
+},
+"2024-InfiniGen-KV-Selection": {
+ "mechanism_zh": "键值缓存放到主机内存以后，每步把整份缓存搬回显存太慢。InfiniGen 在算当前层时，用本层的输入、下一层的部分查询权重和部分键先粗算一遍，猜出下一层哪些令牌分数高，只预取这些令牌的键和值。",
+ "mechanism_en": "InfiniGen offloads the KV cache to host memory. While computing one layer, it rehearses the next layer's attention with the current input and partial query weights and keys, guesses which tokens will matter, and prefetches only their keys and values.",
+ "check_en": "Nine output tensors were compared across three groups with different batch sizes, thresholds or selection limits. The maximum absolute difference was 0, with a threshold of 1e-5.",
+ "basis": "abstract"
+},
+"2024-MDT-Goal-Conditioned-Attention": {
+ "mechanism_zh": "大规模机器人数据里只有一小部分带语言标注。MDT 把语言目标或图像目标和当前观测一起送进编码器，解码器以带噪的动作令牌为查询，对编码结果做交叉注意力来去噪，一个策略两种目标都能接。",
+ "mechanism_en": "MDT encodes a language or image goal together with current observations. Its decoder takes noisy action tokens as queries and cross-attends to that encoding to denoise them, so one policy can follow either kind of goal.",
+ "check_en": "",
+ "basis": "readme"
+},
+"2024-MapTRv2-Decoupled-Map-Attention": {
+ "mechanism_zh": "MapTRv2 把车道线、路沿这类地图元素各表示成一组有序的点，查询也分元素和点两级。解码层先在元素之间做自注意力，再在同一元素的点之间做，不让所有点一起算，最后用可变形注意力读鸟瞰特征。",
+ "mechanism_en": "MapTRv2 models each map element as an ordered point set with hierarchical queries. A decoder layer runs self-attention across elements, then across the points within each element, rather than over all points at once, and reads bird's-eye-view features with deformable attention.",
+ "check_en": "No numerical comparison was performed.",
+ "basis": "readme"
+},
+"2024-OneFormer3D-Unified-Query-Attention": {
+ "mechanism_zh": "点云的实例、语义和全景分割过去各用一套模型。OneFormer3D 让实例查询和语义查询走同一个解码器，用交叉注意力读点特征，每条查询产生一个掩码。逐层预测时，上一层的掩码限定下一层交叉注意力能看哪些点。",
+ "mechanism_en": "OneFormer3D sends instance and semantic queries through one decoder. Each query reads point features through cross-attention and yields a mask, and in iterative mode the previous layer's mask limits which points the next cross-attention may see.",
+ "check_en": "No numerical comparison was performed. The maximum absolute difference was 0 for both the output and the auxiliary outputs.",
+ "basis": "readme"
+},
+"2024-RoMa-Global-Matching-Attention": {
+ "mechanism_zh": "RoMa 的全局匹配分两步。先用余弦核的高斯过程，把目标图各位置的坐标编码传到源图上。再让 Transformer 解码器在源图特征上做自注意力，给每个位置预测落在各个锚点的概率和置信度，一处可以有几种候选。",
+ "mechanism_en": "RoMa's global matcher first carries target-image coordinate embeddings over to the source image with a cosine-kernel Gaussian process. A Transformer decoder then predicts, for each source position, probabilities over anchor points plus a confidence, allowing several candidate matches.",
+ "check_en": "The GP posterior, anchor logits and confidence were checked. Both sides used the same random input, and the maximum absolute difference was 0.",
+ "basis": "readme"
+},
+"2024-SPAN-SR-Parameter-Free-Attention": {
+ "mechanism_zh": "轻量超分网络里，注意力分支往往要占不少参数。SPAN 直接拿卷积输出过 sigmoid 再减去 0.5，得到关于零点对称的权重，乘到卷积输出与残差之和上。这个注意力门本身一个参数也没有。",
+ "mechanism_en": "SPAN builds its attention without parameters: the convolution output passes through sigmoid minus 0.5, a function symmetric about zero, and the result multiplies the sum of that output and the residual.",
+ "check_en": "The complete original file was loaded through the BasicSR registry shipped with the pinned commit, and the two versions were compared with the same state_dict and the same random input. One comparison was made in training mode and one in evaluation mode; in each, the maximum absolute difference of all three outputs was 0.0.",
+ "basis": "readme"
+},
+"2024-TULIP-LiDAR-Window-Attention": {
+ "mechanism_zh": "激光雷达的距离图又矮又宽，方形窗口不合适。TULIP 把 Swin 的方形窗口改成矩形窗口，在窗口内做自注意力，两条轴都可以平移窗口，再用相对位置偏置区分窗口里的令牌。",
+ "mechanism_en": "LiDAR range images are short and very wide. TULIP replaces Swin's square windows with rectangular ones, computes self-attention inside them with a relative position bias, and can shift the windows along both axes.",
+ "check_en": "No numerical comparison was performed. The maximum absolute difference was 0 on all three paths.",
+ "basis": "readme"
+},
+"2025-0-Blockwise-Vision-Language-Action-Attention": {
+ "mechanism_zh": "π0 在预训练的视觉语言模型旁边接了一个动作专家，两套权重各管各的令牌，注意力却放在一起算。掩码分三块：图文前缀只看前缀，状态令牌再多看自己，动作块能看前缀、状态和整个动作块。",
+ "mechanism_en": "π0 attaches an action expert to a pretrained vision-language model. The two keep separate weights but share one attention: image-text prefix tokens see only the prefix, the state token also sees itself, and action tokens see prefix, state and the whole action chunk.",
+ "check_en": "",
+ "basis": "readme"
+},
+"2025-DINOv3-Dense-Vision-Attention": {
+ "mechanism_zh": "DINOv3 的自注意力用二维旋转位置编码：按每个图块的行列坐标，把查询和键各转一个角度，点积就只取决于两个图块的相对位置。排在序列前面的类别令牌和寄存器令牌不旋转。",
+ "mechanism_en": "DINOv3 rotates each patch's query and key by angles set by its row and column, a 2D rotary encoding, so their dot product depends on relative position. The class and register tokens at the front of the sequence stay unrotated.",
+ "check_en": "The 2D rotary frequencies, the forward pass with five prefix tokens and the list forward pass at two resolutions were checked with the same random input. The maximum absolute difference was 0, with a threshold of 1e-5.",
+ "basis": "readme"
+},
+"2025-LAPA-Factorized-Latent-Action-Attention": {
+ "mechanism_zh": "网上的视频没有机器人动作标签。LAPA 先训一个模型，从相邻帧之间学出离散的潜动作。这个模型的编码器把注意力拆成两步：先在每一帧的空间令牌之间做，再沿时间在同一位置的令牌之间做。",
+ "mechanism_en": "LAPA learns discrete latent actions between video frames, so unlabelled videos can pretrain robot policies. Its encoder factorises attention: first among the spatial tokens within each frame, then along time at each position.",
+ "check_en": "",
+ "basis": "readme"
+},
+"2025-MUSt3R-Multi-View-Memory-Attention": {
+ "mechanism_zh": "DUSt3R 一次只处理两张图，图一多，图对的数量按平方涨。MUSt3R 给每层留一份记忆，存着已处理视图的特征。新视图先在自身令牌之间做自注意力，再用交叉注意力读拼起来的记忆，直接在同一坐标系里预测点图。",
+ "mechanism_en": "DUSt3R works on image pairs, whose number grows quadratically. MUSt3R keeps a per-layer memory of views already seen; each new view runs self-attention over its own tokens, then cross-attends to the concatenated memory to predict pointmaps in a shared frame.",
+ "check_en": "The maximum absolute difference of the memory and forward outputs was 0 in all three modes.",
+ "basis": "abstract"
+},
+"2025-MorphKV": {
+ "mechanism_zh": "回复越写越长，键值缓存也跟着涨。MorphKV 把缓存固定成常数大小：最近一个窗口里的令牌全部保留，更早的令牌按这些最近令牌分给它们的注意力排序，分数可以求和也可以取最大，只留得分最高的一批。",
+ "mechanism_en": "MorphKV keeps the KV cache at a fixed size during long responses. Tokens in a recent window are always kept; older tokens are ranked by the attention they receive from that window, summed or maxed, and only the top ones stay.",
+ "check_en": "No numerical comparison was performed. The maximum absolute difference across 108 comparisons of keys, values and scores was 0, and the negative-infinity mask positions matched.",
+ "basis": "readme"
+},
+"2025-RDT-Alternating-Condition-Cross-Attention": {
+ "mechanism_zh": "RDT 的扩散 Transformer 既要听语言指令，又要看图像。它每层先在动作令牌之间做自注意力，再用交叉注意力读条件：偶数层读语言令牌，奇数层读图像令牌，两种条件轮流进入。",
+ "mechanism_en": "In RDT's diffusion Transformer, each block runs self-attention over action tokens and then cross-attention to a condition: language tokens in even layers, image tokens in odd layers, so the two conditions take turns.",
+ "check_en": "",
+ "basis": "readme"
+},
+"2025-TAPE-Contextualized-Equivariant-Position-Encoding": {
+ "mechanism_zh": "常见的位置编码是一套固定的图样，和内容无关。TAPE 让位置表示逐层更新：注意力在更新内容的同时，也更新 RoPE 的 cos 和 sin 位置张量，再经投影和残差传给下一层。这种更新对令牌置换和正交变换保持等变。",
+ "mechanism_en": "TAPE makes positional encodings depend on content. Each layer's attention updates the RoPE cosine and sine tensors along with the token features and passes them on through a projection and residual, with updates kept equivariant to permutations and orthogonal transforms.",
+ "check_en": "No numerical comparison was performed (official original class imported directly). The maximum absolute difference across 48 tensors was 0, with a threshold of 1e-5.",
+ "basis": "abstract"
+},
+"2025-ZPressor-Bottleneck-Attention": {
+ "mechanism_zh": "前馈式 3DGS 的输入视图一多，显存和效果都撑不住。ZPressor 按相机位置把视图分组，每组挑出锚点视图，用交叉注意力让锚点去读同组的其余视图，把信息压进少数几张视图里，再交给原模型。",
+ "mechanism_en": "ZPressor lets feed-forward 3DGS models take many more views. It clusters views by camera position, picks anchor views, and has the anchors cross-attend to the other views in their group, compressing everything into a compact state.",
+ "check_en": "Using the same weights and the same input as the library version, the maximum absolute difference was 0.",
+ "basis": "abstract"
+},
+"2026-AlignVid-Attention-Scaling-Modulation": {
+ "mechanism_zh": "图生视频时，参考图的令牌把注意力分散开了，提示词要求的改动常常做不出来。AlignVid 不用训练，在指定的层和去噪步上缩放交叉注意力的查询和键，降低注意力的熵，让注意力集中到语义令牌上。",
+ "mechanism_en": "AlignVid counters visual dominance in image-to-video generation without training. At chosen layers and denoising steps it rescales the queries and keys of cross-attention, lowering attention entropy so focus gathers on semantic tokens.",
+ "check_en": "No numerical comparison was performed (original GPU backend). After the official class definition was loaded on its own and connected to the same CPU backend, the maximum absolute difference with the same weights and input was 0.",
+ "basis": "abstract"
+},
+"2026-C3G-Gaussian-Query-Attention": {
+ "mechanism_zh": "逐像素生成高斯会留下大量冗余。C3G 准备一组可学习的高斯查询，和多视图的图像令牌排进同一条序列做自注意力，每条查询从各个视图收集相关特征，最后只用两千来个高斯描述整个场景。",
+ "mechanism_en": "Instead of one Gaussian per pixel, C3G uses learnable Gaussian queries placed in the same sequence as multi-view image tokens. Self-attention lets each query gather features across views, and about 2K Gaussians describe the scene.",
+ "check_en": "The same random queries and image features were passed to the official original class and the library module, and the Gaussian queries at the end of the official output were taken. The maximum absolute difference was 0.0e+00, with a threshold of 1e-5.",
+ "basis": "abstract"
+},
+"2026-CriticalKV": {
+ "mechanism_zh": "只按注意力权重删缓存，忽略了值向量本身的大小。CriticalKV 从删掉一项后注意力输出会变多少出发，打分时把注意力权重和经输出矩阵投影后值向量的 L1 范数合在一起，分两个阶段挑出要保留的项。",
+ "mechanism_en": "Pruning the KV cache by attention weight alone ignores the values. CriticalKV scores each entry by how much removing it could change the output, combining attention weight with the L1 norm of the projected value, and selects survivors in two stages.",
+ "check_en": "The maximum absolute difference across 12 items of scores and compressed K/V was 0, with a threshold of 1e-5.",
+ "basis": "abstract"
+},
+"2026-Elastic-Attention": {
+ "mechanism_zh": "混合注意力模型常把稀疏和完整注意力的比例定死。Elastic Attention 在预训练模型里加一个轻量路由器，按输入的键特征给每个头选一种算法：完整的因果注意力，或者按 128 个令牌分块的流式注意力，整体稀疏度随输入变化。",
+ "mechanism_en": "Elastic Attention adds a light router to a pretrained model. From the input's key features it assigns each head either full causal attention or streaming attention over 128-token chunks, so overall sparsity changes with the input.",
+ "check_en": "No numerical comparison was performed (complete official original class). Thirteen tensors were compared between the router and the full-layer CPU reference, and the maximum absolute difference was 0.",
+ "basis": "readme"
+},
+"2026-Forge4D-Multi-View-Temporal-Fusion": {
+ "mechanism_zh": "Forge4D 从没有标定的稀疏视角视频里逐帧重建人体。注意力分三段：每个视角内部做一次，所有视角合在一起做一次，再和上一时刻留下的场景状态令牌交换信息，让前后帧的结果接得上。",
+ "mechanism_en": "Forge4D reconstructs humans frame by frame from sparse, uncalibrated videos. Attention runs within each view, across all views, and with state tokens carried over from the previous time step, keeping successive frames consistent.",
+ "check_en": "No numerical comparison was performed. With the same state_dict and random input, the maximum absolute difference was 0.0e+00, with a threshold of 1e-5.",
+ "basis": "readme"
+},
+"2026-HNO-Hyperbolic-Attention": {
+ "mechanism_zh": "HNO 的自注意力在双曲空间里打分。查询和键先映到洛伦兹双曲面上，权重不用点积，改为负的双曲距离除以每个头一个可学习的温度，再做 softmax，两点离得越近，权重越大。",
+ "mechanism_en": "HNO scores attention in hyperbolic space. Queries and keys are mapped onto the Lorentz hyperboloid, and the weights are a softmax of negative hyperbolic distance divided by a learnable per-head temperature, in place of dot products.",
+ "check_en": "The maximum absolute difference across 4 groups of outputs was 0.0, with a threshold of 1e-5.",
+ "basis": "readme"
+},
+"2026-JAPC-Attention-Based-Prototype-Calibration": {
+ "mechanism_zh": "同一张医学图像，几位专家画出的标注常常不一样。JAPC 先把各评阅者的原型平均成共识原型，再根据每个评阅者相对共识的偏差，用一个注意力算子算出标量权重，按它缩放该评阅者的原型，主干网络不动。",
+ "mechanism_en": "Expert raters often disagree on medical masks. JAPC averages rater prototypes into a consensus, then an attention operator turns each rater's deviation from it into a scalar weight that rescales that rater's prototype, leaving the backbone untouched.",
+ "check_en": "The maximum absolute difference was 0.0 for both the gating weights and the calibrated prototypes in the original class's forward pass.",
+ "basis": "abstract"
+},
+"2026-Light-Forcing-Hierarchical-Sparse-Attention": {
+ "mechanism_zh": "把双向视频模型的稀疏注意力直接搬到自回归视频生成上，画质会掉得厉害。Light Forcing 按生成块逐步提高稀疏度，首块用完整注意力。之后每块先挑出有用的历史帧，再在帧内给键块打分取前几名，两级筛完才算注意力。",
+ "mechanism_en": "Light Forcing brings sparse attention to autoregressive video diffusion. Sparsity grows chunk by chunk, with full attention for the first chunk, and each later chunk first selects informative past frames, then the top-scoring key blocks within them.",
+ "check_en": "No numerical comparison was performed (original GPU backend). The hierarchical block indices were computed by hand, and a reference output was computed with independent PyTorch attention on the selected tokens; the maximum absolute difference was 2.38419e-7.",
+ "basis": "abstract"
+},
+"2026-Prompt-Reinjection-Adapter": {
+ "mechanism_zh": "在 SD3、FLUX 这类双分支扩散 Transformer 里，文本分支越往深层，提示词的语义忘得越多。Prompt Reinjection 不用训练，把浅层的提示词特征逐令牌标准化，可选地先旋转对齐，再按权重加回深层的文本特征。",
+ "mechanism_en": "In multimodal diffusion Transformers such as SD3 and FLUX, the text branch gradually forgets the prompt with depth. Prompt Reinjection, without training, standardises early-layer prompt features per token, optionally rotates them, and adds them to later layers.",
+ "check_en": "I imported the official utils.py directly and called the official and library functions with the same random input, scalar weight and rotation matrix. The maximum absolute difference was 0, with a threshold of 1e-5.",
+ "basis": "abstract"
+},
+"2026-RnG-Reconstruction-Guided-Causal-Attention": {
+ "mechanism_zh": "RnG 想从几张局部观测推出完整的三维物体。它用注意力掩码把重建和生成分开：观测令牌读不到目标视角的令牌。观测令牌的键和值存成缓存，当作隐式的三维表示，任意新视角的查询都来读这份缓存。",
+ "mechanism_en": "RnG separates reconstruction from generation with an attention mask: observed-view tokens cannot read target-view tokens. Their keys and values are kept as a cache that serves as an implicit 3D representation, which queries from any new pose can read.",
+ "check_en": "No numerical comparison was performed. The maximum absolute difference was 0 for the masked output, the cache tensors and the cache-read output.",
+ "basis": "abstract"
+},
+"2026-SLASH-Structural-Attention-Sharpening": {
+ "mechanism_zh": "把图序列化后交给大语言模型，注意力图里会出现和邻接关系对齐的锯齿图样，只是被注意力汇聚点冲淡了。SLASH 不用训练，在选定的层和头上原地重新分配 softmax 之后的概率，让这份结构信号更突出。",
+ "mechanism_en": "LLMs reading a serialised graph show attention patterns aligned with its adjacency, but the attention sink dilutes them. SLASH, without training, redistributes the post-softmax probabilities in selected layers and heads to sharpen that structure.",
+ "check_en": "The official class has no state_dict, so the comparison used the same constructor arguments and independent copies of the same probability tensor. The maximum absolute difference was 0.0, with a threshold of 1e-5.",
+ "basis": "abstract"
+},
+"2026-TabSwift-Row-Wise-Attention": {
+ "mechanism_zh": "TabSwift 回到 TabPFN 最初的设计，只用逐行注意力：一行表格算一个令牌，训练行之间互相看，测试行只读训练行，靠上下文直接推出标签。它另加门控来稳住注意力，还拼上几个可学习的寄存器令牌提供全局信息。",
+ "mechanism_en": "TabSwift treats each table row as one token. Training rows attend to each other and test rows read only the training rows, so labels are inferred in context; gating stabilises the attention and a few learnable register tokens add global context.",
+ "check_en": "",
+ "basis": "abstract"
+},
+"2026-Tucker-Attention": {
+ "mechanism_zh": "GQA、MLA 都在给注意力的权重做低秩分解，各有各的分法。Tucker Attention 把查询、键、值的权重看成一个跨注意力头和嵌入维度的高阶张量，统一做 Tucker 分解，标准多头注意力、GQA 和 MLA 都成了它的特例。",
+ "mechanism_en": "GQA and MLA each factorise attention weights in their own way. Tucker Attention treats the query, key and value weights as a tensor over heads and embedding dimensions and applies a Tucker decomposition, which covers MHA, GQA and MLA as special cases.",
+ "check_en": "No numerical comparison was performed. The maximum absolute difference of the attention aggregation before conversion back to FP16 was 2.1996918e-07.",
+ "basis": "abstract"
+},
+"2026-X-VLA-Soft-Prompted-Action-Attention": {
+ "mechanism_zh": "不同机器人平台的数据差别很大。X-VLA 给每个数据来源配一组可学习的软提示，把它和动作令牌、两路视觉语言特征拼成一条序列，经共享的自注意力，最后只解码动作那一段。",
+ "mechanism_en": "X-VLA gives each robot data source its own set of learnable soft prompts. These are concatenated with action tokens and two streams of vision-language features, passed through shared self-attention, and only the action segment is decoded.",
+ "check_en": "",
+ "basis": "readme"
+}
+}

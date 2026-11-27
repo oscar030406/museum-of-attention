@@ -254,6 +254,8 @@ def parse_venue(s: str | None) -> tuple[int | None, str | None]:
     venue = YEAR_RE.sub("", s).strip(" ，,()（）") or None
     if venue and re.search(r"\s·\s", venue):      # 「CVPR 2022 · arXiv 2203.11192 · 会议论文」只留会议名
         venue = re.split(r"\s+·\s+", venue)[0].strip() or None
+    if venue and venue not in VENUE_EN and re.search(r"[，（(]", venue):   # 「ICML 2025，PMLR 267，19233–19247 页」只留会议名
+        venue = re.split(r"\s*[，（(]", venue)[0].strip() or None
     return year, venue
 
 
@@ -553,7 +555,8 @@ def read_module_dir(path: str) -> dict:
     if venue:
         venue = strip_md(venue).split("。")[0]
     info["venue_raw"] = venue
-    aid = ARXIV_RE.search(blob)
+    # README 写了 DOI 时不再从 .py 文件头取 arXiv 编号：文件头常引用骨干网络的论文（TransMatch 的头部引的是 Swin）
+    aid = ARXIV_RE.search(text) or (ARXIV_RE.search(head) if not DOI_RE.search(text) else None)
     info["arxiv"] = aid.group(1) if aid else None
     doi = DOI_RE.search(blob)
     info["doi"] = doi.group(1).rstrip(".") if doi else None
@@ -1172,7 +1175,7 @@ def build_graph(exhibits: list[dict], edges: list[dict], ext: dict) -> dict:
             links.append(dict(source=e["id"], target=did, kind="direction"))
         v = venue_key(e.get("venue"))
         if v:
-            links.append(dict(source=e["id"], target=hub(f"venue:{v}", "venue", v, VENUE_EN.get(v)), kind="venue"))
+            links.append(dict(source=e["id"], target=hub(f"venue:{v}", "venue", v, table_en(VENUE_EN, "venue", v)), kind="venue"))
         for r in sorted({c["repo"] for c in e["copies"] if c.get("repo")} | ({e["repo"]} if e.get("repo") else set())):
             if repo_count[r] >= 2:                     # 只给至少两件展品共用的仓库建节点
                 links.append(dict(source=e["id"], target=hub(f"repo:{r}", "repo", r), kind="repo"))
